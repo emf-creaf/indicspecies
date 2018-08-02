@@ -1,0 +1,15 @@
+# Default NAMESPACE created by R
+# Remove the previous line if you edit this file
+import(permute)
+# Export all names
+exportPattern(".")
+S3method(plot, indicators)
+S3method(predict, indicators)
+S3method(print, indicators)
+S3method(summary, multipatt)
+S3method(summary, indicators)
+importFrom("graphics", "arrows", "axis", "lines", "plot", "points",
+             "polygon", "symbols", "text")
+importFrom("stats", "as.dist", "cmdscale", "cor", "pnorm",
+             "printCoefmat", "qnorm", "rmultinom", "symnum")
+importFrom("utils", "combn")

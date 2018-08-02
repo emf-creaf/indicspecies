@@ -1,0 +1,18 @@
+citHeader("To cite 'indicspecies' package in publications use:")
+
+citEntry(entry="Manual",
+         title = "Associations between species and groups of sites: indices and statistical inference",
+         author = "Miquel De Caceres, Pierre Legendre",
+         journal = "Ecology",
+         year = "2009",
+         url  = "http://sites.google.com/site/miqueldecaceres/",         
+         textVersion = 
+         paste("De Caceres, M., Legendre, P. (2009). ", 
+               "Associations between species and groups of sites: indices and statistical inference. ",
+               "Ecology",
+               ", URL http://sites.google.com/site/miqueldecaceres/",
+               sep=""),
+         )
+
+citFooter("Thank you for using 'indicspecies'")
+
