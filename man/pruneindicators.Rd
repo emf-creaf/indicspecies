@@ -32,7 +32,7 @@ De \enc{Cáceres}{Caceres}, M. and Legendre, P. 2009. Associations between speci
 
 }
 \author{
-Miquel De \enc{Cáceres}{Caceres} Ainsa, Biodiversity and Landscape Ecology Laboratory, Forest Science Center of Catalonia
+Miquel De \enc{Cáceres}{Caceres} Ainsa, CTFC
 }
 \seealso{\code{\link{indicators}}, \code{\link{coverage}}}
 \examples{

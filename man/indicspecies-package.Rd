@@ -14,8 +14,8 @@ New functions have been added (previously distributed in 'resniche') which allow
 \tabular{ll}{
 Package: \tab indicspecies\cr
 Type: \tab Package\cr
-Version: \tab 1.7.6\cr
-Date: \tab 2016-08-29\cr
+Version: \tab 1.7.7\cr
+Date: \tab 2019-05-20\cr
 Depends: \tab permute \cr
 Suggests: \tab sp, rgeos \cr
 License: \tab GPL (>=2)\cr

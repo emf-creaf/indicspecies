@@ -1,0 +1,75 @@
+\begin{thebibliography}{10}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Borcard et~al.(2011)Borcard, Gillet, and Legendre]{Borcard2011}
+Daniel Borcard, Fran{\c c}ois Gillet, and Pierre Legendre.
+\newblock \emph{Numerical Ecology in R}.
+\newblock Use R! Springer Science, New York, 2011.
+
+\bibitem[Bowman and Wilson(1987)]{Bowman1987}
+D.M.J.S. Bowman and B.A. Wilson.
+\newblock Wetland vegetation pattern on the adelaide river flood plain,
+  northern territory, australia.
+\newblock \emph{Proceedings of the Royal Society of Queensland}, 97:\penalty0
+  69--77, 1987.
+
+\bibitem[Chytr\'{y} et~al.(2002)Chytr\'{y}, Tich\'{y}, Holt, and
+  Botta-Duk\'{a}t]{Chytry2002a}
+Milan Chytr\'{y}, Lubom\'{\i}r Tich\'{y}, Jason Holt, and Zolt\'{a}n
+  Botta-Duk\'{a}t.
+\newblock {Determination of diagnostic species with statistical fidelity
+  measures}.
+\newblock \emph{Journal of Vegetation Science}, 13\penalty0 (1):\penalty0
+  79--90, 2002.
+
+\bibitem[{De C\'{a}ceres} and Legendre(2009)]{DeCaceres2009}
+Miquel {De C\'{a}ceres} and Pierre Legendre.
+\newblock {Associations between species and groups of sites: indices and
+  statistical inference.}
+\newblock \emph{Ecology}, 90\penalty0 (12):\penalty0 3566--3574, 2009.
+
+\bibitem[{De C\'{a}ceres} et~al.(2008){De C\'{a}ceres}, Font, and
+  Oliva]{DeCaceres2008}
+Miquel {De C\'{a}ceres}, X.~Font, and F.~Oliva.
+\newblock {Assessing species diagnostic value in large data sets: A comparison
+  between phi-coefficient and Ochiai index}.
+\newblock \emph{Journal of Vegetation Science}, 19\penalty0 (6):\penalty0
+  779--788, January 2008.
+
+\bibitem[{De C\'{a}ceres} et~al.(2010){De C\'{a}ceres}, Legendre, and
+  Moretti]{DeCaceres2010}
+Miquel {De C\'{a}ceres}, Pierre Legendre, and Marco Moretti.
+\newblock {Improving indicator species analysis by combining groups of sites}.
+\newblock \emph{Oikos}, 119\penalty0 (10):\penalty0 1674--1684, 2010.
+
+\bibitem[{De C\'{a}ceres} et~al.(2012){De C\'{a}ceres}, Legendre, Wiser, and
+  Brotons]{DeCaceres2012}
+Miquel {De C\'{a}ceres}, Pierre Legendre, Susan~K. Wiser, and Llu{\'\i}s
+  Brotons.
+\newblock Using species combinations in indicator value analyses.
+\newblock \emph{Methods in Ecology and Evolution}, page in press, 2012.
+
+\bibitem[Dufr\^{e}ne and Legendre(1997)]{Dufrene1997}
+Marc Dufr\^{e}ne and Pierre Legendre.
+\newblock {Species assemblages and indicator species: the need for a flexible
+  asymmetrical approach}.
+\newblock \emph{Ecological Monographs}, 67\penalty0 (3):\penalty0 345--366,
+  1997.
+
+\bibitem[Legendre and Legendre(2012)]{Legendre2012}
+Pierre Legendre and Louis Legendre.
+\newblock \emph{Numerical Ecology}.
+\newblock Elsevier Science BV, Amsterdam, 3rd english edition edition, 2012.
+
+\bibitem[Tich\'{y} and Chytr\'{y}(2006)]{Tichy2006}
+Lubom\'{\i}r Tich\'{y} and Milan Chytr\'{y}.
+\newblock {Statistical determination of diagnostic species for site groups of
+  unequal size}.
+\newblock \emph{Journal of Vegetation Science}, 17\penalty0 (6):\penalty0 809,
+  2006.
+
+\end{thebibliography}

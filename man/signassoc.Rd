@@ -36,7 +36,7 @@ Bakker, J. 2008. Increasing the utility of Indicator Species Analysis. Journal o
 De \enc{Cáceres}{Caceres}, M. and Legendre, P. 2009. Associations between species and groups of sites: indices and statistical inference. Ecology 90(12): 3566-3574.
 }
 
-\author{Miquel De \enc{Cáceres}{Caceres} Ainsa,  Biodiversity and Landscape Ecology Laboratory, Forest Science Center of Catalonia}
+\author{Miquel De \enc{Cáceres}{Caceres} Ainsa,  CTFC
 
 \seealso{\code{\link{strassoc}}, \code{\link{multipatt}}, \code{\link{how}}}
 \examples{

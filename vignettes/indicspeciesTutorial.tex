@@ -58,9 +58,9 @@ Alternatively, one can obtain a classification using non-hierarchical cluster an
 \end{Sinput}
 \begin{Soutput}
  5  8 13  4 17  3  9 21 16 14  2 15  1  7 10 40 23 25 22 20  6 18 
- 2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  1  3  3  3  1  1  1 
+ 1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  2  2  2  2  2  2  2 
 12 39 19 11 30 34 28 31 26 29 33 24 36 37 41 27 32 35 38 
- 1  1  3  1  2  2  2  2  1  1  1  2  1  2  2  2  2  2  2 
+ 2  2  2  2  3  3  3  3  2  2  2  3  3  3  3  3  3  1  1 
 \end{Soutput}
 \end{Schunk}
 
@@ -95,8 +95,8 @@ When the indicator species analysis is completed, we can obtain the list of indi
  Significance level (alpha): 0.05
 
  Total number of species: 33
- Selected number of species: 10 
- Number of species associated to 1 group: 6 
+ Selected number of species: 11 
+ Number of species associated to 1 group: 7 
  Number of species associated to 2 groups: 4 
 
  List of species associated to each combination: 
@@ -104,26 +104,27 @@ When the indicator species analysis is completed, we can obtain the list of indi
  Group 1  #sps.  3 
         stat p.value    
 Ludads 0.907   0.001 ***
-Orysp. 0.823   0.005 ** 
-Psespi 0.602   0.018 *  
+Orysp. 0.823   0.003 ** 
+Psespi 0.602   0.021 *  
 
- Group 3  #sps.  3 
+ Group 3  #sps.  4 
         stat p.value    
 Pancam 0.910   0.001 ***
-Eupvac 0.724   0.002 ** 
-Cynarc 0.602   0.009 ** 
+Eupvac 0.724   0.004 ** 
+Cynarc 0.602   0.006 ** 
+Abemos 0.447   0.045 *  
 
  Group 1+2  #sps.  1 
         stat p.value   
-Elesp. 0.741   0.002 **
+Elesp. 0.741   0.003 **
 
  Group 2+3  #sps.  3 
         stat p.value    
 Melcor 0.876   0.001 ***
-Phynod 0.715   0.006 ** 
-Echell 0.651   0.012 *  
+Phynod 0.715   0.012 *  
+Echell 0.651   0.015 *  
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
 \end{Schunk}
 In our wetland community data, `Ludads' is strongly and significantly associated with Group 1, whereas `Pancam' would be a good indicator of Group 3. In addition, there are some species whose patterns of abundance are more associated with a combination of groups. For example, `Melcor' is strongly associated with the combination of Groups 2 and 3.
@@ -144,8 +145,8 @@ If the association index used in \texttt{multipatt} is \texttt{func = "IndVal"} 
  Significance level (alpha): 0.05
 
  Total number of species: 33
- Selected number of species: 10 
- Number of species associated to 1 group: 6 
+ Selected number of species: 11 
+ Number of species associated to 1 group: 7 
  Number of species associated to 2 groups: 4 
 
  List of species associated to each combination: 
@@ -153,26 +154,27 @@ If the association index used in \texttt{multipatt} is \texttt{func = "IndVal"} 
  Group 1  #sps.  3 
             A      B  stat p.value    
 Ludads 1.0000 0.8235 0.907   0.001 ***
-Orysp. 0.6772 1.0000 0.823   0.005 ** 
-Psespi 0.8811 0.4118 0.602   0.018 *  
+Orysp. 0.6772 1.0000 0.823   0.003 ** 
+Psespi 0.8811 0.4118 0.602   0.021 *  
 
- Group 3  #sps.  3 
+ Group 3  #sps.  4 
             A      B  stat p.value    
 Pancam 0.8278 1.0000 0.910   0.001 ***
-Eupvac 0.6546 0.8000 0.724   0.002 ** 
-Cynarc 0.7241 0.5000 0.602   0.009 ** 
+Eupvac 0.6546 0.8000 0.724   0.004 ** 
+Cynarc 0.7241 0.5000 0.602   0.006 ** 
+Abemos 1.0000 0.2000 0.447   0.045 *  
 
  Group 1+2  #sps.  1 
             A      B  stat p.value   
-Elesp. 1.0000 0.5484 0.741   0.002 **
+Elesp. 1.0000 0.5484 0.741   0.003 **
 
  Group 2+3  #sps.  3 
             A      B  stat p.value    
 Melcor 0.8764 0.8750 0.876   0.001 ***
-Phynod 0.8752 0.5833 0.715   0.006 ** 
-Echell 0.9246 0.4583 0.651   0.012 *  
+Phynod 0.8752 0.5833 0.715   0.012 *  
+Echell 0.9246 0.4583 0.651   0.015 *  
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
 \end{Schunk}
 This gives us additional information about why species can be used as indicators. For example, `Ludads' is a good indicator of Group 1 because it occurs in sites belonging to this group only (i.e., A = 1.0000), although not all sites belonging to Group 1 include the species (i.e., B = 0.8235). In contrast, `Pancam' can be used to indicate Group 3 because it appears in all sites belonging to this group (i.e., B = 1.0000) and it is largely (but not completely) restricted to it (i.e., A = 0.8278).
@@ -200,48 +202,48 @@ In our previous calls to \texttt{summary} only the species that were significant
  Group 1  #sps.  5 
         stat p.value    
 Ludads 0.907   0.001 ***
-Orysp. 0.823   0.005 ** 
-Psespi 0.602   0.018 *  
-Polatt 0.420   0.150    
+Orysp. 0.823   0.003 ** 
+Psespi 0.602   0.021 *  
+Polatt 0.420   0.147    
 Casobt 0.243   1.000    
 
  Group 2  #sps.  6 
         stat p.value
-Aesind 0.445   0.212
-Alyvag 0.335   0.439
-Abefic 0.267   0.568
-Poa2   0.267   0.594
-Poa1   0.267   0.595
-Helcri 0.267   0.595
+Aesind 0.445   0.206
+Alyvag 0.335   0.379
+Abefic 0.267   0.545
+Poa2   0.267   0.564
+Poa1   0.267   0.571
+Helcri 0.267   0.571
 
  Group 3  #sps.  10 
         stat p.value    
 Pancam 0.910   0.001 ***
-Eupvac 0.724   0.002 ** 
-Cynarc 0.602   0.009 ** 
-Abemos 0.447   0.064 .  
-Merhed 0.402   0.198    
-Ludoct 0.316   0.241    
-Passcr 0.316   0.229    
-Dendio 0.316   0.235    
-Physp. 0.316   0.268    
-Goopur 0.316   0.268    
+Eupvac 0.724   0.004 ** 
+Cynarc 0.602   0.006 ** 
+Abemos 0.447   0.045 *  
+Merhed 0.402   0.211    
+Ludoct 0.316   0.251    
+Passcr 0.316   0.240    
+Dendio 0.316   0.219    
+Physp. 0.316   0.251    
+Goopur 0.316   0.251    
 
  Group 1+2  #sps.  2 
         stat p.value   
-Elesp. 0.741   0.002 **
-Carhal 0.402   0.427   
+Elesp. 0.741   0.003 **
+Carhal 0.402   0.463   
 
  Group 2+3  #sps.  6 
         stat p.value    
 Melcor 0.876   0.001 ***
-Phynod 0.715   0.006 ** 
-Echell 0.651   0.012 *  
-Echpas 0.584   0.261    
-Cyprot 0.500   0.072 .  
-Ipocop 0.354   0.317    
+Phynod 0.715   0.012 *  
+Echell 0.651   0.015 *  
+Echpas 0.584   0.241    
+Cyprot 0.500   0.074 .  
+Ipocop 0.354   0.337    
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
 \end{Schunk}
 Parameter \texttt{alpha} is by default set to \texttt{alpha = 0.05}, and hides all species association that are not significant at this level. By setting \texttt{alpha = 1} we say we want to display the group to which each species is associated, regardless of whether the association significant or not. However, note that in our example we obtain the results of 29 (21+8) species. As there are 33 species in the data set, there are still four species missing in this summary. This happens because those species have their highest IndVal value for the set of all sites. In other words, those species occur in sites belonging to all groups. The association with the set of all sites cannot be statistically tested, because there is no external group for comparison. In order to know which species are those, one has to inspect the object \texttt{sign} returned by \texttt{multipatt}:
@@ -251,39 +253,39 @@ Parameter \texttt{alpha} is by default set to \texttt{alpha = 0.05}, and hides a
 \end{Sinput}
 \begin{Soutput}
        s.1 s.2 s.3 index      stat p.value
-Abefic   0   1   0     2 0.2672612   0.568
-Merhed   0   0   1     3 0.4019185   0.198
-Alyvag   0   1   0     2 0.3347953   0.439
+Abefic   0   1   0     2 0.2672612   0.545
+Merhed   0   0   1     3 0.4019185   0.211
+Alyvag   0   1   0     2 0.3347953   0.379
 Pancam   0   0   1     3 0.9098495   0.001
-Abemos   0   0   1     3 0.4472136   0.064
+Abemos   0   0   1     3 0.4472136   0.045
 Melcor   0   1   1     6 0.8757059   0.001
-Ludoct   0   0   1     3 0.3162278   0.241
-Eupvac   0   0   1     3 0.7236825   0.002
-Echpas   0   1   1     6 0.5842649   0.261
-Passcr   0   0   1     3 0.3162278   0.229
-Poa2     0   1   0     2 0.2672612   0.594
-Carhal   1   1   0     4 0.4016097   0.427
-Dendio   0   0   1     3 0.3162278   0.235
+Ludoct   0   0   1     3 0.3162278   0.251
+Eupvac   0   0   1     3 0.7236825   0.004
+Echpas   0   1   1     6 0.5842649   0.241
+Passcr   0   0   1     3 0.3162278   0.240
+Poa2     0   1   0     2 0.2672612   0.564
+Carhal   1   1   0     4 0.4016097   0.463
+Dendio   0   0   1     3 0.3162278   0.219
 Casobt   1   0   0     1 0.2425356   1.000
-Aesind   0   1   0     2 0.4447093   0.212
-Cyprot   0   1   1     6 0.5000000   0.072
-Ipocop   0   1   1     6 0.3535534   0.317
-Cynarc   0   0   1     3 0.6017217   0.009
+Aesind   0   1   0     2 0.4447093   0.206
+Cyprot   0   1   1     6 0.5000000   0.074
+Ipocop   0   1   1     6 0.3535534   0.337
+Cynarc   0   0   1     3 0.6017217   0.006
 Walind   1   1   1     7 0.4938648      NA
 Sessp.   1   1   1     7 0.6984303      NA
-Phynod   0   1   1     6 0.7145356   0.006
-Echell   0   1   1     6 0.6509834   0.012
+Phynod   0   1   1     6 0.7145356   0.012
+Echell   0   1   1     6 0.6509834   0.015
 Helind   1   1   1     7 0.6984303      NA
 Ipoaqu   1   1   1     7 0.4938648      NA
-Orysp.   1   0   0     1 0.8229074   0.005
-Elesp.   1   1   0     4 0.7405316   0.002
-Psespi   1   0   0     1 0.6023402   0.018
+Orysp.   1   0   0     1 0.8229074   0.003
+Elesp.   1   1   0     4 0.7405316   0.003
+Psespi   1   0   0     1 0.6023402   0.021
 Ludads   1   0   0     1 0.9074852   0.001
-Polatt   1   0   0     1 0.4200840   0.150
-Poa1     0   1   0     2 0.2672612   0.595
-Helcri   0   1   0     2 0.2672612   0.595
-Physp.   0   0   1     3 0.3162278   0.268
-Goopur   0   0   1     3 0.3162278   0.268
+Polatt   1   0   0     1 0.4200840   0.147
+Poa1     0   1   0     2 0.2672612   0.571
+Helcri   0   1   0     2 0.2672612   0.571
+Physp.   0   0   1     3 0.3162278   0.251
+Goopur   0   0   1     3 0.3162278   0.251
 \end{Soutput}
 \end{Schunk}
 After accessing the object \texttt{indval\$sign}, we know that the four species whose highest IndVal corresponded to the set of all sites were `Valind', `Sessp.', `Helind' and `Ipoaqu', as indicated by the \texttt{NA}s in the \texttt{p.value} column of the data frame. The first columns of \texttt{sign} indicate (with ones and zeroes) which site groups were included in the combination preferred by the species. Then, the column \texttt{index} indicates the index of the site group combination (see subsection Excluding site group combinations in \texttt{multipatt} below). The remaining two columns are the association statistic and the p-value of the permutational test.
@@ -332,27 +334,27 @@ Indicator value and correlation indices usually produce similar results. Indeed,
         stat p.value    
 Ludads 0.870   0.001 ***
 Orysp. 0.668   0.001 ***
-Psespi 0.413   0.011 *  
+Psespi 0.413   0.012 *  
 
  Group 2  #sps.  1 
         stat p.value  
-Phynod 0.436   0.019 *
+Phynod 0.436   0.015 *
 
  Group 3  #sps.  3 
         stat p.value    
 Pancam 0.748   0.001 ***
-Eupvac 0.537   0.002 ** 
-Cynarc 0.492   0.009 ** 
+Eupvac 0.537   0.008 ** 
+Cynarc 0.492   0.007 ** 
 
  Group 1+2  #sps.  1 
-        stat p.value    
-Elesp. 0.538   0.001 ***
+        stat p.value   
+Elesp. 0.538   0.002 **
 
  Group 2+3  #sps.  1 
         stat p.value    
 Melcor 0.612   0.001 ***
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
 \end{Schunk}
 Nevertheless, there are some differences between indicator values and correlation indices \citep{DeCaceres2008}\citep{DeCaceres2009}. Correlation indices are used for determining the ecological preferences of species among a set of alternative site groups or site group combinations. Indicator value indices are used for assessing the predictive values of species as indicators of the conditions prevailing in site groups, e.g. for field determination of community types or ecological monitoring.
@@ -409,8 +411,8 @@ The original Indicator Value method of \citet{Dufrene1997} did not consider comb
  Significance level (alpha): 0.05
 
  Total number of species: 33
- Selected number of species: 8 
- Number of species associated to 1 group: 8 
+ Selected number of species: 9 
+ Number of species associated to 1 group: 9 
  Number of species associated to 2 groups: 0 
 
  List of species associated to each combination: 
@@ -419,20 +421,21 @@ The original Indicator Value method of \citet{Dufrene1997} did not consider comb
         stat p.value    
 Ludads 0.907   0.001 ***
 Orysp. 0.823   0.001 ***
-Psespi 0.602   0.011 *  
+Psespi 0.602   0.013 *  
 
  Group 2  #sps.  1 
         stat p.value   
-Phynod 0.676   0.005 **
+Phynod 0.676   0.006 **
 
- Group 3  #sps.  4 
+ Group 3  #sps.  5 
         stat p.value    
 Pancam 0.910   0.001 ***
 Melcor 0.739   0.001 ***
-Eupvac 0.724   0.003 ** 
-Cynarc 0.602   0.010 ** 
+Eupvac 0.724   0.002 ** 
+Cynarc 0.602   0.011 *  
+Abemos 0.447   0.047 *  
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
 \end{Schunk}
 
@@ -461,27 +464,27 @@ The second way to exclude site group combinations from a \texttt{multipatt} anal
  Group 1  #sps.  3 
         stat p.value    
 Ludads 0.907   0.001 ***
-Orysp. 0.823   0.003 ** 
+Orysp. 0.823   0.002 ** 
 Psespi 0.602   0.019 *  
 
  Group 3  #sps.  4 
         stat p.value    
 Pancam 0.910   0.001 ***
-Eupvac 0.724   0.004 ** 
-Cynarc 0.602   0.007 ** 
-Abemos 0.447   0.049 *  
+Eupvac 0.724   0.003 ** 
+Cynarc 0.602   0.013 *  
+Abemos 0.447   0.048 *  
 
  Group 1+2  #sps.  1 
         stat p.value   
-Elesp. 0.741   0.004 **
+Elesp. 0.741   0.009 **
 
  Group 2+3  #sps.  3 
         stat p.value    
 Melcor 0.876   0.001 ***
-Phynod 0.715   0.008 ** 
-Echell 0.651   0.011 *  
+Phynod 0.715   0.010 ** 
+Echell 0.651   0.014 *  
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
 \end{Schunk}
 In this case the output looks like a the output of an unrestricted \texttt{multipatt} execution, because the only combination that is excluded is the set of all sites, which cannot be tested for significance and thus never appears in the summary. 
@@ -514,21 +517,21 @@ The numbers composing the vector passed to \texttt{restcomb} indicate the site g
         stat p.value    
 Ludads 0.907   0.001 ***
 Orysp. 0.823   0.002 ** 
-Psespi 0.602   0.025 *  
+Psespi 0.602   0.015 *  
 
  Group 3  #sps.  3 
         stat p.value    
 Pancam 0.910   0.001 ***
-Eupvac 0.724   0.003 ** 
-Cynarc 0.602   0.006 ** 
+Eupvac 0.724   0.002 ** 
+Cynarc 0.602   0.010 ** 
 
  Group 2+3  #sps.  3 
         stat p.value    
 Melcor 0.876   0.001 ***
-Phynod 0.715   0.006 ** 
-Echell 0.651   0.015 *  
+Phynod 0.715   0.010 ** 
+Echell 0.651   0.012 *  
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
 \end{Schunk}
 If we compare these last results with those including all possible site group combinations, we will realize that species `Elesp.' was formerly an indicator of Group 1 and Group 2, and now it does not appear in the list of indicator species. If fact, if we examine the results more closely we see that the highest IndVal for `Elesp' is achieved for group 1, but this relationship is not significant:
@@ -538,39 +541,39 @@ If we compare these last results with those including all possible site group co
 \end{Sinput}
 \begin{Soutput}
        s.1 s.2 s.3 index      stat p.value
-Abefic   0   1   0     2 0.2672612   0.594
-Merhed   0   0   1     3 0.4019185   0.182
-Alyvag   0   1   0     2 0.3347953   0.407
+Abefic   0   1   0     2 0.2672612   0.562
+Merhed   0   0   1     3 0.4019185   0.203
+Alyvag   0   1   0     2 0.3347953   0.442
 Pancam   0   0   1     3 0.9098495   0.001
-Abemos   0   0   1     3 0.4472136   0.052
+Abemos   0   0   1     3 0.4472136   0.061
 Melcor   0   1   1     5 0.8757059   0.001
-Ludoct   0   0   1     3 0.3162278   0.244
-Eupvac   0   0   1     3 0.7236825   0.003
-Echpas   0   1   1     5 0.5842649   0.191
-Passcr   0   0   1     3 0.3162278   0.246
-Poa2     0   1   0     2 0.2672612   0.586
-Carhal   1   0   0     1 0.3313667   0.745
-Dendio   0   0   1     3 0.3162278   0.252
+Ludoct   0   0   1     3 0.3162278   0.234
+Eupvac   0   0   1     3 0.7236825   0.002
+Echpas   0   1   1     5 0.5842649   0.184
+Passcr   0   0   1     3 0.3162278   0.244
+Poa2     0   1   0     2 0.2672612   0.592
+Carhal   1   0   0     1 0.3313667   0.754
+Dendio   0   0   1     3 0.3162278   0.215
 Casobt   1   0   0     1 0.2425356   1.000
-Aesind   0   1   0     2 0.4447093   0.214
-Cyprot   0   1   1     5 0.5000000   0.066
-Ipocop   0   1   1     5 0.3535534   0.336
-Cynarc   0   0   1     3 0.6017217   0.006
-Walind   1   0   1     4 0.4406873   0.681
-Sessp.   0   1   1     5 0.5901665   0.726
-Phynod   0   1   1     5 0.7145356   0.006
-Echell   0   1   1     5 0.6509834   0.015
-Helind   0   1   1     5 0.5720540   0.817
-Ipoaqu   1   0   1     4 0.4053049   0.918
+Aesind   0   1   0     2 0.4447093   0.233
+Cyprot   0   1   1     5 0.5000000   0.064
+Ipocop   0   1   1     5 0.3535534   0.295
+Cynarc   0   0   1     3 0.6017217   0.010
+Walind   1   0   1     4 0.4406873   0.684
+Sessp.   0   1   1     5 0.5901665   0.703
+Phynod   0   1   1     5 0.7145356   0.010
+Echell   0   1   1     5 0.6509834   0.012
+Helind   0   1   1     5 0.5720540   0.825
+Ipoaqu   1   0   1     4 0.4053049   0.898
 Orysp.   1   0   0     1 0.8229074   0.002
-Elesp.   1   0   0     1 0.5534178   0.677
-Psespi   1   0   0     1 0.6023402   0.025
+Elesp.   1   0   0     1 0.5534178   0.666
+Psespi   1   0   0     1 0.6023402   0.015
 Ludads   1   0   0     1 0.9074852   0.001
-Polatt   1   0   0     1 0.4200840   0.133
-Poa1     0   1   0     2 0.2672612   0.569
-Helcri   0   1   0     2 0.2672612   0.569
-Physp.   0   0   1     3 0.3162278   0.223
-Goopur   0   0   1     3 0.3162278   0.223
+Polatt   1   0   0     1 0.4200840   0.145
+Poa1     0   1   0     2 0.2672612   0.589
+Helcri   0   1   0     2 0.2672612   0.589
+Physp.   0   0   1     3 0.3162278   0.264
+Goopur   0   0   1     3 0.3162278   0.264
 \end{Soutput}
 \end{Schunk}
 Restricting site group combinations is also possible with the phi and point biserial coefficients. 
@@ -605,24 +608,24 @@ A feature of \texttt{strassoc} that is lacking in \texttt{multipatt} is the poss
 Abefic 0.000 0.000 0.000
 Merhed 0.000 0.000 0.000
 Alyvag 0.000 0.000 0.000
-Pancam 0.000 0.041 0.638
+Pancam 0.000 0.053 0.679
 Abemos 0.000 0.000 0.000
-Melcor 0.032 0.240 0.466
+Melcor 0.057 0.234 0.457
 \end{Soutput}
 \begin{Sinput}
 > round(head(prefstat$upperCI),3)
 \end{Sinput}
 \begin{Soutput}
-           1     2    3
-Abefic 0.000 1.000 0.00
-Merhed 0.000 1.000 1.00
-Alyvag 1.000 1.000 0.00
-Pancam 0.077 0.293 0.93
-Abemos 0.000 0.000 1.00
-Melcor 0.198 0.416 0.63
+           1     2     3
+Abefic 0.000 1.000 0.000
+Merhed 0.000 1.000 1.000
+Alyvag 1.000 1.000 0.000
+Pancam 0.085 0.262 0.934
+Abemos 0.000 0.000 1.000
+Melcor 0.197 0.407 0.632
 \end{Soutput}
 \end{Schunk}
-For example, the 95\% confidence interval for the `A' component of the association between `Pancam' and Group 3 is \texttt{[0.638,0.93]}.
+For example, the 95\% confidence interval for the `A' component of the association between `Pancam' and Group 3 is \texttt{[0.679,0.934]}.
 
 \subsection{The function \texttt{signassoc}}
 As we explained before, \texttt{multipatt} statistically tests the association between the species and its more strongly associated site group (or site group combination). By contrast, \texttt{signassoc} allows one to test the association between the species and each group of sites, regardless of whether the association value was the highest or not. Moreover, the function allows one to test both one-sided and two-sided hypotheses. For example, the following line tests whether the frequency of the species in each site group is higher or lower than random:
@@ -635,12 +638,12 @@ As we explained before, \texttt{multipatt} statistically tests the association b
 \end{Sinput}
 \begin{Soutput}
           1    2    3 best   psidak
-Abefic 1.00 0.79 1.00    2 0.990739
-Merhed 0.36 0.72 0.17    3 0.428213
-Alyvag 1.00 0.29 0.76    2 0.642089
-Pancam 0.01 0.18 0.01    1 0.029701
-Abemos 0.67 0.91 0.13    3 0.341497
-Melcor 0.01 0.92 0.01    1 0.029701
+Abefic 1.00 0.72 1.00    2 0.978048
+Merhed 0.46 0.62 0.17    3 0.428213
+Alyvag 0.97 0.29 0.86    2 0.642089
+Pancam 0.01 0.16 0.01    1 0.029701
+Abemos 0.75 0.76 0.14    3 0.363944
+Melcor 0.01 0.84 0.01    1 0.029701
 \end{Soutput}
 \end{Schunk}
 The last columns of the results indicate the group for which the p-value was the lowest, and the p-value corrected for multiple testing using the Sidak method.
@@ -679,3 +682,294 @@ It is  possible to know how the coverage changes with `A' threshold used to sele
 \begin{Schunk}
 \begin{Sinput}
 > plotcoverage(x=wetland, y=indvalori, group="1", lty=1)
+> plotcoverage(x=wetland, y=indvalori, group="2", lty=2, col="blue", add=TRUE)
+> plotcoverage(x=wetland, y=indvalori, group="3", lty=3, col="red", add=TRUE)
+> legend(x = 0.01, y=20, 
++        legend=c("group 1","group 2", "group 3"),
++        lty=c(1,2,3), col=c("black","blue","red"), bty="n")
+\end{Sinput}
+\end{Schunk}
+\includegraphics{indicspeciesTutorial-025}
+\end{center}
+
+As you can see in the example, function \texttt{plotcoverage} has to be called for one group at a time. However, several plots can be drawn one onto the other using the option \texttt{add=TRUE}.
+
+\section{Species combinations as indicators of site groups}
+
+Ecological indicators can be of many kinds. \citet{DeCaceres2012} recently explored the indicator value of \emph{combinations of species} instead of just considering individual species. The rationale behind this approach is that two or three species, when found together, bear more ecological information than a single one. 
+
+\subsection{Generating species combinations}
+The association between species combinations and groups of sites is studied in the same way as for individual species. However, instead of analyzing a site-by-species matrix, we need a matrix with as many rows as there are sites and as many columns as there are species combinations. We can obtain that matrix using the function \texttt{combinespecies}:
+\begin{Schunk}
+\begin{Sinput}
+> wetcomb = combinespecies(wetland, max.order = 2)$XC
+> dim(wetcomb)
+\end{Sinput}
+\begin{Soutput}
+[1]  41 561
+\end{Soutput}
+\end{Schunk}
+The resulting data frame has the same number of sites (i.e. 41) but as many columns as species combinations (in this case 561 columns). Each element of the data frame contains an abundance value, which is the minimum abundance value among all the species forming the combination, for the corresponding site. In our example, we used \texttt{max.order = 2} to limit the order of combinations. Therefore, only pairs of species were considered. Once we have this new data set, we can use it in \texttt{multipatt}:
+\begin{Schunk}
+\begin{Sinput}
+> indvalspcomb = multipatt(wetcomb, groups, duleg = TRUE, 
++                        control = how(nperm=999))
+> summary(indvalspcomb, indvalcomp = TRUE)
+\end{Sinput}
+\begin{Soutput}
+ Multilevel pattern analysis
+ ---------------------------
+
+ Association function: IndVal.g
+ Significance level (alpha): 0.05
+
+ Total number of species: 561
+ Selected number of species: 45 
+ Number of species associated to 1 group: 45 
+ Number of species associated to 2 groups: 0 
+
+ List of species associated to each combination: 
+
+ Group 1  #sps.  14 
+                   A      B  stat p.value    
+Ludads        1.0000 0.8235 0.907   0.001 ***
+Orysp.+Ludads 1.0000 0.8235 0.907   0.001 ***
+Orysp.        0.6772 1.0000 0.823   0.001 ***
+Sessp.+Ludads 1.0000 0.4118 0.642   0.002 ** 
+Orysp.+Psespi 1.0000 0.4118 0.642   0.008 ** 
+Elesp.+Ludads 1.0000 0.4118 0.642   0.003 ** 
+Psespi+Ludads 1.0000 0.4118 0.642   0.005 ** 
+Orysp.+Elesp. 0.7424 0.5294 0.627   0.015 *  
+Sessp.+Orysp. 0.9081 0.4118 0.611   0.010 ** 
+Psespi        0.8811 0.4118 0.602   0.020 *  
+Helind+Ludads 1.0000 0.3529 0.594   0.006 ** 
+Walind+Orysp. 1.0000 0.2941 0.542   0.023 *  
+Walind+Ludads 1.0000 0.2941 0.542   0.023 *  
+Ipoaqu+Ludads 1.0000 0.2941 0.542   0.014 *  
+
+ Group 2  #sps.  10 
+                   A      B  stat p.value   
+Phynod+Elesp. 0.9162 0.5714 0.724   0.002 **
+Phynod        0.6396 0.7143 0.676   0.007 **
+Phynod+Helind 0.6922 0.6429 0.667   0.007 **
+Helind+Elesp. 0.6861 0.5714 0.626   0.013 * 
+Phynod+Echell 0.8654 0.3571 0.556   0.019 * 
+Echell+Elesp. 0.8586 0.3571 0.554   0.016 * 
+Melcor+Elesp. 0.7083 0.4286 0.551   0.036 * 
+Aesind+Elesp. 1.0000 0.2857 0.535   0.016 * 
+Echpas+Phynod 0.8293 0.2857 0.487   0.049 * 
+Eupvac+Cyprot 1.0000 0.2143 0.463   0.049 * 
+
+ Group 3  #sps.  21 
+                   A      B  stat p.value    
+Pancam        0.8278 1.0000 0.910   0.001 ***
+Pancam+Melcor 0.7769 1.0000 0.881   0.001 ***
+Pancam+Echell 1.0000 0.6000 0.775   0.001 ***
+Eupvac+Echell 1.0000 0.6000 0.775   0.001 ***
+Pancam+Eupvac 0.7455 0.8000 0.772   0.003 ** 
+Melcor        0.5463 1.0000 0.739   0.001 ***
+Melcor+Eupvac 0.6648 0.8000 0.729   0.002 ** 
+Eupvac        0.6546 0.8000 0.724   0.004 ** 
+Pancam+Cynarc 1.0000 0.5000 0.707   0.001 ***
+Pancam+Sessp. 0.8077 0.6000 0.696   0.003 ** 
+Melcor+Echell 0.7368 0.6000 0.665   0.003 ** 
+Melcor+Cynarc 0.8077 0.5000 0.635   0.007 ** 
+Cynarc        0.7241 0.5000 0.602   0.010 ** 
+Melcor+Sessp. 0.5895 0.6000 0.595   0.034 *  
+Eupvac+Cynarc 0.8485 0.4000 0.583   0.011 *  
+Cynarc+Sessp. 0.7778 0.4000 0.558   0.026 *  
+Cynarc+Phynod 1.0000 0.3000 0.548   0.010 ** 
+Cynarc+Echell 1.0000 0.3000 0.548   0.015 *  
+Abemos        1.0000 0.2000 0.447   0.048 *  
+Pancam+Abemos 1.0000 0.2000 0.447   0.048 *  
+Abemos+Melcor 1.0000 0.2000 0.447   0.048 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
+\end{Soutput}
+\end{Schunk}
+The best indicators for both Group 1 and Group 3 are individual species (`Ludads' and `Pancam'). However, Group 2 is best indicated if we find, in the same community, `Phynod' and `Elesp'. Note that the species forming the indicator combination do not need to be good single-species indicators themselves. In our example `Phynod' is a good indicator of Group 2 but `Elesp.' is not.
+
+\subsection{The function \texttt{indicators}}
+In the previous example, there were many combinations of species that were significantly associated with site groups. There is another, more efficient, way of exploring the potential indicators for a given target site group. Say, for example, that we want to determine indicators for our Group 1, and we want to consider not only species pairs but also species trios. Since there are 33 species in the data set, the number of combinations can be very large. We can reduce the number of combinations to consider by selecting the \emph{candidate species} to combine. In this example, we choose those species whose frequency within Group 2 is larger than 20\%:
+\begin{Schunk}
+\begin{Sinput}
+> B=strassoc(wetland, cluster=groups ,func="B") 
+> sel=which(B[,2]>0.2) 
+> sel
+\end{Sinput}
+\begin{Soutput}
+ [1]  4  6  8  9 15 16 19 20 21 22 23 24 25 26
+\end{Soutput}
+\end{Schunk}
+Object \texttt{sel} contains the indices of the 14 species that are candidates. Once we have our selection of candidate species, we can run the indicator analysis using:
+\begin{Schunk}
+\begin{Sinput}
+> sc= indicators(X=wetland[,sel], cluster=groups, group=2, verbose=TRUE, 
++                At=0.5, Bt=0.2)
+\end{Sinput}
+\begin{Soutput}
+Target site group: 2
+Number of candidate species: 14
+Number of sites: 41 
+Size of the site group: 14 
+Starting species  1 ... accepted combinations: 4 
+Starting species  2 ... accepted combinations: 42 
+Starting species  3 ... accepted combinations: 45 
+Starting species  4 ... accepted combinations: 52 
+Starting species  5 ... accepted combinations: 68 
+Starting species  6 ... accepted combinations: 72 
+Starting species  7 ... accepted combinations: 72 
+Starting species  8 ... accepted combinations: 77 
+Starting species  9 ... accepted combinations: 93 
+Starting species  10 ... accepted combinations: 96 
+Starting species  11 ... accepted combinations: 99 
+Starting species  12 ... accepted combinations: 100 
+Starting species  13 ... accepted combinations: 100 
+Starting species  14 ... accepted combinations: 100 
+Number of valid combinations: 100
+Number of remaining species: 14 
+\end{Soutput}
+\end{Schunk}
+We can discard species combinations with low indicator values by setting thresholds for components A and B (in our example using  \texttt{At=0.5} and \texttt{Bt=0.2}). The parameter \texttt{verbose = TRUE} allowed us to obtain information about the analysis process. Note that, by default, the \texttt{indicators} function will consider species combinations up to an order of 5. This can result in long computation times if the set of candidate species is not small. Similarly to \texttt{multipatt}, we can print the results of \texttt{indicators} for the most useful indicators, using:
+\begin{Schunk}
+\begin{Sinput}
+> print(sc, sqrtIVt = 0.6)
+\end{Sinput}
+\begin{Soutput}
+                                    A         B    sqrtIV
+Phynod+Helind+Elesp.        1.0000000 0.5714286 0.7559289
+Phynod+Elesp.               0.9000000 0.5714286 0.7171372
+Phynod                      0.6666667 0.7142857 0.6900656
+Phynod+Helind               0.7142857 0.6428571 0.6776309
+Melcor+Phynod+Helind+Elesp. 1.0000000 0.4285714 0.6546537
+Helind+Elesp.               0.6428571 0.5714286 0.6060915
+Melcor+Phynod+Elesp.        0.8571429 0.4285714 0.6060915
+Melcor+Helind+Elesp.        0.8571429 0.4285714 0.6060915
+\end{Soutput}
+\end{Schunk}
+The species combinations are listed in decreasing indicator value order. In this case, we obtain that a combination of `Phynod', `Helind' and `Elesp.' is even a better indicator than `Phynod' and `Elesp.'. Note that the `A' and IndVal values for the pair `Phynod' and `Elesp.' do not exactly match those obtained before. This is because \texttt{indicators} uses `IndVal' and not `IndVal.g' as association statistic.
+
+Although we did not show it here, \texttt{indicators} should in most cases be run with the option requesting for bootstrap confidence intervals (using option \texttt{nboot}), because they allow us to know the reliability of the indicator value estimates. This is specially important for site groups of small size \citep{DeCaceres2012}.
+
+\subsection{Determining the coverage for objects of class \texttt{indicators}}
+We can determine the proportion of sites of the target site group where one or another indicator is found, using, as shown before for objects of class \texttt{multipatt}, the function \texttt{coverage}:
+\begin{Schunk}
+\begin{Sinput}
+> coverage(sc)
+\end{Sinput}
+\begin{Soutput}
+[1] 1
+\end{Soutput}
+\end{Schunk}
+In this case the coverage was complete (i.e. 100\%). Like we did for objects of class \texttt{multipatt}, we can add requirements to the validity of indicators. For example:
+\begin{Schunk}
+\begin{Sinput}
+> coverage(sc, At=0.8)
+\end{Sinput}
+\begin{Soutput}
+[1] 0.9285714
+\end{Soutput}
+\end{Schunk}
+While we do not show here, in the case of objects of class \texttt{indicators} we recommend to explore the coverage using the lower boundary of confidence intervals, using option \texttt{type} of function \texttt{coverage}. 
+
+Finally, we can also plot coverage values corresponding to different thresholds:
+\begin{center}
+\begin{Schunk}
+\begin{Sinput}
+> plotcoverage(sc)
+> plotcoverage(sc, max.order=1, add=TRUE, lty=2, col="red")
+> legend(x=0.1, y=20, legend=c("Species combinations","Species singletons"), 
++        lty=c(1,2), col=c("black","red"), bty="n")
+\end{Sinput}
+\end{Schunk}
+\includegraphics{indicspeciesTutorial-033}
+\end{center}
+The coverage plot tells us that if we want to use a very large `A' threshold (i.e., if we want to be very strict to select valid indicators), we won't have enough valid indicators to cover all the area of our target site group. This limitation is more severe if only single species are considered.
+
+\subsection{The function \texttt{pruneindicators}}
+As there may be many species combinations that could be used as indicators, the function \texttt{pruneindicators} helps us to reduce the possibilities. First, the function selects those indicators (species or species combinations) that are valid according to the input thresholds \texttt{At} and \texttt{Bt}. Second, the function discards those valid indicators whose occurrence patterns are nested within other valid indicators. Third, the function evaluates the coverage of the remaining set of indicators. Finally, it explores subsets of increasing number of indicators, until the same coverage as the coverage of the complete set is attained and the subset of indicators is returned.
+\begin{Schunk}
+\begin{Sinput}
+> sc2=pruneindicators(sc, At=0.8, Bt=0.2, verbose=TRUE)
+\end{Sinput}
+\begin{Soutput}
+Coverage of initial set of 100 indicators: 100%
+Coverage of valid set of 52 indicators: 92.9%
+Coverage of valid set of 7 nonnested indicators: 92.9%
+Checking 7 subsets of 1 indicator(s) maximum coverage: 57.1%
+Checking 21 subsets of 2 indicator(s).......... maximum coverage: 85.7%
+Checking 35 subsets of 3 indicator(s)........ maximum coverage: 92.9%
+Coverage of final set of 3 indicators: 92.9%
+\end{Soutput}
+\begin{Sinput}
+> print(sc2)
+\end{Sinput}
+\begin{Soutput}
+                      A         B    sqrtIV
+Phynod+Elesp. 0.9000000 0.5714286 0.7171372
+Cyprot        0.8666667 0.2857143 0.4976134
+Echpas+Phynod 0.8000000 0.2857143 0.4780914
+\end{Soutput}
+\end{Schunk}
+In our example, and using these thresholds, the best indicators would be: (1) the combination of `Phynod' and `Elesp.'; (2) `Cyprot' and (3) `Echpas' and `Phynod'. The three indicators together cover 93\% of the sites belonging to the target site group.
+
+\subsection{The function \texttt{predict.indicators}}
+The function \texttt{indicators} provides a model that can be used to predict a target site group. Once a given combination of species has been found, the corresponding \texttt{A} value is the probability of being in the target site group given the combination of species has been found. Therefore, the set of indicators could be used to predict the likelihood of the target site group in a new data set. The function \texttt{predict.indicators} has exactly this role. It takes the results of \texttt{indicators} and a new community data matrix as input. Given this input, the function calculates the probability of the target site group for each site. The following code exemplifies the use of \texttt{predict.indicators} with the same data that was used for the calibration of the indicator model (a new community data matrix should be used in normal applications):
+\begin{Schunk}
+\begin{Sinput}
+> p<-predict(sc2, wetland)
+\end{Sinput}
+\end{Schunk}
+We can compare the results with the original group memberships:
+\begin{Schunk}
+\begin{Sinput}
+> print(data.frame(groups,p))
+\end{Sinput}
+\begin{Soutput}
+   groups         p
+5       1 0.0000000
+8       1 0.0000000
+13      1 0.0000000
+4       1 0.0000000
+17      1 0.0000000
+3       1 0.0000000
+9       1 0.0000000
+21      1 0.0000000
+16      1 0.0000000
+14      1 0.0000000
+2       1 0.0000000
+15      1 0.0000000
+1       1 0.0000000
+7       1 0.0000000
+10      1 0.0000000
+40      1 0.9000000
+23      1 0.0000000
+25      2 0.9000000
+22      2 0.8000000
+20      2 0.9000000
+6       2 0.9000000
+18      2 0.9000000
+12      2 0.9000000
+39      2 0.9000000
+19      2 0.9000000
+11      2 0.9000000
+30      2 0.8666667
+34      2 0.8666667
+28      2 0.0000000
+31      2 0.8666667
+26      2 0.8666667
+29      3 0.8666667
+33      3 0.8666667
+24      3 0.0000000
+36      3 0.0000000
+37      3 0.0000000
+41      3 0.0000000
+27      3 0.0000000
+32      3 0.0000000
+35      3 0.0000000
+38      3 0.0000000
+\end{Soutput}
+\end{Schunk}
+\bibliographystyle{plainnat}
+\bibliography{indicspecies}
+\end{document}

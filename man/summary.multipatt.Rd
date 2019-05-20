@@ -23,7 +23,7 @@
    The summary function for \code{multipatt} objects presents the results of the analysis by grouping species following their associated site group combination. Only significantly associated species are listed for each combination. The user can limit the species shown by setting a significance level and the minimum value for the strength of the association. 
 }
 \author{
-Miquel De \enc{Cáceres}{Caceres} Ainsa, Biodiversity and Landscape Ecology Laboratory, Forest Science Center of Catalonia
+Miquel De \enc{Cáceres}{Caceres} Ainsa, CTFC
 }
 \seealso{\code{\link{strassoc}}, \code{\link{signassoc}}, \code{\link{multipatt}}}
 \examples{

@@ -8,7 +8,7 @@
 
 \title{An example of usage of the niche metric functions (former 'resniche' package)}
 \author[1]{Miquel De Cáceres}
-\affil[1]{CTFC - Centre Tecnològic Forestal de Catalunya. Catalonia, Spain}
+\affil[1]{CTFC - Forest Sciences and Technology Center of Catalunya. Catalonia, Spain}
 \author[2]{Oriol Lapiedra}
 \author[2]{Daniel Sol}
 \affil[2]{CREAF - Centre for Ecological Research and Applied Forestries, Catalonia, Spain}
@@ -97,14 +97,14 @@ We first conduct our calculations without taking into account the resemblance be
 \end{Sinput}
 \begin{Soutput}
               B        LC        UC
-Niche 0.2966578 0.2706666 0.3345246
+Niche 0.2966578 0.2685885 0.3327092
 \end{Soutput}
 \begin{Sinput}
 > nichevar(P=diet.moia, mode="single")
 \end{Sinput}
 \begin{Soutput}
               B        LC        UC
-Niche 0.1807663 0.1048379 0.2634922
+Niche 0.1807663 0.1031574 0.2590673
 \end{Soutput}
 \end{Schunk}
 In general, we can say that the niche breadth of the population in Moià is smaller than the niche breadth of the population in Barcelona. If we repeat the same calculations with the matrix of resource resemblance, we realize that the niche breadth of both populations becomes smaller:
@@ -115,8 +115,8 @@ In general, we can say that the niche breadth of the population in Moià is smal
 > popvar.barcelona
 \end{Sinput}
 \begin{Soutput}
-              B       LC        UC
-Niche 0.2453822 0.233744 0.2573655
+              B        LC        UC
+Niche 0.2453822 0.2328217 0.2558848
 \end{Soutput}
 \begin{Sinput}
 > popvar.moia= nichevar(P=diet.moia, D=dfood, mode="single")
@@ -124,7 +124,7 @@ Niche 0.2453822 0.233744 0.2573655
 \end{Sinput}
 \begin{Soutput}
               B         LC        UC
-Niche 0.0853328 0.02985418 0.1737896
+Niche 0.0853328 0.02840221 0.1700384
 \end{Soutput}
 \end{Schunk}
 The reason is that the first analysis was assuming that all resources were equally (and maximally) distinct, while the second analysis accounts for the similarity between some resources. Moreover, note that the niche breadth of Moià has decreased more than the niche breadth of Barcelona. This reflects that the resources being used by pigeons of Moià are more similar than the resources used by pigeons of Barcelona.
@@ -141,14 +141,14 @@ Using function \texttt{nicheoverlap}:
 \end{Sinput}
 \begin{Soutput}
                 O        LC        UC
-Overlap 0.7419319 0.4624398 0.9222248
+Overlap 0.7419319 0.4576837 0.9264671
 \end{Soutput}
 \begin{Sinput}
 > nicheoverlap(P1=diet.barcelona, P2=diet.moia, mode="single", D = dfood)
 \end{Sinput}
 \begin{Soutput}
                 O        LC        UC
-Overlap 0.7912472 0.5516827 0.9581053
+Overlap 0.7912472 0.5438011 0.9500083
 \end{Soutput}
 \end{Schunk}
 If we include the resemblance between resources, the degree of overlap increases, for the same reason that we obtained smaller niche breadth statistics when resemblances were included.
@@ -357,7 +357,7 @@ We can also calculate the average overlap between each individual and the remain
 \end{Sinput}
 \begin{Soutput}
    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-0.09157 0.89920 0.90650 0.84390 0.90970 0.91130 
+0.09157 0.89915 0.90649 0.84388 0.90965 0.91134 
 \end{Soutput}
 \end{Schunk}
 We substracted one in the numerator and denominator in order to exclude the target individual from the average (the overlap between a resource niche and itself is always one). Apparently, the individuals in Moià have a larger degree of overlap with individuals of their population than individuals in Barcelona. A non-parametric test seems to confirm this difference:

@@ -6,9 +6,9 @@
 %\VignetteIndexEntry{Learning how to use the indicspecies package}
 %\VignettePackage{indicspecies}
 
-\title{How to use the \texttt{indicspecies} package (ver. 1.7.1)}
+\title{How to use the \texttt{indicspecies} package (ver. 1.7.7)}
 \author[1]{Miquel De Cáceres}
-\affil[1]{Centre Tecnològic Forestal de Catalunya. Ctra. St. Llorenç de Morunys km 2, 25280, Solsona, Catalonia, Spain}
+\affil[1]{CTFC - Forest Sciences and Technology Center of Catalonia, Spain}
 
 \begin{document}
 \SweaveOpts{concordance=TRUE}
