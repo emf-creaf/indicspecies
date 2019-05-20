@@ -46,7 +46,7 @@ De Caceres, M., Sol, D., Lapiedra, O. and P. Legendre. (2011) A framework for es
 }
 
 \author{
-Miquel De Caceres Ainsa
+Miquel De Caceres Ainsa, CTFC
 }
 
 \seealso{

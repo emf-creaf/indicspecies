@@ -38,14 +38,14 @@ predict.indicators<-function(object, newdata, ...) {
   }
   return(p)
 }
-predict.indicators.cv<-function(X, cluster, group, ...) {
+cv_predictindicators<-function(X, cluster, group, ...) {
   n <-nrow(X)
   cv_p = rep(NA, n)
   for(i in 1:n) {
     Xi = X[-i, ,drop=FALSE]
     cli = cluster[-i]
     sc = indicators(Xi, cli, group, verbose = FALSE, nboot=0, ...) #exclude bootstrapping
-    cv_p[i] = predict(sc, X[i, ,drop=FALSE])
+    cv_p[i] = predict.indicators(sc, X[i, ,drop=FALSE])
   }
   names(cv_p) = rownames(X)
   return(cv_p)

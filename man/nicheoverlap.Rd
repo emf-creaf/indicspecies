@@ -44,7 +44,7 @@ Manly, B.F.J. 2007. Randomization, bootstrap and Monte Carlo methods in biology.
 De Caceres, M., Sol, D., Lapiedra, O. and P. Legendre. (2011) A framework for estimating niche metrics using the resemblance between qualitative resources. Oikos 120: 1341-1350.
 }
 \author{
-Miquel De Caceres Ainsa
+Miquel De Caceres Ainsa, CTFC
 }
 
 \seealso{

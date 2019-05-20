@@ -8,7 +8,7 @@
 
 \title{An example of usage of the niche metric functions (former 'resniche' package)}
 \author[1]{Miquel De Cáceres}
-\affil[1]{CTFC - Centre Tecnològic Forestal de Catalunya. Catalonia, Spain}
+\affil[1]{CTFC - Forest Sciences and Technology Center of Catalonia, Spain}
 \author[2]{Oriol Lapiedra}
 \author[2]{Daniel Sol}
 \affil[2]{CREAF - Centre for Ecological Research and Applied Forestries, Catalonia, Spain}

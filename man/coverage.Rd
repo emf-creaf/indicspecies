@@ -41,7 +41,7 @@ The \code{coverage} of a set of indicators was defined in De \enc{Cáceres}{Cace
 De \enc{Cáceres}{Caceres}, M., Legendre, P., Wiser, S.K. and Brotons, L. 2012. Using species combinations in indicator analyses. Methods in Ecology and Evolution 3(6): 973-982.
 }
 \author{
-Miquel De \enc{Cáceres}{Caceres} Ainsa, Biodiversity and Landscape Ecology Laboratory, Centre Tecnologic Forestal de Catalunya
+Miquel De \enc{Cáceres}{Caceres} Ainsa, CTFC
 }
 \seealso{\code{\link{indicators}}, \code{\link{multipatt}}, \code{\link{pruneindicators}}}
 \examples{
