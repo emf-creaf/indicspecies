@@ -70,9 +70,9 @@ indicators <- function (X, cluster, group, func="IndVal", max.order = 5, max.ind
     comblistDef<-c(comblistDef,evalCombs(fixedPos, veck,verbose=TRUE))
   } else {
     for(i in 1:length(veck)) {
-      cat(paste("Starting species ",veck[i],"..."))
+      if(verbose) cat(paste("Starting species ",veck[i],"..."))
       comblistDef<-c(comblistDef,evalCombs(c(veck[i],fixedPos), veck[-(1:i)], verbose=FALSE))
-      cat(paste(" accepted combinations:",length(comblistDef),"\n"))
+      if(verbose) cat(paste(" accepted combinations:",length(comblistDef),"\n"))
     }    
   }
   

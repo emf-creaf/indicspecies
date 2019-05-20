@@ -1,8 +1,8 @@
 Package: indicspecies
 Type: Package
 Title: Relationship Between Species and Groups of Sites
-Version: 1.7.6
-Date: 2016-08-29
+Version: 1.7.7
+Date: 2019-05-20
 Author: Miquel De Caceres, Florian Jansen
 Maintainer: Miquel De Caceres <miquelcaceres@gmail.com>
 Description: Functions to assess the strength and statistical significance of the relationship between species occurrence/abundance and groups of sites. Also includes functions to measure species niche breadth using resource categories.
