@@ -102,33 +102,31 @@ nonnested <- function (x, selection=NULL, verbose=FALSE) {
 	}
     indicators2 = x
     indicators2$C = as.data.frame(subset(indicators2$C, subset=selmodFinal))
-    indicators2$XC = indicators2$XC[,selmodFinal]
+    indicators2$XC = indicators2$XC[,selmodFinal, drop=FALSE]
     if(length(dim(indicators2$A))==2) {
-    	indicators2$A = indicators2$A[selmodFinal,]
-	    indicators2$B = indicators2$B[selmodFinal,]
-    	indicators2$sqrtIV = indicators2$sqrtIV[selmodFinal,]
+    	indicators2$A = indicators2$A[selmodFinal,, drop=FALSE]
+	    indicators2$B = indicators2$B[selmodFinal,, drop=FALSE]
+    	indicators2$sqrtIV = indicators2$sqrtIV[selmodFinal,, drop=FALSE]
     } else {
     	indicators2$A = indicators2$A[selmodFinal]
 	    indicators2$B = indicators2$B[selmodFinal]
     	indicators2$sqrtIV = indicators2$sqrtIV[selmodFinal]
     }
 
-  	selSpp = colSums(indicators2$C)>0
-  	indicators2$C = as.data.frame(indicators2$C[,selSpp])
-  	row.names(indicators2$C)<-row.names(x$C)[selmodFinal]
-  	names(indicators2$C)<-names(x$C)[selSpp]
+  	# selSpp = colSums(indicators2$C)>0
+  	# indicators2$C = indicators2$C[,selSpp, drop=FALSE]
+  	# row.names(indicators2$C)<-row.names(x$C)[selmodFinal]
+  	# names(indicators2$C)<-names(x$C)[selSpp]
   	
     #Select rows that contain the species or the group
-    if(sum(selmodFinal)>1) {
-	  	selRows = rowSums(indicators2$XC)>0 | indicators2$group.vec
-	  	indicators2$group.vec = indicators2$group.vec[selRows]
-	  	indicators2$XC = indicators2$XC[selRows,]
-	} else {
-	  	selRows = sum(indicators2$XC) | indicators2$group.vec
-	  	indicators2$group.vec = indicators2$group.vec[selRows]
-	  	indicators2$XC = indicators2$XC[selRows]
-	}
-    
+#     if(sum(selmodFinal)>1) {
+# 	  	selRows = rowSums(indicators2$XC)>0 | indicators2$group.vec
+# 	  	indicators2$XC = indicators2$XC[selRows, , drop=FALSE]
+# 	} else {
+# 	  	selRows = sum(indicators2$XC) | indicators2$group.vec
+# 	  	indicators2$XC = indicators2$XC[selRows, , drop=FALSE]
+# 	}
+#     
 	return(indicators2)
 }
 

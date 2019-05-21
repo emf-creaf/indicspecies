@@ -26,7 +26,7 @@ pruneindicators(x, At=0, Bt=0, sqrtIVt=0, max.indicators=4, verbose=FALSE)
   An object of class '\code{\link{indicators}}' with only the species combinations selected.
 }
 \references{
-De \enc{Cáceres}{Caceres}, M., Legendre, P., Wiser, S.K. & Brotons, L (in preparation). Using species combinations in indicator analyses.
+De \enc{Cáceres}{Caceres}, M., Legendre, P., Wiser, S.K. and Brotons, L. 2012. Using species combinations in indicator analyses. Methods in Ecology and Evolution 3(6): 973-982.
 
 De \enc{Cáceres}{Caceres}, M. and Legendre, P. 2009. Associations between species and groups of sites: indices and statistical inference. Ecology 90(12): 3566-3574.
 

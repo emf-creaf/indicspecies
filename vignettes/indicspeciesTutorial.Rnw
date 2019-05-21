@@ -289,10 +289,19 @@ The function \texttt{indicators} provides a model that can be used to predict a 
 <<>>=
 p<-predict(sc2, wetland)
 @
-We can compare the results with the original group memberships:
+Of course, this will return biased estimates, as the data set used to build the model is the same as the target data set for which probabilities are desired. The same would be obtained using:
 <<>>=
-print(data.frame(groups,p))
+p<-predict(sc2)
 @
+which uses the original data set storied in the \texttt{indicators} object. If we want to evaluate these probabilities in a cross-validated fashion (i.e., excluding each target site for the calculation of positive predictive values and the probability of the target site group), we can use:
+<<>>=
+pcv<-predict(sc2, cv=TRUE)
+@
+We can compare the probabilities (evaluated by resubstitution and cross-validation) with the original group memberships:
+<<>>=
+data.frame(Group1 = as.numeric(wetkm$cluster==1), Prob = p, Prob_CV = pcv)
+@
+Cross-validated probabilities will tend to be lower than probabilities evaluated by resubstitution for sites originally belonging to the target site group and higher for other sites.
 \bibliographystyle{plainnat}
 \bibliography{indicspecies}
 \end{document}
