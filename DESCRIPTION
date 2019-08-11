@@ -2,7 +2,7 @@ Package: indicspecies
 Type: Package
 Title: Relationship Between Species and Groups of Sites
 Version: 1.7.7
-Date: 2019-05-20
+Date: 2019-08-11
 Authors@R: c(
 	person('Miquel', 'De Cáceres', role=c('aut','cre'),
 	email='miquelcaceres@gmail.com'),
@@ -10,7 +10,8 @@ Authors@R: c(
 Description: Functions to assess the strength and statistical significance of the relationship between species occurrence/abundance and groups of sites. Also includes functions to measure species niche breadth using resource categories.
 Depends: permute 
 Suggests: sp, rgeos
+Encoding: UTF-8
 License: GPL (>= 2)
-URL: https://vegmod.github.io/rpackage/indicspecies
+URL: https://vegmod.github.io/software/indicspecies
 LazyLoad: yes
 

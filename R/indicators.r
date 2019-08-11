@@ -1,8 +1,10 @@
-indicators <- function (X, cluster, group, func="IndVal", max.order = 5, max.indicators=NULL, At = 0, Bt=0, sqrtIVt =0, nboot=0, alpha=0.05, XC = TRUE, enableFixed = FALSE, verbose=FALSE) {
+indicators <- function (X, cluster, group, func="IndVal", min.order = 1, max.order = 5, max.indicators=NULL, At = 0, Bt=0, sqrtIVt =0, nboot=0, alpha=0.05, XC = TRUE, enableFixed = FALSE, verbose=FALSE) {
 	                 
   func <- match.arg(func, c("IndVal", "IndVal.g"))                                                                                                             
   if(sum(is.na(cluster))>0) stop("Cannot deal with NA values. Remove and run again.")
   if(sum(is.na(X))>0) stop("Cannot deal with NA values. Remove and run again.")
+  if(min.order<1) stop("min.order must be at least 1.")
+  if(min.order>max.order) stop("min.order must be equal or larger than max.order.")
   nsites = nrow(X)
 
   cluster= as.factor(cluster)
@@ -49,7 +51,7 @@ indicators <- function (X, cluster, group, func="IndVal", max.order = 5, max.ind
       B = sum(scg>0)/ng
       sqrtIV = sqrt(A*B)
       if(A>=At & B>=Bt & sqrtIV>=sqrtIVt) {  
-        comblist<-c(comblist,list(spvec))
+        if(length(spvec)>=min.order) comblist<-c(comblist,list(spvec))
       }
       if(B>Bt && (length(spvec)-numFixed)<max.order && length(dvec)>0) {##If B is not too small and order is allowed we can explore further
         for(j in 1:length(dvec)) {
