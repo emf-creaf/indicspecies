@@ -8,13 +8,13 @@
   Creates species combinations to be used in indicator value analyses. 
 }
 \usage{
-combinespecies(X, max.order = 3, min.occ = 0, FUN = min, verbose = FALSE, 
+combinespecies(X, min.order = 1, max.order = 3, min.occ = 0, FUN = min, verbose = FALSE, 
 add.names = TRUE, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{X}{A community data table with sites in rows and species in columns. This table can contain either presence-absence or abundance data.}
-  \item{max.order}{Maximum number of species conforming species combinations.}
+  \item{min.order, max.order}{Minimum and maximum number of species conforming species combinations.}
   \item{min.occ}{Threshold for minimum occurrence. Combinations with lower values are not kept.}
   \item{FUN}{Function to be calculated for all species forming the species combination. Accepted values are \code{min}, \code{max}, \code{sum} and \code{mean}.}
   \item{verbose}{If TRUE, prints the results of each step.}
