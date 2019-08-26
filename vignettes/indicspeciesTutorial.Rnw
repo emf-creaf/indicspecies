@@ -6,7 +6,7 @@
 %\VignetteIndexEntry{Learning how to use the indicspecies package}
 %\VignettePackage{indicspecies}
 
-\title{How to use the \texttt{indicspecies} package (ver. 1.7.7)}
+\title{How to use the \texttt{indicspecies} package (ver. 1.7.8)}
 \author[1]{Miquel De Cáceres}
 \affil[1]{CTFC - Forest Sciences and Technology Center of Catalonia, Spain}
 

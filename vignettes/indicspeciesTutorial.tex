@@ -6,7 +6,7 @@
 %\VignetteIndexEntry{Learning how to use the indicspecies package}
 %\VignettePackage{indicspecies}
 
-\title{How to use the \texttt{indicspecies} package (ver. 1.7.7)}
+\title{How to use the \texttt{indicspecies} package (ver. 1.7.8)}
 \author[1]{Miquel De Cáceres}
 \affil[1]{CTFC - Forest Sciences and Technology Center of Catalonia, Spain}
 
@@ -60,9 +60,9 @@ Alternatively, one can obtain a classification using non-hierarchical cluster an
 \end{Sinput}
 \begin{Soutput}
  5  8 13  4 17  3  9 21 16 14  2 15  1  7 10 40 23 25 22 20  6 18 
- 3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  2  2  2  2  2  2  2 
+ 2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  1  1  1  1  1  1  1 
 12 39 19 11 30 34 28 31 26 29 33 24 36 37 41 27 32 35 38 
- 2  2  2  2  1  1  1  1  2  2  2  1  1  1  1  1  1  3  3 
+ 1  1  1  1  3  3  3  3  1  1  1  3  3  3  3  3  3  2  2 
 \end{Soutput}
 \end{Schunk}
 
@@ -106,24 +106,24 @@ When the indicator species analysis is completed, we can obtain the list of indi
  Group 1  #sps.  3 
         stat p.value    
 Ludads 0.907   0.001 ***
-Orysp. 0.823   0.003 ** 
-Psespi 0.602   0.019 *  
+Orysp. 0.823   0.004 ** 
+Psespi 0.602   0.018 *  
 
  Group 3  #sps.  3 
         stat p.value    
 Pancam 0.910   0.001 ***
-Eupvac 0.724   0.004 ** 
+Eupvac 0.724   0.003 ** 
 Cynarc 0.602   0.008 ** 
 
  Group 1+2  #sps.  1 
         stat p.value   
-Elesp. 0.741   0.007 **
+Elesp. 0.741   0.009 **
 
  Group 2+3  #sps.  3 
         stat p.value    
 Melcor 0.876   0.001 ***
-Phynod 0.715   0.014 *  
-Echell 0.651   0.015 *  
+Phynod 0.715   0.016 *  
+Echell 0.651   0.010 ** 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
@@ -155,24 +155,24 @@ If the association index used in \texttt{multipatt} is \texttt{func = "IndVal"} 
  Group 1  #sps.  3 
             A      B  stat p.value    
 Ludads 1.0000 0.8235 0.907   0.001 ***
-Orysp. 0.6772 1.0000 0.823   0.003 ** 
-Psespi 0.8811 0.4118 0.602   0.019 *  
+Orysp. 0.6772 1.0000 0.823   0.004 ** 
+Psespi 0.8811 0.4118 0.602   0.018 *  
 
  Group 3  #sps.  3 
             A      B  stat p.value    
 Pancam 0.8278 1.0000 0.910   0.001 ***
-Eupvac 0.6546 0.8000 0.724   0.004 ** 
+Eupvac 0.6546 0.8000 0.724   0.003 ** 
 Cynarc 0.7241 0.5000 0.602   0.008 ** 
 
  Group 1+2  #sps.  1 
             A      B  stat p.value   
-Elesp. 1.0000 0.5484 0.741   0.007 **
+Elesp. 1.0000 0.5484 0.741   0.009 **
 
  Group 2+3  #sps.  3 
             A      B  stat p.value    
 Melcor 0.8764 0.8750 0.876   0.001 ***
-Phynod 0.8752 0.5833 0.715   0.014 *  
-Echell 0.9246 0.4583 0.651   0.015 *  
+Phynod 0.8752 0.5833 0.715   0.016 *  
+Echell 0.9246 0.4583 0.651   0.010 ** 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
@@ -202,46 +202,46 @@ In our previous calls to \texttt{summary} only the species that were significant
  Group 1  #sps.  5 
         stat p.value    
 Ludads 0.907   0.001 ***
-Orysp. 0.823   0.003 ** 
-Psespi 0.602   0.019 *  
-Polatt 0.420   0.164    
+Orysp. 0.823   0.004 ** 
+Psespi 0.602   0.018 *  
+Polatt 0.420   0.163    
 Casobt 0.243   1.000    
 
  Group 2  #sps.  6 
         stat p.value
-Aesind 0.445   0.224
-Alyvag 0.335   0.400
-Abefic 0.267   0.572
-Poa2   0.267   0.565
-Poa1   0.267   0.571
-Helcri 0.267   0.571
+Aesind 0.445   0.201
+Alyvag 0.335   0.402
+Abefic 0.267   0.585
+Poa2   0.267   0.569
+Poa1   0.267   0.591
+Helcri 0.267   0.591
 
  Group 3  #sps.  10 
         stat p.value    
 Pancam 0.910   0.001 ***
-Eupvac 0.724   0.004 ** 
+Eupvac 0.724   0.003 ** 
 Cynarc 0.602   0.008 ** 
-Abemos 0.447   0.057 .  
-Merhed 0.402   0.213    
+Abemos 0.447   0.060 .  
+Merhed 0.402   0.208    
 Ludoct 0.316   0.231    
-Passcr 0.316   0.251    
-Dendio 0.316   0.244    
-Physp. 0.316   0.245    
-Goopur 0.316   0.245    
+Passcr 0.316   0.246    
+Dendio 0.316   0.262    
+Physp. 0.316   0.233    
+Goopur 0.316   0.233    
 
  Group 1+2  #sps.  2 
         stat p.value   
-Elesp. 0.741   0.007 **
-Carhal 0.402   0.449   
+Elesp. 0.741   0.009 **
+Carhal 0.402   0.414   
 
  Group 2+3  #sps.  6 
         stat p.value    
 Melcor 0.876   0.001 ***
-Phynod 0.715   0.014 *  
-Echell 0.651   0.015 *  
-Echpas 0.584   0.275    
+Phynod 0.715   0.016 *  
+Echell 0.651   0.010 ** 
+Echpas 0.584   0.281    
 Cyprot 0.500   0.077 .  
-Ipocop 0.354   0.324    
+Ipocop 0.354   0.341    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
@@ -253,39 +253,39 @@ Parameter \texttt{alpha} is by default set to \texttt{alpha = 0.05}, and hides a
 \end{Sinput}
 \begin{Soutput}
        s.1 s.2 s.3 index      stat p.value
-Abefic   0   1   0     2 0.2672612   0.572
-Merhed   0   0   1     3 0.4019185   0.213
-Alyvag   0   1   0     2 0.3347953   0.400
+Abefic   0   1   0     2 0.2672612   0.585
+Merhed   0   0   1     3 0.4019185   0.208
+Alyvag   0   1   0     2 0.3347953   0.402
 Pancam   0   0   1     3 0.9098495   0.001
-Abemos   0   0   1     3 0.4472136   0.057
+Abemos   0   0   1     3 0.4472136   0.060
 Melcor   0   1   1     6 0.8757059   0.001
 Ludoct   0   0   1     3 0.3162278   0.231
-Eupvac   0   0   1     3 0.7236825   0.004
-Echpas   0   1   1     6 0.5842649   0.275
-Passcr   0   0   1     3 0.3162278   0.251
-Poa2     0   1   0     2 0.2672612   0.565
-Carhal   1   1   0     4 0.4016097   0.449
-Dendio   0   0   1     3 0.3162278   0.244
+Eupvac   0   0   1     3 0.7236825   0.003
+Echpas   0   1   1     6 0.5842649   0.281
+Passcr   0   0   1     3 0.3162278   0.246
+Poa2     0   1   0     2 0.2672612   0.569
+Carhal   1   1   0     4 0.4016097   0.414
+Dendio   0   0   1     3 0.3162278   0.262
 Casobt   1   0   0     1 0.2425356   1.000
-Aesind   0   1   0     2 0.4447093   0.224
+Aesind   0   1   0     2 0.4447093   0.201
 Cyprot   0   1   1     6 0.5000000   0.077
-Ipocop   0   1   1     6 0.3535534   0.324
+Ipocop   0   1   1     6 0.3535534   0.341
 Cynarc   0   0   1     3 0.6017217   0.008
 Walind   1   1   1     7 0.4938648      NA
 Sessp.   1   1   1     7 0.6984303      NA
-Phynod   0   1   1     6 0.7145356   0.014
-Echell   0   1   1     6 0.6509834   0.015
+Phynod   0   1   1     6 0.7145356   0.016
+Echell   0   1   1     6 0.6509834   0.010
 Helind   1   1   1     7 0.6984303      NA
 Ipoaqu   1   1   1     7 0.4938648      NA
-Orysp.   1   0   0     1 0.8229074   0.003
-Elesp.   1   1   0     4 0.7405316   0.007
-Psespi   1   0   0     1 0.6023402   0.019
+Orysp.   1   0   0     1 0.8229074   0.004
+Elesp.   1   1   0     4 0.7405316   0.009
+Psespi   1   0   0     1 0.6023402   0.018
 Ludads   1   0   0     1 0.9074852   0.001
-Polatt   1   0   0     1 0.4200840   0.164
-Poa1     0   1   0     2 0.2672612   0.571
-Helcri   0   1   0     2 0.2672612   0.571
-Physp.   0   0   1     3 0.3162278   0.245
-Goopur   0   0   1     3 0.3162278   0.245
+Polatt   1   0   0     1 0.4200840   0.163
+Poa1     0   1   0     2 0.2672612   0.591
+Helcri   0   1   0     2 0.2672612   0.591
+Physp.   0   0   1     3 0.3162278   0.233
+Goopur   0   0   1     3 0.3162278   0.233
 \end{Soutput}
 \end{Schunk}
 After accessing the object \texttt{indval\$sign}, we know that the four species whose highest IndVal corresponded to the set of all sites were `Valind', `Sessp.', `Helind' and `Ipoaqu', as indicated by the \texttt{NA}s in the \texttt{p.value} column of the data frame. The first columns of \texttt{sign} indicate (with ones and zeroes) which site groups were included in the combination preferred by the species. Then, the column \texttt{index} indicates the index of the site group combination (see subsection Excluding site group combinations in \texttt{multipatt} below). The remaining two columns are the association statistic and the p-value of the permutational test.
@@ -334,21 +334,21 @@ Indicator value and correlation indices usually produce similar results. Indeed,
         stat p.value    
 Ludads 0.870   0.001 ***
 Orysp. 0.668   0.001 ***
-Psespi 0.413   0.020 *  
+Psespi 0.413   0.017 *  
 
  Group 2  #sps.  1 
-        stat p.value  
-Phynod 0.436   0.013 *
+        stat p.value   
+Phynod 0.436    0.01 **
 
  Group 3  #sps.  3 
         stat p.value    
 Pancam 0.748   0.001 ***
-Eupvac 0.537   0.003 ** 
-Cynarc 0.492   0.009 ** 
+Eupvac 0.537   0.004 ** 
+Cynarc 0.492   0.020 *  
 
  Group 1+2  #sps.  1 
         stat p.value   
-Elesp. 0.538   0.003 **
+Elesp. 0.538   0.005 **
 
  Group 2+3  #sps.  1 
         stat p.value    
@@ -421,16 +421,16 @@ The original Indicator Value method of \citet{Dufrene1997} did not consider comb
         stat p.value    
 Ludads 0.907   0.001 ***
 Orysp. 0.823   0.001 ***
-Psespi 0.602   0.016 *  
+Psespi 0.602   0.024 *  
 
  Group 2  #sps.  1 
         stat p.value   
-Phynod 0.676   0.004 **
+Phynod 0.676   0.007 **
 
  Group 3  #sps.  4 
         stat p.value    
 Pancam 0.910   0.001 ***
-Melcor 0.739   0.002 ** 
+Melcor 0.739   0.001 ***
 Eupvac 0.724   0.002 ** 
 Cynarc 0.602   0.010 ** 
 ---
@@ -463,24 +463,24 @@ The second way to exclude site group combinations from a \texttt{multipatt} anal
  Group 1  #sps.  3 
         stat p.value    
 Ludads 0.907   0.001 ***
-Orysp. 0.823   0.002 ** 
-Psespi 0.602   0.022 *  
+Orysp. 0.823   0.001 ***
+Psespi 0.602   0.025 *  
 
  Group 3  #sps.  3 
         stat p.value    
 Pancam 0.910   0.001 ***
-Eupvac 0.724   0.005 ** 
-Cynarc 0.602   0.017 *  
+Eupvac 0.724   0.001 ***
+Cynarc 0.602   0.014 *  
 
  Group 1+2  #sps.  1 
         stat p.value   
-Elesp. 0.741   0.008 **
+Elesp. 0.741   0.003 **
 
  Group 2+3  #sps.  3 
         stat p.value    
 Melcor 0.876   0.001 ***
-Phynod 0.715   0.013 *  
-Echell 0.651   0.013 *  
+Phynod 0.715   0.008 ** 
+Echell 0.651   0.011 *  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
@@ -515,19 +515,19 @@ The numbers composing the vector passed to \texttt{restcomb} indicate the site g
         stat p.value    
 Ludads 0.907   0.001 ***
 Orysp. 0.823   0.003 ** 
-Psespi 0.602   0.014 *  
+Psespi 0.602   0.020 *  
 
  Group 3  #sps.  3 
         stat p.value    
 Pancam 0.910   0.001 ***
 Eupvac 0.724   0.002 ** 
-Cynarc 0.602   0.014 *  
+Cynarc 0.602   0.011 *  
 
  Group 2+3  #sps.  3 
         stat p.value    
 Melcor 0.876   0.001 ***
-Phynod 0.715   0.009 ** 
-Echell 0.651   0.010 ** 
+Phynod 0.715   0.004 ** 
+Echell 0.651   0.015 *  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
@@ -539,39 +539,39 @@ If we compare these last results with those including all possible site group co
 \end{Sinput}
 \begin{Soutput}
        s.1 s.2 s.3 index      stat p.value
-Abefic   0   1   0     2 0.2672612   0.597
-Merhed   0   0   1     3 0.4019185   0.205
-Alyvag   0   1   0     2 0.3347953   0.422
+Abefic   0   1   0     2 0.2672612   0.619
+Merhed   0   0   1     3 0.4019185   0.191
+Alyvag   0   1   0     2 0.3347953   0.437
 Pancam   0   0   1     3 0.9098495   0.001
-Abemos   0   0   1     3 0.4472136   0.063
+Abemos   0   0   1     3 0.4472136   0.061
 Melcor   0   1   1     5 0.8757059   0.001
-Ludoct   0   0   1     3 0.3162278   0.246
+Ludoct   0   0   1     3 0.3162278   0.241
 Eupvac   0   0   1     3 0.7236825   0.002
-Echpas   0   1   1     5 0.5842649   0.192
-Passcr   0   0   1     3 0.3162278   0.263
-Poa2     0   1   0     2 0.2672612   0.552
-Carhal   1   0   0     1 0.3313667   0.742
-Dendio   0   0   1     3 0.3162278   0.257
+Echpas   0   1   1     5 0.5842649   0.180
+Passcr   0   0   1     3 0.3162278   0.262
+Poa2     0   1   0     2 0.2672612   0.589
+Carhal   1   0   0     1 0.3313667   0.710
+Dendio   0   0   1     3 0.3162278   0.231
 Casobt   1   0   0     1 0.2425356   1.000
-Aesind   0   1   0     2 0.4447093   0.214
+Aesind   0   1   0     2 0.4447093   0.220
 Cyprot   0   1   1     5 0.5000000   0.068
-Ipocop   0   1   1     5 0.3535534   0.322
-Cynarc   0   0   1     3 0.6017217   0.014
-Walind   1   0   1     4 0.4406873   0.687
-Sessp.   0   1   1     5 0.5901665   0.718
-Phynod   0   1   1     5 0.7145356   0.009
-Echell   0   1   1     5 0.6509834   0.010
-Helind   0   1   1     5 0.5720540   0.819
-Ipoaqu   1   0   1     4 0.4053049   0.901
+Ipocop   0   1   1     5 0.3535534   0.321
+Cynarc   0   0   1     3 0.6017217   0.011
+Walind   1   0   1     4 0.4406873   0.659
+Sessp.   0   1   1     5 0.5901665   0.701
+Phynod   0   1   1     5 0.7145356   0.004
+Echell   0   1   1     5 0.6509834   0.015
+Helind   0   1   1     5 0.5720540   0.810
+Ipoaqu   1   0   1     4 0.4053049   0.910
 Orysp.   1   0   0     1 0.8229074   0.003
-Elesp.   1   0   0     1 0.5534178   0.640
-Psespi   1   0   0     1 0.6023402   0.014
+Elesp.   1   0   0     1 0.5534178   0.659
+Psespi   1   0   0     1 0.6023402   0.020
 Ludads   1   0   0     1 0.9074852   0.001
-Polatt   1   0   0     1 0.4200840   0.176
-Poa1     0   1   0     2 0.2672612   0.589
-Helcri   0   1   0     2 0.2672612   0.589
-Physp.   0   0   1     3 0.3162278   0.255
-Goopur   0   0   1     3 0.3162278   0.255
+Polatt   1   0   0     1 0.4200840   0.158
+Poa1     0   1   0     2 0.2672612   0.555
+Helcri   0   1   0     2 0.2672612   0.555
+Physp.   0   0   1     3 0.3162278   0.261
+Goopur   0   0   1     3 0.3162278   0.261
 \end{Soutput}
 \end{Schunk}
 Restricting site group combinations is also possible with the phi and point biserial coefficients. 
@@ -603,13 +603,13 @@ A feature of \texttt{strassoc} that is lacking in \texttt{multipatt} is the poss
 > round(head(prefstat$lowerCI),3)
 \end{Sinput}
 \begin{Soutput}
-           1     2     3
-Abefic 0.000 0.000 0.000
-Merhed 0.000 0.000 0.000
-Alyvag 0.000 0.000 0.000
-Pancam 0.000 0.056 0.674
-Abemos 0.000 0.000 0.000
-Melcor 0.027 0.245 0.446
+           1     2    3
+Abefic 0.000 0.000 0.00
+Merhed 0.000 0.000 0.00
+Alyvag 0.000 0.000 0.00
+Pancam 0.000 0.030 0.66
+Abemos 0.000 0.000 0.00
+Melcor 0.031 0.218 0.45
 \end{Soutput}
 \begin{Sinput}
 > round(head(prefstat$upperCI),3)
@@ -619,12 +619,12 @@ Melcor 0.027 0.245 0.446
 Abefic 0.000 1.000 0.000
 Merhed 0.000 1.000 1.000
 Alyvag 1.000 1.000 0.000
-Pancam 0.071 0.285 0.922
+Pancam 0.086 0.269 0.938
 Abemos 0.000 0.000 1.000
-Melcor 0.199 0.409 0.655
+Melcor 0.207 0.415 0.643
 \end{Soutput}
 \end{Schunk}
-For example, the 95\% confidence interval for the `A' component of the association between `Pancam' and Group 3 is \texttt{[0.674,0.922]}.
+For example, the 95\% confidence interval for the `A' component of the association between `Pancam' and Group 3 is \texttt{[0.66,0.938]}.
 
 \subsection{The function \texttt{signassoc}}
 As we explained before, \texttt{multipatt} statistically tests the association between the species and its more strongly associated site group (or site group combination). By contrast, \texttt{signassoc} allows one to test the association between the species and each group of sites, regardless of whether the association value was the highest or not. Moreover, the function allows one to test both one-sided and two-sided hypotheses. For example, the following line tests whether the frequency of the species in each site group is higher or lower than random:
@@ -637,12 +637,12 @@ As we explained before, \texttt{multipatt} statistically tests the association b
 \end{Sinput}
 \begin{Soutput}
           1    2    3 best   psidak
-Abefic 1.00 0.70 1.00    2 0.973000
-Merhed 0.46 0.64 0.25    3 0.578125
-Alyvag 0.92 0.25 0.95    2 0.578125
-Pancam 0.01 0.18 0.01    1 0.029701
-Abemos 0.65 0.94 0.13    3 0.341497
-Melcor 0.01 0.95 0.01    1 0.029701
+Abefic 1.00 0.63 1.00    2 0.949347
+Merhed 0.39 0.68 0.23    3 0.543467
+Alyvag 0.94 0.21 0.75    2 0.506961
+Pancam 0.01 0.20 0.01    1 0.029701
+Abemos 0.72 0.88 0.10    3 0.271000
+Melcor 0.01 0.96 0.01    1 0.029701
 \end{Soutput}
 \end{Schunk}
 The last columns of the results indicate the group for which the p-value was the lowest, and the p-value corrected for multiple testing using the Sidak method.
@@ -723,8 +723,8 @@ The resulting data frame has the same number of sites (i.e. 41) but as many colu
  Significance level (alpha): 0.05
 
  Total number of species: 286
- Selected number of species: 45 
- Number of species associated to 1 group: 45 
+ Selected number of species: 42 
+ Number of species associated to 1 group: 42 
  Number of species associated to 2 groups: 0 
 
  List of species associated to each combination: 
@@ -734,54 +734,51 @@ The resulting data frame has the same number of sites (i.e. 41) but as many colu
 Orysp.+Ludads 1.0000 0.8235 0.907   0.001 ***
 Ludads        1.0000 0.8235 0.907   0.001 ***
 Orysp.        0.6772 1.0000 0.823   0.001 ***
-Sessp.+Ludads 1.0000 0.4118 0.642   0.001 ***
-Orysp.+Psespi 1.0000 0.4118 0.642   0.004 ** 
-Elesp.+Ludads 1.0000 0.4118 0.642   0.002 ** 
-Psespi+Ludads 1.0000 0.4118 0.642   0.003 ** 
-Orysp.+Elesp. 0.7424 0.5294 0.627   0.017 *  
-Sessp.+Orysp. 0.9081 0.4118 0.611   0.005 ** 
-Psespi        0.8811 0.4118 0.602   0.018 *  
-Helind+Ludads 1.0000 0.3529 0.594   0.007 ** 
-Walind+Orysp. 1.0000 0.2941 0.542   0.018 *  
-Walind+Ludads 1.0000 0.2941 0.542   0.018 *  
-Ipoaqu+Ludads 1.0000 0.2941 0.542   0.029 *  
+Sessp.+Ludads 1.0000 0.4118 0.642   0.003 ** 
+Orysp.+Psespi 1.0000 0.4118 0.642   0.002 ** 
+Elesp.+Ludads 1.0000 0.4118 0.642   0.003 ** 
+Psespi+Ludads 1.0000 0.4118 0.642   0.001 ***
+Orysp.+Elesp. 0.7424 0.5294 0.627   0.013 *  
+Sessp.+Orysp. 0.9081 0.4118 0.611   0.014 *  
+Psespi        0.8811 0.4118 0.602   0.007 ** 
+Helind+Ludads 1.0000 0.3529 0.594   0.006 ** 
+Walind+Orysp. 1.0000 0.2941 0.542   0.030 *  
+Walind+Ludads 1.0000 0.2941 0.542   0.030 *  
+Ipoaqu+Ludads 1.0000 0.2941 0.542   0.018 *  
 
  Group 2  #sps.  10 
-                   A      B  stat p.value   
-Phynod+Elesp. 0.9162 0.5714 0.724   0.002 **
-Phynod        0.6396 0.7143 0.676   0.007 **
-Phynod+Helind 0.6922 0.6429 0.667   0.004 **
-Helind+Elesp. 0.6861 0.5714 0.626   0.011 * 
-Phynod+Echell 0.8654 0.3571 0.556   0.030 * 
-Echell+Elesp. 0.8586 0.3571 0.554   0.030 * 
-Aesind+Elesp. 1.0000 0.2857 0.535   0.015 * 
-Echpas+Phynod 0.8293 0.2857 0.487   0.037 * 
-Eupvac+Cyprot 1.0000 0.2143 0.463   0.046 * 
-Echpas+Cyprot 1.0000 0.2143 0.463   0.032 * 
+                   A      B  stat p.value    
+Phynod+Elesp. 0.9162 0.5714 0.724   0.001 ***
+Phynod        0.6396 0.7143 0.676   0.008 ** 
+Phynod+Helind 0.6922 0.6429 0.667   0.003 ** 
+Helind+Elesp. 0.6861 0.5714 0.626   0.013 *  
+Phynod+Echell 0.8654 0.3571 0.556   0.024 *  
+Echell+Elesp. 0.8586 0.3571 0.554   0.013 *  
+Aesind+Elesp. 1.0000 0.2857 0.535   0.015 *  
+Echpas+Phynod 0.8293 0.2857 0.487   0.042 *  
+Eupvac+Cyprot 1.0000 0.2143 0.463   0.050 *  
+Echpas+Cyprot 1.0000 0.2143 0.463   0.041 *  
 
- Group 3  #sps.  21 
+ Group 3  #sps.  18 
                    A      B  stat p.value    
 Pancam        0.8278 1.0000 0.910   0.001 ***
 Pancam+Melcor 0.7769 1.0000 0.881   0.001 ***
 Pancam+Echell 1.0000 0.6000 0.775   0.001 ***
 Eupvac+Echell 1.0000 0.6000 0.775   0.001 ***
-Pancam+Eupvac 0.7455 0.8000 0.772   0.001 ***
-Melcor        0.5463 1.0000 0.739   0.002 ** 
+Pancam+Eupvac 0.7455 0.8000 0.772   0.002 ** 
+Melcor        0.5463 1.0000 0.739   0.001 ***
 Melcor+Eupvac 0.6648 0.8000 0.729   0.002 ** 
-Eupvac        0.6546 0.8000 0.724   0.001 ***
+Eupvac        0.6546 0.8000 0.724   0.003 ** 
 Pancam+Cynarc 1.0000 0.5000 0.707   0.001 ***
-Pancam+Sessp. 0.8077 0.6000 0.696   0.003 ** 
-Melcor+Echell 0.7368 0.6000 0.665   0.005 ** 
-Melcor+Cynarc 0.8077 0.5000 0.635   0.004 ** 
-Cynarc        0.7241 0.5000 0.602   0.007 ** 
-Melcor+Sessp. 0.5895 0.6000 0.595   0.028 *  
-Eupvac+Cynarc 0.8485 0.4000 0.583   0.009 ** 
-Cynarc+Sessp. 0.7778 0.4000 0.558   0.019 *  
-Cynarc+Phynod 1.0000 0.3000 0.548   0.005 ** 
-Cynarc+Echell 1.0000 0.3000 0.548   0.008 ** 
-Eupvac+Ipoaqu 1.0000 0.2000 0.447   0.044 *  
-Cynarc+Helind 1.0000 0.2000 0.447   0.049 *  
-Cynarc+Ipoaqu 1.0000 0.2000 0.447   0.044 *  
+Pancam+Sessp. 0.8077 0.6000 0.696   0.002 ** 
+Melcor+Echell 0.7368 0.6000 0.665   0.007 ** 
+Melcor+Cynarc 0.8077 0.5000 0.635   0.010 ** 
+Cynarc        0.7241 0.5000 0.602   0.014 *  
+Melcor+Sessp. 0.5895 0.6000 0.595   0.030 *  
+Eupvac+Cynarc 0.8485 0.4000 0.583   0.012 *  
+Cynarc+Sessp. 0.7778 0.4000 0.558   0.036 *  
+Cynarc+Phynod 1.0000 0.3000 0.548   0.018 *  
+Cynarc+Echell 1.0000 0.3000 0.548   0.019 *  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1 
 \end{Soutput}
@@ -849,9 +846,9 @@ We can discard species combinations with low indicator values by setting thresho
 Phynod+Helind+Elesp. 1.0000000 0.5714286 0.7559289   0.005
 Phynod+Elesp.        0.9000000 0.5714286 0.7171372   0.005
 Phynod               0.6666667 0.7142857 0.6900656   0.005
-Phynod+Helind        0.7142857 0.6428571 0.6776309   0.010
-Helind+Elesp.        0.6428571 0.5714286 0.6060915   0.025
-Melcor+Phynod+Elesp. 0.8571429 0.4285714 0.6060915   0.005
+Phynod+Helind        0.7142857 0.6428571 0.6776309   0.005
+Helind+Elesp.        0.6428571 0.5714286 0.6060915   0.010
+Melcor+Phynod+Elesp. 0.8571429 0.4285714 0.6060915   0.010
 Melcor+Helind+Elesp. 0.8571429 0.4285714 0.6060915   0.005
 \end{Soutput}
 \end{Schunk}
@@ -915,8 +912,8 @@ Coverage of final set of 3 indicators: 92.9%
 \begin{Soutput}
                       A         B    sqrtIV p.value
 Phynod+Elesp. 0.9000000 0.5714286 0.7171372   0.005
-Cyprot        0.8666667 0.2857143 0.4976134   0.015
-Echpas+Phynod 0.8000000 0.2857143 0.4780914   0.040
+Cyprot        0.8666667 0.2857143 0.4976134   0.030
+Echpas+Phynod 0.8000000 0.2857143 0.4780914   0.055
 \end{Soutput}
 \end{Schunk}
 In our example, and using these thresholds, the best indicators for group '2' would be: (a) the combination of `Phynod' and `Elesp.'; (b) `Cyprot' and (c) `Echpas' and `Phynod'. The three indicators together cover 93\% of the sites belonging to the target site group.
@@ -947,47 +944,47 @@ We can compare the probabilities (evaluated by resubstitution and cross-validati
 \end{Sinput}
 \begin{Soutput}
    Group2      Prob   Prob_CV
-5       0 0.0000000 0.0000000
-8       0 0.0000000 0.0000000
-13      0 0.0000000 0.0000000
-4       0 0.0000000 0.0000000
-17      0 0.0000000 0.0000000
-3       0 0.0000000 0.0000000
-9       0 0.0000000 0.0000000
-21      0 0.0000000 0.0000000
-16      0 0.0000000 0.0000000
-14      0 0.0000000 0.0000000
-2       0 0.0000000 0.0000000
-15      0 0.0000000 0.0000000
-1       0 0.0000000 0.0000000
-7       0 0.0000000 0.0000000
-10      0 0.0000000 0.0000000
-40      1 0.9000000 1.0000000
-23      1 0.0000000 0.0000000
-25      1 0.9000000 0.8888889
-22      1 0.8000000 0.7500000
-20      1 0.9000000 0.8888889
-6       1 0.9000000 0.8888889
-18      1 0.9000000 0.8888889
-12      1 0.9000000 0.8888889
-39      1 0.9000000 0.8888889
-19      1 0.9000000 0.8750000
-11      1 0.9000000 0.8888889
+5       1 0.0000000 0.0000000
+8       1 0.0000000 0.0000000
+13      1 0.0000000 0.0000000
+4       1 0.0000000 0.0000000
+17      1 0.0000000 0.0000000
+3       1 0.0000000 0.0000000
+9       1 0.0000000 0.0000000
+21      1 0.0000000 0.0000000
+16      1 0.0000000 0.0000000
+14      1 0.0000000 0.0000000
+2       1 0.0000000 0.0000000
+15      1 0.0000000 0.0000000
+1       1 0.0000000 0.0000000
+7       1 0.0000000 0.0000000
+10      1 0.0000000 0.0000000
+40      0 0.9000000 1.0000000
+23      0 0.0000000 0.0000000
+25      0 0.9000000 0.8888889
+22      0 0.8000000 0.7500000
+20      0 0.9000000 0.8888889
+6       0 0.9000000 0.8888889
+18      0 0.9000000 0.8888889
+12      0 0.9000000 0.8888889
+39      0 0.9000000 0.8888889
+19      0 0.9000000 0.8750000
+11      0 0.9000000 0.8888889
 30      0 0.8666667 0.8181818
 34      0 0.8666667 0.8333333
 28      0 0.0000000 0.0000000
 31      0 0.8666667 0.8461538
-26      1 0.8666667 0.8181818
-29      1 0.8666667 0.9285714
-33      1 0.8666667 0.9285714
+26      0 0.8666667 0.8181818
+29      0 0.8666667 0.9285714
+33      0 0.8666667 0.9285714
 24      0 0.0000000 0.0000000
 36      0 0.0000000 0.0000000
 37      0 0.0000000 0.0000000
 41      0 0.0000000 0.0000000
 27      0 0.0000000 0.0000000
 32      0 0.0000000 0.0000000
-35      0 0.0000000 0.0000000
-38      0 0.0000000 0.0000000
+35      1 0.0000000 0.0000000
+38      1 0.0000000 0.0000000
 \end{Soutput}
 \end{Schunk}
 Cross-validated probabilities will tend to be lower than probabilities evaluated by resubstitution for sites originally belonging to the target site group and higher for other sites.

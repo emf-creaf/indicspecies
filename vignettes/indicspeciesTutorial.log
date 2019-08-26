@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.20)  26 AUG 2019 19:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.20)  26 AUG 2019 19:19
 entering extended mode
 **./indicspeciesTutorial.tex
 (indicspeciesTutorial.tex
@@ -715,19 +715,19 @@ Package pdftex.def Info: indicspeciesTutorial-025.pdf used on input line 691.
 (pdftex.def)             Requested size: 288.0011pt x 288.01624pt.
  [20 <./indicspeciesTutorial-025.pdf>]
 [21] [22] [23] [24]
-Overfull \hbox (2.07545pt too wide) in paragraph at lines 883--884
+Overfull \hbox (2.07545pt too wide) in paragraph at lines 880--881
 []\T1/aer/m/n/10.95 Finally, we can also plot cov-er-age val-ues cor-re-spond-i
 ng to dif-fer-ent thresh-
  []
 
-[25] <indicspeciesTutorial-032.pdf, id=99, 433.62pt x 433.62pt>
+<indicspeciesTutorial-032.pdf, id=95, 433.62pt x 433.62pt>
 File: indicspeciesTutorial-032.pdf Graphic file (type pdf)
 
 <use indicspeciesTutorial-032.pdf>
-Package pdftex.def Info: indicspeciesTutorial-032.pdf used on input line 893.
+Package pdftex.def Info: indicspeciesTutorial-032.pdf used on input line 890.
 (pdftex.def)             Requested size: 288.0011pt x 288.01624pt.
- [26 <./indicspeciesTutorial-032.pdf>]
-[27] [28] (indicspeciesTutorial.bbl) [29] (indicspeciesTutorial.aux)
+ [25] [26 <./indicspeciesTutorial-032.pdf>]
+[27] (indicspeciesTutorial.bbl [28]) [29] (indicspeciesTutorial.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -739,7 +739,7 @@ Here is how much of TeX's memory you used:
  6985 multiletter control sequences out of 15000+200000
  34401 words of font info for 77 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,5n,25p,1002b,335s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,5n,25p,1002b,280s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\miquel.decaceres\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen
 \ec\dpi600\tctt1095.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx
@@ -751,7 +751,7 @@ onts/type1/public/amsfonts/cm/cmsltt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/pub
 lic/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
 onts/cm/cmtt12.pfb>
-Output written on indicspeciesTutorial.pdf (29 pages, 226864 bytes).
+Output written on indicspeciesTutorial.pdf (29 pages, 227027 bytes).
 PDF statistics:
  153 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
