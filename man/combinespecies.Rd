@@ -8,7 +8,7 @@
   Creates species combinations to be used in indicator value analyses. 
 }
 \usage{
-combinespecies(X, min.order = 1, max.order = 3, min.occ = 0, FUN = min, verbose = FALSE, 
+combinespecies(X, min.order = 1, max.order = 3, min.occ = 1, FUN = min, verbose = FALSE, 
 add.names = TRUE, ...)
 }
 %- maybe also 'usage' for other objects documented here.

@@ -1,7 +1,11 @@
 `strassoc` <-
-function(X, cluster,func="r",group=NULL, nboot=0, alpha=0.05, c=1) {
+function(X, cluster,func="r",group=NULL, nboot.ci=NULL, alpha.ci=0.05, c=1) {
 
+  # Check arguments
   func <- match.arg(func, c("r", "r.g", "indval", "IndVal", "indval.g", "IndVal.g","a", "A", "a.g", "A.g", "B", "b","cos", "cos.g", "r.ind", "r.ind.g", "s.ind", "s.ind.g"))
+
+  #Turn into a matrix (if not)
+  X = as.matrix(X)
   
 IndVal1<-function(sav,gmv,group=NULL) {
    gmv= as.factor(gmv)
@@ -324,24 +328,20 @@ cos.s<-function(sav, gmv, group=NULL) {
   dm = matrix(0,nsps,ngroups)
   
   
-	if(is.matrix(X)| is.data.frame(X)) {
-		dm=data.frame(dm)
-		if(!is.null(names(X))) row.names(dm)=names(X)
-		if(is.null(group)) names(dm)=levels(cluster)
-		else names(dm)=group
-	} 
-	
+  rownames(dm)=colnames(X)
+  if(is.null(group)) colnames(dm)=levels(cluster)
+  else colnames(dm)=group
+  
 	# Compute diagnostic values
-    X = as.matrix(X)
 	for(i in 1:nsps) {	
 		dm[i,] = ass.func(X[,i], cluster,func,group)
 	}
 	
-	if(nboot>0) {
-		dmb = array(0,dim=c(nboot,nsps,ngroups))
+	if(!is.null(nboot.ci)) {
+		dmb = array(0,dim=c(nboot.ci,nsps,ngroups))
 		dmlower = matrix(0,nsps,ngroups)
 		dmupper = matrix(0,nsps,ngroups)
-		for(b in 1:nboot) {
+		for(b in 1:nboot.ci) {
 		  bi = sample(nsites,replace=TRUE)
 			clusterb = cluster[bi]
 			for(i in 1:nsps) {	
@@ -353,18 +353,16 @@ cos.s<-function(sav, gmv, group=NULL) {
 		for(i in 1:nsps) {	
 			for(k in 1:ngroups) {	
 				   sdmb = sort(dmb[,i,k])
-				   dmlower[i,k]=sdmb[(alpha/2.0)*nboot]
-				   dmupper[i,k]=sdmb[(1-(alpha/2.0))*nboot]
+				   dmlower[i,k]=sdmb[(alpha.ci/2.0)*nboot.ci]
+				   dmupper[i,k]=sdmb[(1-(alpha.ci/2.0))*nboot.ci]
 			}
 		}
-	   dmlower=data.frame(dmlower)
-	   dmupper=data.frame(dmupper)
-  	   row.names(dmlower)=colnames(X)
-	   if(is.null(group)) names(dmlower)=levels(cluster)
-	   else names(dmlower)=group
-  	   row.names(dmupper)=colnames(X)
-	   if(is.null(group)) names(dmupper)=levels(cluster)
-	   else names(dmupper)=group
+    rownames(dmlower)=colnames(X)
+	   if(is.null(group)) colnames(dmlower)=levels(cluster)
+	   else colnames(dmlower)=group
+  	 rownames(dmupper)=colnames(X)
+	   if(is.null(group)) colnames(dmupper)=levels(cluster)
+	   else colnames(dmupper)=group
 	   
 	   return(list(stat=dm,lowerCI=dmlower,upperCI=dmupper))
     }

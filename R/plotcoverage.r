@@ -1,4 +1,4 @@
-plotcoverage<-function(x, y=NULL, by=0.05, type="stat", max.order=NULL, group = NULL,  alpha = 0.05, add=FALSE, xlab=expression(A[t]),...) {
+plotcoverage<-function(x, y=NULL, by=0.05, type="stat", max.order=NULL, group = NULL,  alpha = NULL, add=FALSE, xlab=expression(A[t]),...) {
   match.arg(type,c("lowerCI","upperCI","stat"))
   Atseq <- seq(0,1.0,by=by)
   covA<-numeric(length(Atseq))
@@ -7,7 +7,7 @@ plotcoverage<-function(x, y=NULL, by=0.05, type="stat", max.order=NULL, group = 
     sel2 <- rep(TRUE,length(num.order))
     if(!is.null(max.order)) sel2[num.order>max.order] <- FALSE
     for(i in 1:length(Atseq)) {
-      covA[i] = coverage(x, selection = sel2, At = Atseq[i], type=type)
+      covA[i] = coverage(x, selection = sel2, At = Atseq[i], type=type, alpha = alpha)
     }
   }
   else if(inherits(x,"data.frame")) {

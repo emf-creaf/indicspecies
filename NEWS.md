@@ -7,3 +7,5 @@
 - New option 'min.order' in function 'indicators'
 - New algorithm for 'combinespecies', similar to the one used for 'indicators'
 - New option 'min.order' in function 'combinespecies'
+- Permutation tests are now available in function 'indicators'
+- Options 'nboot' and 'alpha' of functions 'strassoc' and 'indicators' renamed to 'nboot.ci' and 'alpha.ci'

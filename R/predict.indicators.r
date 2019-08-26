@@ -1,5 +1,5 @@
 predict.indicators<-function(object, newdata = NULL, cv = FALSE, ...) {
-  C <- object$C
+  C <- as.matrix(object$C)
   nc<-nrow(C)
   taxnames <-colnames(C)
   if(cv) {
@@ -12,10 +12,11 @@ predict.indicators<-function(object, newdata = NULL, cv = FALSE, ...) {
     Astat<-matrix(0, nrow=nr, ncol=nc)
     for(r in 1:nr) {
       for(i in 1:nc) {
-        found<-sum(X[r,as.logical(C[i,]), drop=FALSE]>0)==sum(C[i,]) #Is the species combination there? (for each site)
+        spvec = colnames(C)[C[i,]==1]
+        found<-sum(X[r,spvec, drop=FALSE]>0)==sum(C[i,]) #Is the species combination there? (for each site)
         if(found) {
           # Recalculate A excluding the row
-          sc.ab <-apply(X[-r,as.logical(C[i,]), drop=FALSE],1,min)
+          sc.ab <-apply(X[-r,spvec, drop=FALSE],1,min)
           scg = sc.ab[group.vec[-r]]
           if(func=="IndVal.g") {
             mg = (sum(scg)/ng)

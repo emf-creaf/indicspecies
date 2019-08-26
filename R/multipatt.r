@@ -133,8 +133,8 @@ indvalcomb <- function(x, memb, comb, min.order, max.order, mode = "group", rest
 
 
   #function multipatt starts here	
-  vegnames <- names(x)
   x <- as.matrix(x)                                                                                                                                
+  vegnames <- colnames(x)
   nsps = ncol(x)
   clnames = levels(as.factor(cluster))
   k = length(clnames)
@@ -203,7 +203,8 @@ indvalcomb <- function(x, memb, comb, min.order, max.order, mode = "group", rest
   #prepares matrix of results
   if(!is.null(restcomb))  m <- as.data.frame(t(combin[,restcomb][,wmax]))
   else  m <- as.data.frame(t(combin[,wmax]))
-  dimnames(m) <- list(vegnames, sapply(clnames, function(x) paste("s", x, sep='.')))
+  row.names(m) <- vegnames
+  names(m) <- sapply(clnames, function(x) paste("s", x, sep='.'))
   m$index <- wmax
   m$stat <- apply(str,1,max)
 

@@ -42,21 +42,16 @@ data(wetland) ## Loads species data
 ## Creates three clusters using kmeans
 wetkm = kmeans(wetland, centers=3) 
 
-## Determine sensitivity of individual species
-B=strassoc(wetland, cluster=wetkm$cluster,func="B") 
-
-## Select species with more than 20\% of sensitivity for the first group
-sel=which(B[,1]>0.2) 
 
 ## Run indicator analysis with species combinations for the first group
-sc= indicators(X=wetland[,sel], cluster=wetkm$cluster, group=1, verbose=TRUE, At=0.5, Bt=0.2)
+sc= indicators(X=wetland, cluster=wetkm$cluster, group=1, verbose=TRUE, At=0.5, Bt=0.2)
 
 ## Use the indicators to make predictions of the probability of group #1
 ## Normally an independent data set should be used, because 'wetland' was used to derive
 ## indicators. The same would be obtained calling 'predict(sc)' without further arguments.
 p<-predict(sc, wetland)
 
-## Calculate cross-validated probabilities (calls functions indicators once for each site 
+## Calculate cross-validated probabilities (recalculates 'A' statistics once for each site 
 ## after excluding it, and then calls predict.indicators for that site)
 pcv = predict(sc, cv = TRUE)
 

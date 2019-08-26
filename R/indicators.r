@@ -1,5 +1,11 @@
-indicators <- function (X, cluster, group, func="IndVal", min.order = 1, max.order = 5, max.indicators=NULL, At = 0, Bt=0, sqrtIVt =0, nboot=0, alpha=0.05, XC = TRUE, enableFixed = FALSE, verbose=FALSE) {
+indicators <- function (X, cluster, group, func="IndVal", min.order = 1, max.order = 5, max.indicators=NULL, 
+                        At = 0, Bt=0, sqrtIVt =0, 
+                        control = how(), print.perm = FALSE,
+                        nboot.ci=NULL, alpha.ci=0.05, XC = TRUE, enableFixed = FALSE, verbose=FALSE) {
 	                 
+  # Turn into a matrix (if not)
+  X = as.matrix(X)
+  
   func <- match.arg(func, c("IndVal", "IndVal.g"))                                                                                                             
   if(sum(is.na(cluster))>0) stop("Cannot deal with NA values. Remove and run again.")
   if(sum(is.na(X))>0) stop("Cannot deal with NA values. Remove and run again.")
@@ -15,7 +21,7 @@ indicators <- function (X, cluster, group, func="IndVal", min.order = 1, max.ord
   group.vec[is.na(group.vec)] = FALSE
 
   #Get species names
-  spplist = names(X)
+  spplist = colnames(X)
   if(verbose) cat(paste("Number of candidate species: ",length(spplist),"\n", sep=""))
   if(length(spplist)==1) stop("At least two species are necessary.")
   
@@ -110,18 +116,18 @@ indicators <- function (X, cluster, group, func="IndVal", min.order = 1, max.ord
     Bstat = Bstat[sel]
     sqrtIVstat = sqrtIVstat[sel]
     nc = max.indicators
-    Cvalid<-as.data.frame(matrix(0,nrow=nc,ncol=length(spplist)))
-    names(Cvalid)<-spplist
-    XC = data.frame(matrix(0, nrow=nrow(X), ncol=nc))
+    Cvalid<-matrix(0,nrow=nc,ncol=length(spplist))
+    colnames(Cvalid)<-spplist
+    XC = matrix(0, nrow=nrow(X), ncol=nc)
     for(i in 1:nc) {
       spvec = as.numeric(comblistDef[[sel[i]]])
       XC[,i] <-apply(X[,spvec, drop=FALSE],1,min)
       Cvalid[i,spvec] = 1
     }
   } else {
-    Cvalid<-as.data.frame(matrix(0,nrow=nc,ncol=length(spplist)))
-    XC = data.frame(matrix(0, nrow=nrow(X), ncol=nc))
-    names(Cvalid)<-spplist
+    Cvalid = matrix(0,nrow=nc,ncol=length(spplist))
+    XC = matrix(0, nrow=nrow(X), ncol=nc)
+    colnames(Cvalid)<-spplist
     for(i in 1:nc) {
       spvec = as.numeric(comblistDef[[i]])
       sc.ab <-apply(X[,spvec, drop=FALSE],1,min)
@@ -138,6 +144,10 @@ indicators <- function (X, cluster, group, func="IndVal", min.order = 1, max.ord
     }
     sqrtIVstat = sqrt(Astat*Bstat)    
   }
+  cn = 1:ncol(XC)
+  for(i in 1:ncol(XC)) cn[i] = paste(spplist[Cvalid[i,]==1], collapse="+")
+  rownames(Cvalid) = cn
+  rownames(XC) = rownames(X)
   
   #Remove species that do not appear in any valid combination
   selSpp = colSums(Cvalid)>0
@@ -145,18 +155,22 @@ indicators <- function (X, cluster, group, func="IndVal", min.order = 1, max.ord
   Cvalid = Cvalid[,selSpp]
   nspp <- sum(selSpp)
   
+  # Calculate statistical significance by calling signassoc
+  if(verbose) cat(paste("Calculating statistical significance (permutational test)...\n"))
+  mode = ifelse(func=="IndVal.g",1,0)
+  p.value = signassoc(XC, cluster = cluster, mode = mode, control = control, print.perm = print.perm)[,group]
   
-  #Calculate bootstrap confidence intervals for sensitivity and ppp of valid combinations
-  if(nboot>0) {
-  	  if(nboot<100) nboot=100 #Minimum of 100 bootstrap replicates
+  # Calculate bootstrap confidence intervals for sensitivity and ppp of valid combinations
+  if(!is.null(nboot.ci)) {
+  	  if(nboot.ci<100) nboot.ci=100 #Minimum of 100 bootstrap replicates
 	  if(verbose) {
   			cat(paste("Calculating bootstrap confidence intervals"))
   	  }
-	  dmbA = matrix(NA,nrow=nboot,ncol=nc)
-	  dmbB = matrix(NA,nrow=nboot,ncol=nc)
-	  dmbIV = matrix(NA,nrow=nboot,ncol=nc)
-	  for(b in 1:nboot) {
-	  	  if(b%%round(nboot/10)==0 && verbose) cat(".")
+	  dmbA = matrix(NA,nrow=nboot.ci,ncol=nc)
+	  dmbB = matrix(NA,nrow=nboot.ci,ncol=nc)
+	  dmbIV = matrix(NA,nrow=nboot.ci,ncol=nc)
+	  for(b in 1:nboot.ci) {
+	  	  if(b%%round(nboot.ci/10)==0 && verbose) cat(".")
 		  bi = sample(nsites,replace=TRUE)
 		  ngb = sum(group.vec[bi])
 		  XCB = as.matrix(XC[bi,])
@@ -179,32 +193,33 @@ indicators <- function (X, cluster, group, func="IndVal", min.order = 1, max.ord
 	  dmupperIV = rep(0,nc)
 	  for(i in 1:nc) {	
 			sdmb = sort(dmbA[,i])			
-			dmlowerA[i]=sdmb[(alpha/2.0)*nboot]
-			dmupperA[i]=sdmb[(1-(alpha/2.0))*nboot]
+			dmlowerA[i]=sdmb[(alpha.ci/2.0)*nboot.ci]
+			dmupperA[i]=sdmb[(1-(alpha.ci/2.0))*nboot.ci]
 			sdmb = sort(dmbB[,i])
-			dmlowerB[i]=sdmb[(alpha/2.0)*nboot]
-			dmupperB[i]=sdmb[(1-(alpha/2.0))*nboot]
+			dmlowerB[i]=sdmb[(alpha.ci/2.0)*nboot.ci]
+			dmupperB[i]=sdmb[(1-(alpha.ci/2.0))*nboot.ci]
 			sdmb = sort(dmbIV[,i])
-			dmlowerIV[i]= sdmb[(alpha/2.0)*nboot]
-			dmupperIV[i]= sdmb[(1-(alpha/2.0))*nboot]
+			dmlowerIV[i]= sdmb[(alpha.ci/2.0)*nboot.ci]
+			dmupperIV[i]= sdmb[(1-(alpha.ci/2.0))*nboot.ci]
 	  }
-	  sA = as.data.frame(cbind(Astat,dmlowerA,dmupperA))
-  	  names(sA) = c("stat", "lowerCI", "upperCI")
-  	  row.names(sA) = row.names(Cvalid)
-	  sB = as.data.frame(cbind(Bstat,dmlowerB,dmupperB))
-  	  names(sB) = c("stat", "lowerCI", "upperCI")
-  	  row.names(sB) = row.names(Cvalid)
+	  sA = cbind(Astat,dmlowerA,dmupperA)
+  	  colnames(sA) = c("stat", "lowerCI", "upperCI")
+  	  rownames(sA) = row.names(Cvalid)
+	  sB = cbind(Bstat,dmlowerB,dmupperB)
+  	  colnames(sB) = c("stat", "lowerCI", "upperCI")
+  	  rownames(sB) = row.names(Cvalid)
 	  sIV = as.data.frame(cbind(sqrtIVstat,dmlowerIV,dmupperIV))
   	  names(sIV) = c("stat", "lowerCI", "upperCI")
-  	  row.names(sIV) = row.names(Cvalid)
-  } else{
+  	  rownames(sIV) = row.names(Cvalid)
+  
+  } else {
   	  sA = Astat
   	  sB = Bstat
   	  sIV = sqrtIVstat
   }
   
   result = list(func = func, X = X, cluster = cluster, group.vec =group.vec, candidates = spplist, finalsplist= spplist[selSpp], 
-                C=Cvalid, XC=XC, A=sA, B=sB, sqrtIV=sIV)
+                C=Cvalid, XC=XC, A=sA, B=sB, sqrtIV=sIV, p.value = p.value)
   class(result) = "indicators"
   return(result)
 }

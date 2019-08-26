@@ -1,14 +1,18 @@
 `signassoc` <-
 function(X, U=NULL, cluster=NULL, mode = 1, alternative="greater", control = how(), print.perm=FALSE) {
 	
-vector.to.partition <- function(v, clnames) {
+  vector.to.partition <- function(v, clnames) {
     m <- t(sapply(v,function(x) as.numeric(x==clnames)))
     dimnames(m) = list(1:length(v),clnames)
     return(m)                                                                                                                              
-}                                                                                                                                          
-	
+  }                                                                                                                                          
+  
+
+  #Turn into a matrix (if not)
+  X = as.matrix(X)
+
   nsps = ncol(X)
-  spnames = names(X)
+  spnames = colnames(X)
   nsites = nrow(X)
   nperm = control$nperm
   
@@ -23,7 +27,6 @@ vector.to.partition <- function(v, clnames) {
   cdm = matrix(1,nrow=nsps,ncol=ngroups)
   ddm = matrix(1,nrow=nsps,ncol=ngroups)
   
-  X = as.matrix(X)
   U = as.matrix(U)
   if(mode==0) {
 	  dm = t(X)%*%U
@@ -67,9 +70,8 @@ vector.to.partition <- function(v, clnames) {
 	} else {
 		cdm=pmin(matrix(1,nrow=nsps,ncol=ngroups),(2*pmin(cdm,ddm))/(nperm+1))
 	}
-	cdm = as.data.frame(cdm)
-	row.names(cdm)=spnames
-   names(cdm)=names(as.data.frame(U))
+	rownames(cdm)=spnames
+  colnames(cdm)=colnames(U)
 	})
   a[3] <- sprintf("%2f",a[3])
   #cat("Time to compute p-values =",a[3]," sec",'\n')
@@ -81,8 +83,8 @@ vector.to.partition <- function(v, clnames) {
    	  best[i] = which(cdm[i,]==min(cdm[i,]))[1]
 	  psidak[i] = (1-(1-min(cdm[i,]))^ngroups)
    	}
-	cdm = data.frame(cbind(cdm,best,psidak))
-	names(cdm) = c(levels(as.factor(cluster)),"best","psidak")
+	cdm = cbind(cdm,best,psidak)
+	colnames(cdm) = c(levels(as.factor(cluster)),"best","psidak")
 	return(cdm)      
  }
 

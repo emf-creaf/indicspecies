@@ -13,8 +13,10 @@
 \usage{
 indicators(X, cluster, group, func="IndVal", min.order = 1, max.order=5, 
            max.indicators=NULL, At=0, Bt=0, sqrtIVt=0, 
-           nboot=0, alpha=0.05, XC=TRUE, enableFixed = FALSE,            verbose = FALSE)
-\method{print}{indicators} (x, At=0, Bt=0, sqrtIVt=0, selection=NULL, confint=FALSE,...)
+           control = how(), print.perm = FALSE,
+           nboot.ci=NULL, alpha.ci=0.05, XC=TRUE, enableFixed = FALSE, 
+           verbose = FALSE)
+\method{print}{indicators} (x, At=0, Bt=0, sqrtIVt=0, alpha = 1.0, selection=NULL, confint=FALSE,...)
 \method{plot}{indicators} (x, type="sqrtIV", maxline=TRUE,...)
 \method{summary}{indicators} (object,...)
 }
@@ -31,8 +33,11 @@ indicators(X, cluster, group, func="IndVal", min.order = 1, max.order=5,
   \item{At}{Threshold for positive predictive value used to select valid indicators. Combinations with lower values are not kept.}
   \item{Bt}{Threshold for sensitivity used to select valid indicators. Combinations with lower values are not kept.}
   \item{sqrtIVt}{Threshold for (square root of) indicator value. Combinations with lower values are not kept.}
-  \item{nboot}{Number of bootstrap samples for confidence intervals.}
-  \item{alpha}{Error in confidence intervals.}
+  \item{alpha}{Threshold for statistical significance of indicator value. Combinations with higher p-values are not kept.}
+  \item{control}{a list of control values describing properties of the permutation test design, as returned by a call to \code{\link{how}}.}
+  \item{print.perm}{If TRUE, prints permutation numbers after each set of 100 permutations.}
+  \item{nboot.ci}{Number of bootstrap samples for confidence intervals. If \code{nboot.ci = NULL} then confidence intervals are not estimated.}
+  \item{alpha.ci}{Error in confidence intervals.}
   \item{XC}{If TRUE, outputs the abundance/occurrence matrix of species combinations.}
   \item{enableFixed}{If TRUE, uses species that occur in all sites as fixed elements and creates combinations with the remaining ones.}
   \item{verbose}{If TRUE, prints the results of each step.}
@@ -43,7 +48,7 @@ indicators(X, cluster, group, func="IndVal", min.order = 1, max.order=5,
   \item{...}{Additional arguments for functions \code{print},\code{summary} or \code{plot}.}
 }
 \details{
-   Function \code{indicators} creates explores the indicator value of the simultaneous occurrence of sets of species (i.e. species combinations). The method is described in De \enc{Cáceres}{Caceres} et al. (2012) and is a generalization of the Indicator Value method of \enc{Dufrêne}{Dufrene} & Legendre (1997). The minimum and maximum number of species conforming the species combination can be controlled using \code{min.order} or \code{max.order}. For each combination of species it determines its positive predictive value (A), sensitivity (B) and the square root of indicator value (sqrtIV). If \code{nboot>0} then bootstrap confidence intervals are determined with the specified \code{alpha} level, as explained in De \enc{Cáceres}{Caceres} & Legendre (2009). The combinations to be kept can be restricted to those whose positive predictive value, sensitivity and/or indicator value are equal or greater than input thresholds. Function \code{print} allows printing the results in a nice table, whereas \code{summary} provides information about candidate species, combinations and coverage of the set of indicators. Function \code{plot} draws the statistics against the order (i.e. the number of species) of the combination.
+   Function \code{indicators} creates explores the indicator value of the simultaneous occurrence of sets of species (i.e. species combinations). The method is described in De \enc{Cáceres}{Caceres} et al. (2012) and is a generalization of the Indicator Value method of \enc{Dufrêne}{Dufrene} & Legendre (1997). The minimum and maximum number of species conforming the species combination can be controlled using \code{min.order} or \code{max.order}. For each combination of species it determines its positive predictive value (A), sensitivity (B) and the square root of indicator value (sqrtIV). Statistical significance of indicators for the target site group is determined by calling function \code{\link{signassoc}}. Additionally, if \code{nboot.ci} is not null then bootstrap confidence intervals are determined with the specified \code{alpha} level, as explained in De \enc{Cáceres}{Caceres} & Legendre (2009). The combinations to be kept can be restricted to those whose positive predictive value, sensitivity and/or indicator value are equal or greater than input thresholds. Function \code{print} allows printing the results in a nice table, whereas \code{summary} provides information about candidate species, combinations and coverage of the set of indicators. Function \code{plot} draws the statistics against the order (i.e. the number of species) of the combination.
 }
 \value{
   An object of class \code{indicators} with:
@@ -51,9 +56,10 @@ indicators(X, cluster, group, func="IndVal", min.order = 1, max.order=5,
   \item{finalsplist}{The vector of species finally selected for combinations.}
   \item{C}{A matrix describing all the combinations studied.}
   \item{XC}{A matrix containing the abundance/occurrence of each species combination.}
-  \item{A}{Positive predictive power of species combinations. If \code{nboot>0} then this includes the lower and upper bounds of the confidence interval.}
-  \item{B}{Sensitivity of species combinations. If \code{nboot>0} then this includes the lower and upper bounds of the confidence interval.}
-  \item{sqrtIV}{Square root of indicator value of species combinations. If \code{nboot>0} then this includes the lower and upper bounds of the confidence interval.}
+  \item{A}{Positive predictive power of species combinations. If \code{nboot} is not missing then this includes the lower and upper bounds of the confidence interval.}
+  \item{B}{Sensitivity of species combinations. If \code{nboot} is not missing then this includes the lower and upper bounds of the confidence interval.}
+  \item{sqrtIV}{Square root of indicator value of species combinations. If \code{nboot} is not missing then this includes the lower and upper bounds of the confidence interval.}
+  \item{sign}{P-value of the permutation test of statistical significance.}
   \item{group.vec}{A logical vector indicating the membership to the target group.}
 }
 \references{
@@ -76,14 +82,11 @@ data(wetland) ## Loads species data
 ## Creates three clusters using kmeans
 wetkm = kmeans(wetland, centers=3) 
 
-## Determine sensitivity of individual species
-B=strassoc(wetland, cluster=wetkm$cluster,func="B") 
-
-## Select species with more than 20% of sensitivity for the first group
-sel=which(B[,1]>0.2) 
+## Number of sites in each group
+table(wetkm$cluster)
 
 ## Run indicator analysis with species combinations for the first group
-sc= indicators(X=wetland[,sel], cluster=wetkm$cluster, group=1, verbose=TRUE, 
+sc= indicators(X=wetland, cluster=wetkm$cluster, group=1, verbose=TRUE, 
                At=0.5, Bt=0.2)
 
 #Prints the results
@@ -96,7 +99,7 @@ plot(sc, type="B")
 
 ## Run indicator analysis with species combinations for the first group, 
 ## but forcing 'Orysp' to be in all combinations
-sc2= indicators(X=wetland[,sel], cluster=wetkm$cluster, group=1, verbose=TRUE, 
+sc2= indicators(X=wetland, cluster=wetkm$cluster, group=1, verbose=TRUE, 
                 At=0.5, Bt=0.2, enableFixed=TRUE)
 
 

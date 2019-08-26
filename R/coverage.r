@@ -1,5 +1,5 @@
 #Determines the coverage of a set of indicators
-coverage <- function (x, y=NULL, selection=NULL, minstat=NULL, At=NULL, Bt=NULL, type="stat", alpha=0.05) {
+coverage <- function (x, y=NULL, selection=NULL, minstat=NULL, At=NULL, Bt=NULL, type="stat", alpha=NULL) {
     match.arg(type,c("lowerCI","upperCI","stat"))
     if(inherits(x,"indicators")) {
       speciescomb = x
@@ -28,6 +28,10 @@ coverage <- function (x, y=NULL, selection=NULL, minstat=NULL, At=NULL, Bt=NULL,
         }
         else selection = selection & (speciescomb$sqrtIV>=minstat)
       }
+      if(!is.null(alpha)) {
+        selection = selection & (speciescomb$p.value<=alpha)
+      }
+      
       if(length(dim(speciescomb$C))==2) c = speciescomb$C[selection,]
       else c = speciescomb$c[selection]
       if(sum(selection)==0) return(0)

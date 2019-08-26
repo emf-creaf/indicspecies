@@ -8,7 +8,8 @@
  This function allows reducing drastically the number of species combinations to be retained for a given target site group.
 }
 \usage{
-pruneindicators(x, At=0, Bt=0, sqrtIVt=0, max.indicators=4, verbose=FALSE) 
+pruneindicators(x, At=0, Bt=0, sqrtIVt=0, alpha = 1.0,
+                max.indicators=4, verbose=FALSE) 
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -16,6 +17,7 @@ pruneindicators(x, At=0, Bt=0, sqrtIVt=0, max.indicators=4, verbose=FALSE)
   \item{At}{Threshold for positive predictive value. Combinations with lower values are not kept.}
   \item{Bt}{Threshold for sensitivity. Combinations with lower values are not kept.}
   \item{sqrtIVt}{Threshold for (square root of) indicator value. Combinations with lower values are not kept.}
+  \item{alpha}{Threshold for statistical significance of indicator value. Combinations with higher p-values are not kept.}
   \item{max.indicators}{Maximum number of species combinations to be kept. If \code{NULL}, the function returns all the non-nested valid indicators without further selection.}
   \item{verbose}{If TRUE, prints the results of each step.}
 }
@@ -43,14 +45,8 @@ data(wetland) ## Loads species data
 ## Creates three clusters using kmeans
 wetkm = kmeans(wetland, centers=3) 
 
-## Determine sensitivity of individual species
-B=strassoc(wetland, cluster=wetkm$cluster,func="B") 
-
-## Select species with more than 20% of sensitivity for the first group
-sel=which(B[,1]>0.2) 
-
 ## Run indicator analysis with species combinations for the first group
-sc= indicators(X=wetland[,sel], cluster=wetkm$cluster, group=1, verbose=TRUE, At=0.5, Bt=0.2)
+sc= indicators(X=wetland, cluster=wetkm$cluster, group=1, verbose=TRUE, At=0.5, Bt=0.2)
 
 ## Finds the 'best' subset of indicators
 sc2=pruneindicators(sc, At=0.5, Bt=0.2, verbose=TRUE)

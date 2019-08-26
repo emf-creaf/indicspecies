@@ -21,7 +21,9 @@ options(width=67)
 \section{Introduction}
 Determining the occurrence or abundance of a small set of indicator species, as an alternative to sampling the entire community, has been particularly useful in longterm environmental monitoring for conservation or ecological management. Species are chosen as indicators if they (i) reflect the biotic or abiotic state of the environment; (ii) provide evidence for the impacts of environmental change; or (iii) predict the diversity of other species, taxa or communities within an area. 
 
-In this tutorial we will show how to use the functions included in package \texttt{indicspecies} to conduct indicator species analysis. This package was originally created as a supplementary material to \citet{DeCaceres2009}, but has been developing since then and now \texttt{indicspecies} updates are distributed from CRAN. Before doing anything else, we need to load the functions of the package:
+In this tutorial we will show how to use the functions included in package \texttt{indicspecies} to conduct indicator species analysis. This package was originally created as a supplementary material to \citet{DeCaceres2009}, but has been developing since then and now \texttt{indicspecies} updates are distributed from CRAN at GitHub. 
+
+Before doing anything else, we need to load the functions of the package:
 <<>>=
 library(indicspecies)
 @
@@ -70,10 +72,10 @@ summary(indval)
 @
 In our wetland community data, `Ludads' is strongly and significantly associated with Group 1, whereas `Pancam' would be a good indicator of Group 3. In addition, there are some species whose patterns of abundance are more associated with a combination of groups. For example, `Melcor' is strongly associated with the combination of Groups 2 and 3.
 
-It is important to stress that the indicator species analysis is conducted for each species independently, although the results are often summarized for all species. User should bear in mind possible problems of multiple testing when making community-level statements \citep{DeCaceres2009}\citep{Legendre2012}.
+It is important to stress that the indicator species analysis is conducted for each species independently, although the results are often summarized for all species. User should bear in mind possible problems of multiple testing when making community-level statements such as `\emph{the number of indicator species is X}' \citep{DeCaceres2009}\citep{Legendre2012}.
 
 \subsubsection{Examining the indicator value components}
-If the association index used in \texttt{multipatt} is \texttt{func = "IndVal"} or \texttt{func = "IndVal.g"}, one can also inspect the indicator value components when displaying the results. Indeed, the indicator value index is the product of two components, called `A' and `B' \citep{Dufrene1997}\citep{DeCaceres2009}. (1) Component `A' is the probability that the surveyed site belongs to the target site group given the fact that the species has been found. This conditional probability is called the \emph{specificity} or \emph{positive predictive value} of the species as indicator of the site group. (2) Component `B' is the probability of finding the species in sites belonging to the site group. This second conditional probability is called the \emph{fidelity} or \emph{sensitivity} of the species as indicator of the target site group. To display the indicator value components `A' and `B' one simply uses:
+If the association index used in \texttt{multipatt} is \texttt{func = "IndVal"} or \texttt{func = "IndVal.g"}, one can also inspect the indicator value components when displaying the results. Indeed, the indicator value index is the product of two components, called `A' and `B' \citep{Dufrene1997}\citep{DeCaceres2009}. (1) Component `A' is sample estimate of the probability that the surveyed site belongs to the target site group given the fact that the species has been found. This conditional probability is called the \emph{specificity} or \emph{positive predictive value} of the species as indicator of the site group. (2) Component `B' is sample estimate of the probability of finding the species in sites belonging to the site group. This second conditional probability is called the \emph{fidelity} or \emph{sensitivity} of the species as indicator of the target site group. To display the indicator value components `A' and `B' one simply uses:
 <<>>=
 summary(indval, indvalcomp=TRUE)
 @
@@ -93,7 +95,7 @@ After accessing the object \texttt{indval\$sign}, we know that the four species 
 \subsection{Analyzing species ecological preferences with correlation indices}
 Several other indices can be used to analyze the association between a species and a group of sites \citep{DeCaceres2009}. Diagnostic (or indicator) species are an important tool in vegetation science, because these species can be used to characterize and indicate specific plant community types. A statistic commonly used to determine the association (also known as \emph{fidelity}, not to be confounded with the indicator value component) between species and vegetation types is Pearson's \emph{phi coefficient of association} \citep{Chytry2002a}. This coefficient is a measure of the correlation between two binary vectors. It is possible to calculate the phi coefficient in \texttt{multipatt} after transforming our community data to presence-absence:
 <<>>=
-wetlandpa = as.data.frame(ifelse(wetland>0,1,0))
+wetlandpa = ifelse(wetland>0,1,0)
 phi = multipatt(wetlandpa, groups, func = "r", 
                 control = how(nperm=999)) 
 @
@@ -169,7 +171,8 @@ round(head(prefstat),3)
 @
 A feature of \texttt{strassoc} that is lacking in \texttt{multipatt} is the possibility to obtain confidence interval limits by bootstrapping. In this case, the function returns a list with three elements: `\texttt{stat}', `\texttt{lowerCI}' and `\texttt{upperCI}'
 <<>>=
-prefstat = strassoc(wetland, cluster=groups, func="A.g", nboot = 199)
+prefstat = strassoc(wetland, cluster=groups, func="A.g", 
+                    nboot.ci = 199)
 round(head(prefstat$lowerCI),3)
 round(head(prefstat$upperCI),3)
 @
@@ -192,11 +195,11 @@ The coverage can be calculated for all the site groups of a \texttt{multipatt} o
 <<>>=
 coverage(wetland, indvalori)
 @
-Note that to obtain the coverage we need to input both the community data set and the object of class \texttt{multipatt}. In this case the coverage was complete (i.e. 100\%) for combinations `1', `3'. In contrast, group `2' has a lower coverage because only one species, `Phynod', can be considered indicator of the site group, and this species does not always occur in sites of the group. 
+Note that to obtain the coverage we need to input both the community data set and the object of class \texttt{multipatt}. In this case the coverage was complete (i.e. 100\%) for site groups `1' and `3'. In contrast, group `2' has a lower coverage because only one species, `Phynod', can be considered indicator of the site group, and this species does not always occur in sites of the group. 
 
-The coverage of site groups depends on how many and which indicators are considered as valid. By default, only the statistical significance (i.e., \texttt{alpha=0.05}) determined in \texttt{multipatt} is used to determine what indicators are valid. We can add more requirements to the validity of indicator species by specifying additional parameters to the function \texttt{coverage}. For example, if we want to know the coverage of our site groups with indicators that are significant and whose `A' value is equal or higher than 0.8, we can use:
+The coverage of site groups depends on how many and which indicators are considered as valid. Statistical significance (i.e., \texttt{alpha}) determined in \texttt{multipatt} can be used to determine what indicators are valid, but we can add more requirements to the validity of indicator species by specifying additional parameters to the function \texttt{coverage}. For example, if we want to know the coverage of our site groups with indicators that are significant and whose `A' value is equal or higher than 0.8, we can use:
 <<>>=
-coverage(wetland, indvalori, At = 0.8)
+coverage(wetland, indvalori, At = 0.8, alpha = 0.05)
 @
 Note that, after adding this extra requirement, group `2' has 0\% coverage and the coverage of group `1' has also decreased.
 
@@ -232,27 +235,22 @@ indvalspcomb = multipatt(wetcomb, groups, duleg = TRUE,
                        control = how(nperm=999))
 summary(indvalspcomb, indvalcomp = TRUE)
 @
-The best indicators for both Group 1 and Group 3 are individual species (`Ludads' and `Pancam'). However, Group 2 is best indicated if we find, in the same community, `Phynod' and `Elesp'. Note that the species forming the indicator combination do not need to be good single-species indicators themselves. In our example `Phynod' is a good indicator of Group 2 but `Elesp.' is not.
+The best indicators for both Group 1 and Group 3 are individual species (`Ludads' and `Pancam'). However, Group 2 is best indicated if we find, in the same community, `Phynod' and `Elesp'. Note that the species forming the indicator combination do not need to be good single-species indicators themselves. In our example `Phynod' is a good indicator of Group 2 but `Elesp.' is not. As an aside, note that we used the option \texttt{duleg=TRUE} in this last example, hence excluding site group combinations, for simplicity.
 
 \subsection{The function \texttt{indicators}}
-In the previous example, there were many combinations of species that were significantly associated with site groups. There is another, more efficient, way of exploring the potential indicators for a given target site group. Say, for example, that we want to determine indicators for our Group 1, and we want to consider not only species pairs but also species trios. Since there are 33 species in the data set, the number of combinations can be very large. We can reduce the number of combinations to consider by selecting the \emph{candidate species} to combine. In this example, we choose those species whose frequency within Group 2 is larger than 20\%:
+In the previous example, there were many combinations of species that were significantly associated any of the site groups. There is another, more efficient, way of exploring the potential indicators for a given target site group. Say, for example, that we want to determine indicators for our Group 2, and we want to consider not only species pairs but also species trios. We can run the indicator analysis using:
 <<>>=
-B=strassoc(wetland, cluster=groups ,func="B") 
-sel=which(B[,2]>0.2) 
-sel
-@
-Object \texttt{sel} contains the indices of the \Sexpr{length(sel)} species that are candidates. Once we have our selection of candidate species, we can run the indicator analysis using:
-<<>>=
-sc= indicators(X=wetland[,sel], cluster=groups, group=2, verbose=TRUE, 
+sc= indicators(X=wetland, cluster=groups, group=2, 
+               max.order = 3, verbose=TRUE, 
                At=0.5, Bt=0.2)
 @
-We can discard species combinations with low indicator values by setting thresholds for components A and B (in our example using  \texttt{At=0.5} and \texttt{Bt=0.2}). The parameter \texttt{verbose = TRUE} allowed us to obtain information about the analysis process. Note that, by default, the \texttt{indicators} function will consider species combinations up to an order of 5. This can result in long computation times if the set of candidate species is not small. Similarly to \texttt{multipatt}, we can print the results of \texttt{indicators} for the most useful indicators, using:
+We can discard species combinations with low indicator values by setting thresholds for components A and B (in our example using  \texttt{At=0.5} and \texttt{Bt=0.2}). The parameter \texttt{verbose = TRUE} allowed us to obtain information about the analysis process. Note that, by default, the \texttt{indicators} function will consider species combinations up to an order of 5 (i.e. \texttt{max.order = TRUE}). This can result in long computation times if the set of candidate species is not small. Similarly to \texttt{multipatt}, we can print the results of \texttt{indicators} for the most useful indicators, using:
 <<>>==
 print(sc, sqrtIVt = 0.6)
 @
-The species combinations are listed in decreasing indicator value order. In this case, we obtain that a combination of `Phynod', `Helind' and `Elesp.' is even a better indicator than `Phynod' and `Elesp.'. Note that the `A' and IndVal values for the pair `Phynod' and `Elesp.' do not exactly match those obtained before. This is because \texttt{indicators} uses `IndVal' and not `IndVal.g' as association statistic.
+The species combinations are listed in decreasing indicator value order. Function \texttt{indicators} also calculates the statistical significance of indicator combinations, by making an internal call to \texttt{signassoc}. In this case, we obtain that a combination of `Phynod', `Helind' and `Elesp.' is even a better indicator than `Phynod' and `Elesp.'. Note that the `A' and IndVal values for the pair `Phynod' and `Elesp.' do not exactly match those obtained before. This is because \texttt{indicators} uses `IndVal' and not `IndVal.g' as default association statistic. In contrast to \texttt{multipatt}, in \texttt{indicators} association statistics are restricted to `IndVal' and `IndVal.g'.
 
-Although we did not show it here, \texttt{indicators} should in most cases be run with the option requesting for bootstrap confidence intervals (using option \texttt{nboot}), because they allow us to know the reliability of the indicator value estimates. This is specially important for site groups of small size \citep{DeCaceres2012}.
+Although we did not show it here, \texttt{indicators} can be run with the option requesting for bootstrap confidence intervals (using option \texttt{nboot.ci}). This allow us to know the reliability of the indicator value estimates, which is specially important for site groups of small size \citep{DeCaceres2012}.
 
 \subsection{Determining the coverage for objects of class \texttt{indicators}}
 We can determine the proportion of sites of the target site group where one or another indicator is found, using, as shown before for objects of class \texttt{multipatt}, the function \texttt{coverage}:
@@ -261,7 +259,7 @@ coverage(sc)
 @
 In this case the coverage was complete (i.e. 100\%). Like we did for objects of class \texttt{multipatt}, we can add requirements to the validity of indicators. For example:
 <<>>=
-coverage(sc, At=0.8)
+coverage(sc, At=0.8, alpha =0.05)
 @
 While we do not show here, in the case of objects of class \texttt{indicators} we recommend to explore the coverage using the lower boundary of confidence intervals, using option \texttt{type} of function \texttt{coverage}. 
 
@@ -277,15 +275,15 @@ legend(x=0.1, y=20, legend=c("Species combinations","Species singletons"),
 The coverage plot tells us that if we want to use a very large `A' threshold (i.e., if we want to be very strict to select valid indicators), we won't have enough valid indicators to cover all the area of our target site group. This limitation is more severe if only single species are considered.
 
 \subsection{The function \texttt{pruneindicators}}
-As there may be many species combinations that could be used as indicators, the function \texttt{pruneindicators} helps us to reduce the possibilities. First, the function selects those indicators (species or species combinations) that are valid according to the input thresholds \texttt{At} and \texttt{Bt}. Second, the function discards those valid indicators whose occurrence patterns are nested within other valid indicators. Third, the function evaluates the coverage of the remaining set of indicators. Finally, it explores subsets of increasing number of indicators, until the same coverage as the coverage of the complete set is attained and the subset of indicators is returned.
+As there may be many species combinations that could be used as indicators, the function \texttt{pruneindicators} helps us to reduce the possibilities. First, the function selects those indicators (species or species combinations) that are valid according to the input thresholds \texttt{At}, \texttt{Bt} and \texttt{alpha}. Second, the function discards those valid indicators whose occurrence patterns are nested within other valid indicators. Third, the function evaluates the coverage of the remaining set of indicators. Finally, it explores subsets of increasing number of indicators, until the same coverage as the coverage of the complete set is attained and the subset of indicators is returned.
 <<>>=
 sc2=pruneindicators(sc, At=0.8, Bt=0.2, verbose=TRUE)
 print(sc2)
 @
-In our example, and using these thresholds, the best indicators would be: (1) the combination of `Phynod' and `Elesp.'; (2) `Cyprot' and (3) `Echpas' and `Phynod'. The three indicators together cover 93\% of the sites belonging to the target site group.
+In our example, and using these thresholds, the best indicators for group '2' would be: (a) the combination of `Phynod' and `Elesp.'; (b) `Cyprot' and (c) `Echpas' and `Phynod'. The three indicators together cover 93\% of the sites belonging to the target site group.
 
 \subsection{The function \texttt{predict.indicators}}
-The function \texttt{indicators} provides a model that can be used to predict a target site group. Once a given combination of species has been found, the corresponding \texttt{A} value is the probability of being in the target site group given the combination of species has been found. Therefore, the set of indicators could be used to predict the likelihood of the target site group in a new data set. The function \texttt{predict.indicators} has exactly this role. It takes the results of \texttt{indicators} and a new community data matrix as input. Given this input, the function calculates the probability of the target site group for each site. The following code exemplifies the use of \texttt{predict.indicators} with the same data that was used for the calibration of the indicator model (a new community data matrix should be used in normal applications):
+The function \texttt{indicators} provides a model that can be used to predict a target site group. Once a given combination of species has been found, the corresponding \texttt{A} value is an estimate of the probability of being in the target site group given the combination of species has been found. Therefore, the set of indicators could be used to predict the likelihood of the target site group in a new data set. The function \texttt{predict.indicators} has exactly this role. It takes the results of \texttt{indicators} and a new community data matrix as input. Given this input, the function calculates the probability of the target site group for each site. The following code exemplifies the use of \texttt{predict.indicators} with the same data that was used for the calibration of the indicator model (a new community data matrix should be used in normal applications):
 <<>>=
 p<-predict(sc2, wetland)
 @
@@ -293,13 +291,13 @@ Of course, this will return biased estimates, as the data set used to build the 
 <<>>=
 p<-predict(sc2)
 @
-which uses the original data set storied in the \texttt{indicators} object. If we want to evaluate these probabilities in a cross-validated fashion (i.e., excluding each target site for the calculation of positive predictive values and the probability of the target site group), we can use:
+which uses the original data set storied in the \texttt{indicators} object. If we want to evaluate these probability estimates in a cross-validated fashion (i.e., excluding each target site for the calculation of positive predictive values and the probability of the target site group), we can use:
 <<>>=
 pcv<-predict(sc2, cv=TRUE)
 @
 We can compare the probabilities (evaluated by resubstitution and cross-validation) with the original group memberships:
 <<>>=
-data.frame(Group1 = as.numeric(wetkm$cluster==1), Prob = p, Prob_CV = pcv)
+data.frame(Group2 = as.numeric(wetkm$cluster==2), Prob = p, Prob_CV = pcv)
 @
 Cross-validated probabilities will tend to be lower than probabilities evaluated by resubstitution for sites originally belonging to the target site group and higher for other sites.
 \bibliographystyle{plainnat}

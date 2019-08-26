@@ -10,9 +10,9 @@ Function \code{coverage} calculates the proportion of sites of the target site g
 }
 \usage{
 coverage(x, y=NULL, selection=NULL, minstat=NULL, At=NULL, Bt=NULL, type="stat", 
-alpha=0.05) 
+alpha=NULL) 
 plotcoverage(x, y=NULL, by=0.05, type="stat", max.order=NULL, group = NULL,  
-alpha = 0.05, add=FALSE, xlab=expression(A[t]), ...)
+alpha = NULL, add=FALSE, xlab=expression(A[t]), ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -22,7 +22,7 @@ alpha = 0.05, add=FALSE, xlab=expression(A[t]), ...)
   \item{minstat}{Minimum value of the statistic for selecting indicators.}
   \item{At}{Minimum value of positive predictive value (A) for selecting indicators.}
   \item{Bt}{Minimum value for sensitivity (B) for selecting indicators.}
-  \item{alpha}{Significance level for selecting indicators. This parameter is only used when the function is called using objects of class '\code{multipatt}'.}
+  \item{alpha}{Significance level for selecting indicators.}
   \item{type}{Specifies how to select indicators: (1) using the value of the statistic (\code{type = "stat"}); (2) the lower bound of its confidence interval (\code{type = "lowerCI"}); or (3) the upper bound of its confidence interval (\code{type = "upperCI"}). This parameter makes sense when the function is called using objects of class '\code{indicators}' and bootstrap confidence intervals are available for this object. Otherwise \code{type} has no effect and the value of the statistic is used for selection. In function \code{coverage}, the value of \code{type} applies to selection using \code{minstat}, \code{At} and \code{Bt}. In function \code{plotcoverage}, the value of \code{type} applies to selection using \code{At}.}
   \item{by}{Rate of increase in the predictive value threshold (At).}
   \item{max.order}{The maximum number of species conforming species combinations (allows examining the effects of increasing the order of combinations).This parameter is only used when the function is called using objects of class '\code{indicators}'.}
@@ -52,14 +52,8 @@ data(wetland) ## Loads species data
 ## Creates three clusters using kmeans
 wetkm = kmeans(wetland, centers=3) 
 
-## Determine sensitivity of individual species
-B=strassoc(wetland, cluster=wetkm$cluster,func="B") 
-
-## Select species with more than 20% of sensitivity for the first group
-sel=which(B[,1]>0.2) 
-
 ## Run indicator analysis with species combinations for the first group
-sc= indicators(X=wetland[,sel], cluster=wetkm$cluster, group=1, verbose=TRUE, At=0.5, Bt=0.2)
+sc= indicators(X=wetland, cluster=wetkm$cluster, group=1, verbose=TRUE, At=0.5, Bt=0.2)
 
 ## Determine the coverage of the selected set of indicators
 coverage(sc)
@@ -71,7 +65,7 @@ plotcoverage(sc, max.order=2, add=TRUE, lty=2)
 ## Runs the combination analysis using IndVal.g as statistic
 wetpt = multipatt(wetland, wetkm$cluster, control = how(nperm=999)) 
 ## Determines the coverage for each site group combination
-coverage(wetland, wetpt)
+coverage(wetland, wetpt, alpha = 0.05)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

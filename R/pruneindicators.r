@@ -1,4 +1,5 @@
-pruneindicators<-function(x, At=0, Bt=0, sqrtIVt=0, max.indicators=4, verbose=FALSE) {
+pruneindicators<-function(x, At=0, Bt=0, sqrtIVt=0, alpha = 1.0, 
+                          max.indicators=4, verbose=FALSE) {
 
 nonnested <- function (x, selection=NULL, verbose=FALSE) {
 	if(is.null(selection)) selection = rep(TRUE, nrow(x$C))
@@ -30,9 +31,9 @@ nonnested <- function (x, selection=NULL, verbose=FALSE) {
 	if(verbose) cat(paste("Coverage of initial set of ",nrow(x$C)," indicators: ", round(initCoverage*100, digits=1),"%\n", sep=""))
 	
 	if(length(dim(x$A))==2) {
-		selection<- x$A$lowerCI>=At & x$B$lowerCI>=Bt & x$sqrtIV$lowerCI>=sqrtIVt
+		selection<- x$A$lowerCI>=At & x$B$lowerCI>=Bt & x$sqrtIV$lowerCI>=sqrtIVt & x$p.value <= alpha
 	} else {
-		selection<- x$A>=At & x$B>=Bt & x$sqrtIV>=sqrtIVt
+		selection<- x$A>=At & x$B>=Bt & x$sqrtIV>=sqrtIVt & x$p.value <= alpha
 	}
     if(sum(selection)==0) {
     	if(verbose) cat(paste("No indicator is valid using the given thresholds."))
@@ -43,20 +44,20 @@ nonnested <- function (x, selection=NULL, verbose=FALSE) {
 	
 	if(sum(selection)>1) {
 	  NN <-nonnested(x, selection=selection, verbose=FALSE)
-		selection <- row.names(x$C) %in% NN
+		selection <- rownames(x$C) %in% NN
 		nnCoverage<-coverage(x, selection=selection)
 		if(verbose) cat(paste("Coverage of valid set of ",sum(selection)," nonnested indicators: ", round(nnCoverage*100, digits=1),"%\n", sep=""))
 	
 	
-		c = x$C[selection,]
+		c = x$C[selection,, drop = FALSE]
 		group.vec = x$group.vec
 		xc = x$XC[, selection]
 
 		#Preliminaries	
-  		spnames = names(c)
-  		spplist = names(c)
+  	spnames = colnames(c)
+  	spplist = colnames(c)
 
-		indnames<-row.names(c)
+		indnames<-rownames(c)
 		k <- length(indnames)
 		j=1
 		continue = (!is.null(max.indicators))
@@ -112,21 +113,8 @@ nonnested <- function (x, selection=NULL, verbose=FALSE) {
 	    indicators2$B = indicators2$B[selmodFinal]
     	indicators2$sqrtIV = indicators2$sqrtIV[selmodFinal]
     }
+    indicators2$p.value = indicators2$p.value[selmodFinal]
 
-  	# selSpp = colSums(indicators2$C)>0
-  	# indicators2$C = indicators2$C[,selSpp, drop=FALSE]
-  	# row.names(indicators2$C)<-row.names(x$C)[selmodFinal]
-  	# names(indicators2$C)<-names(x$C)[selSpp]
-  	
-    #Select rows that contain the species or the group
-#     if(sum(selmodFinal)>1) {
-# 	  	selRows = rowSums(indicators2$XC)>0 | indicators2$group.vec
-# 	  	indicators2$XC = indicators2$XC[selRows, , drop=FALSE]
-# 	} else {
-# 	  	selRows = sum(indicators2$XC) | indicators2$group.vec
-# 	  	indicators2$XC = indicators2$XC[selRows, , drop=FALSE]
-# 	}
-#     
 	return(indicators2)
 }
 
