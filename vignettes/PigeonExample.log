@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.20)  20 MAY 2019 20:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2016.10.20)  5 NOV 2019 09:00
 entering extended mode
 **./PigeonExample.tex
 (PigeonExample.tex
@@ -350,7 +350,7 @@ Package: authblk 2001/02/27 1.3 (PWD)
 \c@authors=\count89
 \c@affil=\count90
 )
-(C:/PROGRA~1/R/R-36~1.0/share/texmf/tex/latex\Sweave.sty
+(C:/PROGRA~1/R/R-36~1.1/share/texmf/tex/latex\Sweave.sty
 Package: Sweave 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
@@ -689,11 +689,11 @@ Package pdftex.def Info: PigeonExample-005.pdf used on input line 61.
 Here is how much of TeX's memory you used:
  3509 strings out of 493334
  46665 string characters out of 3139218
- 104499 words of memory out of 3000000
+ 104477 words of memory out of 3000000
  6937 multiletter control sequences out of 15000+200000
  32896 words of font info for 71 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,4n,25p,449b,290s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 40i,5n,25p,449b,278s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
@@ -707,7 +707,7 @@ es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX
 nts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type
 1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmtt10.pfb>
-Output written on PigeonExample.pdf (9 pages, 188310 bytes).
+Output written on PigeonExample.pdf (9 pages, 188913 bytes).
 PDF statistics:
  91 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
