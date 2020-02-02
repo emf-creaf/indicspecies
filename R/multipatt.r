@@ -1,5 +1,7 @@
 #Finds the combination of clusters which is most significantly associated to each of the species patterns
-multipatt <- function (x, cluster, func = "IndVal.g", duleg = FALSE, restcomb=NULL, min.order=1, max.order=NULL, control = how(), print.perm = FALSE)                                                                                              
+multipatt <- function (x, cluster, func = "IndVal.g", duleg = FALSE, restcomb=NULL, 
+                       min.order=1, max.order=NULL, 
+                       control = how(), permutations = NULL, print.perm = FALSE)                                                                                              
 {
 	                                                                                                                              
 
@@ -138,8 +140,15 @@ indvalcomb <- function(x, memb, comb, min.order, max.order, mode = "group", rest
   nsps = ncol(x)
   clnames = levels(as.factor(cluster))
   k = length(clnames)
-  nperm = control$nperm
-
+  
+  if(!is.null(control)){
+    nperm = control$nperm
+  } else if (!is.null(permutations)){
+    nperm = nrow(permutations)
+  } else {
+    stop("You must control permutations with how() or supply a matrix of permutations")
+  }
+  
   # Check parameters
   func= match.arg(func, c("r","r.g","IndVal.g","IndVal", "indval", "indval.g"))
   if(k<2) stop("At least two clusters are required.")
@@ -211,23 +220,27 @@ indvalcomb <- function(x, memb, comb, min.order, max.order, mode = "group", rest
   #Perform permutations and compute p-values
   pv <- 1
   for (p in 1:nperm) {
-  	  pInd = shuffle(length(cluster), control=control)
-      tmpclind = clind[pInd]
-	    combp = combin[tmpclind,]
-  	  membp = diag(1,k,k)[tmpclind,]
-  	  tmpstr <- switch(func,
-	     r   = rcomb(x, membp, combp, min.order, max.order, mode = "site", restcomb = restcomb),
-	     r.g = rcomb(x, membp, combp, min.order, max.order, mode = "group", restcomb = restcomb),
-	     indval = indvalcomb(x, membp, combp, min.order, max.order, mode = "site", restcomb = restcomb),
-	     IndVal = indvalcomb(x, membp, combp, min.order, max.order, mode = "site", restcomb = restcomb),
-	     indval.g= indvalcomb(x, membp, combp, min.order, max.order, mode = "group", restcomb = restcomb),
-	     IndVal.g= indvalcomb(x, membp, combp, min.order, max.order, mode = "group", restcomb = restcomb)
-      )
-      tmpmaxstr <- vector(length=nrow(tmpstr))
-      for(i in 1:nrow(tmpstr)) tmpmaxstr[i] <- max(tmpstr[i,])	# apply is more slowly in this case
-      pv = pv + (tmpmaxstr >= m$stat)
+    if(!is.null(control)){
+      pInd = shuffle(length(cluster), control=control)
+    } else {
+      pInd = permutations[p,]
+    }
+    tmpclind = clind[pInd]
+    combp = combin[tmpclind,]
+    membp = diag(1,k,k)[tmpclind,]
+    tmpstr <- switch(func,
+                     r   = rcomb(x, membp, combp, min.order, max.order, mode = "site", restcomb = restcomb),
+                     r.g = rcomb(x, membp, combp, min.order, max.order, mode = "group", restcomb = restcomb),
+                     indval = indvalcomb(x, membp, combp, min.order, max.order, mode = "site", restcomb = restcomb),
+                     IndVal = indvalcomb(x, membp, combp, min.order, max.order, mode = "site", restcomb = restcomb),
+                     indval.g= indvalcomb(x, membp, combp, min.order, max.order, mode = "group", restcomb = restcomb),
+                     IndVal.g= indvalcomb(x, membp, combp, min.order, max.order, mode = "group", restcomb = restcomb)
+    )
+    tmpmaxstr <- vector(length=nrow(tmpstr))
+    for(i in 1:nrow(tmpstr)) tmpmaxstr[i] <- max(tmpstr[i,])	# apply is more slowly in this case
+    pv = pv + (tmpmaxstr >= m$stat)
   }
-
+  
   m$p.value <- pv/(1 + nperm)
   #Put NA for the p-value of species whose maximum associated combination is the set of all combinations
   m$p.value[m$index == (2^k-1)] <- NA

@@ -2,6 +2,9 @@
  NEWS for R Package "indicspecies"
 -------------------------------
 
+# Version 1.7.9
+- Improvements in 'multipatt' function to accept custom permutation designs, by Noah Dell
+
 # Version 1.7.8
 - New algorithm for 'combinespecies', similar to the one used for 'indicators'
 - New option 'min.order' in function 'combinespecies'
