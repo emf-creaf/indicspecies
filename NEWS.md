@@ -3,7 +3,7 @@
 -------------------------------
 
 # Version 1.7.9
-- Improvements in 'multipatt' function to accept custom permutation designs, by Noah Dell
+- Improvements in 'multipatt', 'signassoc' and 'indicators' functions to accept custom permutation designs, by Noah Dell.
 
 # Version 1.7.8
 - New algorithm for 'combinespecies', similar to the one used for 'indicators'

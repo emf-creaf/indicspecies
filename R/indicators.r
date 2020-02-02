@@ -1,6 +1,6 @@
 indicators <- function (X, cluster, group, func="IndVal", min.order = 1, max.order = 5, max.indicators=NULL, 
                         At = 0, Bt=0, sqrtIVt =0, 
-                        control = how(), print.perm = FALSE,
+                        control = how(), permutations = NULL, print.perm = FALSE,
                         nboot.ci=NULL, alpha.ci=0.05, XC = TRUE, enableFixed = FALSE, verbose=FALSE) {
 	                 
   # Turn into a matrix (if not)
@@ -158,7 +158,8 @@ indicators <- function (X, cluster, group, func="IndVal", min.order = 1, max.ord
   # Calculate statistical significance by calling signassoc
   if(verbose) cat(paste("Calculating statistical significance (permutational test)...\n"))
   mode = ifelse(func=="IndVal.g",1,0)
-  p.value = signassoc(XC, cluster = cluster, mode = mode, control = control, print.perm = print.perm)[,group]
+  p.value = signassoc(XC, cluster = cluster, mode = mode, control = control, 
+                      permutations = permutations, print.perm = print.perm)[,group]
   
   # Calculate bootstrap confidence intervals for sensitivity and ppp of valid combinations
   if(!is.null(nboot.ci)) {

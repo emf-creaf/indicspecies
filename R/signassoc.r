@@ -1,5 +1,5 @@
-`signassoc` <-
-function(X, U=NULL, cluster=NULL, mode = 1, alternative="greater", control = how(), print.perm=FALSE) {
+signassoc <- function(X, U=NULL, cluster=NULL, mode = 1, alternative="greater", 
+                      control = how(), permutations = NULL, print.perm=FALSE) {
 	
   vector.to.partition <- function(v, clnames) {
     m <- t(sapply(v,function(x) as.numeric(x==clnames)))
@@ -14,7 +14,14 @@ function(X, U=NULL, cluster=NULL, mode = 1, alternative="greater", control = how
   nsps = ncol(X)
   spnames = colnames(X)
   nsites = nrow(X)
-  nperm = control$nperm
+
+  if(!is.null(control)){
+    nperm = control$nperm
+  } else if (!is.null(permutations)){
+    nperm = nrow(permutations)
+  } else {
+    stop("You must control permutations with how() or supply a matrix of permutations")
+  }
   
    mode= match.arg(as.character(mode), c("0","1"))
    alternative= match.arg(as.character(alternative), c("greater","less","two.sided"))
@@ -43,7 +50,11 @@ function(X, U=NULL, cluster=NULL, mode = 1, alternative="greater", control = how
   a <- system.time({
   for(p in 1:nperm) {
       if(p%%100==0 & print.perm) cat("perm", p,"\n")
-		pInd=shuffle(nsites,control)	##Calls function from package 'permute'	
+    if(!is.null(control)){
+      pInd = shuffle(nsites, control=control)
+    } else {
+      pInd = permutations[p,]
+    }
 		pX = as.matrix(X[pInd,])
   		if(mode==0) {
 	  		dmp = t(pX)%*%U
