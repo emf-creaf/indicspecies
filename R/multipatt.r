@@ -79,7 +79,7 @@ rcomb <- function(x, memb, comb, min.order, max.order, mode="group", restcomb=NU
   if(!is.null(restcomb)) {
     if(sum(restcomb %in% (1:ncol(str)))!=length(restcomb)) 
       stop(paste("One or more indices in 'restcomb' are out of range [1, ",ncol(str),"]",sep=""))      
-    str <- str[,restcomb]
+    str <- str[,restcomb, drop = FALSE]
   }
   return(str)
 }
@@ -125,9 +125,9 @@ indvalcomb <- function(x, memb, comb, min.order, max.order, mode = "group", rest
   if(!is.null(restcomb)) {
     if(sum(restcomb %in% (1:ncol(iv)))!=length(restcomb)) 
       stop(paste("One or more indices in 'restcomb' are out of range [1, ",ncol(iv),"]",sep=""))
-    iv = iv[,restcomb]
-    A = A[,restcomb]
-    nispni = nispni[,restcomb]
+    iv = iv[,restcomb, drop = FALSE]
+    A = A[,restcomb, drop = FALSE]
+    nispni = nispni[,restcomb, drop = FALSE]
   }
   if(!indvalcomp) return(iv)
   else return(list(A=A,B=nispni, iv=iv))
@@ -210,7 +210,7 @@ indvalcomb <- function(x, memb, comb, min.order, max.order, mode = "group", rest
   maxstr = apply(str,1,max) 
   wmax <- max.col(str)
   #prepares matrix of results
-  if(!is.null(restcomb))  m <- as.data.frame(t(combin[,restcomb][,wmax]))
+  if(!is.null(restcomb))  m <- as.data.frame(t(combin[,restcomb, drop = FALSE][,wmax]))
   else  m <- as.data.frame(t(combin[,wmax]))
   row.names(m) <- vegnames
   names(m) <- sapply(clnames, function(x) paste("s", x, sep='.'))
@@ -245,7 +245,7 @@ indvalcomb <- function(x, memb, comb, min.order, max.order, mode = "group", rest
   #Put NA for the p-value of species whose maximum associated combination is the set of all combinations
   m$p.value[m$index == (2^k-1)] <- NA
 
-  if(!is.null(restcomb))  comb<-comb[,restcomb]
+  if(!is.null(restcomb))  comb<-comb[,restcomb, drop = FALSE]
   
   a = list(call=match.call(), func = func, cluster = cluster, comb = comb, str = str, A=A, B=B, sign = m)
   class(a) = "multipatt"

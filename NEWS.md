@@ -2,6 +2,9 @@
  NEWS for R Package "indicspecies"
 -------------------------------
 
+# Version 1.7.10
+- Bug correction in 'multipatt' for single-valued restcomb
+
 # Version 1.7.9
 - Improvements in 'multipatt', 'signassoc' and 'indicators' functions to accept custom permutation designs, by Noah Dell.
 
