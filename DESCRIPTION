@@ -10,9 +10,9 @@ Authors@R: c(
 	person('Noah', 'Dell', role='aut'))
 Description: Functions to assess the strength and statistical significance of the relationship between species occurrence/abundance and groups of sites [De Caceres & Legendre (2009) <doi:10.1890/08-1823.1>]. Also includes functions to measure species niche breadth using resource categories [De Caceres et al. (2011) <doi:10.1111/J.1600-0706.2011.19679.x>].
 Depends: permute 
-Suggests: sp, rgeos
+Suggests: sp, rgeos, rmarkdown, knitr
 Encoding: UTF-8
 License: GPL (>= 2)
-URL: https://vegmod.github.io/software/indicspecies
+URL: https://emf-creaf.github.io/indicspecies
 LazyLoad: yes
-
+VignetteBuilder: utils, knitr

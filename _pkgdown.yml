@@ -1,0 +1,36 @@
+destination: "docs/"
+
+home:
+  links:
+  - text: Package website
+    href: https://emf-creaf.github.io/indicspecies/
+    
+reference:
+- title: Indicator Species Analysis
+  desc:  Functions to assess the strength and statistical significance of the relationship between species occurrence/abundance and groups of sites
+  contents:
+  - wetland
+  - coverage
+  - combinespecies
+  - multipatt
+  - indicators
+  - plot.indicators
+  - plotcoverage
+  - predict.indicators
+  - print.indicators
+  - pruneindicators
+  - signassoc
+  - strassoc
+  - summary.indicators
+  - summary.multipatt
+
+- title: Niche metric functions
+  desc: Functions to measure species niche breadth using resource categories
+  contents:
+  - starts_with("birds")
+  - dfood
+  - starts_with("diet")
+  - starts_with("niche")
+  - pigeons
+  - plotniche
+  - resourceD
