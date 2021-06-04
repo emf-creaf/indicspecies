@@ -15,4 +15,4 @@ Encoding: UTF-8
 License: GPL (>= 2)
 URL: https://emf-creaf.github.io/indicspecies
 LazyLoad: yes
-VignetteBuilder: utils, knitr
+VignetteBuilder: knitr
