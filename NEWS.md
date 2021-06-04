@@ -4,6 +4,7 @@
 
 # Version 1.7.10
 - Bug correction in 'multipatt' for single-valued restcomb
+- Vignettes rewritten in Rmarkdown
 
 # Version 1.7.9
 - Improvements in 'multipatt', 'signassoc' and 'indicators' functions to accept custom permutation designs, by Noah Dell.
