@@ -1,0 +1,8 @@
+pandoc: 2.7.3
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  IndicatorSpeciesAnalysis: IndicatorSpeciesAnalysis.html
+  PigeonExample: PigeonExample.html
+last_built: 2021-06-07T11:18Z
+
