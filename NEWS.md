@@ -2,6 +2,9 @@
  NEWS for R Package "indicspecies"
 -------------------------------
 
+# Version 1.7.11
+- Code modification in 'multipatt' to avoid large matrix multiplication
+
 # Version 1.7.10
 - Bug correction in 'multipatt' for single-valued restcomb
 - Vignettes rewritten in Rmarkdown

@@ -31,7 +31,8 @@ rcomb <- function(x, memb, comb, min.order, max.order, mode="group", restcomb=NU
   k = ncol(memb)
   nsps = ncol(x) #Number of species
   N = dim(comb)[1]	#Number of sites
-  ni = diag(t(memb) %*% memb)
+  # ni = diag(t(memb) %*% memb)
+  ni = colSums(memb*memb)
   tx <- t(x)
   aisp = (tx %*% memb)
   lisp = (tx^2 %*% memb)
@@ -40,7 +41,8 @@ rcomb <- function(x, memb, comb, min.order, max.order, mode="group", restcomb=NU
     lspK = rowSums(lisp)
     aspK = rowSums(aisp)		
     aspC = (tx %*% comb)
-    nC = diag(t(comb) %*% comb)
+    # nC = diag(t(comb) %*% comb) too much memory demanded!
+    nC = colSums(comb*comb)
   } else if(mode=="group") {
     aispni=sweep(aisp,2,ni,"/")
     lispni=sweep(lisp,2,ni,"/")
@@ -91,7 +93,8 @@ indvalcomb <- function(x, memb, comb, min.order, max.order, mode = "group", rest
   aisp = tx %*% comb
   dx <- dim(tx)
   nisp <- matrix(as.logical(tx),nrow=dx[1],ncol=dx[2]) %*% comb
-  ni = diag(t(comb) %*% comb)
+  # ni = diag(t(memb) %*% memb)
+  ni = colSums(memb*memb)
   nispni = sweep(nisp, 2, ni, "/")   
   if (mode == "site") A = sweep(aisp, 1, colSums(x), "/")  
   else {
