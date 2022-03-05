@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">indicspecies</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.11</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.12</span>
       </span>
     </div>
 
@@ -78,7 +78,7 @@
                         <h4 data-toc-skip class="author">Miquel De Cáceres, CREAF</h4>
                         <h4 data-toc-skip class="author">Oriol Lapiedra, CREAF</h4>
             
-            <h4 data-toc-skip class="date">2022-03-04</h4>
+            <h4 data-toc-skip class="date">2022-03-05</h4>
       
       
       <div class="hidden name"><code>PigeonExample.Rmd</code></div>
@@ -145,22 +145,22 @@
 <p>We first conduct our calculations without taking into account the resemblance between resources (which is equal to stating that <span class="math inline">\(d_{jk}=1\)</span> in all cases):</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.barcelona</span>, mode<span class="op">=</span><span class="st">"single"</span><span class="op">)</span>
-<span class="co">#&gt;               B       LC        UC</span>
-<span class="co">#&gt; Niche 0.2966578 0.265548 0.3349229</span>
-<span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.moia</span>, mode<span class="op">=</span><span class="st">"single"</span><span class="op">)</span>
 <span class="co">#&gt;               B        LC        UC</span>
-<span class="co">#&gt; Niche 0.1807663 0.1104631 0.2618451</span></code></pre></div>
+<span class="co">#&gt; Niche 0.2966578 0.2704698 0.3412424</span>
+<span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.moia</span>, mode<span class="op">=</span><span class="st">"single"</span><span class="op">)</span>
+<span class="co">#&gt;               B         LC        UC</span>
+<span class="co">#&gt; Niche 0.1807663 0.09905919 0.2583173</span></code></pre></div>
 <p>In general, we can say that the niche breadth of the population in Moià is smaller than the niche breadth of the population in Barcelona. If we repeat the same calculations with the matrix of resource resemblance, we realize that the niche breadth of both populations becomes smaller:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">popvar.barcelona</span> <span class="op">=</span> <span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.barcelona</span>, D<span class="op">=</span><span class="va">dfood</span>, 
                             mode<span class="op">=</span><span class="st">"single"</span><span class="op">)</span>
 <span class="va">popvar.barcelona</span>
 <span class="co">#&gt;               B        LC        UC</span>
-<span class="co">#&gt; Niche 0.2453822 0.2308578 0.2574174</span>
+<span class="co">#&gt; Niche 0.2453822 0.2335896 0.2583331</span>
 <span class="va">popvar.moia</span><span class="op">=</span> <span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.moia</span>, D<span class="op">=</span><span class="va">dfood</span>, mode<span class="op">=</span><span class="st">"single"</span><span class="op">)</span>
 <span class="va">popvar.moia</span>
 <span class="co">#&gt;               B         LC        UC</span>
-<span class="co">#&gt; Niche 0.0853328 0.02811097 0.1720049</span></code></pre></div>
+<span class="co">#&gt; Niche 0.0853328 0.02873674 0.1674508</span></code></pre></div>
 <p>The reason is that the first analysis was assuming that all resources were equally (and maximally) distinct, while the second analysis accounts for the similarity between some resources. Moreover, note that the niche breadth of Moià has decreased more than the niche breadth of Barcelona. This reflects that the resources being used by pigeons of Moià are more similar than the resources used by pigeons of Barcelona.</p>
 </div>
 <div class="section level3">
@@ -172,10 +172,10 @@ O_{12} = \frac{\sum_{j=1}^r\sum_{k=1}^r{f_{1j}f_{2k}(1-d_{jk}^2)}}{\sqrt{\sum_{j
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/nicheoverlap.html">nicheoverlap</a></span><span class="op">(</span>P1<span class="op">=</span><span class="va">diet.barcelona</span>, P2<span class="op">=</span><span class="va">diet.moia</span>, mode<span class="op">=</span><span class="st">"single"</span><span class="op">)</span>
 <span class="co">#&gt;                 O        LC        UC</span>
-<span class="co">#&gt; Overlap 0.7419319 0.4796307 0.9334209</span>
+<span class="co">#&gt; Overlap 0.7419319 0.4534192 0.9260012</span>
 <span class="fu"><a href="../reference/nicheoverlap.html">nicheoverlap</a></span><span class="op">(</span>P1<span class="op">=</span><span class="va">diet.barcelona</span>, P2<span class="op">=</span><span class="va">diet.moia</span>, mode<span class="op">=</span><span class="st">"single"</span>, D <span class="op">=</span> <span class="va">dfood</span><span class="op">)</span>
 <span class="co">#&gt;                 O        LC        UC</span>
-<span class="co">#&gt; Overlap 0.7912472 0.5368964 0.9408531</span></code></pre></div>
+<span class="co">#&gt; Overlap 0.7912472 0.5411774 0.9464044</span></code></pre></div>
 <p>If we include the resemblance between resources, the degree of overlap increases, for the same reason that we obtained smaller niche breadth statistics when resemblances were included.</p>
 </div>
 </div>
