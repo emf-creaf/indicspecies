@@ -2,6 +2,9 @@
  NEWS for R Package "indicspecies"
 -------------------------------
 
+# Version 1.7.12
+- Fixing error introduced unadvertedly
+
 # Version 1.7.11
 - Code modification in 'multipatt' to avoid large matrix multiplication
 

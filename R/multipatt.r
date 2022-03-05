@@ -93,8 +93,8 @@ indvalcomb <- function(x, memb, comb, min.order, max.order, mode = "group", rest
   aisp = tx %*% comb
   dx <- dim(tx)
   nisp <- matrix(as.logical(tx),nrow=dx[1],ncol=dx[2]) %*% comb
-  # ni = diag(t(memb) %*% memb)
-  ni = colSums(memb*memb)
+  # ni = diag(t(comb) %*% comb)
+  ni = colSums(comb*comb)
   nispni = sweep(nisp, 2, ni, "/")   
   if (mode == "site") A = sweep(aisp, 1, colSums(x), "/")  
   else {

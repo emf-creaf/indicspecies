@@ -1,8 +1,8 @@
 Package: indicspecies
 Type: Package
 Title: Relationship Between Species and Groups of Sites
-Version: 1.7.11
-Date: 2022-03-03
+Version: 1.7.12
+Date: 2022-03-05
 Authors@R: c(
 	person('Miquel', 'De Cáceres', role=c('aut','cre'),
 	email='miquelcaceres@gmail.com'),
