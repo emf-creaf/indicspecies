@@ -2,7 +2,7 @@ indicspecies
 ================
 
 <!-- badges: start -->
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/indicspecies)](https://cran.r-project.org/package=indicspecies)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/indicspecies)](https://cran.r-project.org/package=indicspecies)
 [![](https://cranlogs.r-pkg.org/badges/indicspecies)](https://cran.rstudio.com/web/packages/indicspecies/index.html)
 [![R-CMD-check](https://github.com/emf-creaf/indicspecies/workflows/R-CMD-check/badge.svg)](https://github.com/emf-creaf/indicspecies/actions)
 <!-- badges: end -->
@@ -29,16 +29,16 @@ latest stable `indicspecies` R package can be installed from GitHub as
 follows:
 
 ``` r
-devtools::install_github("emf-creaf/indicspecies")
+remotes::install_github("emf-creaf/indicspecies")
 ```
 
 Additionally, users can have help to run package functions directly as
 package vignettes, by forcing their inclusion in installation:
 
 ``` r
-devtools::install_github("emf-creaf/indicspecies", 
-                         build_opts = c("--no-resave-data", "--no-manual"),
-                         build_vignettes = TRUE)
+remotes::install_github("emf-creaf/indicspecies", 
+                        build_opts = c("--no-resave-data", "--no-manual"),
+                        build_vignettes = TRUE)
 ```
 
 ## Usage

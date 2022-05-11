@@ -1,0 +1,24 @@
+id: indicspecies
+title: indicspecies
+emf_type: softwork
+emf_public: true
+emf_automatized: true
+emf_reproducible: false
+emf_draft: false
+nodes: ''
+authors:
+- mcaceres
+resource_link: softworks/indicspecies
+thematic: statistics
+tags:
+- vegetation
+- R
+- statistics
+requirements:
+- 'R (>= 3.4.0)'
+description: Functions to assess the strength and statistical significance of the relationship between species occurrence/abundance and groups of sites. Also includes functions to measure species niche breadth using resource categories.
+links:
+  url_docs: 'https://emf-creaf.github.io/indicspecies/'
+  url_source: 'https://github.com/emf-creaf/indicspecies'
+model_repository: ''
+data_repository: ''

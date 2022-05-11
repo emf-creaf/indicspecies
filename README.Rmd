@@ -26,14 +26,14 @@ Package `indicspecies` provides functions to:
 Package`indicspecies` can be found at [CRAN](https://cran.r-project.org/) package repository. In addition, the latest stable `indicspecies` R package can be installed from GitHub as follows:
 
 ```{r installation, eval = FALSE}
-devtools::install_github("emf-creaf/indicspecies")
+remotes::install_github("emf-creaf/indicspecies")
 ```
 
 Additionally, users can have help to run package functions directly as package vignettes, by forcing their inclusion in installation: 
 ```{r installation vignettes, eval = FALSE}
-devtools::install_github("emf-creaf/indicspecies", 
-                         build_opts = c("--no-resave-data", "--no-manual"),
-                         build_vignettes = TRUE)
+remotes::install_github("emf-creaf/indicspecies", 
+                        build_opts = c("--no-resave-data", "--no-manual"),
+                        build_vignettes = TRUE)
 ```
 
 ## Usage
