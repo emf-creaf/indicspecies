@@ -50,7 +50,7 @@ De \enc{Cáceres}{Caceres}, M., Legendre, P., Moretti, M. 2010. Improving indica
 \enc{Dufrêne}{Dufrene}, M. and P. Legendre. 1997. Species assemblages and indicator species: The need for a flexible asymetrical approach. Ecological Monographs 67:345-366.
 }
 \author{
-Miquel De \enc{Cáceres}{Caceres} Ainsa, CTFC
+Miquel De \enc{Cáceres}{Caceres} Ainsa, EMF-CREAF
 
 Florian Jansen, Institute of Botany and Landscape Ecology, Ernst-Moritz-Arndt-University
 }

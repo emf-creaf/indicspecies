@@ -45,5 +45,4 @@ Use `strassoc()` for assessing strength of associations and `signassoc()` to ass
 + De Cáceres, M., Legendre, P., & Moretti, M. (2010). Improving indicator species analysis by combining groups of sites. Oikos, 119(10), 1674–1684. 
 
 + De Cáceres, M., Legendre, P., Wiser, S. K., & Brotons, L. (2012). Using species combinations in indicator value analyses. Methods in Ecology and Evolution, 3, 973–982. 
-
 + De Cáceres, M., Sol, D., Lapiedra, O., & Legendre, P. (2011). A framework for estimating niche metrics using the resemblance between qualitative resources. Oikos, 120(February), 1341–1350. 

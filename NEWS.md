@@ -2,6 +2,9 @@
  NEWS for R Package "indicspecies"
 -------------------------------
 
+# Version 1.7.13
+- Removed dependency from packages 'sp' and 'rgeos'
+
 # Version 1.7.12
 - Fixing error introduced unadvertedly
 

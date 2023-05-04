@@ -5,7 +5,6 @@
 \alias{summary.indicators}
 \alias{plot.indicators}
 
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{Indicator analysis for species combinations}
 \description{
  Determines the indicator value of species combinations. 
@@ -72,7 +71,7 @@ De \enc{Cáceres}{Caceres}, M. and Legendre, P. 2009. Associations between speci
 
 }
 \author{
-Miquel De \enc{Cáceres}{Caceres} Ainsa, CTFC
+Miquel De \enc{Cáceres}{Caceres} Ainsa, EMF-CREAF
 }
 \seealso{\code{\link{predict.indicators}},\code{\link{pruneindicators}}, \code{\link{coverage}}, \code{\link{multipatt}}, \code{\link{strassoc}}, \code{\link{signassoc}}}
 \examples{

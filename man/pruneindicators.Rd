@@ -34,7 +34,7 @@ De \enc{Cáceres}{Caceres}, M. and Legendre, P. 2009. Associations between speci
 
 }
 \author{
-Miquel De \enc{Cáceres}{Caceres} Ainsa, CTFC
+Miquel De \enc{Cáceres}{Caceres} Ainsa, EMF-CREAF
 }
 \seealso{\code{\link{indicators}}, \code{\link{coverage}}}
 \examples{

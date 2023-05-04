@@ -2,7 +2,6 @@
 \name{combinespecies}
 \alias{combinespecies}
 
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{Combines species from a community table}
 \description{
   Creates species combinations to be used in indicator value analyses. 
@@ -11,7 +10,6 @@
 combinespecies(X, min.order = 1, max.order = 3, min.occ = 1, FUN = min, verbose = FALSE, 
 add.names = TRUE, ...)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{X}{A community data table with sites in rows and species in columns. This table can contain either presence-absence or abundance data.}
   \item{min.order, max.order}{Minimum and maximum number of species conforming species combinations.}
@@ -30,10 +28,10 @@ add.names = TRUE, ...)
   \item{C}{A binary matrix describing the set of species forming each combination ('0' means that the species is not included, and '1' means that the species is included).}
 }
 \references{
-De \enc{Cáceres}{Caceres}, M., Legendre, P., Wiser, S.K. & Brotons, L (in preparation). Using species combinations in indicator analyses.
+De \enc{Cáceres}{Caceres}, M., Legendre, P., Wiser, S.K. and Brotons, L. 2012. Using species combinations in indicator analyses. Methods in Ecology and Evolution 3(6): 973-982.
 }
 \author{
-Miquel De \enc{Cáceres}{Caceres} Ainsa, CTFC
+Miquel De \enc{Cáceres}{Caceres} Ainsa, EMF-CREAF
 }
 \seealso{\code{\link{indicators}}, \code{\link{strassoc}}, \code{\link{signassoc}}}
 \examples{
