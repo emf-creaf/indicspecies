@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">indicspecies</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.13</span>
       </span>
     </div>
 
@@ -60,32 +60,40 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">nichevar</span><span class="op">(</span><span class="va">P</span>, D <span class="op">=</span> <span class="cn">NULL</span>, q <span class="op">=</span> <span class="cn">NULL</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, Np <span class="op">=</span> <span class="cn">NULL</span>, 
-Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op">=</span> <span class="fl">1000</span>, alpha<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span>
-<span class="fu">nichecentroid</span><span class="op">(</span><span class="va">P</span>, D <span class="op">=</span> <span class="cn">NULL</span>, q <span class="op">=</span> <span class="cn">NULL</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, Np <span class="op">=</span> <span class="cn">NULL</span>, 
-Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op">=</span> <span class="fl">1000</span>, alpha<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span>
-<span class="fu">nichepref</span><span class="op">(</span><span class="va">P</span>, D <span class="op">=</span> <span class="cn">NULL</span>, q <span class="op">=</span> <span class="cn">NULL</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, Np <span class="op">=</span> <span class="cn">NULL</span>, 
-Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op">=</span> <span class="fl">1000</span>, alpha<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">nichevar</span><span class="op">(</span><span class="va">P</span>, D <span class="op">=</span> <span class="cn">NULL</span>, q <span class="op">=</span> <span class="cn">NULL</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, Np <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op">=</span> <span class="fl">1000</span>, alpha<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="fu">nichecentroid</span><span class="op">(</span><span class="va">P</span>, D <span class="op">=</span> <span class="cn">NULL</span>, q <span class="op">=</span> <span class="cn">NULL</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, Np <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op">=</span> <span class="fl">1000</span>, alpha<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="fu">nichepref</span><span class="op">(</span><span class="va">P</span>, D <span class="op">=</span> <span class="cn">NULL</span>, q <span class="op">=</span> <span class="cn">NULL</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, Np <span class="op">=</span> <span class="cn">NULL</span>, </span>
+<span>Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op">=</span> <span class="fl">1000</span>, alpha<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>P</dt>
 <dd><p>Data frame containing the relative or absolute usage that a set of species (in rows) make of a set of resources (in columns).</p></dd>
-<dt>D</dt>
+
+  <dt>D</dt>
 <dd><p>Object of type <code><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></code> containing distance values between resources. If no distance matrix is provided (i.e. if <code>D==NULL</code>), the distances between resources is assumed to be maximum.</p></dd>
-<dt>q</dt>
+
+  <dt>q</dt>
 <dd><p>Vector with the availability of each resource.</p></dd>
-<dt>mode</dt>
+
+  <dt>mode</dt>
 <dd><p>Either <code>mode = "single"</code> (rows of matrix P are individual observations to be pooled for a single niche) or <code>mode = "multiple"</code> (rows in P represent different niches).</p></dd>
-<dt>Np</dt>
+
+  <dt>Np</dt>
 <dd><p>Vector with the number of observations per species from which the values in <code>P</code> come (in <code>mode = "multiple"</code>).</p></dd>
-<dt>Nq</dt>
+
+  <dt>Nq</dt>
 <dd><p>The number of observations per species from which the values in <code>q</code> come (in <code>mode = "multiple"</code>).</p></dd>
-<dt>nboot</dt>
+
+  <dt>nboot</dt>
 <dd><p>Number of boostrap samples used to compute bias-corrected percentile confidence intervals.</p></dd>
-<dt>alpha</dt>
+
+  <dt>alpha</dt>
 <dd><p>Used to set the confidence level (i.e. <code>alpha = 0.05</code> means 95 percent confidence interval).</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -93,7 +101,9 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>Function <code>nichepref</code> returns a matrix of species relative preference. Function <code>nichevar</code> returns a vector with the variance of the resources used for each species in <code>P</code>. Function <code>nichecentroid</code> returns a matrix niche centroid in the resource space for each species in <code>df</code>. If bootstrap confidence intervals are asked then the three functions also compute two extra data containing respectively the lower and upper bounds of the confidence intervals obtained following the bias-corrected percentile method. Function <code>nichearea</code> returns the area of the convex hull occupied by the resources used for each species in <code>P</code>.</p>
+    
+
+<p>Function <code>nichepref</code> returns a matrix of species relative preference. Function <code>nichevar</code> returns a vector with the variance of the resources used for each species in <code>P</code>. Function <code>nichecentroid</code> returns a matrix niche centroid in the resource space for each species in <code>df</code>. If bootstrap confidence intervals are asked then the three functions also compute two extra data containing respectively the lower and upper bounds of the confidence intervals obtained following the bias-corrected percentile method. Function <code>nichearea</code> returns the area of the convex hull occupied by the resources used for each species in <code>P</code>.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -103,7 +113,7 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
     </div>
     <div id="author">
     <h2>Author</h2>
-    <p>Miquel De Caceres Ainsa, CTFC</p>
+    <p>Miquel De Caceres Ainsa, EMF-CREAF</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -112,11 +122,11 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Loads example data</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">birds</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The niche metrics using distances among resources and assuming equal availability of resources</span></span>
-<span class="r-in"><span class="fu">nichepref</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span><span class="op">)</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Loads example data</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">birds</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The niche metrics using distances among resources and assuming equal availability of resources</span></span></span>
+<span class="r-in"><span><span class="fu">nichepref</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         R1   R2   R3  R4   R5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.50 0.50 0.00 0.0 0.00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.00 0.25 0.50 0.0 0.25</span>
@@ -128,7 +138,7 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.95 0.00 0.05 0.0 0.00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.25 0.40 0.35 0.0 0.00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.00 0.08 0.40 0.2 0.32</span>
-<span class="r-in"><span class="fu">nichevar</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span><span class="op">)</span> </span>
+<span class="r-in"><span><span class="fu">nichevar</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                B</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.13225261</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.12781527</span>
@@ -140,7 +150,7 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.03317008</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.16380429</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.20396760</span>
-<span class="r-in"><span class="fu">nichecentroid</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span><span class="op">)</span> </span>
+<span class="r-in"><span><span class="fu">nichecentroid</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                V1          V2           V3           V4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B   0.24597349  0.25041608  0.045122608  0.075213112</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B   0.13250560 -0.21553586  0.061091362 -0.058985020</span>
@@ -152,11 +162,11 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp8B   0.22192256  0.44516013 -0.187746731 -0.064344489</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B   0.20990744  0.04140897  0.108601510 -0.031151012</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B -0.05078743 -0.19448564 -0.005282383 -0.055185385</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The niche metrics using distances among resources and computes </span></span>
-<span class="r-in"><span class="co"># 95 percent confidence intervals</span></span>
-<span class="r-in"><span class="fu">nichepref</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span>
-<span class="r-in">Np <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Nq <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The niche metrics using distances among resources and computes </span></span></span>
+<span class="r-in"><span><span class="co"># 95 percent confidence intervals</span></span></span>
+<span class="r-in"><span><span class="fu">nichepref</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span></span>
+<span class="r-in"><span>Np <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Nq <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $F</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         R1   R2   R3  R4   R5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.50 0.50 0.00 0.0 0.00</span>
@@ -171,46 +181,46 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.00 0.08 0.40 0.2 0.32</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $LF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               R1         R2        R3         R4         R5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.25000000 0.24418605        NA         NA         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B          NA 0.08299285 0.2812500         NA 0.06580494</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp3B          NA         NA        NA         NA         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.38095238 0.12134831        NA         NA         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.17410897 0.03687636 0.1708428         NA         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B          NA         NA 0.1282051         NA 0.39130435</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.24703806 0.13211009 0.0000000         NA         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.77479893         NA 0.0000000         NA         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.07172996 0.19476003 0.1323148         NA         NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B         NA 0.00000000 0.1679786 0.07312512 0.13320765</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               R1         R2         R3         R4         R5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.25000000 0.22580645         NA         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B          NA 0.08219178 0.25863874         NA 0.07371007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp3B          NA         NA         NA         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.39310345 0.12723214         NA         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.17878427 0.04469274 0.18236074         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B          NA         NA 0.11952191         NA 0.38461538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.25056948 0.13973183 0.03378378         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.78461538         NA 0.00000000         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.07419355 0.16580311 0.15184815         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B         NA 0.00000000 0.16507937 0.05781738 0.13827384</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $UF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              R1        R2        R3      R4        R5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.7396061 0.7358491        NA      NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B         NA 0.4918734 0.7575758      NA 0.5176056</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp3B         NA        NA        NA      NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.8727273 0.6068966        NA      NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.6645743 0.4356466 0.6608169      NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B         NA        NA 0.6052632      NA 0.8644068</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.7425743 0.6307559 0.3567646      NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  1.0000000        NA 0.2125341      NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.4981550 0.6696665 0.6011561      NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B        NA 0.2418605 0.6411751 0.44353 0.5545346</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              R1        R2        R3        R4        R5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.7674419 0.7424242        NA        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B         NA 0.5051125 0.7555434        NA 0.5264811</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp3B         NA        NA        NA        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.8644068 0.5937500        NA        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.6553191 0.4666667 0.6812749        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B         NA        NA 0.6097561        NA 0.8659794</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.7590361 0.6334101 0.4029304        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  1.0000000        NA 0.2075472        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.5110871 0.6785887 0.6500673        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B        NA 0.2750509 0.6476309 0.4403262 0.5543881</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu">nichevar</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span>
-<span class="r-in">Np <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Nq <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </span>
+<span class="r-in"><span><span class="fu">nichevar</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span></span>
+<span class="r-in"><span>Np <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Nq <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                B         LC         UC</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.13225261 0.13225261 0.13225261</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.12781527 0.08860322 0.14909312</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.12781527 0.09319773 0.15050138</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp3B  0.00000000 0.00000000 0.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.12034987 0.05689752 0.13215600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.18250903 0.18188059 0.18302467</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B  0.08535149 0.04255252 0.09375946</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.16362581 0.13323273 0.18270879</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.03317008 0.00000000 0.11990299</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.16380429 0.12142228 0.18264662</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.20396760 0.14435195 0.24200640</span>
-<span class="r-in"><span class="fu">nichecentroid</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span>
-<span class="r-in">Np <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Nq <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.12034987 0.06322223 0.13223591</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.18250903 0.18150351 0.18301384</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B  0.08535149 0.04418341 0.09378101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.16362581 0.13430111 0.18219248</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.03317008 0.00000000 0.11149844</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.16380429 0.12416993 0.18235454</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.20396760 0.14924006 0.24495919</span>
+<span class="r-in"><span><span class="fu">nichecentroid</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span></span>
+<span class="r-in"><span>Np <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Nq <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $C</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                V1          V2           V3           V4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B   0.24597349  0.25041608  0.045122608  0.075213112</span>
@@ -225,35 +235,35 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B -0.05078743 -0.19448564 -0.005282383 -0.055185385</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $LC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                V1          V2           V3           V4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B   0.23478717  0.12908902 -0.098083195  0.001601352</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B   0.08233996 -0.28177910 -0.064021689 -0.172995082</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp3B           NA          NA           NA           NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B   0.23168392  0.18838462 -0.137516677 -0.018819610</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B   0.17093441 -0.06388437 -0.081336351 -0.175047739</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B   0.01325746 -0.36829488 -0.236872953 -0.127472721</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B   0.19974169  0.06060514 -0.089389829 -0.081417614</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B   0.20726361  0.32886920 -0.203930962 -0.099497264</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B   0.17894184 -0.07657678 -0.009764872 -0.138305786</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B -0.24071854 -0.26917949 -0.113109902 -0.154775671</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                V1          V2          V3           V4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B   0.23549800  0.12501504 -0.08898316  0.006279022</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B   0.09032440 -0.27407986 -0.04951484 -0.170587265</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp3B           NA          NA          NA           NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B   0.23129731  0.17662624 -0.14114435 -0.021363721</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B   0.17053043 -0.06088824 -0.07324648 -0.178253815</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B   0.01529667 -0.36626736 -0.23087923 -0.120768090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B   0.20098240  0.07821521 -0.09525648 -0.075320311</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B   0.20581650  0.31738913 -0.20393096 -0.103887842</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B   0.17501770 -0.09516552  0.01189773 -0.149796339</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B -0.21506974 -0.27125925 -0.11278265 -0.149516523</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $UC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               V1          V2          V3          V4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.25563075  0.37886506  0.16875352  0.13876283</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.17988407 -0.13657517  0.15441931  0.04457269</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp3B          NA          NA          NA          NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.25066940  0.41752693  0.10682842  0.10611460</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.22358390  0.25617365  0.11900035  0.01739810</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B  0.08060250 -0.30133588 -0.03892907  0.07288859</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.24274587  0.34025390  0.13131553  0.08214415</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.22651901  0.48162424 -0.13919404 -0.05280734</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.23444590  0.20435742  0.19591897  0.06588634</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.05093876 -0.08519313  0.07805185  0.02766218</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               V1          V2          V3           V4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.25606780  0.37134085  0.17434852  0.141638819</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.18517072 -0.12277296  0.15925393  0.049918937</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp3B          NA          NA          NA           NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.25169540  0.41824738  0.11837366  0.112866187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.22245690  0.26420564  0.12107268 -0.001955082</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B  0.07891977 -0.30300896 -0.04387502  0.067217187</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.24420490  0.35418147  0.13888145  0.096791940</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.22651901  0.48162424 -0.13356474 -0.052807341</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.23380520  0.18071863  0.20410626  0.064084050</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.05655809 -0.09476358  0.07147389  0.025814719</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Same computations with different resource availability</span></span>
-<span class="r-in"><span class="fu">nichepref</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span>
-<span class="r-in">q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Same computations with different resource availability</span></span></span>
+<span class="r-in"><span><span class="fu">nichepref</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span></span>
+<span class="r-in"><span>q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              R1         R2        R3        R4        R5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.5714286 0.42857143 0.0000000 0.0000000 0.0000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.0000000 0.20912548 0.4562738 0.0000000 0.3346008</span>
@@ -265,8 +275,8 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.9587156 0.00000000 0.0412844 0.0000000 0.0000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.2989130 0.35869565 0.3423913 0.0000000 0.0000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.0000000 0.06364688 0.3471648 0.1818482 0.4073401</span>
-<span class="r-in"><span class="fu">nichevar</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span>
-<span class="r-in">q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">nichevar</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span></span>
+<span class="r-in"><span>q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               B</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.1295536</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.1320325</span>
@@ -278,8 +288,8 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.0276394</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.1718765</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.1962885</span>
-<span class="r-in"><span class="fu">nichecentroid</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span>
-<span class="r-in">q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">nichecentroid</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span></span>
+<span class="r-in"><span>q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                V1          V2           V3           V4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B   0.24319428  0.28344582  0.009543526  0.056924476</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B   0.11538330 -0.23815073  0.019354147 -0.044070792</span>
@@ -291,11 +301,11 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp8B   0.22272378  0.45151626 -0.190567836 -0.062333426</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B   0.20899979  0.06605766  0.085564702 -0.039970962</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B -0.05135008 -0.21784274 -0.043129123 -0.032448647</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The niche metrics using distances among resources and </span></span>
-<span class="r-in"><span class="co"># computes 95 percent confidence intervals</span></span>
-<span class="r-in"><span class="fu">nichepref</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span>
-<span class="r-in">q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, Np <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Nq <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The niche metrics using distances among resources and </span></span></span>
+<span class="r-in"><span><span class="co"># computes 95 percent confidence intervals</span></span></span>
+<span class="r-in"><span><span class="fu">nichepref</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span></span>
+<span class="r-in"><span>q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, Np <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Nq <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $F</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              R1         R2        R3        R4        R5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.5714286 0.42857143 0.0000000 0.0000000 0.0000000</span>
@@ -310,46 +320,46 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.0000000 0.06364688 0.3471648 0.1818482 0.4073401</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $LF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               R1         R2         R3        R4        R5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.30223881 0.20454545         NA        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B          NA 0.06578385 0.23164846        NA 0.1069767</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp3B          NA         NA         NA        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.44660194 0.10526316         NA        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.18540620 0.04241782 0.16984065        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B          NA         NA 0.08993576        NA 0.4642857</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.31645570 0.09829787 0.00000000        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.83678756         NA 0.00000000        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.09039548 0.16279070 0.12375931        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B         NA 0.00000000 0.15341138 0.0553328 0.1901485</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               R1         R2         R3         R4         R5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.29729730 0.19512195         NA         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B          NA 0.07015131 0.21052632         NA 0.09944751</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp3B          NA         NA         NA         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.47058824 0.10321101         NA         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.21456437 0.03922473 0.16488223         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B          NA         NA 0.09090909         NA 0.45660377</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.27963526 0.11483633 0.02765423         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.82102273         NA 0.00000000         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.09952607 0.14765489 0.14693878         NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B         NA 0.00000000 0.17663943 0.06124916 0.18985879</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $UF</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              R1        R2        R3        R4        R5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.7887324 0.6896552        NA        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B         NA 0.4602273 0.7312296        NA 0.5974843</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.8017621 0.6986301        NA        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B         NA 0.4423176 0.7306273        NA 0.6052632</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp3B         NA        NA        NA        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.8928571 0.5400000        NA        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.6972406 0.3939182 0.6477192        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B         NA        NA 0.5277778        NA 0.9090909</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.8227013 0.5443170 0.3548951        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  1.0000000        NA 0.1619048        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.5865992 0.6117367 0.5952214        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B        NA 0.1953418 0.5758865 0.4000273 0.6467662</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.8950276 0.5217391        NA        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.7036082 0.4005236 0.6355090        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B         NA        NA 0.5251256        NA 0.9069767</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.7775372 0.5827108 0.3333333        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  1.0000000        NA 0.1707317        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.5579793 0.6142180 0.5882353        NA        NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B        NA 0.2024159 0.6032172 0.3982301 0.6498079</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"><span class="fu">nichevar</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span>
-<span class="r-in">q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, Np <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Nq <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">nichevar</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span></span>
+<span class="r-in"><span>q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, Np <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Nq <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               B         LC         UC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.1295536 0.10446060 0.13225261</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.1320325 0.10364744 0.15121598</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.1295536 0.10257820 0.13225261</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.1320325 0.10198299 0.15112640</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp3B  0.0000000 0.00000000 0.00000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.1084030 0.05151731 0.13216566</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.1827155 0.18257770 0.18301328</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B  0.0736939 0.03126165 0.09368133</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.1579114 0.11698166 0.18201614</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.0276394 0.00000000 0.10861800</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.1718765 0.13932714 0.18283218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.1962885 0.14263630 0.24060231</span>
-<span class="r-in"><span class="fu">nichecentroid</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span>
-<span class="r-in">q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span>, mode<span class="op">=</span><span class="st">"multiple"</span>,  Np <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Nq <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.1084030 0.04925177 0.13215600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.1827155 0.18263031 0.18299496</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B  0.0736939 0.03578786 0.09364278</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.1579114 0.11566205 0.18176330</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.0276394 0.00000000 0.10525867</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.1718765 0.14260689 0.18295343</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.1962885 0.13780036 0.23991977</span>
+<span class="r-in"><span><span class="fu">nichecentroid</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span></span>
+<span class="r-in"><span>q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span>, mode<span class="op">=</span><span class="st">"multiple"</span>,  Np <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Nq <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $C</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                V1          V2           V3           V4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B   0.24319428  0.28344582  0.009543526  0.056924476</span>
@@ -364,73 +374,32 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B -0.05135008 -0.21784274 -0.043129123 -0.032448647</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $LC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 V1          V2          V3           V4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B   0.234894036  0.14910014 -0.09671508  0.002304603</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B   0.064601297 -0.30280032 -0.11162156 -0.169405313</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp3B            NA          NA          NA           NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B   0.231064453  0.21888769 -0.14571065 -0.022880482</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B   0.171672410 -0.03391336 -0.09603609 -0.173812511</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B   0.008066768 -0.37345582 -0.25212971 -0.078481834</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B   0.204515995  0.08742739 -0.11080206 -0.077498184</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B   0.209870450  0.34954953 -0.20393096 -0.094595435</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B   0.180374578 -0.07729872 -0.02947407 -0.134100017</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B -0.196201119 -0.29567675 -0.14557070 -0.132320306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 V1          V2          V3          V4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B   0.234111006  0.15415432 -0.10673933 -0.00284814</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B   0.065367915 -0.30264347 -0.10671744 -0.16586628</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp3B            NA          NA          NA          NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B   0.230842232  0.21693797 -0.14858572 -0.02435835</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B   0.169503990 -0.04727944 -0.10059691 -0.17915402</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B   0.008315549 -0.37320846 -0.25139848 -0.10561419</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B   0.204050549  0.10635295 -0.11132214 -0.07930637</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B   0.210453747  0.35417688 -0.20393096 -0.09313135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B   0.178846734 -0.07948959 -0.02961008 -0.14078748</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B -0.204218845 -0.29597371 -0.15639726 -0.12996859</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $UC</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               V1         V2          V3          V4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.25431112  0.3813412  0.15185985  0.13007902</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.16801518 -0.1602208  0.13309706  0.05976621</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  0.25375528  0.3902827  0.14474404  0.12642129</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.16622114 -0.1613268  0.13438128  0.05774070</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp3B          NA         NA          NA          NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.24834599  0.4264737  0.07549499  0.09082536</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.22186920  0.2898751  0.10327086 -0.01108556</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B  0.06500221 -0.3168467 -0.08478219  0.08989123</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.24128923  0.3730041  0.11233757  0.07121000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.22651901  0.4816242 -0.14785186 -0.05280734</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.23475842  0.2432039  0.17598960  0.05911635</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.04179915 -0.1242634  0.05287572  0.04832955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B  0.24854295  0.4290271  0.07801648  0.09212147</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B  0.22051738  0.2930721  0.09554775 -0.01608959</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B  0.07404232 -0.3078585 -0.05821107  0.08714992</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B  0.24168952  0.3776866  0.10822483  0.07078522</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B  0.22651901  0.4816242 -0.14828318 -0.05280734</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp9B  0.23348339  0.2302820  0.18735838  0.05983430</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B 0.04055667 -0.1236059  0.05210667  0.05060610</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The following example defines a function to calculate the area of the niche</span></span>
-<span class="r-in"><span class="co"># It requires package 'rgeos'</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://r-forge.r-project.org/projects/rgeos/" class="external-link">rgeos</a></span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: sp</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> rgeos version: 0.5-9, (SVN revision 684)</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  GEOS runtime version: 3.10.2-CAPI-1.16.0 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  Please note that rgeos will be retired by the end of 2023,</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> plan transition to sf functions using GEOS at your earliest convenience.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  GEOS using OverlayNG</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  Linking to sp version: 1.4-7 </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>  Polygon checking: TRUE </span>
-<span class="r-in"><span class="va">nichearea</span> <span class="op">&lt;-</span> <span class="kw">function</span> <span class="op">(</span><span class="va">P</span>, <span class="va">D</span> <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">axes</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html" class="external-link">is.null</a></span><span class="op">(</span><span class="va">D</span><span class="op">)</span><span class="op">)</span> </span>
-<span class="r-in">       <span class="va">D</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">as.dist</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">P</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">P</span><span class="op">)</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">P</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">    <span class="va">cmd</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/cmdscale.html" class="external-link">cmdscale</a></span><span class="op">(</span><span class="va">D</span>,eig<span class="op">=</span><span class="cn">TRUE</span>,k<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">P</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in">    <span class="va">X</span> <span class="op">=</span> <span class="va">cmd</span><span class="op">$</span><span class="va">points</span></span>
-<span class="r-in">    <span class="va">V</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Area<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">P</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">    <span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">P</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">        <span class="va">pi</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">P</span><span class="op">[</span><span class="va">i</span>,<span class="op">]</span><span class="op">)</span></span>
-<span class="r-in">        <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">pi</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="va">V</span><span class="op">[</span><span class="va">i</span>, <span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span>
-<span class="r-in">        <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">pi</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">1e-16</span><span class="op">)</span> <span class="va">V</span><span class="op">[</span><span class="va">i</span>, <span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0</span></span>
-<span class="r-in">        <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">pi</span><span class="op">&gt;</span><span class="fl">0</span><span class="op">)</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span> <span class="va">V</span><span class="op">[</span><span class="va">i</span>,<span class="op">]</span><span class="op">&lt;-</span><span class="fl">0</span></span>
-<span class="r-in">          <span class="kw">else</span> <span class="op">{</span></span>
-<span class="r-in">            <span class="va">a</span> <span class="op">=</span><span class="va">X</span><span class="op">[</span><span class="va">pi</span><span class="op">&gt;</span><span class="fl">0</span>,<span class="va">axes</span><span class="op">]</span></span>
-<span class="r-in">            <span class="va">V</span><span class="op">[</span><span class="va">i</span>,<span class="op">]</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/rgeos/man/gpc-new-generics.html" class="external-link">area.poly</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/methods/as.html" class="external-link">as</a></span><span class="op">(</span><span class="va">a</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/grDevices/chull.html" class="external-link">chull</a></span><span class="op">(</span><span class="va">a</span><span class="op">)</span>,<span class="op">]</span>,<span class="st">"gpc.poly"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in">          <span class="op">}</span>          </span>
-<span class="r-in">    <span class="op">}</span></span>
-<span class="r-in">    <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">V</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"><span class="fu">nichearea</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           Area</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  0.000000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  0.009518062</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0.000000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  0.000000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0.035442544</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  0.000000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  0.035442544</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  0.000000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  0.035442544</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 0.204664416</span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -445,7 +414,7 @@ Nq <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

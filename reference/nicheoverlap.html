@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">indicspecies</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.13</span>
       </span>
     </div>
 
@@ -60,38 +60,50 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">nicheoverlap</span><span class="op">(</span><span class="va">P1</span>, P2 <span class="op">=</span> <span class="cn">NULL</span>, D <span class="op">=</span> <span class="cn">NULL</span>, q1 <span class="op">=</span> <span class="cn">NULL</span>,q2 <span class="op">=</span> <span class="cn">NULL</span>, mode <span class="op">=</span> <span class="st">"multiple"</span>, 
-  Np1 <span class="op">=</span> <span class="cn">NULL</span>, Np2 <span class="op">=</span> <span class="cn">NULL</span>, Nq1 <span class="op">=</span> <span class="cn">NULL</span>, Nq2 <span class="op">=</span> <span class="cn">NULL</span>,nboot <span class="op">=</span> <span class="fl">1000</span>, alpha<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span>
-<span class="fu">nichedispl</span><span class="op">(</span><span class="va">P1</span>, P2 <span class="op">=</span> <span class="cn">NULL</span>, D <span class="op">=</span> <span class="cn">NULL</span>, q1 <span class="op">=</span> <span class="cn">NULL</span>, q2 <span class="op">=</span> <span class="cn">NULL</span>, mode <span class="op">=</span> <span class="st">"multiple"</span>, 
-  Np1 <span class="op">=</span> <span class="cn">NULL</span>, Np2 <span class="op">=</span> <span class="cn">NULL</span>, Nq1 <span class="op">=</span> <span class="cn">NULL</span>, Nq2 <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op">=</span> <span class="fl">1000</span>, alpha<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">nicheoverlap</span><span class="op">(</span><span class="va">P1</span>, P2 <span class="op">=</span> <span class="cn">NULL</span>, D <span class="op">=</span> <span class="cn">NULL</span>, q1 <span class="op">=</span> <span class="cn">NULL</span>,q2 <span class="op">=</span> <span class="cn">NULL</span>, mode <span class="op">=</span> <span class="st">"multiple"</span>, </span>
+<span>  Np1 <span class="op">=</span> <span class="cn">NULL</span>, Np2 <span class="op">=</span> <span class="cn">NULL</span>, Nq1 <span class="op">=</span> <span class="cn">NULL</span>, Nq2 <span class="op">=</span> <span class="cn">NULL</span>,nboot <span class="op">=</span> <span class="fl">1000</span>, alpha<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></span>
+<span><span class="fu">nichedispl</span><span class="op">(</span><span class="va">P1</span>, P2 <span class="op">=</span> <span class="cn">NULL</span>, D <span class="op">=</span> <span class="cn">NULL</span>, q1 <span class="op">=</span> <span class="cn">NULL</span>, q2 <span class="op">=</span> <span class="cn">NULL</span>, mode <span class="op">=</span> <span class="st">"multiple"</span>, </span>
+<span>  Np1 <span class="op">=</span> <span class="cn">NULL</span>, Np2 <span class="op">=</span> <span class="cn">NULL</span>, Nq1 <span class="op">=</span> <span class="cn">NULL</span>, Nq2 <span class="op">=</span> <span class="cn">NULL</span>, nboot <span class="op">=</span> <span class="fl">1000</span>, alpha<span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>P1</dt>
 <dd><p>Data frame containing the amount of usage that a set of species (in rows) make of a first set of resources (in columns).</p></dd>
-<dt>P2</dt>
+
+  <dt>P2</dt>
 <dd><p>Data frame containing the amount of usage that a set of species (in rows) make of a second set of resources (in columns). Not used if <code>mode = "pairwise"</code>.</p></dd>
-<dt>D</dt>
+  
+  <dt>D</dt>
 <dd><p>Object of type <code><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></code> containing distance values between resources. If no distance matrix is provided (i.e. if <code>D==NULL</code>), the distances between resources is assumed to be maximum.</p></dd>
-<dt>q1</dt>
+
+  <dt>q1</dt>
 <dd><p>Vector with the availability of each resource corresponding to P1.</p></dd>
-<dt>q2</dt>
+
+  <dt>q2</dt>
 <dd><p>Vector with the availability of each resource corresponding to P2.</p></dd>
-<dt>mode</dt>
+
+  <dt>mode</dt>
 <dd><p>Either <code>mode = "single"</code> (rows of matrices P1 and P2 are individual observations to be pooled, for example to compare the niche of two species each with its individual observations), <code>mode = "multiple"</code> (each row in P1 is compared to the corresponding row of P2, for example, to compare seasonal niche shifts in each species) or <code>mode = "pairwise"</code> (all rows in P1 are compared pairwise).</p></dd>
-<dt>Np1</dt>
+
+  <dt>Np1</dt>
 <dd><p>Vector with the number of observations per species from which the values in <code>P1</code> come (in <code>mode = "multiple"</code> or <code>mode = "pairwise"</code>).</p></dd>
-<dt>Np2</dt>
+
+  <dt>Np2</dt>
 <dd><p>Vector with the number of observations per species from which the values in <code>P2</code> come (only in <code>mode = "multiple"</code>).</p></dd>
-<dt>Nq1</dt>
+
+  <dt>Nq1</dt>
 <dd><p>The number of observations from which the values in <code>q1</code> come.</p></dd>
-<dt>Nq2</dt>
+
+  <dt>Nq2</dt>
 <dd><p>The number of observations from which the values in <code>q2</code> come.</p></dd>
-<dt>nboot</dt>
+
+  <dt>nboot</dt>
 <dd><p>Number of boostrap samples used to compute bias-corrected percentile confidence intervals.</p></dd>
-<dt>alpha</dt>
+
+  <dt>alpha</dt>
 <dd><p>Used to set the confidence level (i.e. <code>alpha = 0.05</code> means 95 percent confidence interval).</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -99,7 +111,9 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>Function <code>nicheoverlap</code> (resp. <code>nichedispl</code>) returns the overlap (resp. the distance between centroids) between the each pair of rows in <code>P1</code> and <code>P2</code>. If <code>mode = "multiple"</code> or <code>mode = "single"</code> the values are returned as a data frame. If <code>mode = "pairwise"</code> a matrix of values is returned instead. If bootstrap confidence intervals are asked then the functions also compute the lower and upper bounds of a confidence interval obtained following the bias-corrected percentile method. Upper and lower bounds are returned as additional columns of the data frame in <code>mode = "multiple"</code> or <code>mode = "single"</code> or as additional matrices of a list in <code>mode = "pairwise"</code>.</p>
+    
+
+<p>Function <code>nicheoverlap</code> (resp. <code>nichedispl</code>) returns the overlap (resp. the distance between centroids) between the each pair of rows in <code>P1</code> and <code>P2</code>. If <code>mode = "multiple"</code> or <code>mode = "single"</code> the values are returned as a data frame. If <code>mode = "pairwise"</code> a matrix of values is returned instead. If bootstrap confidence intervals are asked then the functions also compute the lower and upper bounds of a confidence interval obtained following the bias-corrected percentile method. Upper and lower bounds are returned as additional columns of the data frame in <code>mode = "multiple"</code> or <code>mode = "single"</code> or as additional matrices of a list in <code>mode = "pairwise"</code>.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -109,7 +123,7 @@
     </div>
     <div id="author">
     <h2>Author</h2>
-    <p>Miquel De Caceres Ainsa, CTFC</p>
+    <p>Miquel De Caceres Ainsa, EMF-CREAF</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -118,12 +132,12 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Loads example data</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">birds</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The overlap and displacement metrics using distances among </span></span>
-<span class="r-in"><span class="co"># resources and assuming equal availability of resources</span></span>
-<span class="r-in"><span class="fu">nicheoverlap</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Loads example data</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">birds</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The overlap and displacement metrics using distances among </span></span></span>
+<span class="r-in"><span><span class="co"># resources and assuming equal availability of resources</span></span></span>
+<span class="r-in"><span><span class="fu">nicheoverlap</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                        O</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B vs sp1W   0.9180321</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B vs sp2W   0.9928700</span>
@@ -135,7 +149,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp8B vs sp8W   0.4964025</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B vs sp9W          NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B vs sp10W 0.7178288</span>
-<span class="r-in"><span class="fu">nichedispl</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span> </span>
+<span class="r-in"><span><span class="fu">nichedispl</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                        CD</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B vs sp1W   0.24372798</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B vs sp2W   0.07334250</span>
@@ -147,40 +161,41 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp8B vs sp8W   0.69797974</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B vs sp9W           NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B vs sp10W 0.42080273</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The overlap and displacement metrics using distances among resources</span></span>
-<span class="r-in"><span class="co"># and computes 95 percent confidence intervals</span></span>
-<span class="r-in"><span class="fu">nicheoverlap</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span>
-<span class="r-in">Np1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Np2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdswinter</span><span class="op">)</span>, Nq1 <span class="op">=</span> <span class="fl">100</span>, Nq2 <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The overlap and displacement metrics using distances among resources</span></span></span>
+<span class="r-in"><span><span class="co"># and computes 95 percent confidence intervals</span></span></span>
+<span class="r-in"><span><span class="fu">nicheoverlap</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span></span>
+<span class="r-in"><span>Np1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Np2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdswinter</span><span class="op">)</span>, Nq1 <span class="op">=</span> <span class="fl">100</span>, Nq2 <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                        O        LC        UC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B vs sp1W   0.9180321 0.7784962 0.9866882</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B vs sp2W   0.9928700 0.9727155 0.9999395</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B vs sp1W   0.9180321 0.7721014 0.9868399</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B vs sp2W   0.9928700 0.9737306 0.9998921</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp3B vs sp3W   1.0000000        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B vs sp4W   0.9982815 0.9782982 1.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B vs sp5W   0.9168365 0.7582220 0.9909463</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B vs sp6W   0.9538433 0.8549556 0.9931934</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B vs sp7W   0.9843038 0.9293302 0.9998817</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B vs sp8W   0.4964025 0.4709896 0.5768622</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B vs sp4W   0.9982815 0.9826237 0.9999998</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B vs sp5W   0.9168365 0.7540528 0.9889941</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B vs sp6W   0.9538433 0.8692627 0.9933618</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B vs sp7W   0.9843038 0.9174841 0.9997946</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B vs sp8W   0.4964025 0.4709896 0.5819341</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B vs sp9W          NA        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B vs sp10W 0.7178288 0.5599615 0.8850684</span>
-<span class="r-in"><span class="fu">nichedispl</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span>
-<span class="r-in">Np1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Np2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdswinter</span><span class="op">)</span>, Nq1 <span class="op">=</span> <span class="fl">100</span>, Nq2 <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B vs sp10W 0.7178288 0.5395121 0.8805324</span>
+<span class="r-in"><span><span class="fu">nichedispl</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span></span>
+<span class="r-in"><span>Np1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Np2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdswinter</span><span class="op">)</span>, Nq1 <span class="op">=</span> <span class="fl">100</span>, Nq2 <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>NaNs produced</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                        CD         LC        UC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B vs sp1W   0.24372798 0.08713780 0.4039131</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B vs sp1W   0.24372798 0.10530864 0.4118788</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B vs sp2W   0.07334250         NA        NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp3B vs sp3W   0.00000000         NA        NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp4B vs sp4W   0.03636655         NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B vs sp5W   0.24986173 0.06608813 0.4303597</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B vs sp6W   0.19374648 0.05827119 0.3123808</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B vs sp5W   0.24986173 0.07621325 0.4235886</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B vs sp6W   0.19374648 0.07365002 0.3149651</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp7B vs sp7W   0.10245775         NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B vs sp8W   0.69797974 0.61093740 0.7273310</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B vs sp8W   0.69797974 0.61589109 0.7273310</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B vs sp9W           NA         NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B vs sp10W 0.42080273 0.27005128 0.5269663</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Same computations with different resource availability</span></span>
-<span class="r-in"><span class="va">q</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">nicheoverlap</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span>
-<span class="r-in">q1 <span class="op">=</span> <span class="va">q</span>, q2 <span class="op">=</span> <span class="va">q</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B vs sp10W 0.42080273 0.25385777 0.5284309</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Same computations with different resource availability</span></span></span>
+<span class="r-in"><span><span class="va">q</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.18</span>, <span class="fl">0.24</span>, <span class="fl">0.22</span>, <span class="fl">0.21</span>, <span class="fl">0.15</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">nicheoverlap</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span></span>
+<span class="r-in"><span>q1 <span class="op">=</span> <span class="va">q</span>, q2 <span class="op">=</span> <span class="va">q</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                        O</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B vs sp1W   0.9395885</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B vs sp2W   0.9918133</span>
@@ -192,8 +207,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp8B vs sp8W   0.4919339</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B vs sp9W          NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B vs sp10W 0.6624301</span>
-<span class="r-in"><span class="fu">nichedispl</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span>
-<span class="r-in">q1 <span class="op">=</span> <span class="va">q</span>, q2 <span class="op">=</span> <span class="va">q</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">nichedispl</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span></span>
+<span class="r-in"><span>q1 <span class="op">=</span> <span class="va">q</span>, q2 <span class="op">=</span> <span class="va">q</span>, mode<span class="op">=</span><span class="st">"multiple"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                        CD</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B vs sp1W   0.20977627</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B vs sp2W   0.07753105</span>
@@ -205,39 +220,39 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp8B vs sp8W   0.70300550</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B vs sp9W           NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp10B vs sp10W 0.46117552</span>
-<span class="r-in"><span class="fu">nicheoverlap</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span>
-<span class="r-in">q1 <span class="op">=</span> <span class="va">q</span>, q2 <span class="op">=</span> <span class="va">q</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span>
-<span class="r-in">Np1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Np2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdswinter</span><span class="op">)</span>, </span>
-<span class="r-in">Nq1 <span class="op">=</span> <span class="fl">100</span>, Nq2 <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">nicheoverlap</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span></span>
+<span class="r-in"><span>q1 <span class="op">=</span> <span class="va">q</span>, q2 <span class="op">=</span> <span class="va">q</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span></span>
+<span class="r-in"><span>Np1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Np2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdswinter</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>Nq1 <span class="op">=</span> <span class="fl">100</span>, Nq2 <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                        O        LC        UC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B vs sp1W   0.9395885 0.8297581 0.9935375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B vs sp2W   0.9918133 0.9640164 0.9999317</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B vs sp1W   0.9395885 0.8173999 0.9883101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp2B vs sp2W   0.9918133 0.9644243 0.9998992</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp3B vs sp3W   1.0000000        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B vs sp4W   0.9986449 0.9814713 1.0000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B vs sp5W   0.8933637 0.7087436 0.9867719</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B vs sp6W   0.9727062 0.9012106 0.9961891</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B vs sp7W   0.9848794 0.9294797 0.9999408</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B vs sp8W   0.4919339 0.4709896 0.5674567</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp4B vs sp4W   0.9986449 0.9831381 1.0000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B vs sp5W   0.8933637 0.6960595 0.9872561</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B vs sp6W   0.9727062 0.9107669 0.9972202</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B vs sp7W   0.9848794 0.9183119 0.9998672</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B vs sp8W   0.4919339 0.4709896 0.5609387</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B vs sp9W          NA        NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B vs sp10W 0.6624301 0.4954566 0.8458187</span>
-<span class="r-in"><span class="fu">nichedispl</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span>
-<span class="r-in">q1 <span class="op">=</span> <span class="va">q</span>, q2 <span class="op">=</span> <span class="va">q</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span>
-<span class="r-in">Np1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Np2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdswinter</span><span class="op">)</span>, </span>
-<span class="r-in">Nq1 <span class="op">=</span> <span class="fl">100</span>, Nq2 <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B vs sp10W 0.6624301 0.4909298 0.8313099</span>
+<span class="r-in"><span><span class="fu">nichedispl</span><span class="op">(</span><span class="va">birdsbreed</span>, <span class="va">birdswinter</span>, D <span class="op">=</span> <span class="va">resourceD</span>, </span></span>
+<span class="r-in"><span>q1 <span class="op">=</span> <span class="va">q</span>, q2 <span class="op">=</span> <span class="va">q</span>, mode<span class="op">=</span><span class="st">"multiple"</span>, </span></span>
+<span class="r-in"><span>Np1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdsbreed</span><span class="op">)</span>, Np2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">birdswinter</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>Nq1 <span class="op">=</span> <span class="fl">100</span>, Nq2 <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                        CD          LC        UC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B vs sp1W   0.20977627 0.075967482 0.3551714</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp1B vs sp1W   0.20977627 0.064437976 0.3461059</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B vs sp2W   0.07753105          NA        NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp3B vs sp3W   0.00000000          NA        NA</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp4B vs sp4W   0.03321146          NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B vs sp5W   0.27919844 0.092961043 0.4675134</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B vs sp6W   0.15151280 0.047208579 0.2617480</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B vs sp7W   0.10178862 0.005138953 0.2275715</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B vs sp8W   0.70300550 0.627931608 0.7273310</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp5B vs sp5W   0.27919844 0.091111002 0.4588170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp6B vs sp6W   0.15151280 0.046905940 0.2741473</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp7B vs sp7W   0.10178862 0.005778076 0.2270649</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp8B vs sp8W   0.70300550 0.623157467 0.7273310</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp9B vs sp9W           NA          NA        NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B vs sp10W 0.46117552 0.314718485 0.5835694</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># The overlap metrics using distances among rows of 'birdsbreed'</span></span>
-<span class="r-in"><span class="fu">nicheoverlap</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"pairwise"</span><span class="op">)</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sp10B vs sp10W 0.46117552 0.308410385 0.5739090</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># The overlap metrics using distances among rows of 'birdsbreed'</span></span></span>
+<span class="r-in"><span><span class="fu">nicheoverlap</span><span class="op">(</span><span class="va">birdsbreed</span>, D <span class="op">=</span> <span class="va">resourceD</span>, mode<span class="op">=</span><span class="st">"pairwise"</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            sp1B      sp2B      sp3B      sp4B      sp5B      sp6B      sp7B</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp1B  1.0000000 0.6645078 0.8576099 0.9841992 0.9225876 0.4493889 0.9896160</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> sp2B  0.6645078 1.0000000 0.3558765 0.5803276 0.8508925 0.9155505 0.7246835</span>
@@ -274,7 +289,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

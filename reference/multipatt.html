@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">indicspecies</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.13</span>
       </span>
     </div>
 
@@ -60,33 +60,43 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">multipatt</span><span class="op">(</span><span class="va">x</span>, <span class="va">cluster</span>, func <span class="op">=</span> <span class="st">"IndVal.g"</span>, duleg<span class="op">=</span><span class="cn">FALSE</span>, restcomb<span class="op">=</span><span class="cn">NULL</span>, 
-         min.order <span class="op">=</span> <span class="fl">1</span>, max.order <span class="op">=</span> <span class="cn">NULL</span>, control<span class="op">=</span><span class="fu">how</span><span class="op">(</span><span class="op">)</span>, permutations <span class="op">=</span> <span class="cn">NULL</span>,
-         print.perm<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">multipatt</span><span class="op">(</span><span class="va">x</span>, <span class="va">cluster</span>, func <span class="op">=</span> <span class="st">"IndVal.g"</span>, duleg<span class="op">=</span><span class="cn">FALSE</span>, restcomb<span class="op">=</span><span class="cn">NULL</span>, </span>
+<span>         min.order <span class="op">=</span> <span class="fl">1</span>, max.order <span class="op">=</span> <span class="cn">NULL</span>, control<span class="op">=</span><span class="fu">how</span><span class="op">(</span><span class="op">)</span>, permutations <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>         print.perm<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>Community data table</p></dd>
-<dt>cluster</dt>
+
+  <dt>cluster</dt>
 <dd><p>A vector representing a partition of sites</p></dd>
-<dt>func</dt>
+
+  <dt>func</dt>
 <dd><p>Species-site group association function. Four values are accepted <code>"IndVal"</code>, <code>"IndVal.g"</code>, <code>"r"</code> and <code>"r.g"</code> (lowercase values are also accepted).</p></dd>
-<dt>duleg</dt>
+
+  <dt>duleg</dt>
 <dd><p>If TRUE, site group combinations are not considered, only the original site groups, like in Dufrêne &amp; Legendre (1997). Internally, <code>duleg = TRUE</code> equals <code>max.order = 1</code>.</p></dd>
-<dt>restcomb</dt>
+
+  <dt>restcomb</dt>
 <dd><p>A vector of integer values used to restrict the combinations of site groups to those with ecological sense according to the analyst. The default <code>NULL</code> indicates that all combinations are used. If <code>duleg=TRUE</code> this argument is ignored.</p></dd>
-<dt>min.order</dt>
+ 
+  <dt>min.order</dt>
 <dd><p>An integer indicating the minimum order of site group combinations (by default <code>max.order=1</code> for singletons). Cannot be larger than <code>max.order</code>.</p></dd>
-<dt>max.order</dt>
+
+  <dt>max.order</dt>
 <dd><p>An integer indicating the maximum order of site group combinations to be considered: <code>max.order=1</code> for singletons, <code>max.order=2</code> for pairs, <code>max.order=3</code> for triplets... As <code>restcomb</code>, this parameter provide a way to restrict the site group combinations that make ecological sense. By default all possible site group combinations are considered. If <code>max.order=1</code> then the function will behave as if <code>duleg=TRUE</code>.</p></dd>
-<dt>control</dt>
+
+  <dt>control</dt>
 <dd><p>a list of control values describing properties of the permutation design, as returned by a call to <code>how</code>.</p></dd>
-<dt>permutations</dt>
+
+  <dt>permutations</dt>
 <dd><p>a custom matrix of permutations, to be used if <code>control = NULL</code>, with permutations in rows and site indices in columns.</p></dd>
-<dt>print.perm</dt>
+
+  <dt>print.perm</dt>
 <dd><p>If TRUE, prints permutation numbers after each set of 100 permutations.</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -95,19 +105,27 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>An object of class <code>multipatt</code> with:</p>
+    
+
+<p>An object of class <code>multipatt</code> with:</p>
 <dl><dt>func</dt>
 <dd><p>The name of the function used.</p></dd>
-<dt>comb</dt>
+
+  <dt>comb</dt>
 <dd><p>A matrix describing all the combinations studied.</p></dd>
-<dt>str</dt>
+
+  <dt>str</dt>
 <dd><p>A matrix the association strength for all combinations studied.</p></dd>
-<dt>A</dt>
+
+  <dt>A</dt>
 <dd><p>If <code>func = "IndVal"</code> (or <code>func = "IndVal.g"</code>) a matrix whose values are the "A" (or "A.g") component of indicator values. Otherwise this element is left as <code>NULL</code>.</p></dd>
-<dt>B</dt>
+
+  <dt>B</dt>
 <dd><p>If <code>func = "IndVal"</code> (or <code>func = "IndVal.g"</code>) a matrix whose values are the "B" component of indicator values. Otherwise this element is left as <code>NULL</code>.</p></dd>
-<dt>sign</dt>
+
+  <dt>sign</dt>
 <dd><p>Data table with results of the best matching pattern, the association value and the degree of statistical significance of the association (i.e. p-values from permutation test). Note that p-values are not corrected for multiple testing.</p></dd>
+
 </dl></div>
     <div id="note">
     <h2>Note</h2>
@@ -121,7 +139,7 @@
     </div>
     <div id="author">
     <h2>Author</h2>
-    <p>Miquel De Cáceres Ainsa, CTFC</p>
+    <p>Miquel De Cáceres Ainsa, EMF-CREAF</p>
 <p>Florian Jansen, Institute of Botany and Landscape Ecology, Ernst-Moritz-Arndt-University</p>
     </div>
     <div id="see-also">
@@ -131,17 +149,17 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wetland</span><span class="op">)</span> <span class="co">## Loads species data</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">wetkm</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="co">## Creates three clusters using kmeans</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Runs the combination analysis using IndVal.g as statistic</span></span>
-<span class="r-in"><span class="va">wetpt</span> <span class="op">=</span> <span class="fu">multipatt</span><span class="op">(</span><span class="va">wetland</span>, <span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Lists those species with significant association to one combination</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">wetpt</span><span class="op">)</span> </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wetland</span><span class="op">)</span> <span class="co">## Loads species data</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">wetkm</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="co">## Creates three clusters using kmeans</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Runs the combination analysis using IndVal.g as statistic</span></span></span>
+<span class="r-in"><span><span class="va">wetpt</span> <span class="op">=</span> <span class="fu">multipatt</span><span class="op">(</span><span class="va">wetland</span>, <span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Lists those species with significant association to one combination</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">wetpt</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Multilevel pattern analysis</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ---------------------------</span>
@@ -150,30 +168,44 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Significance level (alpha): 0.05</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Total number of species: 33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Selected number of species: 4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Number of species associated to 1 group: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Number of species associated to 2 groups: 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Selected number of species: 12 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Number of species associated to 1 group: 9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Number of species associated to 2 groups: 3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  List of species associated to each combination: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1  #sps.  1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod 0.777   0.047 *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 3  #sps.  1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1  #sps.  3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Polatt 0.993   0.001 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ludads 0.907   0.001 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp. 0.856   0.001 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Psespi 0.602   0.015 *  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 2+3  #sps.  2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 2  #sps.  2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp. 0.961   0.001 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ludads 0.882   0.018 *  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod 0.963   0.001 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind 0.538   0.027 *  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 3  #sps.  4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam 0.783   0.002 ** </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac 0.771   0.001 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc 0.762   0.001 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed 0.548   0.013 *  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1+2  #sps.  2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Helind 0.758   0.007 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp. 0.741   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 2+3  #sps.  1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor 0.876   0.001 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Lists those species with significant association to one combination, </span></span>
-<span class="r-in"><span class="co">## including indval components.</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">wetpt</span>, indvalcomp<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Lists those species with significant association to one combination, </span></span></span>
+<span class="r-in"><span><span class="co">## including indval components.</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">wetpt</span>, indvalcomp<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Multilevel pattern analysis</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ---------------------------</span>
@@ -182,24 +214,38 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Significance level (alpha): 0.05</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Total number of species: 33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Selected number of species: 4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Number of species associated to 1 group: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Number of species associated to 2 groups: 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Selected number of species: 12 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Number of species associated to 1 group: 9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Number of species associated to 2 groups: 3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  List of species associated to each combination: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1  #sps.  1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod 0.9260 0.6522 0.777   0.047 *</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 3  #sps.  1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1  #sps.  3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Polatt 0.9863 1.0000 0.993   0.001 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ludads 1.0000 0.8235 0.907   0.001 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp. 0.7330 1.0000 0.856   0.001 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Psespi 0.8811 0.4118 0.602   0.015 *  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 2+3  #sps.  2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 2  #sps.  2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp. 0.9243 1.0000 0.961   0.001 ***</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ludads 1.0000 0.7778 0.882   0.018 *  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod 0.9278 1.0000 0.963   0.001 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind 0.8108 0.3571 0.538   0.027 *  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 3  #sps.  4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam 0.7672 0.8000 0.783   0.002 ** </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac 0.6607 0.9000 0.771   0.001 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc 0.9686 0.6000 0.762   0.001 ***</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed 1.0000 0.3000 0.548   0.013 *  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1+2  #sps.  2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Helind 0.9381 0.6129 0.758   0.007 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp. 1.0000 0.5484 0.741   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 2+3  #sps.  1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor 0.8764 0.8750 0.876   0.001 ***</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 </span>
 </code></pre></div>
@@ -216,7 +262,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

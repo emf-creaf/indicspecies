@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">indicspecies</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.13</span>
       </span>
     </div>
 
@@ -60,20 +60,24 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S3 method for indicators</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span> <span class="op">(</span><span class="va">object</span>, newdata <span class="op">=</span> <span class="cn">NULL</span>, cv <span class="op">=</span> <span class="cn">FALSE</span>,<span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for indicators</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span> <span class="op">(</span><span class="va">object</span>, newdata <span class="op">=</span> <span class="cn">NULL</span>, cv <span class="op">=</span> <span class="cn">FALSE</span>,<span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>object</dt>
 <dd><p>An object of class 'indicators'.</p></dd>
-<dt>newdata</dt>
+
+  <dt>newdata</dt>
 <dd><p>A community data table (with sites in rows and species in columns) for which predictions are needed. This table can contain either presence-absence or abundance data, but only presence-absence information is used for the prediction. If <code>NULL</code>, then the original data set used to derive the <code><a href="indicators.html">indicators</a></code> object is used as data.</p></dd>
-<dt>cv</dt>
+
+  <dt>cv</dt>
 <dd><p>A boolean flag to indicate that probabilities should be calculated using leave-one-out cross validation (i.e recalculating positive predictive value of indicators after excluding the target site).</p></dd>
-<dt>...</dt>
+
+  <dt>...</dt>
 <dd><p>In function <code>predict</code>, additional arguments not used (included for compatibility with <code><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></code>).</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -82,7 +86,9 @@
     </div>
     <div id="value">
     <h2>Value</h2>
-    <p>If confidence intervals are available in <code>x</code>, function <code>predict.indicators</code> returns a matrix where communities are in rows and there are three columns, correspoinding to the probability of the indicated site group along with the confidence interval. If confidence intervals are not available in <code>x</code>, or if <code>cv = TRUE</code>, then <code>predict.indicators</code> returns a single vector with the probability of the indicated site group for each community.</p>
+    
+
+<p>If confidence intervals are available in <code>x</code>, function <code>predict.indicators</code> returns a matrix where communities are in rows and there are three columns, correspoinding to the probability of the indicated site group along with the confidence interval. If confidence intervals are not available in <code>x</code>, or if <code>cv = TRUE</code>, then <code>predict.indicators</code> returns a single vector with the probability of the indicated site group for each community.</p>
     </div>
     <div id="references">
     <h2>References</h2>
@@ -91,7 +97,7 @@
     </div>
     <div id="author">
     <h2>Author</h2>
-    <p>Miquel De Cáceres Ainsa, CTFC</p>
+    <p>Miquel De Cáceres Ainsa, EMF-CREAF</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
@@ -100,16 +106,16 @@
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wetland</span><span class="op">)</span> <span class="co">## Loads species data</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Creates three clusters using kmeans</span></span>
-<span class="r-in"><span class="va">wetkm</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span> </span>
-<span class="r-in"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Run indicator analysis with species combinations for the first group</span></span>
-<span class="r-in"><span class="va">sc</span><span class="op">=</span> <span class="fu"><a href="indicators.html">indicators</a></span><span class="op">(</span>X<span class="op">=</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, group<span class="op">=</span><span class="fl">1</span>, verbose<span class="op">=</span><span class="cn">TRUE</span>, At<span class="op">=</span><span class="fl">0.5</span>, Bt<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wetland</span><span class="op">)</span> <span class="co">## Loads species data</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Creates three clusters using kmeans</span></span></span>
+<span class="r-in"><span><span class="va">wetkm</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span> </span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Run indicator analysis with species combinations for the first group</span></span></span>
+<span class="r-in"><span><span class="va">sc</span><span class="op">=</span> <span class="fu"><a href="indicators.html">indicators</a></span><span class="op">(</span>X<span class="op">=</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, group<span class="op">=</span><span class="fl">1</span>, verbose<span class="op">=</span><span class="cn">TRUE</span>, At<span class="op">=</span><span class="fl">0.5</span>, Bt<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Target site group: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of candidate species: 33</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of sites: 41 </span>
@@ -150,20 +156,20 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of valid combinations: 173</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of remaining species: 13 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Calculating statistical significance (permutational test)...</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Use the indicators to make predictions of the probability of group #1</span></span>
-<span class="r-in"><span class="co">## Normally an independent data set should be used, because 'wetland' was used to derive</span></span>
-<span class="r-in"><span class="co">## indicators. The same would be obtained calling 'predict(sc)' without further arguments.</span></span>
-<span class="r-in"><span class="va">p</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">sc</span>, <span class="va">wetland</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Calculate cross-validated probabilities (recalculates 'A' statistics once for each site </span></span>
-<span class="r-in"><span class="co">## after excluding it, and then calls predict.indicators for that site)</span></span>
-<span class="r-in"><span class="va">pcv</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">sc</span>, cv <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">## Show original membership to group 1 along with (resubstitution) predicted probabilities  </span></span>
-<span class="r-in"><span class="co">## and cross-validated probabilities. Cross-validated probabilities can be lower for sites</span></span>
-<span class="r-in"><span class="co">## originally belonging to the target site group and higher for other sites.</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Group1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span>, Prob <span class="op">=</span> <span class="va">p</span>, Prob_CV <span class="op">=</span> <span class="va">pcv</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Use the indicators to make predictions of the probability of group #1</span></span></span>
+<span class="r-in"><span><span class="co">## Normally an independent data set should be used, because 'wetland' was used to derive</span></span></span>
+<span class="r-in"><span><span class="co">## indicators. The same would be obtained calling 'predict(sc)' without further arguments.</span></span></span>
+<span class="r-in"><span><span class="va">p</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">sc</span>, <span class="va">wetland</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Calculate cross-validated probabilities (recalculates 'A' statistics once for each site </span></span></span>
+<span class="r-in"><span><span class="co">## after excluding it, and then calls predict.indicators for that site)</span></span></span>
+<span class="r-in"><span><span class="va">pcv</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">sc</span>, cv <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">## Show original membership to group 1 along with (resubstitution) predicted probabilities  </span></span></span>
+<span class="r-in"><span><span class="co">## and cross-validated probabilities. Cross-validated probabilities can be lower for sites</span></span></span>
+<span class="r-in"><span><span class="co">## originally belonging to the target site group and higher for other sites.</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Group1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span><span class="op">==</span><span class="fl">1</span><span class="op">)</span>, Prob <span class="op">=</span> <span class="va">p</span>, Prob_CV <span class="op">=</span> <span class="va">pcv</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Group1      Prob   Prob_CV</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5       0 0.0000000 0.0000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8       0 0.0000000 0.0000000</span>
@@ -206,7 +212,7 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> 32      1 1.0000000 1.0000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 35      0 0.7142857 0.8333333</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 38      0 0.7142857 0.8333333</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -221,7 +227,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
