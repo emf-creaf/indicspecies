@@ -39,6 +39,11 @@ remotes::install_github("emf-creaf/indicspecies",
 
 Use `strassoc()` for assessing strength of associations and `signassoc()` to assess the statistical significance of the associations (De Cáceres & Legendre 2009). Much more complete functions are `multipatt()` (De Cáceres et al. 2010) and `indicators()` (De Cáceres et al. 2012). 
 
+
+## Maintenance
+
+Although not in active development, this R package is maintained by the [*Ecosystem Modelling Facility*](https://emf.creaf.cat) unit at CREAF (in Spain)
+
 ## References
 
 + De Cáceres, M., & Legendre, P. (2009). Associations between species and groups of sites: indices and statistical inference. Ecology, 90(12), 3566–3574.

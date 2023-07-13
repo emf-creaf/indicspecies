@@ -50,6 +50,12 @@ Use `strassoc()` for assessing strength of associations and
 `multipatt()` (De Cáceres et al. 2010) and `indicators()` (De Cáceres et
 al. 2012).
 
+## Maintenance
+
+Although not in active development, this R package is maintained by the
+[*Ecosystem Modelling Facility*](https://emf.creaf.cat) unit at CREAF
+(in Spain)
+
 ## References
 
 - De Cáceres, M., & Legendre, P. (2009). Associations between species
