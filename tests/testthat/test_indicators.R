@@ -15,4 +15,7 @@ test_that("Can run indicators",{
                              At=0.5, Bt=0.2, nboot.ci = 100), "indicators") 
   expect_no_error(print(ind1))
   expect_no_error(print(ind2))
+  
+  expect_s3_class(pruneindicators(ind1), "indicators")
+  expect_s3_class(pruneindicators(ind2), "indicators")
 })
