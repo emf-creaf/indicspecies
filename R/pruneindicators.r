@@ -31,7 +31,7 @@ nonnested <- function (x, selection=NULL, verbose=FALSE) {
 	if(verbose) cat(paste("Coverage of initial set of ",nrow(x$C)," indicators: ", round(initCoverage*100, digits=1),"%\n", sep=""))
 	
 	if(length(dim(x$A))==2) {
-		selection<- x$A$lowerCI>=At & x$B$lowerCI>=Bt & x$sqrtIV$lowerCI>=sqrtIVt & x$p.value <= alpha
+		selection<- x$A[,"lowerCI"]>=At & x$B[,"lowerCI"]>=Bt & x$sqrtIV[,"lowerCI"]>=sqrtIVt & x$p.value <= alpha
 	} else {
 		selection<- x$A>=At & x$B>=Bt & x$sqrtIV>=sqrtIVt & x$p.value <= alpha
 	}

@@ -28,7 +28,7 @@ Determining the occurrence or abundance of a small set of indicator species, as 
  ii. provide evidence for the impacts of environmental change; or 
  iii. predict the diversity of other species, taxa or communities within an area. 
 
-In this tutorial we will show how to use the functions included in package `indicspecies` to conduct indicator species analysis. This package was originally created as a supplementary material to @DeCaceres2009, but has been developing since then and now `indicspecies` updates are distributed from CRAN at GitHub. 
+In this tutorial we will show how to use the functions included in package `indicspecies` to conduct indicator species analysis. This package was originally created as a supplementary material to @DeCaceres2009, but has been developing since then and now `indicspecies` updates are distributed from CRAN and GitHub repositories. 
 
 Before doing anything else, we need to load the functions of the package:
 ```{r}
@@ -40,7 +40,7 @@ library(indicspecies)
 Indicator species are often determined using an analysis of the relationship between the species occurrence or abundance values from a set of sampled sites and the classification of the same sites into site groups, which may represent habitat types, community types, disturbance states, etc. Thus, there are two data elements in an indicator species analysis: (1) the community data matrix; and (2) the vector that describes the classification of sites into groups.
 
 ### The community data matrix
-This is a matrix (or a data frame) with sites in rows and species in columns. Normally, we will use functions like `read.table()` to read our data set from a file. In this example we load our example dataset into the workspace using:
+This is a matrix (or a data frame) with **sites in rows** and **species in columns**. Normally, we will use functions like `read.table()` to read our data set from a file. In this example we load our example dataset into the workspace using:
 ```{r}
 data(wetland)
 ```
@@ -48,16 +48,16 @@ data(wetland)
 The wetland data set describes the vegetation of the Adelaide river alluvial plain (Australia), as sampled by @Bowman1987. It contains the abundance values of 33 species (columns) in 41 sites (rows).
 
 ### Defining the classification of sites
-In order to run an indicator species analysis we need a vector containing the classification of the sites into groups. The intepretation of these site groups is left to the user. A vector of site groups can be created, for example, using the R functions `c()` and `rep()`:
+In order to run an indicator species analysis we need a vector containing the classification of the sites into groups. The intepretation of these site groups is left to the user. Like community data, site classifications can be read from a data file. A vector of site groups can be also created manually, for example, using the R functions `c()` and `rep()`:
 ```{r}
-groups = c(rep(1, 17), rep(2, 14), rep(3,10))
+groups <- c(rep(1, 17), rep(2, 14), rep(3,10))
 groups
 ```
 
 Alternatively, one can obtain a classification using non-hierarchical cluster analysis:
 ```{r}
-wetkm = kmeans(wetland, centers=3)
-groupskm = wetkm$cluster
+wetkm <- kmeans(wetland, centers=3)
+groupskm <- wetkm$cluster
 groupskm
 ```
 
@@ -74,8 +74,8 @@ When the aim is to determine which species can be used as indicators of certain 
 
 Indicator species analysis (with site group combinations) can be run using:
 ```{r}
-indval = multipatt(wetland, groups, 
-                   control = how(nperm=999)) 
+indval <- multipatt(wetland, groups, 
+                    control = how(nperm=999)) 
 ```
 
 As mentioned before, by default `multipatt()` uses the IndVal index (`func = "IndVal.g"`) as test statistic. Actually, the square root of IndVal is returned by the `multipatt()` function. The option `control = how(nperm=999)` allows choosing the number of random permutations required for the permutational test (this number affects the precision of the p-value). Function `how()` from the `permute` package allows defining more complex permutational designs. 
@@ -119,17 +119,17 @@ After accessing the object `indval$sign`, we know that the four species whose hi
 ### Analyzing species ecological preferences with correlation indices
 Several other indices can be used to analyze the association between a species and a group of sites [@DeCaceres2009]. Diagnostic (or indicator) species are an important tool in vegetation science, because these species can be used to characterize and indicate specific plant community types. A statistic commonly used to determine the association (also known as *fidelity*, not to be confounded with the indicator value component) between species and vegetation types is Pearson's *phi coefficient of association* [@Chytry2002a]. This coefficient is a measure of the correlation between two binary vectors. It is possible to calculate the phi coefficient in `multipatt()` after transforming our community data to presence-absence:
 ```{r}
-wetlandpa = ifelse(wetland>0,1,0)
-phi = multipatt(wetlandpa, groups, func = "r", 
-                control = how(nperm=999)) 
+wetlandpa <- ifelse(wetland>0,1,0)
+phi <- multipatt(wetlandpa, groups, func = "r", 
+                 control = how(nperm=999)) 
 ```
 
 What would be the association index if we had used abundance values instead of presence and absences (i.e. `wetland` instead of `wetlandpa`)? The abundance-based counterpart of the phi coefficient is called the *point biserial correlation coefficient*.
 
 It is a good practice to correct the phi coefficient for the fact that some groups have more sites than others [@Tichy2006]. To do that, we need to use `func = "r.g"` instead of `func = "r"`: 
 ```{r}
-phi = multipatt(wetlandpa, groups, func = "r.g", 
-                control = how(nperm=999)) 
+phi <- multipatt(wetlandpa, groups, func = "r.g", 
+                 control = how(nperm=999)) 
 ```
 
 Remember that the default association index of `multipatt()` is `func = "IndVal.g"`, which also includes ".g". In fact, the Indicator Value index defined by @Dufrene1997 already incorporated a correction for unequal group sizes. It is possible to avoid this correction by calling `multipatt()` with `func = "IndVal"`. However, in general we recommend using either `func = "IndVal.g"` or `func = "r.g"` for indicator species analysis.
@@ -160,16 +160,16 @@ When conducting indicator species analysis, it may happen that some combinations
 #### Indicator species analysis without site groups combinations
 The original Indicator Value method of @Dufrene1997 did not consider combinations of site groups. In other words, the only site group combinations permitted in the original method were singletons. When using `multipatt()` it is possible to avoid considering site group combinations, as in the original method, by using `duleg = TRUE`:
 ```{r}
-indvalori = multipatt(wetland, groups, duleg = TRUE, 
-                      control = how(nperm=999)) 
+indvalori <- multipatt(wetland, groups, duleg = TRUE, 
+                       control = how(nperm=999)) 
 summary(indvalori)
 ```
 
 #### Restricting the order of site groups combinations
 The second way to exclude site group combinations from a `multipatt()` analysis is to indicate the maximum order of the combination to be considered. Using the option `max.order` we can restrict site group combinations to be, for example, singletons (`max.order = 1`, which is equal to `duleg=TRUE`), singletons and pairs (`max.order = 2`), or singletons, pairs and triplets (`max.order = 3`). In the follow example, only singletons and pairs are considered: 
 ```{r}
-indvalrest = multipatt(wetland, groups, max.order = 2, 
-                       control = how(nperm=999)) 
+indvalrest <- multipatt(wetland, groups, max.order = 2, 
+                        control = how(nperm=999)) 
 summary(indvalrest)
 ```
 
@@ -180,8 +180,8 @@ There is a third, more flexible, way of restricting site group combinations. The
 
 The numbers composing the vector passed to `restcomb` indicate the site groups and site group combinations that we want `multipatt()` to considered as valid options. For example, if we do not want to consider the combination of Group 1 and Group 2, we will exclude combination '4' from vector `restcomb`:
 ```{r}
-indvalrest = multipatt(wetland, groups, restcomb = c(1,2,3,5,6), 
-                       control = how(nperm=999)) 
+indvalrest <- multipatt(wetland, groups, restcomb = c(1,2,3,5,6), 
+                        control = how(nperm=999)) 
 summary(indvalrest)
 ```
 
@@ -198,14 +198,14 @@ Although `multipatt()` is a user-friendly function for indicator species analysi
 ### The function `strassoc()`
 Function `strassoc()` allows calculating a broad hand of association indices, described in @DeCaceres2009. For example, we can focus on the 'A' component of IndVal: 
 ```{r}
-prefstat = strassoc(wetland, cluster=groups, func="A.g")
+prefstat <- strassoc(wetland, cluster=groups, func="A.g")
 round(head(prefstat),3)
 ```
 
 A feature of `strassoc()` that is lacking in `multipatt()` is the possibility to obtain confidence interval limits by bootstrapping. In this case, the function returns a list with three elements: `stat`, `lowerCI` and `upperCI`:
 ```{r}
-prefstat = strassoc(wetland, cluster=groups, func="A.g", 
-                    nboot.ci = 199)
+prefstat <- strassoc(wetland, cluster=groups, func="A.g", 
+                     nboot.ci = 199)
 round(head(prefstat$lowerCI),3)
 round(head(prefstat$upperCI),3)
 ```
@@ -215,8 +215,8 @@ For example, the 95\% confidence interval for the 'A' component of the associati
 ### The function `signassoc()`
 As we explained before, `multipatt()` statistically tests the association between the species and its more strongly associated site group (or site group combination). By contrast, `signassoc()` allows one to test the association between the species and each group of sites, regardless of whether the association value was the highest or not. Moreover, the function allows one to test both one-sided and two-sided hypotheses. For example, the following line tests whether the frequency of the species in each site group is higher or lower than random:
 ```{r}
-prefsign = signassoc(wetland, cluster=groups,  alternative = "two.sided", 
-                     control = how(nperm=199)) 
+prefsign <- signassoc(wetland, cluster=groups,  alternative = "two.sided", 
+                      control = how(nperm=199)) 
 head(prefsign)
 ```
 
@@ -261,14 +261,14 @@ Ecological indicators can be of many kinds. @DeCaceres2012 recently explored the
 ### Generating species combinations
 The association between species combinations and groups of sites is studied in the same way as for individual species. However, instead of analyzing a site-by-species matrix, we need a matrix with as many rows as there are sites and as many columns as there are species combinations. We can obtain that matrix using the function `combinespecies()`:
 ```{r}
-wetcomb = combinespecies(wetland, max.order = 2)$XC
+wetcomb <- combinespecies(wetland, max.order = 2)$XC
 dim(wetcomb)
 ```
 
 The resulting data frame has the same number of sites (i.e. `r nrow(wetcomb)`) but as many columns as species combinations (in this case `r nrow(wetcomb)` columns). Each element of the data frame contains an abundance value, which is the minimum abundance value among all the species forming the combination, for the corresponding site. In our example, we used `max.order = 2` to limit the order of combinations. Therefore, only pairs of species were considered. Once we have this new data set, we can use it in `multipatt()`:
 ```{r}
-indvalspcomb = multipatt(wetcomb, groups, duleg = TRUE, 
-                       control = how(nperm=999))
+indvalspcomb <- multipatt(wetcomb, groups, duleg = TRUE, 
+                          control = how(nperm=999))
 summary(indvalspcomb, indvalcomp = TRUE)
 ```
 
@@ -277,9 +277,9 @@ The best indicators for both Group 1 and Group 3 are individual species ('Ludads
 ### The function `indicators()`
 In the previous example, there were many combinations of species that were significantly associated any of the site groups. There is another, more efficient, way of exploring the potential indicators for a given target site group. Say, for example, that we want to determine indicators for our Group 2, and we want to consider not only species pairs but also species trios. We can run the indicator analysis using:
 ```{r}
-sc= indicators(X=wetland, cluster=groups, group=2, 
-               max.order = 3, verbose=TRUE, 
-               At=0.5, Bt=0.2)
+sc <- indicators(X=wetland, cluster=groups, group=2, 
+                 max.order = 3, verbose=TRUE, 
+                 At=0.5, Bt=0.2)
 ```
 
 We can discard species combinations with low indicator values by setting thresholds for components A and B (in our example using  `At=0.5` and `Bt=0.2`). The parameter `verbose = TRUE` allowed us to obtain information about the analysis process. Note that, by default, the `indicators()` function will consider species combinations up to an order of 5 (i.e. `max.order = TRUE`). This can result in long computation times if the set of candidate species is not small. Similarly to `multipatt()`, we can print the results of `indicators()` for the most useful indicators, using:
@@ -317,7 +317,7 @@ The coverage plot tells us that if we want to use a very large `A' threshold (i.
 ### The function `pruneindicators()`
 As there may be many species combinations that could be used as indicators, the function `pruneindicators()` helps us to reduce the possibilities. First, the function selects those indicators (species or species combinations) that are valid according to the input thresholds `At`, `Bt` and `alpha`. Second, the function discards those valid indicators whose occurrence patterns are nested within other valid indicators. Third, the function evaluates the coverage of the remaining set of indicators. Finally, it explores subsets of increasing number of indicators, until the same coverage as the coverage of the complete set is attained and the subset of indicators is returned.
 ```{r}
-sc2=pruneindicators(sc, At=0.8, Bt=0.2, verbose=TRUE)
+sc2 <- pruneindicators(sc, At=0.8, Bt=0.2, verbose=TRUE)
 print(sc2)
 ```
 
@@ -326,17 +326,17 @@ In our example, and using these thresholds, the best indicators for group '2' wo
 ### The function `predict.indicators()`
 The function `indicators()` provides a model that can be used to predict a target site group. Once a given combination of species has been found, the corresponding 'A' value is an estimate of the probability of being in the target site group given the combination of species has been found. Therefore, the set of indicators could be used to predict the likelihood of the target site group in a new data set. The function `predict.indicators()` has exactly this role. It takes the results of `indicators()` and a new community data matrix as input. Given this input, the function calculates the probability of the target site group for each site. The following code exemplifies the use of `predict.indicators()` with the same data that was used for the calibration of the indicator model (a new community data matrix should be used in normal applications):
 ```{r}
-p<-predict(sc2, wetland)
+p <- predict(sc2, wetland)
 ```
 
 Of course, this will return biased estimates, as the data set used to build the model is the same as the target data set for which probabilities are desired. The same would be obtained using:
 ```{r}
-p<-predict(sc2)
+p <- predict(sc2)
 ```
 
 which uses the original data set storied in the `indicators()` object. If we want to evaluate these probability estimates in a cross-validated fashion (i.e., excluding each target site for the calculation of positive predictive values and the probability of the target site group), we can use:
 ```{r}
-pcv<-predict(sc2, cv=TRUE)
+pcv <- predict(sc2, cv=TRUE)
 ```
 
 We can compare the probabilities (evaluated by resubstitution and cross-validation) with the original group memberships:
