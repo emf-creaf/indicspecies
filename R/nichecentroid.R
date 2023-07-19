@@ -1,3 +1,4 @@
+#' @rdname nichevar
 nichecentroid <-
 function (P, D = NULL, q = NULL, mode="multiple", Np = NULL, Nq = NULL, nboot = 1000, alpha=0.05) {
     if (!inherits(P, "data.frame")) stop("Non convenient dataframe for species resource use")
@@ -32,7 +33,7 @@ function (P, D = NULL, q = NULL, mode="multiple", Np = NULL, Nq = NULL, nboot = 
     	
     		 
 	 #Computes metric MDS
-	 cmd = cmdscale(D,eig=TRUE,k= ncol(P)-1)
+	 cmd = cmdscale(D,eig=TRUE,k= ncol(P)-1, add = TRUE)
     
    if(mode=="multiple") {
 		 C=as.data.frame(matrix(NA, nrow=nrow(P),ncol= ncol(P)-1))

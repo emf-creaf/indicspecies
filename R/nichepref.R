@@ -1,3 +1,4 @@
+#' @rdname nichevar
 nichepref <-
 function (P, D = NULL, q = NULL, mode="multiple", Np = NULL, Nq = NULL, nboot = 1000, alpha=0.05) {
     if (!inherits(P, "data.frame")) stop("Non convenient dataframe for species resource use")
