@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">indicspecies</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.13</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.7.14</span>
       </span>
     </div>
 
@@ -62,7 +62,7 @@
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">indicators</span><span class="op">(</span><span class="va">X</span>, <span class="va">cluster</span>, <span class="va">group</span>, func<span class="op">=</span><span class="st">"IndVal"</span>, min.order <span class="op">=</span> <span class="fl">1</span>, max.order<span class="op">=</span><span class="fl">5</span>, </span>
 <span>           max.indicators<span class="op">=</span><span class="cn">NULL</span>, At<span class="op">=</span><span class="fl">0</span>, Bt<span class="op">=</span><span class="fl">0</span>, sqrtIVt<span class="op">=</span><span class="fl">0</span>, </span>
-<span>           control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span><span class="op">)</span>, permutations <span class="op">=</span> <span class="cn">NULL</span>, print.perm <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>           control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span><span class="op">)</span>, permutations <span class="op">=</span> <span class="cn">NULL</span>, print.perm <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>           nboot.ci<span class="op">=</span><span class="cn">NULL</span>, alpha.ci<span class="op">=</span><span class="fl">0.05</span>, XC<span class="op">=</span><span class="cn">TRUE</span>, enableFixed <span class="op">=</span> <span class="cn">FALSE</span>, </span>
 <span>           verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="co"># S3 method for indicators</span></span>
@@ -112,7 +112,7 @@
 <dd><p>Threshold for statistical significance of indicator value. Combinations with higher p-values are not kept.</p></dd>
 
   <dt>control</dt>
-<dd><p>a list of control values describing properties of the permutation test design, as returned by a call to <code><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></code>.</p></dd>
+<dd><p>a list of control values describing properties of the permutation test design, as returned by a call to <code>how</code>.</p></dd>
 
   <dt>permutations</dt>
 <dd><p>a custom matrix of permutations, to be used if <code>control = NULL</code>, with permutations in rows and site indices in columns.</p></dd>
@@ -216,7 +216,7 @@
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1  2  3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 14 17 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 17 14 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Run indicator analysis with species combinations for the first group</span></span></span>
 <span class="r-in"><span><span class="va">sc</span><span class="op">=</span> <span class="fu">indicators</span><span class="op">(</span>X<span class="op">=</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, group<span class="op">=</span><span class="fl">1</span>, verbose<span class="op">=</span><span class="cn">TRUE</span>, </span></span>
@@ -272,8 +272,8 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac               0.6666667 0.8 0.7302967   0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac                      0.6666667 0.8 0.7302967   0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc                      0.8750000 0.6 0.7245688   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Sessp.                      0.8571429 0.6 0.7171372   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac                             0.5625000 0.9 0.7115125   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Sessp.                      0.8571429 0.6 0.7171372   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac                             0.5625000 0.9 0.7115125   0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Sessp.        1.0000000 0.5 0.7071068   0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Sessp.               1.0000000 0.5 0.7071068   0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc               1.0000000 0.5 0.7071068   0.005</span>
@@ -284,160 +284,160 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Cynarc        1.0000000 0.4 0.6324555   0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc               1.0000000 0.4 0.6324555   0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Sessp.        1.0000000 0.4 0.6324555   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.                      0.5714286 0.7 0.6324555   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.                      0.5714286 0.7 0.6324555   0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Sessp.               1.0000000 0.4 0.6324555   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc                      0.8571429 0.4 0.5855400   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc                      0.8571429 0.4 0.5855400   0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc               0.8000000 0.4 0.5656854   0.015</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Sessp.               0.6250000 0.5 0.5590170   0.020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Sessp.                      0.6250000 0.5 0.5590170   0.020</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed                             1.0000000 0.3 0.5477226   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam                      1.0000000 0.3 0.5477226   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Melcor               1.0000000 0.3 0.5477226   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Melcor+Eupvac        1.0000000 0.3 0.5477226   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Eupvac               1.0000000 0.3 0.5477226   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Melcor                      1.0000000 0.3 0.5477226   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Melcor+Eupvac               1.0000000 0.3 0.5477226   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Eupvac                      1.0000000 0.3 0.5477226   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Cynarc+Sessp. 1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Sessp.               0.6250000 0.5 0.5590170   0.025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Sessp.                      0.6250000 0.5 0.5590170   0.025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed                             1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam                      1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Melcor               1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Melcor+Eupvac        1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Eupvac               1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Melcor                      1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Melcor+Eupvac               1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Eupvac                      1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Cynarc+Sessp. 1.0000000 0.3 0.5477226   0.020</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Cynarc+Echell 1.0000000 0.3 0.5477226   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Sessp.+Echell 1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Sessp.+Echell 1.0000000 0.3 0.5477226   0.010</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Echell        1.0000000 0.3 0.5477226   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Sessp.+Echell        1.0000000 0.3 0.5477226   0.030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Sessp.        1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Sessp.+Echell        1.0000000 0.3 0.5477226   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Sessp.        1.0000000 0.3 0.5477226   0.020</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Echell        1.0000000 0.3 0.5477226   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Sessp.+Echell        1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Sessp.+Echell        1.0000000 0.3 0.5477226   0.010</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Echell               1.0000000 0.3 0.5477226   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Sessp.+Echell               1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Sessp.+Echell               1.0000000 0.3 0.5477226   0.010</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Echell        1.0000000 0.3 0.5477226   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Sessp.+Echell        1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Sessp.+Echell        1.0000000 0.3 0.5477226   0.010</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Echell               1.0000000 0.3 0.5477226   0.005</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Echell               1.0000000 0.3 0.5477226   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Sessp.+Echell               1.0000000 0.3 0.5477226   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Sessp.+Echell               1.0000000 0.3 0.5477226   0.010</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Echell                      1.0000000 0.3 0.5477226   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Echell               0.7142857 0.4 0.5345225   0.045</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Echell                      0.7142857 0.4 0.5345225   0.045</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Echell        0.6666667 0.4 0.5163978   0.050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Echell               0.6666667 0.4 0.5163978   0.050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Echell               0.6666667 0.4 0.5163978   0.050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Echell                      0.6666667 0.4 0.5163978   0.050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Echell               0.8000000 0.3 0.4898979   0.065</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Sessp.        0.7500000 0.3 0.4743416   0.040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Sessp.               0.7500000 0.3 0.4743416   0.040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Walind                      0.7500000 0.3 0.4743416   0.015</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Walind+Sessp.               0.7500000 0.3 0.4743416   0.015</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Melcor+Eupvac+Sessp. 1.0000000 0.2 0.4472136   0.085</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Melcor+Sessp.        1.0000000 0.2 0.4472136   0.085</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Eupvac+Sessp.        1.0000000 0.2 0.4472136   0.085</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Sessp.               1.0000000 0.2 0.4472136   0.085</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Melcor+Eupvac+Sessp.        1.0000000 0.2 0.4472136   0.085</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Melcor+Sessp.               1.0000000 0.2 0.4472136   0.085</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Eupvac+Sessp.               1.0000000 0.2 0.4472136   0.085</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Sessp.                      1.0000000 0.2 0.4472136   0.085</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Cynarc+Phynod 1.0000000 0.2 0.4472136   0.070</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Cynarc+Ipoaqu 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Walind        1.0000000 0.2 0.4472136   0.060</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Sessp.+Phynod 1.0000000 0.2 0.4472136   0.070</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Sessp.+Ipoaqu 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Sessp.+Echell 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Sessp.+Ipoaqu 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Sessp.+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Sessp.+Phynod 1.0000000 0.2 0.4472136   0.070</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Sessp.+Echell 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Sessp.+Ipoaqu 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Phynod        1.0000000 0.2 0.4472136   0.070</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Walind               1.0000000 0.2 0.4472136   0.060</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Sessp.+Phynod        1.0000000 0.2 0.4472136   0.070</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Sessp.+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Sessp.+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Ipoaqu               1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Sessp.+Echell        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Sessp.+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Ipoaqu               1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Sessp.+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Echell+Ipoaqu               1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cyprot               1.0000000 0.2 0.4472136   0.060</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Sessp.+Phynod 1.0000000 0.2 0.4472136   0.070</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Sessp.+Echell 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Sessp.+Ipoaqu 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Phynod        1.0000000 0.2 0.4472136   0.070</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Walind               1.0000000 0.2 0.4472136   0.060</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Sessp.+Phynod        1.0000000 0.2 0.4472136   0.070</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Sessp.+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Sessp.+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Ipoaqu               1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echpas+Cyprot               1.0000000 0.2 0.4472136   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echpas+Cynarc               1.0000000 0.2 0.4472136   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echpas+Sessp.               1.0000000 0.2 0.4472136   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Sessp.+Echell        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Sessp.+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Ipoaqu               1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echell                      0.5000000 0.4 0.4472136   0.070</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Sessp.+Phynod        1.0000000 0.2 0.4472136   0.070</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Sessp.+Echell        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Sessp.+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Phynod               1.0000000 0.2 0.4472136   0.070</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Ipoaqu               1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Sessp.+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Sessp.+Ipoaqu               1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Echell+Ipoaqu               1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Ipoaqu                      1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas+Cynarc                      1.0000000 0.2 0.4472136   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Sessp.+Echell               1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Sessp.+Ipoaqu               1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Echell+Ipoaqu               1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Ipoaqu                      1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp.+Echell+Ipoaqu               1.0000000 0.2 0.4472136   0.080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cyprot                      0.6000000 0.3 0.4242641   0.065</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cyprot+Sessp.               0.6000000 0.3 0.4242641   0.065</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot                             0.6000000 0.3 0.4242641   0.050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot+Cynarc                      0.8333333 0.2 0.4082483   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot+Sessp.                      0.5000000 0.3 0.3872983   0.120</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Phynod                      0.7500000 0.2 0.3872983   0.085</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp.+Echell                      0.5000000 0.3 0.3872983   0.185</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Sessp.+Phynod 0.6666667 0.2 0.3651484   0.095</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Phynod        0.6666667 0.2 0.3651484   0.095</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Walind               0.6666667 0.2 0.3651484   0.130</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Sessp.+Ipoaqu        0.6666667 0.2 0.3651484   0.145</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Ipoaqu               0.6666667 0.2 0.3651484   0.145</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Sessp.+Phynod        0.6666667 0.2 0.3651484   0.095</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Phynod               0.6666667 0.2 0.3651484   0.095</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Walind                      0.6666667 0.2 0.3651484   0.130</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Sessp.+Ipoaqu               0.6666667 0.2 0.3651484   0.145</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Ipoaqu                      0.6666667 0.2 0.3651484   0.145</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cyprot+Ipocop               0.6666667 0.2 0.3651484   0.100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cyprot+Cynarc               0.6666667 0.2 0.3651484   0.070</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cyprot+Walind               0.6666667 0.2 0.3651484   0.100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Ipocop                      0.6666667 0.2 0.3651484   0.100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Sessp.+Phynod        0.6666667 0.2 0.3651484   0.095</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Phynod               0.6666667 0.2 0.3651484   0.095</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cyprot                      0.6666667 0.2 0.3651484   0.155</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Walind                      0.6666667 0.2 0.3651484   0.135</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Sessp.+Phynod               0.6666667 0.2 0.3651484   0.150</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas+Cyprot                      0.6666667 0.2 0.3651484   0.120</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot+Ipocop                      0.6666667 0.2 0.3651484   0.100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ipocop                             0.6666667 0.2 0.3651484   0.100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Sessp.+Phynod               0.6666667 0.2 0.3651484   0.095</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot+Walind                      0.6000000 0.2 0.3464102   0.100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Phynod        0.5000000 0.2 0.3162278   0.275</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Phynod               0.5000000 0.2 0.3162278   0.275</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Ipoaqu               0.5000000 0.2 0.3162278   0.220</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echell+Ipoaqu               0.5000000 0.2 0.3162278   0.245</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Echell+Ipoaqu                      0.5000000 0.2 0.3162278   0.245</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Echell               0.7142857 0.4 0.5345225   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Echell                      0.7142857 0.4 0.5345225   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Echell        0.6666667 0.4 0.5163978   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Echell               0.6666667 0.4 0.5163978   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Echell               0.6666667 0.4 0.5163978   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Echell                      0.6666667 0.4 0.5163978   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Echell               0.8000000 0.3 0.4898979   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Sessp.        0.7500000 0.3 0.4743416   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Sessp.               0.7500000 0.3 0.4743416   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Walind                      0.7500000 0.3 0.4743416   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Walind+Sessp.               0.7500000 0.3 0.4743416   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Melcor+Eupvac+Sessp. 1.0000000 0.2 0.4472136   0.075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Melcor+Sessp.        1.0000000 0.2 0.4472136   0.075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Eupvac+Sessp.        1.0000000 0.2 0.4472136   0.075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Pancam+Sessp.               1.0000000 0.2 0.4472136   0.075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Melcor+Eupvac+Sessp.        1.0000000 0.2 0.4472136   0.075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Melcor+Sessp.               1.0000000 0.2 0.4472136   0.075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Eupvac+Sessp.               1.0000000 0.2 0.4472136   0.075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed+Sessp.                      1.0000000 0.2 0.4472136   0.075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Cynarc+Phynod 1.0000000 0.2 0.4472136   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Cynarc+Ipoaqu 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Walind        1.0000000 0.2 0.4472136   0.075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Sessp.+Phynod 1.0000000 0.2 0.4472136   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Sessp.+Ipoaqu 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Sessp.+Echell 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Sessp.+Ipoaqu 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Sessp.+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Sessp.+Phynod 1.0000000 0.2 0.4472136   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Sessp.+Echell 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Sessp.+Ipoaqu 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Phynod        1.0000000 0.2 0.4472136   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Cynarc+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Walind               1.0000000 0.2 0.4472136   0.075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Sessp.+Phynod        1.0000000 0.2 0.4472136   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Sessp.+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Sessp.+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Ipoaqu               1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Sessp.+Echell        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Sessp.+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Ipoaqu               1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Sessp.+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Echell+Ipoaqu               1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cyprot               1.0000000 0.2 0.4472136   0.100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Sessp.+Phynod 1.0000000 0.2 0.4472136   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Sessp.+Echell 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Sessp.+Ipoaqu 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Phynod        1.0000000 0.2 0.4472136   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Cynarc+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Walind               1.0000000 0.2 0.4472136   0.075</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Sessp.+Phynod        1.0000000 0.2 0.4472136   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Sessp.+Echell+Ipoaqu 1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Sessp.+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Ipoaqu               1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echpas+Cyprot               1.0000000 0.2 0.4472136   0.085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echpas+Cynarc               1.0000000 0.2 0.4472136   0.085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echpas+Sessp.               1.0000000 0.2 0.4472136   0.085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Sessp.+Echell        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Sessp.+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Ipoaqu               1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echell                      0.5000000 0.4 0.4472136   0.050</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Sessp.+Phynod        1.0000000 0.2 0.4472136   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Sessp.+Echell        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Sessp.+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Phynod               1.0000000 0.2 0.4472136   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cynarc+Ipoaqu               1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Sessp.+Echell+Ipoaqu        1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Sessp.+Ipoaqu               1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Echell+Ipoaqu               1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Ipoaqu                      1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas+Cynarc                      1.0000000 0.2 0.4472136   0.085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Sessp.+Echell               1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Sessp.+Ipoaqu               1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Echell+Ipoaqu               1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Ipoaqu                      1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp.+Echell+Ipoaqu               1.0000000 0.2 0.4472136   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cyprot                      0.6000000 0.3 0.4242641   0.135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cyprot+Sessp.               0.6000000 0.3 0.4242641   0.135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot                             0.6000000 0.3 0.4242641   0.090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot+Cynarc                      0.8333333 0.2 0.4082483   0.085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot+Sessp.                      0.5000000 0.3 0.3872983   0.205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Phynod                      0.7500000 0.2 0.3872983   0.090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp.+Echell                      0.5000000 0.3 0.3872983   0.140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Sessp.+Phynod 0.6666667 0.2 0.3651484   0.135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Cynarc+Phynod        0.6666667 0.2 0.3651484   0.135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Walind               0.6666667 0.2 0.3651484   0.180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Sessp.+Ipoaqu        0.6666667 0.2 0.3651484   0.090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Ipoaqu               0.6666667 0.2 0.3651484   0.090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Sessp.+Phynod        0.6666667 0.2 0.3651484   0.135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Cynarc+Phynod               0.6666667 0.2 0.3651484   0.135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Walind                      0.6666667 0.2 0.3651484   0.180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Sessp.+Ipoaqu               0.6666667 0.2 0.3651484   0.090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Ipoaqu                      0.6666667 0.2 0.3651484   0.090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cyprot+Ipocop               0.6666667 0.2 0.3651484   0.195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cyprot+Cynarc               0.6666667 0.2 0.3651484   0.185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cyprot+Walind               0.6666667 0.2 0.3651484   0.195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Ipocop                      0.6666667 0.2 0.3651484   0.195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Sessp.+Phynod        0.6666667 0.2 0.3651484   0.135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Cynarc+Phynod               0.6666667 0.2 0.3651484   0.135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Cyprot                      0.6666667 0.2 0.3651484   0.165</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Walind                      0.6666667 0.2 0.3651484   0.150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Sessp.+Phynod               0.6666667 0.2 0.3651484   0.125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas+Cyprot                      0.6666667 0.2 0.3651484   0.195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot+Ipocop                      0.6666667 0.2 0.3651484   0.195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ipocop                             0.6666667 0.2 0.3651484   0.195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc+Sessp.+Phynod               0.6666667 0.2 0.3651484   0.135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot+Walind                      0.6000000 0.2 0.3464102   0.195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Eupvac+Phynod        0.5000000 0.2 0.3162278   0.255</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Eupvac+Phynod               0.5000000 0.2 0.3162278   0.255</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Ipoaqu               0.5000000 0.2 0.3162278   0.185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echell+Ipoaqu               0.5000000 0.2 0.3162278   0.215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echell+Ipoaqu                      0.5000000 0.2 0.3162278   0.215</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Plots positive predictive power and sensitivity against the order of </span></span></span>
 <span class="r-in"><span><span class="co">## combinations</span></span></span>
