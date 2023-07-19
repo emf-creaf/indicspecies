@@ -60,10 +60,29 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">coverage</span><span class="op">(</span><span class="va">x</span>, y<span class="op">=</span><span class="cn">NULL</span>, selection<span class="op">=</span><span class="cn">NULL</span>, minstat<span class="op">=</span><span class="cn">NULL</span>, At<span class="op">=</span><span class="cn">NULL</span>, Bt<span class="op">=</span><span class="cn">NULL</span>, type<span class="op">=</span><span class="st">"stat"</span>, </span>
-<span>alpha<span class="op">=</span><span class="cn">NULL</span><span class="op">)</span> </span>
-<span><span class="fu">plotcoverage</span><span class="op">(</span><span class="va">x</span>, y<span class="op">=</span><span class="cn">NULL</span>, by<span class="op">=</span><span class="fl">0.05</span>, type<span class="op">=</span><span class="st">"stat"</span>, max.order<span class="op">=</span><span class="cn">NULL</span>, group <span class="op">=</span> <span class="cn">NULL</span>,  </span>
-<span>alpha <span class="op">=</span> <span class="cn">NULL</span>, add<span class="op">=</span><span class="cn">FALSE</span>, xlab<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="va">A</span><span class="op">[</span><span class="va">t</span><span class="op">]</span><span class="op">)</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">coverage</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  selection <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  minstat <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  At <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  Bt <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"stat"</span>,</span>
+<span>  alpha <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">plotcoverage</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  y <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  by <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"stat"</span>,</span>
+<span>  max.order <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  group <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  alpha <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  add <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  xlab <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expression.html" class="external-link">expression</a></span><span class="op">(</span><span class="va">A</span><span class="op">[</span><span class="va">t</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -71,67 +90,87 @@
     <dl><dt>x</dt>
 <dd><p>An object of class '<code><a href="indicators.html">indicators</a></code>' or a community data table with sites in rows and species in columns (in this second case, an object of class '<code><a href="multipatt.html">multipatt</a></code>' must be supplied for <code>y</code>).</p></dd>
 
-  <dt>y</dt>
+
+<dt>y</dt>
 <dd><p>An object of class '<code><a href="multipatt.html">multipatt</a></code>'.</p></dd>
 
-  <dt>selection</dt>
+
+<dt>selection</dt>
 <dd><p>A logical vector restricting the set of indicators used to calculate the coverage.</p></dd>
 
-  <dt>minstat</dt>
+
+<dt>minstat</dt>
 <dd><p>Minimum value of the statistic for selecting indicators.</p></dd>
 
-  <dt>At</dt>
+
+<dt>At</dt>
 <dd><p>Minimum value of positive predictive value (A) for selecting indicators.</p></dd>
 
-  <dt>Bt</dt>
+
+<dt>Bt</dt>
 <dd><p>Minimum value for sensitivity (B) for selecting indicators.</p></dd>
 
-  <dt>alpha</dt>
+
+<dt>type</dt>
+<dd><p>Specifies how to select indicators: (1) using the value of the statistic (<code>type = "stat"</code>); 
+(2) the lower bound of its confidence interval (<code>type = "lowerCI"</code>); 
+or (3) the upper bound of its confidence interval (<code>type = "upperCI"</code>). 
+This parameter makes sense when the function is called using objects of class '<code>indicators</code>' 
+and bootstrap confidence intervals are available for this object. Otherwise <code>type</code> has no 
+effect and the value of the statistic is used for selection. In function <code>coverage</code>, 
+the value of <code>type</code> applies to selection using <code>minstat</code>, <code>At</code> and <code>Bt</code>. 
+In function <code>plotcoverage</code>, the value of <code>type</code> applies to selection using <code>At</code>.</p></dd>
+
+
+<dt>alpha</dt>
 <dd><p>Significance level for selecting indicators.</p></dd>
 
-  <dt>type</dt>
-<dd><p>Specifies how to select indicators: (1) using the value of the statistic (<code>type = "stat"</code>); (2) the lower bound of its confidence interval (<code>type = "lowerCI"</code>); or (3) the upper bound of its confidence interval (<code>type = "upperCI"</code>). This parameter makes sense when the function is called using objects of class '<code>indicators</code>' and bootstrap confidence intervals are available for this object. Otherwise <code>type</code> has no effect and the value of the statistic is used for selection. In function <code>coverage</code>, the value of <code>type</code> applies to selection using <code>minstat</code>, <code>At</code> and <code>Bt</code>. In function <code>plotcoverage</code>, the value of <code>type</code> applies to selection using <code>At</code>.</p></dd>
 
-  <dt>by</dt>
+<dt>by</dt>
 <dd><p>Rate of increase in the predictive value threshold (At).</p></dd>
 
-  <dt>max.order</dt>
+
+<dt>max.order</dt>
 <dd><p>The maximum number of species conforming species combinations (allows examining the effects of increasing the order of combinations).This parameter is only used when the function is called using objects of class '<code>indicators</code>'.</p></dd>
 
-  <dt>group</dt>
+
+<dt>group</dt>
 <dd><p>Either an integer or a character string indicating the site group or site group combination for which plot is desired. This parameter is only used when the function is called using objects of class '<code>multipatt</code>'.</p></dd>
 
-  <dt>add</dt>
+
+<dt>add</dt>
 <dd><p>Flag indicating whether the function should draw on the existing plot.</p></dd>
 
-  <dt>xlab</dt>
+
+<dt>xlab</dt>
 <dd><p>Label for the x-axis.</p></dd>
 
-  <dt>...</dt>
+
+<dt>...</dt>
 <dd><p>Additional plotting parameters that are passed to the <code>plot</code> function.</p></dd>
 
 </dl></div>
-    <div id="details">
-    <h2>Details</h2>
-    <p>The <code>coverage</code> of a set of indicators was defined in De Cáceres et al. (2012) as the proportion of sites in a given site group where one or several indicators are found. This value allows assessing how often the site group will be able to be determined. If all indicators of a site group are rare, then the indication system will not be useful, regardless of how much restricted to the site group the indicators are. The coverage value is a generalization of quantity B of IndVal, that applies to a group of indicators instead of a single one. Function <code>plotcoverage</code> plots the coverage against the positive predictive value threshold (At) used to select indicators, as in De Cáceres et al. (2012). Functions <code>coverage</code> and <code>plotcoverage</code> can be executed using either an object of class '<code>indicators</code>', or an object of class '<code>multipatt</code>'. However, the parameters that apply to each case are slightly different. When using <code>coverage</code> and <code>plotcoverage</code> on objects of class '<code>multipatt</code>' one is expected to calculate the coverage for those indicators that are significant (see <code>alpha</code> parameter), although other constraints to select valid indicators can be used. When using <code>coverage</code> and <code>plotcoverage</code> on objects of class '<code>indicators</code>' one is expected to calculate the coverage for indicators that have values of A larger than a specified threshold (see <code>At</code> parameter). In this latter case, it may be advisable to use <code>stat="lowerCI"</code>, so that indicators with broad confidence intervals are not included in the selection.</p>
-    </div>
     <div id="value">
     <h2>Value</h2>
     
 
 <p>When used with an object of class '<code>indicators</code>', function <code>coverage</code> returns the proportion of sites of the target site group where one or another indicator (species combination) is found. When used with an object of class '<code>indicators</code>', function <code>coverage</code> returns a vector containing the coverage value for each site group or site group combination.</p>
     </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>The <code>coverage</code> of a set of indicators was defined in De Cáceres et al. (2012) as the proportion of sites in a given site group where one or several indicators are found. This value allows assessing how often the site group will be able to be determined. If all indicators of a site group are rare, then the indication system will not be useful, regardless of how much restricted to the site group the indicators are. The coverage value is a generalization of quantity B of IndVal, that applies to a group of indicators instead of a single one. Function <code>plotcoverage</code> plots the coverage against the positive predictive value threshold (At) used to select indicators, as in De Cáceres et al. (2012). Functions <code>coverage</code> and <code>plotcoverage</code> can be executed using either an object of class '<code>indicators</code>', or an object of class '<code>multipatt</code>'. However, the parameters that apply to each case are slightly different. When using <code>coverage</code> and <code>plotcoverage</code> on objects of class '<code>multipatt</code>' one is expected to calculate the coverage for those indicators that are significant (see <code>alpha</code> parameter), although other constraints to select valid indicators can be used. When using <code>coverage</code> and <code>plotcoverage</code> on objects of class '<code>indicators</code>' one is expected to calculate the coverage for indicators that have values of A larger than a specified threshold (see <code>At</code> parameter). In this latter case, it may be advisable to use <code>stat="lowerCI"</code>, so that indicators with broad confidence intervals are not included in the selection.</p>
+    </div>
     <div id="references">
     <h2>References</h2>
     <p>De Cáceres, M., Legendre, P., Wiser, S.K. and Brotons, L. 2012. Using species combinations in indicator analyses. Methods in Ecology and Evolution 3(6): 973-982.</p>
     </div>
-    <div id="author">
-    <h2>Author</h2>
-    <p>Miquel De Cáceres Ainsa, EMF-CREAF</p>
-    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p><code><a href="indicators.html">indicators</a></code>, <code><a href="multipatt.html">multipatt</a></code>, <code><a href="pruneindicators.html">pruneindicators</a></code></p></div>
+    </div>
+    <div id="author">
+    <h2>Author</h2>
+    <p>Miquel De Cáceres Ainsa, EMF-CREAF</p>
     </div>
 
     <div id="ref-examples">
@@ -141,49 +180,49 @@
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wetland</span><span class="op">)</span> <span class="co">## Loads species data</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Creates three clusters using kmeans</span></span></span>
-<span class="r-in"><span><span class="va">wetkm</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">wetkm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span> </span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Run indicator analysis with species combinations for the first group</span></span></span>
-<span class="r-in"><span><span class="va">sc</span><span class="op">=</span> <span class="fu"><a href="indicators.html">indicators</a></span><span class="op">(</span>X<span class="op">=</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, group<span class="op">=</span><span class="fl">1</span>, verbose<span class="op">=</span><span class="cn">TRUE</span>, At<span class="op">=</span><span class="fl">0.5</span>, Bt<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sc</span> <span class="op">&lt;-</span> <span class="fu"><a href="indicators.html">indicators</a></span><span class="op">(</span>X<span class="op">=</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, group<span class="op">=</span><span class="fl">1</span>, verbose<span class="op">=</span><span class="cn">TRUE</span>, At<span class="op">=</span><span class="fl">0.5</span>, Bt<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Target site group: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of candidate species: 33</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of sites: 41 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the site group: 17 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the site group: 10 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  1 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  2 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  3 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  4 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  5 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  6 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  7 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  8 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  9 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  10 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  11 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  12 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  13 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  14 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  15 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  16 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  17 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  18 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  19 ... accepted combinations: 9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  20 ... accepted combinations: 12 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  21 ... accepted combinations: 12 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  22 ... accepted combinations: 13 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  23 ... accepted combinations: 17 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  24 ... accepted combinations: 20 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  25 ... accepted combinations: 28 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  26 ... accepted combinations: 32 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  27 ... accepted combinations: 34 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  28 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  29 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  30 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  31 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  32 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  33 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of valid combinations: 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of remaining species: 11 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  2 ... accepted combinations: 16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  3 ... accepted combinations: 16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  4 ... accepted combinations: 87 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  5 ... accepted combinations: 87 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  6 ... accepted combinations: 133 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  7 ... accepted combinations: 133 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  8 ... accepted combinations: 153 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  9 ... accepted combinations: 155 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  10 ... accepted combinations: 155 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  11 ... accepted combinations: 155 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  12 ... accepted combinations: 155 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  13 ... accepted combinations: 155 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  14 ... accepted combinations: 155 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  15 ... accepted combinations: 155 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  16 ... accepted combinations: 160 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  17 ... accepted combinations: 161 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  18 ... accepted combinations: 170 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  19 ... accepted combinations: 170 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  20 ... accepted combinations: 172 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  21 ... accepted combinations: 172 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  22 ... accepted combinations: 173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  23 ... accepted combinations: 173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  24 ... accepted combinations: 173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  25 ... accepted combinations: 173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  26 ... accepted combinations: 173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  27 ... accepted combinations: 173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  28 ... accepted combinations: 173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  29 ... accepted combinations: 173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  30 ... accepted combinations: 173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  31 ... accepted combinations: 173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  32 ... accepted combinations: 173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  33 ... accepted combinations: 173 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of valid combinations: 173</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of remaining species: 13 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Calculating statistical significance (permutational test)...</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Determine the coverage of the selected set of indicators</span></span></span>
@@ -196,11 +235,13 @@
 <span class="r-plt img"><img src="coverage-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Runs the combination analysis using IndVal.g as statistic</span></span></span>
-<span class="r-in"><span><span class="va">wetpt</span> <span class="op">=</span> <span class="fu"><a href="multipatt.html">multipatt</a></span><span class="op">(</span><span class="va">wetland</span>, <span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">wetpt</span> <span class="op">&lt;-</span> <span class="fu"><a href="multipatt.html">multipatt</a></span><span class="op">(</span><span class="va">wetland</span>, <span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span> </span></span>
 <span class="r-in"><span><span class="co">## Determines the coverage for each site group combination</span></span></span>
 <span class="r-in"><span><span class="fu">coverage</span><span class="op">(</span><span class="va">wetland</span>, <span class="va">wetpt</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         1         2         3       1+2       1+3       2+3     1+2+3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.0000000 1.0000000 1.0000000 0.0000000 0.7741935 0.8750000 0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.0000000 1.0000000 1.0000000 0.8750000 0.0000000 0.7741935 0.0000000 </span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>

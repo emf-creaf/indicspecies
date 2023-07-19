@@ -60,8 +60,15 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pruneindicators</span><span class="op">(</span><span class="va">x</span>, At<span class="op">=</span><span class="fl">0</span>, Bt<span class="op">=</span><span class="fl">0</span>, sqrtIVt<span class="op">=</span><span class="fl">0</span>, alpha <span class="op">=</span> <span class="fl">1.0</span>,</span>
-<span>                max.indicators<span class="op">=</span><span class="fl">4</span>, verbose<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">pruneindicators</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  At <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  Bt <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  sqrtIVt <span class="op">=</span> <span class="fl">0</span>,</span>
+<span>  alpha <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  max.indicators <span class="op">=</span> <span class="fl">4</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -69,47 +76,53 @@
     <dl><dt>x</dt>
 <dd><p>An object of class '<code><a href="indicators.html">indicators</a></code>'.</p></dd>
 
-  <dt>At</dt>
+
+<dt>At</dt>
 <dd><p>Threshold for positive predictive value. Combinations with lower values are not kept.</p></dd>
 
-  <dt>Bt</dt>
+
+<dt>Bt</dt>
 <dd><p>Threshold for sensitivity. Combinations with lower values are not kept.</p></dd>
 
-  <dt>sqrtIVt</dt>
+
+<dt>sqrtIVt</dt>
 <dd><p>Threshold for (square root of) indicator value. Combinations with lower values are not kept.</p></dd>
 
-  <dt>alpha</dt>
+
+<dt>alpha</dt>
 <dd><p>Threshold for statistical significance of indicator value. Combinations with higher p-values are not kept.</p></dd>
 
-  <dt>max.indicators</dt>
+
+<dt>max.indicators</dt>
 <dd><p>Maximum number of species combinations to be kept. If <code>NULL</code>, the function returns all the non-nested valid indicators without further selection.</p></dd>
 
-  <dt>verbose</dt>
+
+<dt>verbose</dt>
 <dd><p>If TRUE, prints the results of each step.</p></dd>
 
 </dl></div>
-    <div id="details">
-    <h2>Details</h2>
-    <p>First, the function selects those indicators (species or species combinations) with valid positive predictive value, sensitivity and indicator value, according to the input thresholds. If the object '<code>speciescomb</code>' contains confidence intervals, then the lower bounds are used to select the valid indicators. Second, the function discards those valid indicators whose occurrence pattern is nested within other valid indicators. Third, the function evaluates the <code><a href="coverage.html">coverage</a></code> of the remaining set of indicators and explores subsets of increasing number of indicators, until the same coverage is attained and the set of indicators is returned. If the maximum allowed members is attained (<code>max.indicators</code>) then the set of indicators with maximum coverage is returned.</p>
-    </div>
     <div id="value">
     <h2>Value</h2>
     
 
 <p>An object of class '<code><a href="indicators.html">indicators</a></code>' with only the species combinations selected.</p>
     </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>First, the function selects those indicators (species or species combinations) with valid positive predictive value, sensitivity and indicator value, according to the input thresholds. If the object '<code>speciescomb</code>' contains confidence intervals, then the lower bounds are used to select the valid indicators. Second, the function discards those valid indicators whose occurrence pattern is nested within other valid indicators. Third, the function evaluates the <code><a href="coverage.html">coverage</a></code> of the remaining set of indicators and explores subsets of increasing number of indicators, until the same coverage is attained and the set of indicators is returned. If the maximum allowed members is attained (<code>max.indicators</code>) then the set of indicators with maximum coverage is returned.</p>
+    </div>
     <div id="references">
     <h2>References</h2>
     <p>De Cáceres, M., Legendre, P., Wiser, S.K. and Brotons, L. 2012. Using species combinations in indicator analyses. Methods in Ecology and Evolution 3(6): 973-982.</p>
 <p>De Cáceres, M. and Legendre, P. 2009. Associations between species and groups of sites: indices and statistical inference. Ecology 90(12): 3566-3574.</p>
     </div>
-    <div id="author">
-    <h2>Author</h2>
-    <p>Miquel De Cáceres Ainsa, EMF-CREAF</p>
-    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p><code><a href="indicators.html">indicators</a></code>, <code><a href="coverage.html">coverage</a></code></p></div>
+    </div>
+    <div id="author">
+    <h2>Author</h2>
+    <p>Miquel De Cáceres Ainsa, EMF-CREAF</p>
     </div>
 
     <div id="ref-examples">
@@ -119,61 +132,61 @@
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wetland</span><span class="op">)</span> <span class="co">## Loads species data</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Creates three clusters using kmeans</span></span></span>
-<span class="r-in"><span><span class="va">wetkm</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">wetkm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span> </span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Run indicator analysis with species combinations for the first group</span></span></span>
-<span class="r-in"><span><span class="va">sc</span><span class="op">=</span> <span class="fu"><a href="indicators.html">indicators</a></span><span class="op">(</span>X<span class="op">=</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, group<span class="op">=</span><span class="fl">1</span>, verbose<span class="op">=</span><span class="cn">TRUE</span>, At<span class="op">=</span><span class="fl">0.5</span>, Bt<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sc</span> <span class="op">&lt;-</span> <span class="fu"><a href="indicators.html">indicators</a></span><span class="op">(</span>X<span class="op">=</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, group<span class="op">=</span><span class="fl">1</span>, verbose<span class="op">=</span><span class="cn">TRUE</span>, At<span class="op">=</span><span class="fl">0.5</span>, Bt<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Target site group: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of candidate species: 33</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of sites: 41 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the site group: 17 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the site group: 14 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  1 ... accepted combinations: 0 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  2 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  3 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  4 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  5 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  6 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  7 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  8 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  9 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  10 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  11 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  12 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  13 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  14 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  15 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  16 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  17 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  18 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  19 ... accepted combinations: 9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  20 ... accepted combinations: 12 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  21 ... accepted combinations: 12 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  22 ... accepted combinations: 13 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  23 ... accepted combinations: 17 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  24 ... accepted combinations: 20 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  25 ... accepted combinations: 28 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  26 ... accepted combinations: 32 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  27 ... accepted combinations: 34 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  28 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  29 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  30 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  31 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  32 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  33 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of valid combinations: 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of remaining species: 11 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  3 ... accepted combinations: 16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  4 ... accepted combinations: 32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  5 ... accepted combinations: 32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  6 ... accepted combinations: 79 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  7 ... accepted combinations: 79 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  8 ... accepted combinations: 82 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  9 ... accepted combinations: 88 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  10 ... accepted combinations: 88 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  11 ... accepted combinations: 88 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  12 ... accepted combinations: 92 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  13 ... accepted combinations: 92 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  14 ... accepted combinations: 92 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  15 ... accepted combinations: 112 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  16 ... accepted combinations: 115 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  17 ... accepted combinations: 115 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  18 ... accepted combinations: 115 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  19 ... accepted combinations: 115 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  20 ... accepted combinations: 120 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  21 ... accepted combinations: 136 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  22 ... accepted combinations: 139 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  23 ... accepted combinations: 143 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  24 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  25 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  26 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  27 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  28 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  29 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  30 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  31 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  32 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  33 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of valid combinations: 144</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of remaining species: 15 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Calculating statistical significance (permutational test)...</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Finds the 'best' subset of indicators</span></span></span>
-<span class="r-in"><span><span class="va">sc2</span><span class="op">=</span><span class="fu">pruneindicators</span><span class="op">(</span><span class="va">sc</span>, At<span class="op">=</span><span class="fl">0.5</span>, Bt<span class="op">=</span><span class="fl">0.2</span>, verbose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Coverage of initial set of 35 indicators: 100%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Coverage of valid set of 35 indicators: 100%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Coverage of valid set of 4 nonnested indicators: 100%</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Checking 4 subsets of 1 indicator(s) maximum coverage: 100%</span>
+<span class="r-in"><span><span class="va">sc2</span> <span class="op">&lt;-</span> <span class="fu">pruneindicators</span><span class="op">(</span><span class="va">sc</span>, At<span class="op">=</span><span class="fl">0.5</span>, Bt<span class="op">=</span><span class="fl">0.2</span>, verbose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Coverage of initial set of 144 indicators: 100%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Coverage of valid set of 144 indicators: 100%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Coverage of valid set of 10 nonnested indicators: 100%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Checking 10 subsets of 1 indicator(s) maximum coverage: 100%</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coverage of final set of 1 indicators: 100%</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">sc2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                A B    sqrtIV p.value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp. 0.7777778 1 0.8819171   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod 0.9473684 1 0.9733285   0.005</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

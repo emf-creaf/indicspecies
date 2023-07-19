@@ -159,9 +159,9 @@ cluster analysis:</p>
 <span><span class="va">groupskm</span> <span class="op">&lt;-</span> <span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span></span>
 <span><span class="va">groupskm</span></span>
 <span><span class="co">#&gt;  5  8 13  4 17  3  9 21 16 14  2 15  1  7 10 40 23 25 22 20  6 18 12 39 19 11 </span></span>
-<span><span class="co">#&gt;  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  1  1  1  1  1  1  1  1  1  1  1 </span></span>
+<span><span class="co">#&gt;  2  2  2  2  2  2  2  2  2  2  2  2  2  2  2  3  3  3  3  3  3  3  3  3  3  3 </span></span>
 <span><span class="co">#&gt; 30 34 28 31 26 29 33 24 36 37 41 27 32 35 38 </span></span>
-<span><span class="co">#&gt;  2  2  2  2  1  1  1  2  2  2  2  2  2  3  3</span></span></code></pre></div>
+<span><span class="co">#&gt;  1  1  1  1  3  3  3  1  1  1  1  1  1  2  2</span></span></code></pre></div>
 <p>If the site classification vector is obtained independently of
 species data, the significance of statistical tests carried out on the
 indicator species will be meaningful. For example, one could classify
@@ -237,13 +237,13 @@ combination) using:</p>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Ludads 0.907   0.001 ***</span></span>
 <span><span class="co">#&gt; Orysp. 0.823   0.001 ***</span></span>
-<span><span class="co">#&gt; Psespi 0.602   0.021 *  </span></span>
+<span><span class="co">#&gt; Psespi 0.602   0.020 *  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 3  #sps.  3 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Pancam 0.910   0.001 ***</span></span>
-<span><span class="co">#&gt; Eupvac 0.724   0.005 ** </span></span>
-<span><span class="co">#&gt; Cynarc 0.602   0.003 ** </span></span>
+<span><span class="co">#&gt; Eupvac 0.724   0.007 ** </span></span>
+<span><span class="co">#&gt; Cynarc 0.602   0.015 *  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 1+2  #sps.  1 </span></span>
 <span><span class="co">#&gt;         stat p.value   </span></span>
@@ -252,8 +252,8 @@ combination) using:</p>
 <span><span class="co">#&gt;  Group 2+3  #sps.  3 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Melcor 0.876   0.001 ***</span></span>
-<span><span class="co">#&gt; Phynod 0.715   0.007 ** </span></span>
-<span><span class="co">#&gt; Echell 0.651   0.021 *  </span></span>
+<span><span class="co">#&gt; Phynod 0.715   0.010 ** </span></span>
+<span><span class="co">#&gt; Echell 0.651   0.011 *  </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>In our wetland community data, ‘Ludads’ is strongly and significantly
@@ -310,13 +310,13 @@ uses:</p>
 <span><span class="co">#&gt;             A      B  stat p.value    </span></span>
 <span><span class="co">#&gt; Ludads 1.0000 0.8235 0.907   0.001 ***</span></span>
 <span><span class="co">#&gt; Orysp. 0.6772 1.0000 0.823   0.001 ***</span></span>
-<span><span class="co">#&gt; Psespi 0.8811 0.4118 0.602   0.021 *  </span></span>
+<span><span class="co">#&gt; Psespi 0.8811 0.4118 0.602   0.020 *  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 3  #sps.  3 </span></span>
 <span><span class="co">#&gt;             A      B  stat p.value    </span></span>
 <span><span class="co">#&gt; Pancam 0.8278 1.0000 0.910   0.001 ***</span></span>
-<span><span class="co">#&gt; Eupvac 0.6546 0.8000 0.724   0.005 ** </span></span>
-<span><span class="co">#&gt; Cynarc 0.7241 0.5000 0.602   0.003 ** </span></span>
+<span><span class="co">#&gt; Eupvac 0.6546 0.8000 0.724   0.007 ** </span></span>
+<span><span class="co">#&gt; Cynarc 0.7241 0.5000 0.602   0.015 *  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 1+2  #sps.  1 </span></span>
 <span><span class="co">#&gt;             A      B  stat p.value   </span></span>
@@ -325,8 +325,8 @@ uses:</p>
 <span><span class="co">#&gt;  Group 2+3  #sps.  3 </span></span>
 <span><span class="co">#&gt;             A      B  stat p.value    </span></span>
 <span><span class="co">#&gt; Melcor 0.8764 0.8750 0.876   0.001 ***</span></span>
-<span><span class="co">#&gt; Phynod 0.8752 0.5833 0.715   0.007 ** </span></span>
-<span><span class="co">#&gt; Echell 0.9246 0.4583 0.651   0.021 *  </span></span>
+<span><span class="co">#&gt; Phynod 0.8752 0.5833 0.715   0.010 ** </span></span>
+<span><span class="co">#&gt; Echell 0.9246 0.4583 0.651   0.011 *  </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>This gives us additional information about why species can be used as
@@ -368,45 +368,45 @@ significance level in the summary:</p>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Ludads 0.907   0.001 ***</span></span>
 <span><span class="co">#&gt; Orysp. 0.823   0.001 ***</span></span>
-<span><span class="co">#&gt; Psespi 0.602   0.021 *  </span></span>
-<span><span class="co">#&gt; Polatt 0.420   0.151    </span></span>
+<span><span class="co">#&gt; Psespi 0.602   0.020 *  </span></span>
+<span><span class="co">#&gt; Polatt 0.420   0.165    </span></span>
 <span><span class="co">#&gt; Casobt 0.243   1.000    </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 2  #sps.  6 </span></span>
 <span><span class="co">#&gt;         stat p.value</span></span>
-<span><span class="co">#&gt; Aesind 0.445   0.220</span></span>
-<span><span class="co">#&gt; Alyvag 0.335   0.422</span></span>
-<span><span class="co">#&gt; Abefic 0.267   0.573</span></span>
-<span><span class="co">#&gt; Poa2   0.267   0.580</span></span>
-<span><span class="co">#&gt; Poa1   0.267   0.567</span></span>
-<span><span class="co">#&gt; Helcri 0.267   0.567</span></span>
+<span><span class="co">#&gt; Aesind 0.445   0.228</span></span>
+<span><span class="co">#&gt; Alyvag 0.335   0.417</span></span>
+<span><span class="co">#&gt; Abefic 0.267   0.567</span></span>
+<span><span class="co">#&gt; Poa2   0.267   0.565</span></span>
+<span><span class="co">#&gt; Poa1   0.267   0.574</span></span>
+<span><span class="co">#&gt; Helcri 0.267   0.574</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 3  #sps.  10 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Pancam 0.910   0.001 ***</span></span>
-<span><span class="co">#&gt; Eupvac 0.724   0.005 ** </span></span>
-<span><span class="co">#&gt; Cynarc 0.602   0.003 ** </span></span>
-<span><span class="co">#&gt; Abemos 0.447   0.058 .  </span></span>
-<span><span class="co">#&gt; Merhed 0.402   0.184    </span></span>
-<span><span class="co">#&gt; Ludoct 0.316   0.220    </span></span>
-<span><span class="co">#&gt; Passcr 0.316   0.248    </span></span>
-<span><span class="co">#&gt; Dendio 0.316   0.274    </span></span>
-<span><span class="co">#&gt; Physp. 0.316   0.261    </span></span>
-<span><span class="co">#&gt; Goopur 0.316   0.261    </span></span>
+<span><span class="co">#&gt; Eupvac 0.724   0.007 ** </span></span>
+<span><span class="co">#&gt; Cynarc 0.602   0.015 *  </span></span>
+<span><span class="co">#&gt; Abemos 0.447   0.051 .  </span></span>
+<span><span class="co">#&gt; Merhed 0.402   0.192    </span></span>
+<span><span class="co">#&gt; Ludoct 0.316   0.218    </span></span>
+<span><span class="co">#&gt; Passcr 0.316   0.239    </span></span>
+<span><span class="co">#&gt; Dendio 0.316   0.233    </span></span>
+<span><span class="co">#&gt; Physp. 0.316   0.223    </span></span>
+<span><span class="co">#&gt; Goopur 0.316   0.223    </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 1+2  #sps.  2 </span></span>
 <span><span class="co">#&gt;         stat p.value   </span></span>
 <span><span class="co">#&gt; Elesp. 0.741   0.004 **</span></span>
-<span><span class="co">#&gt; Carhal 0.402   0.437   </span></span>
+<span><span class="co">#&gt; Carhal 0.402   0.426   </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 2+3  #sps.  6 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Melcor 0.876   0.001 ***</span></span>
-<span><span class="co">#&gt; Phynod 0.715   0.007 ** </span></span>
-<span><span class="co">#&gt; Echell 0.651   0.021 *  </span></span>
-<span><span class="co">#&gt; Echpas 0.584   0.278    </span></span>
-<span><span class="co">#&gt; Cyprot 0.500   0.077 .  </span></span>
-<span><span class="co">#&gt; Ipocop 0.354   0.331    </span></span>
+<span><span class="co">#&gt; Phynod 0.715   0.010 ** </span></span>
+<span><span class="co">#&gt; Echell 0.651   0.011 *  </span></span>
+<span><span class="co">#&gt; Echpas 0.584   0.267    </span></span>
+<span><span class="co">#&gt; Cyprot 0.500   0.065 .  </span></span>
+<span><span class="co">#&gt; Ipocop 0.354   0.321    </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>Parameter <code>alpha</code> is by default set to
@@ -426,39 +426,39 @@ to inspect the object <code>sign</code> returned by
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">indval</span><span class="op">$</span><span class="va">sign</span></span>
 <span><span class="co">#&gt;        s.1 s.2 s.3 index      stat p.value</span></span>
-<span><span class="co">#&gt; Abefic   0   1   0     2 0.2672612   0.573</span></span>
-<span><span class="co">#&gt; Merhed   0   0   1     3 0.4019185   0.184</span></span>
-<span><span class="co">#&gt; Alyvag   0   1   0     2 0.3347953   0.422</span></span>
+<span><span class="co">#&gt; Abefic   0   1   0     2 0.2672612   0.567</span></span>
+<span><span class="co">#&gt; Merhed   0   0   1     3 0.4019185   0.192</span></span>
+<span><span class="co">#&gt; Alyvag   0   1   0     2 0.3347953   0.417</span></span>
 <span><span class="co">#&gt; Pancam   0   0   1     3 0.9098495   0.001</span></span>
-<span><span class="co">#&gt; Abemos   0   0   1     3 0.4472136   0.058</span></span>
+<span><span class="co">#&gt; Abemos   0   0   1     3 0.4472136   0.051</span></span>
 <span><span class="co">#&gt; Melcor   0   1   1     6 0.8757059   0.001</span></span>
-<span><span class="co">#&gt; Ludoct   0   0   1     3 0.3162278   0.220</span></span>
-<span><span class="co">#&gt; Eupvac   0   0   1     3 0.7236825   0.005</span></span>
-<span><span class="co">#&gt; Echpas   0   1   1     6 0.5842649   0.278</span></span>
-<span><span class="co">#&gt; Passcr   0   0   1     3 0.3162278   0.248</span></span>
-<span><span class="co">#&gt; Poa2     0   1   0     2 0.2672612   0.580</span></span>
-<span><span class="co">#&gt; Carhal   1   1   0     4 0.4016097   0.437</span></span>
-<span><span class="co">#&gt; Dendio   0   0   1     3 0.3162278   0.274</span></span>
+<span><span class="co">#&gt; Ludoct   0   0   1     3 0.3162278   0.218</span></span>
+<span><span class="co">#&gt; Eupvac   0   0   1     3 0.7236825   0.007</span></span>
+<span><span class="co">#&gt; Echpas   0   1   1     6 0.5842649   0.267</span></span>
+<span><span class="co">#&gt; Passcr   0   0   1     3 0.3162278   0.239</span></span>
+<span><span class="co">#&gt; Poa2     0   1   0     2 0.2672612   0.565</span></span>
+<span><span class="co">#&gt; Carhal   1   1   0     4 0.4016097   0.426</span></span>
+<span><span class="co">#&gt; Dendio   0   0   1     3 0.3162278   0.233</span></span>
 <span><span class="co">#&gt; Casobt   1   0   0     1 0.2425356   1.000</span></span>
-<span><span class="co">#&gt; Aesind   0   1   0     2 0.4447093   0.220</span></span>
-<span><span class="co">#&gt; Cyprot   0   1   1     6 0.5000000   0.077</span></span>
-<span><span class="co">#&gt; Ipocop   0   1   1     6 0.3535534   0.331</span></span>
-<span><span class="co">#&gt; Cynarc   0   0   1     3 0.6017217   0.003</span></span>
+<span><span class="co">#&gt; Aesind   0   1   0     2 0.4447093   0.228</span></span>
+<span><span class="co">#&gt; Cyprot   0   1   1     6 0.5000000   0.065</span></span>
+<span><span class="co">#&gt; Ipocop   0   1   1     6 0.3535534   0.321</span></span>
+<span><span class="co">#&gt; Cynarc   0   0   1     3 0.6017217   0.015</span></span>
 <span><span class="co">#&gt; Walind   1   1   1     7 0.4938648      NA</span></span>
 <span><span class="co">#&gt; Sessp.   1   1   1     7 0.6984303      NA</span></span>
-<span><span class="co">#&gt; Phynod   0   1   1     6 0.7145356   0.007</span></span>
-<span><span class="co">#&gt; Echell   0   1   1     6 0.6509834   0.021</span></span>
+<span><span class="co">#&gt; Phynod   0   1   1     6 0.7145356   0.010</span></span>
+<span><span class="co">#&gt; Echell   0   1   1     6 0.6509834   0.011</span></span>
 <span><span class="co">#&gt; Helind   1   1   1     7 0.6984303      NA</span></span>
 <span><span class="co">#&gt; Ipoaqu   1   1   1     7 0.4938648      NA</span></span>
 <span><span class="co">#&gt; Orysp.   1   0   0     1 0.8229074   0.001</span></span>
 <span><span class="co">#&gt; Elesp.   1   1   0     4 0.7405316   0.004</span></span>
-<span><span class="co">#&gt; Psespi   1   0   0     1 0.6023402   0.021</span></span>
+<span><span class="co">#&gt; Psespi   1   0   0     1 0.6023402   0.020</span></span>
 <span><span class="co">#&gt; Ludads   1   0   0     1 0.9074852   0.001</span></span>
-<span><span class="co">#&gt; Polatt   1   0   0     1 0.4200840   0.151</span></span>
-<span><span class="co">#&gt; Poa1     0   1   0     2 0.2672612   0.567</span></span>
-<span><span class="co">#&gt; Helcri   0   1   0     2 0.2672612   0.567</span></span>
-<span><span class="co">#&gt; Physp.   0   0   1     3 0.3162278   0.261</span></span>
-<span><span class="co">#&gt; Goopur   0   0   1     3 0.3162278   0.261</span></span></code></pre></div>
+<span><span class="co">#&gt; Polatt   1   0   0     1 0.4200840   0.165</span></span>
+<span><span class="co">#&gt; Poa1     0   1   0     2 0.2672612   0.574</span></span>
+<span><span class="co">#&gt; Helcri   0   1   0     2 0.2672612   0.574</span></span>
+<span><span class="co">#&gt; Physp.   0   0   1     3 0.3162278   0.223</span></span>
+<span><span class="co">#&gt; Goopur   0   0   1     3 0.3162278   0.223</span></span></code></pre></div>
 <p>After accessing the object <code>indval$sign</code>, we know that the
 four species whose highest IndVal corresponded to the set of all sites
 were ‘Valind’, ‘Sessp.’, ‘Helind’ and ‘Ipoaqu’, as indicated by the
@@ -535,26 +535,26 @@ IndVal:</p>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Ludads 0.870   0.001 ***</span></span>
 <span><span class="co">#&gt; Orysp. 0.668   0.001 ***</span></span>
-<span><span class="co">#&gt; Psespi 0.413   0.020 *  </span></span>
+<span><span class="co">#&gt; Psespi 0.413   0.017 *  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 2  #sps.  1 </span></span>
-<span><span class="co">#&gt;         stat p.value   </span></span>
-<span><span class="co">#&gt; Phynod 0.436    0.01 **</span></span>
+<span><span class="co">#&gt;         stat p.value  </span></span>
+<span><span class="co">#&gt; Phynod 0.436   0.013 *</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 3  #sps.  4 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Pancam 0.748   0.001 ***</span></span>
-<span><span class="co">#&gt; Eupvac 0.537   0.001 ***</span></span>
+<span><span class="co">#&gt; Eupvac 0.537   0.005 ** </span></span>
 <span><span class="co">#&gt; Cynarc 0.492   0.008 ** </span></span>
-<span><span class="co">#&gt; Abemos 0.378   0.049 *  </span></span>
+<span><span class="co">#&gt; Abemos 0.378   0.037 *  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 1+2  #sps.  1 </span></span>
 <span><span class="co">#&gt;         stat p.value   </span></span>
-<span><span class="co">#&gt; Elesp. 0.538   0.006 **</span></span>
+<span><span class="co">#&gt; Elesp. 0.538   0.004 **</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 2+3  #sps.  1 </span></span>
-<span><span class="co">#&gt;         stat p.value    </span></span>
-<span><span class="co">#&gt; Melcor 0.612   0.001 ***</span></span>
+<span><span class="co">#&gt;         stat p.value   </span></span>
+<span><span class="co">#&gt; Melcor 0.612   0.002 **</span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>Nevertheless, there are some differences between indicator values and
@@ -626,8 +626,8 @@ original method, by using <code>duleg = TRUE</code>:</p>
 <span><span class="co">#&gt;  Significance level (alpha): 0.05</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Total number of species: 33</span></span>
-<span><span class="co">#&gt;  Selected number of species: 8 </span></span>
-<span><span class="co">#&gt;  Number of species associated to 1 group: 8 </span></span>
+<span><span class="co">#&gt;  Selected number of species: 9 </span></span>
+<span><span class="co">#&gt;  Number of species associated to 1 group: 9 </span></span>
 <span><span class="co">#&gt;  Number of species associated to 2 groups: 0 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  List of species associated to each combination: </span></span>
@@ -636,18 +636,19 @@ original method, by using <code>duleg = TRUE</code>:</p>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Ludads 0.907   0.001 ***</span></span>
 <span><span class="co">#&gt; Orysp. 0.823   0.001 ***</span></span>
-<span><span class="co">#&gt; Psespi 0.602   0.015 *  </span></span>
+<span><span class="co">#&gt; Psespi 0.602   0.016 *  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 2  #sps.  1 </span></span>
 <span><span class="co">#&gt;         stat p.value   </span></span>
 <span><span class="co">#&gt; Phynod 0.676   0.005 **</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Group 3  #sps.  4 </span></span>
+<span><span class="co">#&gt;  Group 3  #sps.  5 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Pancam 0.910   0.001 ***</span></span>
-<span><span class="co">#&gt; Melcor 0.739   0.002 ** </span></span>
+<span><span class="co">#&gt; Melcor 0.739   0.001 ***</span></span>
 <span><span class="co">#&gt; Eupvac 0.724   0.002 ** </span></span>
-<span><span class="co">#&gt; Cynarc 0.602   0.010 ** </span></span>
+<span><span class="co">#&gt; Cynarc 0.602   0.006 ** </span></span>
+<span><span class="co">#&gt; Abemos 0.447   0.049 *  </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 </div>
@@ -675,8 +676,8 @@ pairs are considered:</p>
 <span><span class="co">#&gt;  Significance level (alpha): 0.05</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Total number of species: 33</span></span>
-<span><span class="co">#&gt;  Selected number of species: 10 </span></span>
-<span><span class="co">#&gt;  Number of species associated to 1 group: 6 </span></span>
+<span><span class="co">#&gt;  Selected number of species: 11 </span></span>
+<span><span class="co">#&gt;  Number of species associated to 1 group: 7 </span></span>
 <span><span class="co">#&gt;  Number of species associated to 2 groups: 4 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  List of species associated to each combination: </span></span>
@@ -684,24 +685,25 @@ pairs are considered:</p>
 <span><span class="co">#&gt;  Group 1  #sps.  3 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Ludads 0.907   0.001 ***</span></span>
-<span><span class="co">#&gt; Orysp. 0.823   0.002 ** </span></span>
-<span><span class="co">#&gt; Psespi 0.602   0.023 *  </span></span>
+<span><span class="co">#&gt; Orysp. 0.823   0.003 ** </span></span>
+<span><span class="co">#&gt; Psespi 0.602   0.014 *  </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Group 3  #sps.  3 </span></span>
+<span><span class="co">#&gt;  Group 3  #sps.  4 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Pancam 0.910   0.001 ***</span></span>
-<span><span class="co">#&gt; Eupvac 0.724   0.002 ** </span></span>
+<span><span class="co">#&gt; Eupvac 0.724   0.003 ** </span></span>
 <span><span class="co">#&gt; Cynarc 0.602   0.007 ** </span></span>
+<span><span class="co">#&gt; Abemos 0.447   0.044 *  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 1+2  #sps.  1 </span></span>
 <span><span class="co">#&gt;         stat p.value   </span></span>
-<span><span class="co">#&gt; Elesp. 0.741   0.005 **</span></span>
+<span><span class="co">#&gt; Elesp. 0.741   0.006 **</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 2+3  #sps.  3 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Melcor 0.876   0.001 ***</span></span>
-<span><span class="co">#&gt; Phynod 0.715   0.012 *  </span></span>
-<span><span class="co">#&gt; Echell 0.651   0.018 *  </span></span>
+<span><span class="co">#&gt; Phynod 0.715   0.017 *  </span></span>
+<span><span class="co">#&gt; Echell 0.651   0.011 *  </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>In this case the output looks like a the output of an unrestricted
@@ -742,8 +744,8 @@ will exclude combination ‘4’ from vector <code>restcomb</code>:</p>
 <span><span class="co">#&gt;  Significance level (alpha): 0.05</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Total number of species: 33</span></span>
-<span><span class="co">#&gt;  Selected number of species: 9 </span></span>
-<span><span class="co">#&gt;  Number of species associated to 1 group: 6 </span></span>
+<span><span class="co">#&gt;  Selected number of species: 10 </span></span>
+<span><span class="co">#&gt;  Number of species associated to 1 group: 7 </span></span>
 <span><span class="co">#&gt;  Number of species associated to 2 groups: 3 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  List of species associated to each combination: </span></span>
@@ -754,17 +756,18 @@ will exclude combination ‘4’ from vector <code>restcomb</code>:</p>
 <span><span class="co">#&gt; Orysp. 0.823   0.001 ***</span></span>
 <span><span class="co">#&gt; Psespi 0.602   0.019 *  </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Group 3  #sps.  3 </span></span>
+<span><span class="co">#&gt;  Group 3  #sps.  4 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Pancam 0.910   0.001 ***</span></span>
-<span><span class="co">#&gt; Eupvac 0.724   0.001 ***</span></span>
-<span><span class="co">#&gt; Cynarc 0.602   0.013 *  </span></span>
+<span><span class="co">#&gt; Eupvac 0.724   0.005 ** </span></span>
+<span><span class="co">#&gt; Cynarc 0.602   0.009 ** </span></span>
+<span><span class="co">#&gt; Abemos 0.447   0.045 *  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 2+3  #sps.  3 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Melcor 0.876   0.001 ***</span></span>
-<span><span class="co">#&gt; Phynod 0.715   0.006 ** </span></span>
-<span><span class="co">#&gt; Echell 0.651   0.012 *  </span></span>
+<span><span class="co">#&gt; Phynod 0.715   0.008 ** </span></span>
+<span><span class="co">#&gt; Echell 0.651   0.016 *  </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>If we compare these last results with those including all possible
@@ -776,39 +779,39 @@ group 1, but this relationship is not significant:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">indvalrest</span><span class="op">$</span><span class="va">sign</span></span>
 <span><span class="co">#&gt;        s.1 s.2 s.3 index      stat p.value</span></span>
-<span><span class="co">#&gt; Abefic   0   1   0     2 0.2672612   0.569</span></span>
-<span><span class="co">#&gt; Merhed   0   0   1     3 0.4019185   0.186</span></span>
-<span><span class="co">#&gt; Alyvag   0   1   0     2 0.3347953   0.440</span></span>
+<span><span class="co">#&gt; Abefic   0   1   0     2 0.2672612   0.610</span></span>
+<span><span class="co">#&gt; Merhed   0   0   1     3 0.4019185   0.191</span></span>
+<span><span class="co">#&gt; Alyvag   0   1   0     2 0.3347953   0.403</span></span>
 <span><span class="co">#&gt; Pancam   0   0   1     3 0.9098495   0.001</span></span>
-<span><span class="co">#&gt; Abemos   0   0   1     3 0.4472136   0.060</span></span>
+<span><span class="co">#&gt; Abemos   0   0   1     3 0.4472136   0.045</span></span>
 <span><span class="co">#&gt; Melcor   0   1   1     5 0.8757059   0.001</span></span>
-<span><span class="co">#&gt; Ludoct   0   0   1     3 0.3162278   0.245</span></span>
-<span><span class="co">#&gt; Eupvac   0   0   1     3 0.7236825   0.001</span></span>
-<span><span class="co">#&gt; Echpas   0   1   1     5 0.5842649   0.190</span></span>
-<span><span class="co">#&gt; Passcr   0   0   1     3 0.3162278   0.257</span></span>
-<span><span class="co">#&gt; Poa2     0   1   0     2 0.2672612   0.596</span></span>
-<span><span class="co">#&gt; Carhal   1   0   0     1 0.3313667   0.734</span></span>
-<span><span class="co">#&gt; Dendio   0   0   1     3 0.3162278   0.244</span></span>
+<span><span class="co">#&gt; Ludoct   0   0   1     3 0.3162278   0.239</span></span>
+<span><span class="co">#&gt; Eupvac   0   0   1     3 0.7236825   0.005</span></span>
+<span><span class="co">#&gt; Echpas   0   1   1     5 0.5842649   0.197</span></span>
+<span><span class="co">#&gt; Passcr   0   0   1     3 0.3162278   0.242</span></span>
+<span><span class="co">#&gt; Poa2     0   1   0     2 0.2672612   0.587</span></span>
+<span><span class="co">#&gt; Carhal   1   0   0     1 0.3313667   0.729</span></span>
+<span><span class="co">#&gt; Dendio   0   0   1     3 0.3162278   0.239</span></span>
 <span><span class="co">#&gt; Casobt   1   0   0     1 0.2425356   1.000</span></span>
-<span><span class="co">#&gt; Aesind   0   1   0     2 0.4447093   0.227</span></span>
-<span><span class="co">#&gt; Cyprot   0   1   1     5 0.5000000   0.067</span></span>
-<span><span class="co">#&gt; Ipocop   0   1   1     5 0.3535534   0.300</span></span>
-<span><span class="co">#&gt; Cynarc   0   0   1     3 0.6017217   0.013</span></span>
-<span><span class="co">#&gt; Walind   1   0   1     4 0.4406873   0.670</span></span>
-<span><span class="co">#&gt; Sessp.   0   1   1     5 0.5901665   0.720</span></span>
-<span><span class="co">#&gt; Phynod   0   1   1     5 0.7145356   0.006</span></span>
-<span><span class="co">#&gt; Echell   0   1   1     5 0.6509834   0.012</span></span>
-<span><span class="co">#&gt; Helind   0   1   1     5 0.5720540   0.828</span></span>
-<span><span class="co">#&gt; Ipoaqu   1   0   1     4 0.4053049   0.901</span></span>
+<span><span class="co">#&gt; Aesind   0   1   0     2 0.4447093   0.226</span></span>
+<span><span class="co">#&gt; Cyprot   0   1   1     5 0.5000000   0.081</span></span>
+<span><span class="co">#&gt; Ipocop   0   1   1     5 0.3535534   0.330</span></span>
+<span><span class="co">#&gt; Cynarc   0   0   1     3 0.6017217   0.009</span></span>
+<span><span class="co">#&gt; Walind   1   0   1     4 0.4406873   0.675</span></span>
+<span><span class="co">#&gt; Sessp.   0   1   1     5 0.5901665   0.707</span></span>
+<span><span class="co">#&gt; Phynod   0   1   1     5 0.7145356   0.008</span></span>
+<span><span class="co">#&gt; Echell   0   1   1     5 0.6509834   0.016</span></span>
+<span><span class="co">#&gt; Helind   0   1   1     5 0.5720540   0.833</span></span>
+<span><span class="co">#&gt; Ipoaqu   1   0   1     4 0.4053049   0.912</span></span>
 <span><span class="co">#&gt; Orysp.   1   0   0     1 0.8229074   0.001</span></span>
-<span><span class="co">#&gt; Elesp.   1   0   0     1 0.5534178   0.689</span></span>
+<span><span class="co">#&gt; Elesp.   1   0   0     1 0.5534178   0.674</span></span>
 <span><span class="co">#&gt; Psespi   1   0   0     1 0.6023402   0.019</span></span>
 <span><span class="co">#&gt; Ludads   1   0   0     1 0.9074852   0.001</span></span>
-<span><span class="co">#&gt; Polatt   1   0   0     1 0.4200840   0.154</span></span>
-<span><span class="co">#&gt; Poa1     0   1   0     2 0.2672612   0.601</span></span>
-<span><span class="co">#&gt; Helcri   0   1   0     2 0.2672612   0.601</span></span>
-<span><span class="co">#&gt; Physp.   0   0   1     3 0.3162278   0.238</span></span>
-<span><span class="co">#&gt; Goopur   0   0   1     3 0.3162278   0.238</span></span></code></pre></div>
+<span><span class="co">#&gt; Polatt   1   0   0     1 0.4200840   0.156</span></span>
+<span><span class="co">#&gt; Poa1     0   1   0     2 0.2672612   0.584</span></span>
+<span><span class="co">#&gt; Helcri   0   1   0     2 0.2672612   0.584</span></span>
+<span><span class="co">#&gt; Physp.   0   0   1     3 0.3162278   0.223</span></span>
+<span><span class="co">#&gt; Goopur   0   0   1     3 0.3162278   0.223</span></span></code></pre></div>
 <p>Restricting site group combinations is also possible with the phi and
 point biserial coefficients.</p>
 </div>
@@ -847,23 +850,23 @@ list with three elements: <code>stat</code>, <code>lowerCI</code> and
 <code class="sourceCode R"><span><span class="va">prefstat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/strassoc.html">strassoc</a></span><span class="op">(</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">groups</span>, func<span class="op">=</span><span class="st">"A.g"</span>, </span>
 <span>                     nboot.ci <span class="op">=</span> <span class="fl">199</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prefstat</span><span class="op">$</span><span class="va">lowerCI</span><span class="op">)</span>,<span class="fl">3</span><span class="op">)</span></span>
-<span><span class="co">#&gt;            1     2     3</span></span>
-<span><span class="co">#&gt; Abefic 0.000 0.000 0.000</span></span>
-<span><span class="co">#&gt; Merhed 0.000 0.000 0.000</span></span>
-<span><span class="co">#&gt; Alyvag 0.000 0.000 0.000</span></span>
-<span><span class="co">#&gt; Pancam 0.000 0.043 0.660</span></span>
-<span><span class="co">#&gt; Abemos 0.000 0.000 0.000</span></span>
-<span><span class="co">#&gt; Melcor 0.032 0.224 0.435</span></span>
+<span><span class="co">#&gt;           1     2     3</span></span>
+<span><span class="co">#&gt; Abefic 0.00 0.000 0.000</span></span>
+<span><span class="co">#&gt; Merhed 0.00 0.000 0.000</span></span>
+<span><span class="co">#&gt; Alyvag 0.00 0.000 0.000</span></span>
+<span><span class="co">#&gt; Pancam 0.00 0.028 0.682</span></span>
+<span><span class="co">#&gt; Abemos 0.00 0.000 0.000</span></span>
+<span><span class="co">#&gt; Melcor 0.05 0.224 0.463</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prefstat</span><span class="op">$</span><span class="va">upperCI</span><span class="op">)</span>,<span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            1     2     3</span></span>
 <span><span class="co">#&gt; Abefic 0.000 1.000 0.000</span></span>
 <span><span class="co">#&gt; Merhed 0.000 1.000 1.000</span></span>
 <span><span class="co">#&gt; Alyvag 1.000 1.000 0.000</span></span>
-<span><span class="co">#&gt; Pancam 0.083 0.267 0.935</span></span>
+<span><span class="co">#&gt; Pancam 0.077 0.281 0.950</span></span>
 <span><span class="co">#&gt; Abemos 0.000 0.000 1.000</span></span>
-<span><span class="co">#&gt; Melcor 0.215 0.401 0.640</span></span></code></pre></div>
+<span><span class="co">#&gt; Melcor 0.210 0.399 0.636</span></span></code></pre></div>
 <p>For example, the 95% confidence interval for the ‘A’ component of the
-association between ‘Pancam’ and Group 3 is [0.66, 0.935].</p>
+association between ‘Pancam’ and Group 3 is [0.682, 0.95].</p>
 </div>
 <div class="section level3">
 <h3 id="the-function-signassoc">The function <code>signassoc()</code><a class="anchor" aria-label="anchor" href="#the-function-signassoc"></a>
@@ -882,12 +885,12 @@ or lower than random:</p>
 <span>                      control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">199</span><span class="op">)</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prefsign</span><span class="op">)</span></span>
 <span><span class="co">#&gt;           1    2    3 best   psidak</span></span>
-<span><span class="co">#&gt; Abefic 1.00 0.66 1.00    2 0.960696</span></span>
-<span><span class="co">#&gt; Merhed 0.44 0.68 0.20    3 0.488000</span></span>
-<span><span class="co">#&gt; Alyvag 1.00 0.29 0.83    2 0.642089</span></span>
-<span><span class="co">#&gt; Pancam 0.01 0.16 0.01    1 0.029701</span></span>
-<span><span class="co">#&gt; Abemos 0.61 0.91 0.10    3 0.271000</span></span>
-<span><span class="co">#&gt; Melcor 0.01 0.88 0.01    1 0.029701</span></span></code></pre></div>
+<span><span class="co">#&gt; Abefic 1.00 0.60 1.00    2 0.936000</span></span>
+<span><span class="co">#&gt; Merhed 0.44 0.57 0.22    3 0.525448</span></span>
+<span><span class="co">#&gt; Alyvag 0.96 0.23 0.86    2 0.543467</span></span>
+<span><span class="co">#&gt; Pancam 0.01 0.17 0.01    1 0.029701</span></span>
+<span><span class="co">#&gt; Abemos 0.62 0.80 0.08    3 0.221312</span></span>
+<span><span class="co">#&gt; Melcor 0.01 0.84 0.01    1 0.029701</span></span></code></pre></div>
 <p>The last columns of the results indicate the group for which the
 p-value was the lowest, and the p-value corrected for multiple testing
 using the Sidak method.</p>
@@ -997,8 +1000,8 @@ data set, we can use it in <code><a href="../reference/multipatt.html">multipatt
 <span><span class="co">#&gt;  Significance level (alpha): 0.05</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Total number of species: 286</span></span>
-<span><span class="co">#&gt;  Selected number of species: 45 </span></span>
-<span><span class="co">#&gt;  Number of species associated to 1 group: 45 </span></span>
+<span><span class="co">#&gt;  Selected number of species: 42 </span></span>
+<span><span class="co">#&gt;  Number of species associated to 1 group: 42 </span></span>
 <span><span class="co">#&gt;  Number of species associated to 2 groups: 0 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  List of species associated to each combination: </span></span>
@@ -1008,54 +1011,51 @@ data set, we can use it in <code><a href="../reference/multipatt.html">multipatt
 <span><span class="co">#&gt; Orysp.+Ludads 1.0000 0.8235 0.907   0.001 ***</span></span>
 <span><span class="co">#&gt; Ludads        1.0000 0.8235 0.907   0.001 ***</span></span>
 <span><span class="co">#&gt; Orysp.        0.6772 1.0000 0.823   0.001 ***</span></span>
-<span><span class="co">#&gt; Sessp.+Ludads 1.0000 0.4118 0.642   0.003 ** </span></span>
+<span><span class="co">#&gt; Sessp.+Ludads 1.0000 0.4118 0.642   0.001 ***</span></span>
 <span><span class="co">#&gt; Orysp.+Psespi 1.0000 0.4118 0.642   0.004 ** </span></span>
-<span><span class="co">#&gt; Elesp.+Ludads 1.0000 0.4118 0.642   0.001 ***</span></span>
-<span><span class="co">#&gt; Psespi+Ludads 1.0000 0.4118 0.642   0.003 ** </span></span>
-<span><span class="co">#&gt; Orysp.+Elesp. 0.7424 0.5294 0.627   0.019 *  </span></span>
+<span><span class="co">#&gt; Elesp.+Ludads 1.0000 0.4118 0.642   0.003 ** </span></span>
+<span><span class="co">#&gt; Psespi+Ludads 1.0000 0.4118 0.642   0.002 ** </span></span>
+<span><span class="co">#&gt; Orysp.+Elesp. 0.7424 0.5294 0.627   0.017 *  </span></span>
 <span><span class="co">#&gt; Sessp.+Orysp. 0.9081 0.4118 0.611   0.009 ** </span></span>
-<span><span class="co">#&gt; Psespi        0.8811 0.4118 0.602   0.013 *  </span></span>
+<span><span class="co">#&gt; Psespi        0.8811 0.4118 0.602   0.020 *  </span></span>
 <span><span class="co">#&gt; Helind+Ludads 1.0000 0.3529 0.594   0.007 ** </span></span>
-<span><span class="co">#&gt; Walind+Orysp. 1.0000 0.2941 0.542   0.027 *  </span></span>
-<span><span class="co">#&gt; Walind+Ludads 1.0000 0.2941 0.542   0.027 *  </span></span>
+<span><span class="co">#&gt; Walind+Orysp. 1.0000 0.2941 0.542   0.025 *  </span></span>
+<span><span class="co">#&gt; Walind+Ludads 1.0000 0.2941 0.542   0.025 *  </span></span>
 <span><span class="co">#&gt; Ipoaqu+Ludads 1.0000 0.2941 0.542   0.020 *  </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Group 2  #sps.  11 </span></span>
-<span><span class="co">#&gt;                    A      B  stat p.value    </span></span>
-<span><span class="co">#&gt; Phynod+Elesp. 0.9162 0.5714 0.724   0.001 ***</span></span>
-<span><span class="co">#&gt; Phynod        0.6396 0.7143 0.676   0.009 ** </span></span>
-<span><span class="co">#&gt; Phynod+Helind 0.6922 0.6429 0.667   0.004 ** </span></span>
-<span><span class="co">#&gt; Helind+Elesp. 0.6861 0.5714 0.626   0.012 *  </span></span>
-<span><span class="co">#&gt; Phynod+Echell 0.8654 0.3571 0.556   0.023 *  </span></span>
-<span><span class="co">#&gt; Echell+Elesp. 0.8586 0.3571 0.554   0.018 *  </span></span>
-<span><span class="co">#&gt; Melcor+Elesp. 0.7083 0.4286 0.551   0.044 *  </span></span>
-<span><span class="co">#&gt; Aesind+Elesp. 1.0000 0.2857 0.535   0.016 *  </span></span>
-<span><span class="co">#&gt; Echpas+Phynod 0.8293 0.2857 0.487   0.043 *  </span></span>
-<span><span class="co">#&gt; Eupvac+Cyprot 1.0000 0.2143 0.463   0.043 *  </span></span>
-<span><span class="co">#&gt; Echpas+Cyprot 1.0000 0.2143 0.463   0.043 *  </span></span>
+<span><span class="co">#&gt;  Group 2  #sps.  10 </span></span>
+<span><span class="co">#&gt;                    A      B  stat p.value   </span></span>
+<span><span class="co">#&gt; Phynod+Elesp. 0.9162 0.5714 0.724   0.003 **</span></span>
+<span><span class="co">#&gt; Phynod        0.6396 0.7143 0.676   0.008 **</span></span>
+<span><span class="co">#&gt; Phynod+Helind 0.6922 0.6429 0.667   0.007 **</span></span>
+<span><span class="co">#&gt; Helind+Elesp. 0.6861 0.5714 0.626   0.015 * </span></span>
+<span><span class="co">#&gt; Phynod+Echell 0.8654 0.3571 0.556   0.025 * </span></span>
+<span><span class="co">#&gt; Echell+Elesp. 0.8586 0.3571 0.554   0.014 * </span></span>
+<span><span class="co">#&gt; Melcor+Elesp. 0.7083 0.4286 0.551   0.028 * </span></span>
+<span><span class="co">#&gt; Aesind+Elesp. 1.0000 0.2857 0.535   0.011 * </span></span>
+<span><span class="co">#&gt; Echpas+Phynod 0.8293 0.2857 0.487   0.045 * </span></span>
+<span><span class="co">#&gt; Eupvac+Cyprot 1.0000 0.2143 0.463   0.041 * </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Group 3  #sps.  20 </span></span>
+<span><span class="co">#&gt;  Group 3  #sps.  18 </span></span>
 <span><span class="co">#&gt;                    A      B  stat p.value    </span></span>
 <span><span class="co">#&gt; Pancam        0.8278 1.0000 0.910   0.001 ***</span></span>
 <span><span class="co">#&gt; Pancam+Melcor 0.7769 1.0000 0.881   0.001 ***</span></span>
 <span><span class="co">#&gt; Pancam+Echell 1.0000 0.6000 0.775   0.001 ***</span></span>
 <span><span class="co">#&gt; Eupvac+Echell 1.0000 0.6000 0.775   0.001 ***</span></span>
-<span><span class="co">#&gt; Pancam+Eupvac 0.7455 0.8000 0.772   0.002 ** </span></span>
+<span><span class="co">#&gt; Pancam+Eupvac 0.7455 0.8000 0.772   0.001 ***</span></span>
 <span><span class="co">#&gt; Melcor        0.5463 1.0000 0.739   0.001 ***</span></span>
 <span><span class="co">#&gt; Melcor+Eupvac 0.6648 0.8000 0.729   0.003 ** </span></span>
 <span><span class="co">#&gt; Eupvac        0.6546 0.8000 0.724   0.002 ** </span></span>
 <span><span class="co">#&gt; Pancam+Cynarc 1.0000 0.5000 0.707   0.001 ***</span></span>
-<span><span class="co">#&gt; Pancam+Sessp. 0.8077 0.6000 0.696   0.001 ***</span></span>
-<span><span class="co">#&gt; Melcor+Echell 0.7368 0.6000 0.665   0.002 ** </span></span>
-<span><span class="co">#&gt; Melcor+Cynarc 0.8077 0.5000 0.635   0.005 ** </span></span>
+<span><span class="co">#&gt; Pancam+Sessp. 0.8077 0.6000 0.696   0.002 ** </span></span>
+<span><span class="co">#&gt; Melcor+Echell 0.7368 0.6000 0.665   0.004 ** </span></span>
+<span><span class="co">#&gt; Melcor+Cynarc 0.8077 0.5000 0.635   0.003 ** </span></span>
 <span><span class="co">#&gt; Cynarc        0.7241 0.5000 0.602   0.008 ** </span></span>
-<span><span class="co">#&gt; Melcor+Sessp. 0.5895 0.6000 0.595   0.031 *  </span></span>
-<span><span class="co">#&gt; Eupvac+Cynarc 0.8485 0.4000 0.583   0.011 *  </span></span>
-<span><span class="co">#&gt; Cynarc+Sessp. 0.7778 0.4000 0.558   0.025 *  </span></span>
-<span><span class="co">#&gt; Cynarc+Phynod 1.0000 0.3000 0.548   0.011 *  </span></span>
-<span><span class="co">#&gt; Cynarc+Echell 1.0000 0.3000 0.548   0.010 ** </span></span>
-<span><span class="co">#&gt; Eupvac+Ipoaqu 1.0000 0.2000 0.447   0.050 *  </span></span>
-<span><span class="co">#&gt; Cynarc+Ipoaqu 1.0000 0.2000 0.447   0.050 *  </span></span>
+<span><span class="co">#&gt; Melcor+Sessp. 0.5895 0.6000 0.595   0.029 *  </span></span>
+<span><span class="co">#&gt; Eupvac+Cynarc 0.8485 0.4000 0.583   0.013 *  </span></span>
+<span><span class="co">#&gt; Cynarc+Sessp. 0.7778 0.4000 0.558   0.029 *  </span></span>
+<span><span class="co">#&gt; Cynarc+Phynod 1.0000 0.3000 0.548   0.015 *  </span></span>
+<span><span class="co">#&gt; Cynarc+Echell 1.0000 0.3000 0.548   0.007 ** </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>The best indicators for both Group 1 and Group 3 are individual
@@ -1136,10 +1136,10 @@ Similarly to <code><a href="../reference/multipatt.html">multipatt()</a></code>,
 <span><span class="co">#&gt;                              A         B    sqrtIV p.value</span></span>
 <span><span class="co">#&gt; Phynod+Helind+Elesp. 1.0000000 0.5714286 0.7559289   0.005</span></span>
 <span><span class="co">#&gt; Phynod+Elesp.        0.9000000 0.5714286 0.7171372   0.005</span></span>
-<span><span class="co">#&gt; Phynod               0.6666667 0.7142857 0.6900656   0.010</span></span>
-<span><span class="co">#&gt; Phynod+Helind        0.7142857 0.6428571 0.6776309   0.015</span></span>
-<span><span class="co">#&gt; Helind+Elesp.        0.6428571 0.5714286 0.6060915   0.020</span></span>
-<span><span class="co">#&gt; Melcor+Phynod+Elesp. 0.8571429 0.4285714 0.6060915   0.005</span></span>
+<span><span class="co">#&gt; Phynod               0.6666667 0.7142857 0.6900656   0.005</span></span>
+<span><span class="co">#&gt; Phynod+Helind        0.7142857 0.6428571 0.6776309   0.005</span></span>
+<span><span class="co">#&gt; Helind+Elesp.        0.6428571 0.5714286 0.6060915   0.025</span></span>
+<span><span class="co">#&gt; Melcor+Phynod+Elesp. 0.8571429 0.4285714 0.6060915   0.010</span></span>
 <span><span class="co">#&gt; Melcor+Helind+Elesp. 0.8571429 0.4285714 0.6060915   0.015</span></span></code></pre></div>
 <p>The species combinations are listed in decreasing indicator value
 order. Function <code><a href="../reference/indicators.html">indicators()</a></code> also calculates the
@@ -1175,7 +1175,7 @@ objects of class <code><a href="../reference/multipatt.html">multipatt()</a></co
 the validity of indicators. For example:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/coverage.html">coverage</a></span><span class="op">(</span><span class="va">sc</span>, At<span class="op">=</span><span class="fl">0.8</span>, alpha <span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 0.9285714</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 0.8571429</span></span></code></pre></div>
 <p>While we do not show here, in the case of objects of class
 <code><a href="../reference/indicators.html">indicators()</a></code> we recommend to explore the coverage using the
 lower boundary of confidence intervals, using option <code>type</code>
@@ -1220,8 +1220,8 @@ of indicators is returned.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">sc2</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                       A         B    sqrtIV p.value</span></span>
 <span><span class="co">#&gt; Phynod+Elesp. 0.9000000 0.5714286 0.7171372   0.005</span></span>
-<span><span class="co">#&gt; Cyprot        0.8666667 0.2857143 0.4976134   0.020</span></span>
-<span><span class="co">#&gt; Echpas+Phynod 0.8000000 0.2857143 0.4780914   0.045</span></span></code></pre></div>
+<span><span class="co">#&gt; Cyprot        0.8666667 0.2857143 0.4976134   0.025</span></span>
+<span><span class="co">#&gt; Echpas+Phynod 0.8000000 0.2857143 0.4780914   0.055</span></span></code></pre></div>
 <p>In our example, and using these thresholds, the best indicators for
 group ‘2’ would be: (a) the combination of ‘Phynod’ and ‘Elesp.’; (b)
 ‘Cyprot’ and (c) ‘Echpas’ and ‘Phynod’. The three indicators together
@@ -1262,21 +1262,21 @@ cross-validation) with the original group memberships:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Group2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span><span class="op">==</span><span class="fl">2</span><span class="op">)</span>, Prob <span class="op">=</span> <span class="va">p</span>, Prob_CV <span class="op">=</span> <span class="va">pcv</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    Group2      Prob   Prob_CV</span></span>
-<span><span class="co">#&gt; 5       0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 8       0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 13      0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 4       0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 17      0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 3       0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 9       0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 21      0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 16      0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 14      0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 2       0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 15      0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 1       0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 7       0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 10      0 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 5       1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 8       1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 13      1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 4       1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 17      1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 3       1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 9       1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 21      1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 16      1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 14      1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 2       1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 15      1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 1       1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 7       1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 10      1 0.0000000 0.0000000</span></span>
 <span><span class="co">#&gt; 40      0 0.9000000 1.0000000</span></span>
 <span><span class="co">#&gt; 23      0 0.0000000 0.0000000</span></span>
 <span><span class="co">#&gt; 25      0 0.9000000 0.8888889</span></span>
@@ -1288,21 +1288,21 @@ cross-validation) with the original group memberships:</p>
 <span><span class="co">#&gt; 39      0 0.9000000 0.8888889</span></span>
 <span><span class="co">#&gt; 19      0 0.9000000 0.8750000</span></span>
 <span><span class="co">#&gt; 11      0 0.9000000 0.8888889</span></span>
-<span><span class="co">#&gt; 30      1 0.8666667 0.8181818</span></span>
-<span><span class="co">#&gt; 34      1 0.8666667 0.8333333</span></span>
-<span><span class="co">#&gt; 28      1 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 31      1 0.8666667 0.8461538</span></span>
+<span><span class="co">#&gt; 30      0 0.8666667 0.8181818</span></span>
+<span><span class="co">#&gt; 34      0 0.8666667 0.8333333</span></span>
+<span><span class="co">#&gt; 28      0 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 31      0 0.8666667 0.8461538</span></span>
 <span><span class="co">#&gt; 26      0 0.8666667 0.8181818</span></span>
 <span><span class="co">#&gt; 29      0 0.8666667 0.9285714</span></span>
 <span><span class="co">#&gt; 33      0 0.8666667 0.9285714</span></span>
-<span><span class="co">#&gt; 24      1 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 36      1 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 37      1 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 41      1 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 27      1 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 32      1 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 35      0 0.0000000 0.0000000</span></span>
-<span><span class="co">#&gt; 38      0 0.0000000 0.0000000</span></span></code></pre></div>
+<span><span class="co">#&gt; 24      0 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 36      0 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 37      0 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 41      0 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 27      0 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 32      0 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 35      1 0.0000000 0.0000000</span></span>
+<span><span class="co">#&gt; 38      1 0.0000000 0.0000000</span></span></code></pre></div>
 <p>Cross-validated probabilities will tend to be lower than
 probabilities evaluated by resubstitution for sites originally belonging
 to the target site group and higher for other sites.</p>
