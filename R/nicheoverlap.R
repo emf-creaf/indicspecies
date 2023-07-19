@@ -1,3 +1,73 @@
+#' Metrics to compare pairs of resource niches
+#' 
+#' Functions \code{nicheoverlap} and \code{nichedispl} compute the overlap and centroid distance between pairs of resource distributions. In both cases resource relationships are given in the distance matrix \code{D} and the resource use data are given in data frame \code{P1} (and in some modes also \code{P2}).
+#'
+#' @param P1 Data frame containing the amount of usage that a set of species (in rows) make of a first set of resources (in columns)
+#' @param P2 Data frame containing the amount of usage that a set of species (in rows) make of a second set of resources (in columns). Not used if \code{mode = "pairwise"}
+#' @param D Object of type \code{\link{dist}} containing distance values between resources. If no distance matrix is provided (i.e. if \code{D==NULL}), the distances between resources is assumed to be maximum
+#' @param q1 Vector with the availability of each resource corresponding to P1
+#' @param q2 Vector with the availability of each resource corresponding to P2
+#' @param mode Either \code{mode = "single"} (rows of matrices P1 and P2 are individual observations to be pooled, for example to compare the niche of two species each with its individual observations), \code{mode = "multiple"} (each row in P1 is compared to the corresponding row of P2, for example, to compare seasonal niche shifts in each species) or \code{mode = "pairwise"} (all rows in P1 are compared pairwise).
+#' @param Np1 Vector with the number of observations per species from which the values in \code{P1} come (in \code{mode = "multiple"} or \code{mode = "pairwise"}).
+#' @param Np2 Vector with the number of observations per species from which the values in \code{P2} come (only in \code{mode = "multiple"}).
+#' @param Nq1 The number of observations from which the values in \code{q1} come.
+#' @param Nq2 The number of observations from which the values in \code{q2} come.
+#' @param nboot Number of boostrap samples used to compute bias-corrected percentile confidence intervals.
+#' @param alpha Used to set the confidence level (i.e. \code{alpha = 0.05} means 95 percent confidence interval).
+#'
+#' @details
+#' The method is described in De Caceres et al. (2011). If the distance matrix is not specified (i.e. if \code{D=NULL}) the function assumes that all resources are at a maximum distance (\code{d=1}). If the resource availability vector \code{q1} (and \code{q2} if supplied) is specified, then the values in \code{P1} (and \code{P2} if supplied) are taken as assessments of resource use and the species preference is calculated taking into account resource availability. Otherwise, resource use is equated to resource preference (i.e. all resources are considered equally available). The functions can compute bootstrap confidence intervals following the bias-corrected percentile method (Manly 2007). If \code{mode = "multiple"} and \code{Np1} and \code{Np2} are not null, bootstrap samples for a given niche are generated assuming a multinomial distribution with the proportions calculated from the corresponding row values in \code{P1} (resp. \code{P2}), and the number of observations comes from the corresponding element in \code{Np1} (resp. \code{Np2}). Similarly, if \code{mode = "pairwise"} and \code{Np1} is not null, bootstrap samples for each niche are generated assuming a multinomial distribution with the proportions calculated from the corresponding row values in \code{P1}, and the number of observations comes from the corresponding element in \code{Np1}. Finally, if \code{mode = "single"} then the bootstrapped units are the rows of matrices \code{P1} and  \code{P2}. In both cases, if \code{Nq1} (and \code{Nq2}) is indicated, the availability of resources is also bootstrapped. The bias-corrected percentile method is described for overlap niche measures in Mueller and Altenberg (1985).
+#' 
+#' @return 
+#' Function \code{nicheoverlap} (resp. \code{nichedispl}) returns the overlap (resp. the distance between centroids) between the each pair of rows in \code{P1} and \code{P2}. If \code{mode = "multiple"} or \code{mode = "single"} the values are returned as a data frame. If \code{mode = "pairwise"} a matrix of values is returned instead. If bootstrap confidence intervals are asked then the functions also compute the lower and upper bounds of a confidence interval obtained following the bias-corrected percentile method. Upper and lower bounds are returned as additional columns of the data frame in \code{mode = "multiple"} or \code{mode = "single"} or as additional matrices of a list in \code{mode = "pairwise"}.
+#' 
+#' @references 
+#' Mueller, L.D. and L. Altenberg. 1985. Statistical Inference on Measures of Niche Overlap. Ecology 66:1204-1210.
+#' 
+#' Manly, B.F.J. 2007. Randomization, bootstrap and Monte Carlo methods in biology. Chapman and Hall texts in statistical science series. 2nd edition.
+#' 
+#' De Caceres, M., Sol, D., Lapiedra, O. and P. Legendre. (2011) A framework for estimating niche metrics using the resemblance between qualitative resources. Oikos 120: 1341-1350.
+#' 
+#' @author Miquel De Caceres Ainsa, EMF-CREAF
+#' 
+#' @seealso See \code{\link{nichevar}} for descriptors of single niches.
+#' 
+#' @export
+#'
+#' @name nicheoverlap
+#' @examples
+#' # Loads example data
+#' data(birds)
+#' 
+#' # The overlap and displacement metrics using distances among 
+#' # resources and assuming equal availability of resources
+#' nicheoverlap(birdsbreed, birdswinter, D = resourceD, mode="multiple") 
+#' nichedispl(birdsbreed, birdswinter, D = resourceD, mode="multiple") 
+#' 
+#' # The overlap and displacement metrics using distances among resources
+#' # and computes 95 percent confidence intervals
+#' nicheoverlap(birdsbreed, birdswinter, D = resourceD, mode="multiple", 
+#'              Np1 = rowSums(birdsbreed), Np2 = rowSums(birdswinter), Nq1 = 100, Nq2 = 100) 
+#' nichedispl(birdsbreed, birdswinter, D = resourceD, mode="multiple", 
+#'            Np1 = rowSums(birdsbreed), Np2 = rowSums(birdswinter), Nq1 = 100, Nq2 = 100) 
+#' 
+#' # Same computations with different resource availability
+#' q = c(0.18, 0.24, 0.22, 0.21, 0.15)
+#' nicheoverlap(birdsbreed, birdswinter, D = resourceD, 
+#'              q1 = q, q2 = q, mode="multiple")
+#' nichedispl(birdsbreed, birdswinter, D = resourceD, 
+#'            q1 = q, q2 = q, mode="multiple")
+#' nicheoverlap(birdsbreed, birdswinter, D = resourceD, 
+#'              q1 = q, q2 = q, mode="multiple", 
+#'              Np1 = rowSums(birdsbreed), Np2 = rowSums(birdswinter), 
+#'              Nq1 = 100, Nq2 = 100)
+#' nichedispl(birdsbreed, birdswinter, D = resourceD, 
+#'            q1 = q, q2 = q, mode="multiple", 
+#'            Np1 = rowSums(birdsbreed), Np2 = rowSums(birdswinter), 
+#'            Nq1 = 100, Nq2 = 100)
+#' 
+#' # The overlap metrics using distances among rows of 'birdsbreed'
+#' nicheoverlap(birdsbreed, D = resourceD, mode="pairwise") 
 nicheoverlap <- function (P1, P2 = NULL, D = NULL, q1 = NULL, q2 = NULL, mode = "multiple", Np1 = NULL, 
             Np2 = NULL, Nq1 = NULL, Nq2 = NULL, nboot = 1000, alpha = 0.05) {
   MODES <- c("single", "multiple", "pairwise")

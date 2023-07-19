@@ -1,3 +1,4 @@
+#' @rdname nicheoverlap
 nichedispl <-
 function (P1,P2 = NULL, D = NULL, q1 = NULL, q2 = NULL, mode="multiple", Np1 = NULL, Np2=NULL, Nq1 = NULL, Nq2 = NULL,nboot = 1000, alpha = 0.05) {
   MODES <- c("single", "multiple", "pairwise")

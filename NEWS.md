@@ -2,6 +2,11 @@
  NEWS for R Package "indicspecies"
 -------------------------------
 
+# Version 1.7.14
+- Bug correction in pruneindicators and print.indicators
+- Bug correction in nichecentroid and plotniche for distance matrix with equal resources
+- Translation of documentation to Roxygen
+
 # Version 1.7.13
 - Removed dependency from packages 'sp' and 'rgeos'
 
