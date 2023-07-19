@@ -86,7 +86,7 @@ nichedispl(birdsbreed, birdswinter, D = resourceD, mode="multiple",
            Np1 = rowSums(birdsbreed), Np2 = rowSums(birdswinter), Nq1 = 100, Nq2 = 100) 
 
 # Same computations with different resource availability
-q = c(0.18, 0.24, 0.22, 0.21, 0.15)
+q <- c(0.18, 0.24, 0.22, 0.21, 0.15)
 nicheoverlap(birdsbreed, birdswinter, D = resourceD, 
              q1 = q, q2 = q, mode="multiple")
 nichedispl(birdsbreed, birdswinter, D = resourceD, 
@@ -102,6 +102,7 @@ nichedispl(birdsbreed, birdswinter, D = resourceD,
 
 # The overlap metrics using distances among rows of 'birdsbreed'
 nicheoverlap(birdsbreed, D = resourceD, mode="pairwise") 
+
 }
 \references{
 Mueller, L.D. and L. Altenberg. 1985. Statistical Inference on Measures of Niche Overlap. Ecology 66:1204-1210.

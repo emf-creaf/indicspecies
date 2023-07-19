@@ -39,10 +39,10 @@
 #' data(wetland) 
 #' 
 #' ## Create species combinations
-#' Y=combinespecies(X=wetland, max.order=3, min.occ=5, verbose=TRUE)
+#' Y <- combinespecies(X=wetland, max.order=3, min.occ=5, verbose=TRUE)
 #' 
 #' ## Creates three site groups using kmeans
-#' wetkm = kmeans(wetland, centers=3) 
+#' wetkm <- kmeans(wetland, centers=3) 
 #' 
 #' ## Calculate indicator value of species combinations for each of the three site groups
 #' strassoc(Y$XC, cluster=wetkm$cluster,func="IndVal.g") 
@@ -50,6 +50,7 @@
 #' ## Calculate point biserial correlation value of species combinations 
 #' ## for each of the three site groups
 #' strassoc(Y$XC, cluster=wetkm$cluster,func="r.g") 
+#' 
 combinespecies<-function(X, min.order = 1, max.order = 3, min.occ = 1, FUN = min, verbose=FALSE, add.names=TRUE, ...) {
   ## Turn into a matrix (if not)
   X = as.matrix(X)

@@ -80,10 +80,10 @@ library(stats)
 data(wetland) ## Loads species data
 
 ## Creates three clusters using kmeans
-wetkm = kmeans(wetland, centers=3) 
+wetkm <- kmeans(wetland, centers=3) 
 
 ## Run indicator analysis with species combinations for the first group
-sc= indicators(X=wetland, cluster=wetkm$cluster, group=1, verbose=TRUE, At=0.5, Bt=0.2)
+sc <- indicators(X=wetland, cluster=wetkm$cluster, group=1, verbose=TRUE, At=0.5, Bt=0.2)
 
 ## Determine the coverage of the selected set of indicators
 coverage(sc)
@@ -93,7 +93,8 @@ plotcoverage(sc)
 plotcoverage(sc, max.order=2, add=TRUE, lty=2)
 
 ## Runs the combination analysis using IndVal.g as statistic
-wetpt = multipatt(wetland, wetkm$cluster, control = how(nperm=999)) 
+wetpt <- multipatt(wetland, wetkm$cluster, control = how(nperm=999))
+ 
 ## Determines the coverage for each site group combination
 coverage(wetland, wetpt, alpha = 0.05)
 
