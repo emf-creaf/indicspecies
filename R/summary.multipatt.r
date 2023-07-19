@@ -1,4 +1,45 @@
-summary.multipatt <- function (object, alpha = 0.05, minstat = NULL, At = NULL, Bt=NULL, indvalcomp=FALSE,...) {
+#' Summarizing multi-level pattern analysis
+#' 
+#' This is a \code{summary} function for \code{multipatt} objects.
+#'
+#' @param object An object returned by function \code{\link{multipatt}}.
+#' @param alpha Significance level for selecting species in the summary.
+#' @param minstat Minimum value of the statistic for selecting species in the summary.
+#' @param At Minimum value of positive predictive value (A) for selecting indicators. This argument is effective only if \code{multipatt} function was executed using \code{func = "IndVal"} or \code{func = "IndVal.g"}.
+#' @param Bt Minimum value for sensitivity (B) for selecting indicators. This argument is effective only if \code{multipatt} function was executed using \code{func = "IndVal"} or \code{func = "IndVal.g"}.
+#' @param indvalcomp Logical flag used to report components "A" (or "A.g") and "B" of indicator values. This argument is effective only if \code{multipatt} function was executed using \code{func = "IndVal"} or \code{func = "IndVal.g"}.
+#' @param ... Additional arguments of the \code{summary} function.
+#'
+#' @details
+#' The summary function for \code{multipatt} objects presents the results of the analysis by grouping species following their associated site group combination. Only significantly associated species are listed for each combination. The user can limit the species shown by setting a significance level and the minimum value for the strength of the association.
+#' 
+#' @author Miquel De \enc{Cáceres}{Caceres} Ainsa, EMF-CREAF
+#' 
+#' @seealso \code{\link{strassoc}}, \code{\link{signassoc}}, \code{\link{multipatt}}
+#' 
+#' @export
+#'
+#' @examples
+#' library(stats)
+#' 
+#' ## Loads species data
+#' data(wetland) 
+#' 
+#' ## Creates three clusters using kmeans
+#' wetkm <- kmeans(wetland, centers=3) 
+#' 
+#' ## Runs the combination analysis using IndVal.g as statistic
+#' wetpt <- multipatt(wetland, wetkm$cluster) 
+#' 
+#' ## Lists those species with significant association to one combination
+#' summary(wetpt) 
+#' 
+#' ## Lists those species with significant association to one combination, 
+#' ## including indval components
+#' summary(wetpt, indvalcomp=TRUE) 
+#' 
+summary.multipatt <- function (object, alpha = 0.05, minstat = NULL, At = NULL, Bt=NULL, 
+                               indvalcomp=FALSE,...) {
   x <- object
   ncomb = ncol(x$str)
   ncolsign = ncol(x$sign)

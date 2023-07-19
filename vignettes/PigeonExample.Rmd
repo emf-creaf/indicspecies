@@ -54,9 +54,9 @@ Some seeds are quite similar (e.g. popcorn, wheat or oats), whereas sunflower di
 ### Resource use of populations
 We begin by showing the resource use data for pigeons of Barcelona and Moia, expressed as proportions (i.e., the vector $\mathbf{f}$ for each population):
 ```{r}
-diet.pop.barcelona = colSums(diet.barcelona)
+diet.pop.barcelona <- colSums(diet.barcelona)
 round(diet.pop.barcelona/sum(diet.pop.barcelona), dig=3)
-diet.pop.moia = colSums(diet.moia)
+diet.pop.moia <- colSums(diet.moia)
 round(diet.pop.moia/sum(diet.pop.moia), dig=3)
 ```
 
@@ -75,10 +75,10 @@ nichevar(P=diet.moia, mode="single")
 
 In general, we can say that the niche breadth of the population in Moià is smaller than the niche breadth of the population in Barcelona. If we repeat the same calculations with the matrix of resource resemblance, we realize that the niche breadth of both populations becomes smaller:
 ```{r}
-popvar.barcelona = nichevar(P=diet.barcelona, D=dfood, 
+popvar.barcelona <- nichevar(P=diet.barcelona, D=dfood, 
                             mode="single")
 popvar.barcelona
-popvar.moia= nichevar(P=diet.moia, D=dfood, mode="single")
+popvar.moia <- nichevar(P=diet.moia, D=dfood, mode="single")
 popvar.moia
 ```
 
@@ -124,9 +124,9 @@ B_i = (1/2)\sum_{j=1}^r\sum_{k=1}^r{f_{ij}f_{ik}d_{jk}}
 \]
 We calculate the values for the individuals of both populations:
 ```{r}
-indvar.barcelona<-nichevar(P=diet.barcelona, D=dfood)
+indvar.barcelona <- nichevar(P=diet.barcelona, D=dfood)
 summary(indvar.barcelona)
-indvar.moia<-nichevar(P=diet.moia, D=dfood)
+indvar.moia <- nichevar(P=diet.moia, D=dfood)
 summary(indvar.moia)
 ```
 
@@ -147,9 +147,9 @@ S_{pop} = \frac{\sum_{i=n}^n{B_i}/n}{B_{pop}}
 where $B_i$ is the niche breadth of each individual, and $B_{pop}$ is the niche breadth of the population. Note that it is possible that $B_i$ values can be larger than $B_{pop}$. However, we do not expect the average of $B_i$ values to be larger than $B_{pop}$. If we calculate $S_{pop}$ for the two populations we have:
 
 ```{r}
-Spec.barcelona = mean(indvar.barcelona$B)/popvar.barcelona$B
+Spec.barcelona <- mean(indvar.barcelona$B)/popvar.barcelona$B
 Spec.barcelona
-Spec.moia = mean(indvar.moia$B)/popvar.moia$B
+Spec.moia <- mean(indvar.moia$B)/popvar.moia$B
 Spec.moia
 ```
 
@@ -159,8 +159,8 @@ S_i = \frac{B_i}{B_{pop}}
 \]
 which, in R, is:
 ```{r}
-Spec.ind.barcelona = indvar.barcelona$B/popvar.barcelona$B
-Spec.ind.moia = indvar.moia$B/popvar.moia$B
+Spec.ind.barcelona <- indvar.barcelona$B/popvar.barcelona$B
+Spec.ind.moia <- indvar.moia$B/popvar.moia$B
 ```
 
 Finally, we compare this two vectors in a Wilcoxon test:
@@ -173,8 +173,8 @@ Which tells us that those differences in individual specialization are not stati
 ### Measuring the degree of overlap between individuals
 The idea of this section is to determine how much the niche of each individual overlaps with the niche of other individuals in the population. This can be done by calling function `nicheoverlap()` using `mode = "pairwise"`:
 ```{r}
-O.barcelona = nicheoverlap(diet.barcelona,D=dfood, mode="pairwise")
-O.moia = nicheoverlap(diet.moia,D=dfood, mode="pairwise")
+O.barcelona <- nicheoverlap(diet.barcelona,D=dfood, mode="pairwise")
+O.moia <- nicheoverlap(diet.moia,D=dfood, mode="pairwise")
 ```
 
 These calls to `nicheoverlap()` return a symmetric square matrix with as many rows and columns as individuals in the resource use data frame. Each cell value in the symmetric matrix is the overlap between two individuals of the population. Using these matrices we can derive the average overlap in each population:
@@ -185,9 +185,9 @@ mean(O.moia[lower.tri(O.moia)])
 
 We can also calculate the average overlap between each individual and the remaining individuals in its population:
 ```{r}
-O.barcelona.ind = (rowSums(O.barcelona)-1)/(nrow(O.barcelona)-1)
+O.barcelona.ind <- (rowSums(O.barcelona)-1)/(nrow(O.barcelona)-1)
 summary(O.barcelona.ind)
-O.moia.ind = (rowSums(O.moia)-1)/(nrow(O.moia)-1)
+O.moia.ind <- (rowSums(O.moia)-1)/(nrow(O.moia)-1)
 summary(O.moia.ind)
 ```
 
