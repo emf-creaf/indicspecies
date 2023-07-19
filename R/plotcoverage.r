@@ -1,3 +1,4 @@
+#' @rdname coverage
 plotcoverage<-function(x, y=NULL, by=0.05, type="stat", max.order=NULL, group = NULL,  alpha = NULL, add=FALSE, xlab=expression(A[t]),...) {
   match.arg(type,c("lowerCI","upperCI","stat"))
   Atseq <- seq(0,1.0,by=by)
