@@ -61,7 +61,15 @@
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="co"># S3 method for multipatt</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">object</span>, alpha<span class="op">=</span><span class="fl">0.05</span>, minstat<span class="op">=</span><span class="cn">NULL</span>, At <span class="op">=</span> <span class="cn">NULL</span>, Bt<span class="op">=</span><span class="cn">NULL</span>, indvalcomp<span class="op">=</span><span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span></span>
+<span>  <span class="va">object</span>,</span>
+<span>  alpha <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  minstat <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  At <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  Bt <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  indvalcomp <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -69,22 +77,28 @@
     <dl><dt>object</dt>
 <dd><p>An object returned by function <code><a href="multipatt.html">multipatt</a></code>.</p></dd>
 
-  <dt>alpha</dt>
+
+<dt>alpha</dt>
 <dd><p>Significance level for selecting species in the summary.</p></dd>
 
-  <dt>minstat</dt>
+
+<dt>minstat</dt>
 <dd><p>Minimum value of the statistic for selecting species in the summary.</p></dd>
 
-  <dt>At</dt>
+
+<dt>At</dt>
 <dd><p>Minimum value of positive predictive value (A) for selecting indicators. This argument is effective only if <code>multipatt</code> function was executed using <code>func = "IndVal"</code> or <code>func = "IndVal.g"</code>.</p></dd>
 
-  <dt>Bt</dt>
+
+<dt>Bt</dt>
 <dd><p>Minimum value for sensitivity (B) for selecting indicators. This argument is effective only if <code>multipatt</code> function was executed using <code>func = "IndVal"</code> or <code>func = "IndVal.g"</code>.</p></dd>
 
-  <dt>indvalcomp</dt>
-<dd><p>Flag used to report components "A" (or "A.g") and "B" of indicator values. This argument is effective only if <code>multipatt</code> function was executed using <code>func = "IndVal"</code> or <code>func = "IndVal.g"</code>.</p></dd>
 
-  <dt>...</dt>
+<dt>indvalcomp</dt>
+<dd><p>Logical flag used to report components "A" (or "A.g") and "B" of indicator values. This argument is effective only if <code>multipatt</code> function was executed using <code>func = "IndVal"</code> or <code>func = "IndVal.g"</code>.</p></dd>
+
+
+<dt>...</dt>
 <dd><p>Additional arguments of the <code>summary</code> function.</p></dd>
 
 </dl></div>
@@ -92,13 +106,13 @@
     <h2>Details</h2>
     <p>The summary function for <code>multipatt</code> objects presents the results of the analysis by grouping species following their associated site group combination. Only significantly associated species are listed for each combination. The user can limit the species shown by setting a significance level and the minimum value for the strength of the association.</p>
     </div>
-    <div id="author">
-    <h2>Author</h2>
-    <p>Miquel De Cáceres Ainsa, EMF-CREAF</p>
-    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p><code><a href="strassoc.html">strassoc</a></code>, <code><a href="signassoc.html">signassoc</a></code>, <code><a href="multipatt.html">multipatt</a></code></p></div>
+    </div>
+    <div id="author">
+    <h2>Author</h2>
+    <p>Miquel De Cáceres Ainsa, EMF-CREAF</p>
     </div>
 
     <div id="ref-examples">
@@ -109,10 +123,10 @@
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wetland</span><span class="op">)</span> </span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Creates three clusters using kmeans</span></span></span>
-<span class="r-in"><span><span class="va">wetkm</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">wetkm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span> </span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Runs the combination analysis using IndVal.g as statistic</span></span></span>
-<span class="r-in"><span><span class="va">wetpt</span> <span class="op">=</span> <span class="fu"><a href="multipatt.html">multipatt</a></span><span class="op">(</span><span class="va">wetland</span>, <span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">wetpt</span> <span class="op">&lt;-</span> <span class="fu"><a href="multipatt.html">multipatt</a></span><span class="op">(</span><span class="va">wetland</span>, <span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span><span class="op">)</span> </span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Lists those species with significant association to one combination</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">wetpt</span><span class="op">)</span> </span></span>
@@ -133,29 +147,29 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1  #sps.  2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Phynod 0.963   0.005 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind 0.538   0.050 * </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind 0.538   0.025 * </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 2  #sps.  4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam 0.783   0.005 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac 0.771   0.005 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc 0.762   0.005 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed 0.548   0.010 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 3  #sps.  3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 2  #sps.  3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Ludads 0.907   0.005 **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Orysp. 0.856   0.005 **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Psespi 0.602   0.035 * </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1+2  #sps.  1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 3  #sps.  4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam 0.783   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac 0.771   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc 0.762   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed 0.548   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1+2  #sps.  2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Helind 0.758   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp. 0.741   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1+3  #sps.  1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Melcor 0.876   0.005 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1+3  #sps.  2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         stat p.value   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Helind 0.758   0.010 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp. 0.741   0.005 **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 </span>
 <span class="r-in"><span></span></span>
@@ -179,31 +193,32 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1  #sps.  2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Phynod 0.9278 1.0000 0.963   0.005 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind 0.8108 0.3571 0.538   0.050 * </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind 0.8108 0.3571 0.538   0.025 * </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 2  #sps.  4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam 0.7672 0.8000 0.783   0.005 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac 0.6607 0.9000 0.771   0.005 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc 0.9686 0.6000 0.762   0.005 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed 1.0000 0.3000 0.548   0.010 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 3  #sps.  3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 2  #sps.  3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Ludads 1.0000 0.8235 0.907   0.005 **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Orysp. 0.7330 1.0000 0.856   0.005 **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Psespi 0.8811 0.4118 0.602   0.035 * </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1+2  #sps.  1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 3  #sps.  4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam 0.7672 0.8000 0.783   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac 0.6607 0.9000 0.771   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc 0.9686 0.6000 0.762   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed 1.0000 0.3000 0.548   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1+2  #sps.  2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Helind 0.9381 0.6129 0.758   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp. 1.0000 0.5484 0.741   0.005 **</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1+3  #sps.  1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Melcor 0.8764 0.8750 0.876   0.005 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Group 1+3  #sps.  2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             A      B  stat p.value   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Helind 0.9381 0.6129 0.758   0.010 **</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp. 1.0000 0.5484 0.741   0.005 **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1 </span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>

@@ -138,11 +138,11 @@ sunflower differs substantially from all other resources.</p>
 <p>We begin by showing the resource use data for pigeons of Barcelona
 and Moia, expressed as proportions (i.e., the vector <span class="math inline">\(\mathbf{f}\)</span> for each population):</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">diet.pop.barcelona</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="va">diet.barcelona</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">diet.pop.barcelona</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="va">diet.barcelona</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">diet.pop.barcelona</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">diet.pop.barcelona</span><span class="op">)</span>, dig<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      Oats      Peas   Popcorn       Soy Sunflower     Wheat </span></span>
 <span><span class="co">#&gt;     0.049     0.001     0.028     0.024     0.455     0.442</span></span>
-<span><span class="va">diet.pop.moia</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="va">diet.moia</span><span class="op">)</span></span>
+<span><span class="va">diet.pop.moia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colSums</a></span><span class="op">(</span><span class="va">diet.moia</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">diet.pop.moia</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">diet.pop.moia</span><span class="op">)</span>, dig<span class="op">=</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      Oats      Peas   Popcorn       Soy Sunflower     Wheat </span></span>
 <span><span class="co">#&gt;     0.002     0.018     0.091     0.045     0.054     0.791</span></span></code></pre></div>
@@ -162,25 +162,25 @@ resemblance between resources (which is equal to stating that <span class="math 
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.barcelona</span>, mode<span class="op">=</span><span class="st">"single"</span><span class="op">)</span></span>
 <span><span class="co">#&gt;               B        LC        UC</span></span>
-<span><span class="co">#&gt; Niche 0.2966578 0.2715209 0.3327812</span></span>
+<span><span class="co">#&gt; Niche 0.2966578 0.2693349 0.3347616</span></span>
 <span><span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.moia</span>, mode<span class="op">=</span><span class="st">"single"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;               B        LC        UC</span></span>
-<span><span class="co">#&gt; Niche 0.1807663 0.1018836 0.2598946</span></span></code></pre></div>
+<span><span class="co">#&gt;               B         LC       UC</span></span>
+<span><span class="co">#&gt; Niche 0.1807663 0.09344025 0.263083</span></span></code></pre></div>
 <p>In general, we can say that the niche breadth of the population in
 Moià is smaller than the niche breadth of the population in Barcelona.
 If we repeat the same calculations with the matrix of resource
 resemblance, we realize that the niche breadth of both populations
 becomes smaller:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">popvar.barcelona</span> <span class="op">=</span> <span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.barcelona</span>, D<span class="op">=</span><span class="va">dfood</span>, </span>
+<code class="sourceCode R"><span><span class="va">popvar.barcelona</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.barcelona</span>, D<span class="op">=</span><span class="va">dfood</span>, </span>
 <span>                            mode<span class="op">=</span><span class="st">"single"</span><span class="op">)</span></span>
 <span><span class="va">popvar.barcelona</span></span>
-<span><span class="co">#&gt;               B        LC        UC</span></span>
-<span><span class="co">#&gt; Niche 0.2453822 0.2330897 0.2583953</span></span>
-<span><span class="va">popvar.moia</span><span class="op">=</span> <span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.moia</span>, D<span class="op">=</span><span class="va">dfood</span>, mode<span class="op">=</span><span class="st">"single"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;               B       LC       UC</span></span>
+<span><span class="co">#&gt; Niche 0.2453822 0.233727 0.258316</span></span>
+<span><span class="va">popvar.moia</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.moia</span>, D<span class="op">=</span><span class="va">dfood</span>, mode<span class="op">=</span><span class="st">"single"</span><span class="op">)</span></span>
 <span><span class="va">popvar.moia</span></span>
-<span><span class="co">#&gt;               B         LC        UC</span></span>
-<span><span class="co">#&gt; Niche 0.0853328 0.02584304 0.1668401</span></span></code></pre></div>
+<span><span class="co">#&gt;               B         LC       UC</span></span>
+<span><span class="co">#&gt; Niche 0.0853328 0.02639712 0.157969</span></span></code></pre></div>
 <p>The reason is that the first analysis was assuming that all resources
 were equally (and maximally) distinct, while the second analysis
 accounts for the similarity between some resources. Moreover, note that
@@ -199,11 +199,11 @@ O_{12} =
 \]</span> Using function <code><a href="../reference/nicheoverlap.html">nicheoverlap()</a></code>:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/nicheoverlap.html">nicheoverlap</a></span><span class="op">(</span>P1<span class="op">=</span><span class="va">diet.barcelona</span>, P2<span class="op">=</span><span class="va">diet.moia</span>, mode<span class="op">=</span><span class="st">"single"</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                 O        LC        UC</span></span>
-<span><span class="co">#&gt; Overlap 0.7419319 0.4621576 0.9285803</span></span>
+<span><span class="co">#&gt;                 O        LC       UC</span></span>
+<span><span class="co">#&gt; Overlap 0.7419319 0.4581834 0.927078</span></span>
 <span><span class="fu"><a href="../reference/nicheoverlap.html">nicheoverlap</a></span><span class="op">(</span>P1<span class="op">=</span><span class="va">diet.barcelona</span>, P2<span class="op">=</span><span class="va">diet.moia</span>, mode<span class="op">=</span><span class="st">"single"</span>, D <span class="op">=</span> <span class="va">dfood</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                 O        LC      UC</span></span>
-<span><span class="co">#&gt; Overlap 0.7912472 0.5526306 0.94382</span></span></code></pre></div>
+<span><span class="co">#&gt;                 O        LC        UC</span></span>
+<span><span class="co">#&gt; Overlap 0.7912472 0.5325426 0.9500562</span></span></code></pre></div>
 <p>If we include the resemblance between resources, the degree of
 overlap increases, for the same reason that we obtained smaller niche
 breadth statistics when resemblances were included.</p>
@@ -290,7 +290,7 @@ B_i = (1/2)\sum_{j=1}^r\sum_{k=1}^r{f_{ij}f_{ik}d_{jk}}
 \]</span> We calculate the values for the individuals of both
 populations:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">indvar.barcelona</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.barcelona</span>, D<span class="op">=</span><span class="va">dfood</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">indvar.barcelona</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.barcelona</span>, D<span class="op">=</span><span class="va">dfood</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">indvar.barcelona</span><span class="op">)</span></span>
 <span><span class="co">#&gt;        B          </span></span>
 <span><span class="co">#&gt;  Min.   :0.00000  </span></span>
@@ -299,7 +299,7 @@ populations:</p>
 <span><span class="co">#&gt;  Mean   :0.11168  </span></span>
 <span><span class="co">#&gt;  3rd Qu.:0.19890  </span></span>
 <span><span class="co">#&gt;  Max.   :0.24609</span></span>
-<span><span class="va">indvar.moia</span><span class="op">&lt;-</span><span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.moia</span>, D<span class="op">=</span><span class="va">dfood</span><span class="op">)</span></span>
+<span><span class="va">indvar.moia</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nichevar.html">nichevar</a></span><span class="op">(</span>P<span class="op">=</span><span class="va">diet.moia</span>, D<span class="op">=</span><span class="va">dfood</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">indvar.moia</span><span class="op">)</span></span>
 <span><span class="co">#&gt;        B          </span></span>
 <span><span class="co">#&gt;  Min.   :0.00000  </span></span>
@@ -340,10 +340,10 @@ average of <span class="math inline">\(B_i\)</span> values to be larger
 than <span class="math inline">\(B_{pop}\)</span>. If we calculate <span class="math inline">\(S_{pop}\)</span> for the two populations we
 have:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Spec.barcelona</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">indvar.barcelona</span><span class="op">$</span><span class="va">B</span><span class="op">)</span><span class="op">/</span><span class="va">popvar.barcelona</span><span class="op">$</span><span class="va">B</span></span>
+<code class="sourceCode R"><span><span class="va">Spec.barcelona</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">indvar.barcelona</span><span class="op">$</span><span class="va">B</span><span class="op">)</span><span class="op">/</span><span class="va">popvar.barcelona</span><span class="op">$</span><span class="va">B</span></span>
 <span><span class="va">Spec.barcelona</span></span>
 <span><span class="co">#&gt; [1] 0.4551234</span></span>
-<span><span class="va">Spec.moia</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">indvar.moia</span><span class="op">$</span><span class="va">B</span><span class="op">)</span><span class="op">/</span><span class="va">popvar.moia</span><span class="op">$</span><span class="va">B</span></span>
+<span><span class="va">Spec.moia</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">indvar.moia</span><span class="op">$</span><span class="va">B</span><span class="op">)</span><span class="op">/</span><span class="va">popvar.moia</span><span class="op">$</span><span class="va">B</span></span>
 <span><span class="va">Spec.moia</span></span>
 <span><span class="co">#&gt; [1] 0.4723618</span></span></code></pre></div>
 <p>Surprisingly, the degree of specialization in Moià seems slightly
@@ -352,8 +352,8 @@ we can calculate the degree of specialization of each individual: <span class="m
 S_i = \frac{B_i}{B_{pop}}
 \]</span> which, in R, is:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Spec.ind.barcelona</span> <span class="op">=</span> <span class="va">indvar.barcelona</span><span class="op">$</span><span class="va">B</span><span class="op">/</span><span class="va">popvar.barcelona</span><span class="op">$</span><span class="va">B</span></span>
-<span><span class="va">Spec.ind.moia</span> <span class="op">=</span> <span class="va">indvar.moia</span><span class="op">$</span><span class="va">B</span><span class="op">/</span><span class="va">popvar.moia</span><span class="op">$</span><span class="va">B</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">Spec.ind.barcelona</span> <span class="op">&lt;-</span> <span class="va">indvar.barcelona</span><span class="op">$</span><span class="va">B</span><span class="op">/</span><span class="va">popvar.barcelona</span><span class="op">$</span><span class="va">B</span></span>
+<span><span class="va">Spec.ind.moia</span> <span class="op">&lt;-</span> <span class="va">indvar.moia</span><span class="op">$</span><span class="va">B</span><span class="op">/</span><span class="va">popvar.moia</span><span class="op">$</span><span class="va">B</span></span></code></pre></div>
 <p>Finally, we compare this two vectors in a Wilcoxon test:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">wilcox.test</a></span><span class="op">(</span><span class="va">Spec.ind.barcelona</span>, <span class="va">Spec.ind.moia</span><span class="op">)</span></span>
@@ -376,8 +376,8 @@ individual overlaps with the niche of other individuals in the
 population. This can be done by calling function
 <code><a href="../reference/nicheoverlap.html">nicheoverlap()</a></code> using <code>mode = "pairwise"</code>:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">O.barcelona</span> <span class="op">=</span> <span class="fu"><a href="../reference/nicheoverlap.html">nicheoverlap</a></span><span class="op">(</span><span class="va">diet.barcelona</span>,D<span class="op">=</span><span class="va">dfood</span>, mode<span class="op">=</span><span class="st">"pairwise"</span><span class="op">)</span></span>
-<span><span class="va">O.moia</span> <span class="op">=</span> <span class="fu"><a href="../reference/nicheoverlap.html">nicheoverlap</a></span><span class="op">(</span><span class="va">diet.moia</span>,D<span class="op">=</span><span class="va">dfood</span>, mode<span class="op">=</span><span class="st">"pairwise"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">O.barcelona</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nicheoverlap.html">nicheoverlap</a></span><span class="op">(</span><span class="va">diet.barcelona</span>,D<span class="op">=</span><span class="va">dfood</span>, mode<span class="op">=</span><span class="st">"pairwise"</span><span class="op">)</span></span>
+<span><span class="va">O.moia</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/nicheoverlap.html">nicheoverlap</a></span><span class="op">(</span><span class="va">diet.moia</span>,D<span class="op">=</span><span class="va">dfood</span>, mode<span class="op">=</span><span class="st">"pairwise"</span><span class="op">)</span></span></code></pre></div>
 <p>These calls to <code><a href="../reference/nicheoverlap.html">nicheoverlap()</a></code> return a symmetric square
 matrix with as many rows and columns as individuals in the resource use
 data frame. Each cell value in the symmetric matrix is the overlap
@@ -391,11 +391,11 @@ derive the average overlap in each population:</p>
 <p>We can also calculate the average overlap between each individual and
 the remaining individuals in its population:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">O.barcelona.ind</span> <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">O.barcelona</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">O.barcelona</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">O.barcelona.ind</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">O.barcelona</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">O.barcelona</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">O.barcelona.ind</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
 <span><span class="co">#&gt;  0.5400  0.6028  0.6558  0.6726  0.7595  0.8055</span></span>
-<span><span class="va">O.moia.ind</span> <span class="op">=</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">O.moia</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">O.moia</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
+<span><span class="va">O.moia.ind</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">rowSums</a></span><span class="op">(</span><span class="va">O.moia</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span><span class="op">/</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">O.moia</span><span class="op">)</span><span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">O.moia.ind</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
 <span><span class="co">#&gt; 0.09157 0.89915 0.90649 0.84388 0.90965 0.91134</span></span></code></pre></div>
