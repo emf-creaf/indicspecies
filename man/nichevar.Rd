@@ -112,11 +112,14 @@ nichecentroid(birdsbreed, D = resourceD,
 # The niche metrics using distances among resources and 
 # computes 95 percent confidence intervals
 nichepref(birdsbreed, D = resourceD, 
-          q = c(0.18, 0.24, 0.22, 0.21, 0.15), mode="multiple", Np = rowSums(birdsbreed), Nq = 100)
+          q = c(0.18, 0.24, 0.22, 0.21, 0.15), mode="multiple", 
+          Np = rowSums(birdsbreed), Nq = 100)
 nichevar(birdsbreed, D = resourceD, 
-         q = c(0.18, 0.24, 0.22, 0.21, 0.15), mode="multiple", Np = rowSums(birdsbreed), Nq = 100)
+         q = c(0.18, 0.24, 0.22, 0.21, 0.15), mode="multiple", 
+         Np = rowSums(birdsbreed), Nq = 100)
 nichecentroid(birdsbreed, D = resourceD, 
-              q = c(0.18, 0.24, 0.22, 0.21, 0.15), mode="multiple",  Np = rowSums(birdsbreed), Nq = 100)
+              q = c(0.18, 0.24, 0.22, 0.21, 0.15), mode="multiple",  
+              Np = rowSums(birdsbreed), Nq = 100)
 
 }
 \references{
