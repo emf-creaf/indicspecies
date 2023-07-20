@@ -60,48 +60,63 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">signassoc</span><span class="op">(</span><span class="va">X</span>, U <span class="op">=</span> <span class="cn">NULL</span>, cluster <span class="op">=</span> <span class="cn">NULL</span>, mode <span class="op">=</span> <span class="fl">1</span>, alternative <span class="op">=</span> <span class="st">"greater"</span>, </span>
-<span>          control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span><span class="op">)</span>, permutations <span class="op">=</span> <span class="cn">NULL</span>, print.perm <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">signassoc</span><span class="op">(</span></span>
+<span>  <span class="va">X</span>,</span>
+<span>  U <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  cluster <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  mode <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  alternative <span class="op">=</span> <span class="st">"greater"</span>,</span>
+<span>  control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  permutations <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  print.perm <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>X</dt>
-<dd><p>species data (rows are sites, columns are species).</p></dd>
+<dd><p>Community data table (rows are sites, columns are species).</p></dd>
 
-  <dt>U</dt>
+
+<dt>U</dt>
 <dd><p>A matrix of group memberships. Each column corresponds to one site-group. Membership values can be crisp or fuzzy. If this matrix is not provided, vector gmv will be used.</p></dd>
 
-  <dt>cluster</dt>
-<dd><p>a vector of numeric group labels for the sites.</p></dd>
 
-  <dt>mode</dt>
-<dd><p>0 (site-based) or 1 (group-based).</p></dd>
+<dt>cluster</dt>
+<dd><p>A vector of numeric group labels for sites.</p></dd>
 
-  <dt>alternative</dt>
-<dd><p>Alternative hypothesis: "greater" (positive association), "less" (negative association), "two.sided" (either positive or negative).</p></dd>
 
-  <dt>control</dt>
-<dd><p>a list of control values describing properties of the permutation design, as returned by a call to <code><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></code>.</p></dd>
+<dt>mode</dt>
+<dd><p>Association mode, 0 (site-based) or 1 (group-based).</p></dd>
 
-  <dt>permutations</dt>
-<dd><p>a custom matrix of permutations, to be used if <code>control = NULL</code>, with permutations in rows and site indices in columns.</p></dd>
 
-  <dt>print.perm</dt>
+<dt>alternative</dt>
+<dd><p>Alternative statistical hypothesis: "greater" (positive association), "less" (negative association), "two.sided" (either positive or negative).</p></dd>
+
+
+<dt>control</dt>
+<dd><p>A list of control values describing properties of the permutation design, as returned by a call to <code>how</code>.</p></dd>
+
+
+<dt>permutations</dt>
+<dd><p>A custom matrix of permutations, to be used if <code>control = NULL</code>, with permutations in rows and site indices in columns.</p></dd>
+
+
+<dt>print.perm</dt>
 <dd><p>If TRUE, prints permutation numbers after each set of 100 permutations.</p></dd>
 
 </dl></div>
-    <div id="details">
-    <h2>Details</h2>
-    <p>Input data for this function is the species matrix X and either a matrix of group memberships (U) or a vector of numeric group labels (cluster). This R function works for both presence/absence and quantitative species data, depending on the values of the input matrix X.
-If <code>mode = 0</code>, the null ecological hypothesis is that the frequency (or abundance) of the species of interest in sites belonging to the site group is not higher than the frequency (or abundance) in sites not belonging to it. If <code>mode = 1</code>, the null ecological hypothesis is that the relative frequency (average abundance) of the species of interest is not higher in the target site group than in other groups. See De Cáceres and Legendre for more details.</p>
-<p>Complex permutation designs are allowed through the function <code><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></code> from package "permute". If those are not enough, the user can set <code>control = NULL</code> and specify a custom matrix of permutations to test with parameter <code>permutations</code>.</p>
-    </div>
     <div id="value">
     <h2>Value</h2>
     
 
 <p>Returns a matrix of p-values, where species are in rows and groups are in columns. Two additional columns indicate the group with lowest p-value and the p-value for this group after Sidak's correction for multiple testing.</p>
+    </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>Input data for this function is the species matrix X and either a matrix of group memberships (U) or a vector of numeric group labels (cluster). This R function works for both presence/absence and quantitative species data, depending on the values of the input matrix X.
+If <code>mode = 0</code>, the null ecological hypothesis is that the frequency (or abundance) of the species of interest in sites belonging to the site group is not higher than the frequency (or abundance) in sites not belonging to it. If <code>mode = 1</code>, the null ecological hypothesis is that the relative frequency (average abundance) of the species of interest is not higher in the target site group than in other groups. See De Cáceres and Legendre for more details.</p>
+<p>Complex permutation designs are allowed through the function <code>how</code> from package "permute". If those are not enough, the user can set <code>control = NULL</code> and specify a custom matrix of permutations to test with parameter <code>permutations</code>.</p>
     </div>
     <div id="note">
     <h2>Note</h2>
@@ -112,13 +127,13 @@ If <code>mode = 0</code>, the null ecological hypothesis is that the frequency (
     <p>Bakker, J. 2008. Increasing the utility of Indicator Species Analysis. Journal of Applied Ecology 45: 1829-1835.</p>
 <p>De Cáceres, M. and Legendre, P. 2009. Associations between species and groups of sites: indices and statistical inference. Ecology 90(12): 3566-3574.</p>
     </div>
+    <div id="see-also">
+    <h2>See also</h2>
+    <div class="dont-index"><p><code><a href="strassoc.html">strassoc</a></code>, <code><a href="multipatt.html">multipatt</a></code></p></div>
+    </div>
     <div id="author">
     <h2>Author</h2>
     <p>Miquel De Cáceres Ainsa,  EMF-CREAF</p>
-    </div>
-    <div id="see-also">
-    <h2>See also</h2>
-    <div class="dont-index"><p><code><a href="strassoc.html">strassoc</a></code>, <code><a href="multipatt.html">multipatt</a></code>, <code><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></code></p></div>
     </div>
 
     <div id="ref-examples">
@@ -127,82 +142,83 @@ If <code>mode = 0</code>, the null ecological hypothesis is that the frequency (
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wetland</span><span class="op">)</span> <span class="co">## Load species data</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">wetkm</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="co">## Create three clusters using</span></span></span>
+<span class="r-in"><span><span class="va">wetkm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="co">## Create three clusters using</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Look for species whose abundance is significantly higher in one of the three groups</span></span></span>
-<span class="r-in"><span><span class="fu">signassoc</span><span class="op">(</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, mode<span class="op">=</span><span class="fl">1</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">signassoc</span><span class="op">(</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, mode<span class="op">=</span><span class="fl">1</span>, control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            1     2     3 best      psidak</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Abefic 0.219 1.000 1.000    1 0.523620459</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed 0.013 1.000 1.000    1 0.038495197</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag 1.000 1.000 0.040    3 0.115264000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam 0.001 1.000 0.846    1 0.002997001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Abemos 0.446 1.000 0.585    1 0.829968536</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor 0.001 1.000 0.559    1 0.002997001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ludoct 0.218 1.000 1.000    1 0.521788232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac 0.002 0.993 0.895    1 0.005988008</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas 0.365 0.844 0.457    1 0.743952125</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Passcr 0.228 1.000 1.000    1 0.539900352</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Poa2   1.000 1.000 0.328    3 0.696535552</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Carhal 1.000 0.540 0.100    3 0.271000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Dendio 1.000 0.413 1.000    2 0.797737997</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Casobt 1.000 0.397 1.000    2 0.780743773</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind 0.822 1.000 0.016    3 0.047236096</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot 0.042 1.000 0.493    1 0.120782088</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ipocop 0.131 1.000 0.717    1 0.343765091</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc 0.001 1.000 0.959    1 0.002997001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Walind 0.411 0.552 0.508    1 0.795663531</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp. 0.235 0.460 0.830    1 0.552302875</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod 0.987 1.000 0.001    3 0.002997001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Echell 0.324 0.947 0.211    3 0.508830931</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Helind 1.000 0.401 0.007    3 0.020853343</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ipoaqu 0.693 0.399 0.404    2 0.782918199</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp. 1.000 0.001 0.922    2 0.002997001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp. 1.000 0.038 0.120    2 0.109722872</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Psespi 1.000 0.005 0.901    2 0.014925125</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ludads 1.000 0.001 1.000    2 0.002997001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Polatt 1.000 0.063 1.000    2 0.177343047</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Poa1   1.000 1.000 0.332    3 0.701922368</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Helcri 1.000 1.000 0.332    3 0.701922368</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Physp. 1.000 0.400 1.000    2 0.784000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Goopur 1.000 0.400 1.000    2 0.784000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Abefic 1.000 1.000 0.549    3 0.908266149</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed 1.000 1.000 0.190    3 0.468559000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag 1.000 1.000 0.148    3 0.381529792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam 0.885 1.000 0.007    3 0.020853343</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Abemos 1.000 1.000 0.306    3 0.665744616</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor 0.723 1.000 0.001    3 0.002997001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ludoct 1.000 1.000 0.588    3 0.930065472</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac 0.555 1.000 0.036    3 0.104158656</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas 0.317 1.000 0.213    3 0.512556597</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Passcr 1.000 1.000 0.560    3 0.914816000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Poa2   1.000 1.000 0.538    3 0.901388872</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Carhal 0.564 1.000 0.383    3 0.765114887</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dendio 0.405 1.000 1.000    1 0.789355125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Casobt 0.386 1.000 1.000    1 0.768524456</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind 1.000 1.000 0.025    3 0.073140625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot 1.000 1.000 0.024    3 0.070285824</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ipocop 1.000 1.000 0.179    3 0.446612339</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc 1.000 1.000 0.008    3 0.023808512</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Walind 0.326 1.000 0.327    1 0.693817976</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp. 0.108 1.000 0.242    1 0.290267712</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod 0.999 1.000 0.001    3 0.002997001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echell 0.637 1.000 0.043    3 0.123532507</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Helind 0.449 0.622 0.547    1 0.832715849</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ipoaqu 0.741 0.293 0.770    2 0.646606757</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp. 0.116 0.195 1.000    1 0.309192896</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp. 0.025 1.000 0.580    1 0.073140625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Psespi 0.356 0.229 0.995    2 0.541685989</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ludads 0.220 0.169 1.000    2 0.426143809</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Polatt 0.809 0.001 1.000    2 0.002997001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Poa1   1.000 1.000 0.574    3 0.922691224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Helcri 1.000 1.000 0.574    3 0.922691224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Physp. 0.390 1.000 1.000    1 0.773019000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Goopur 0.390 1.000 1.000    1 0.773019000</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Look for species whose abundance is significantly higher in sites belonging </span></span></span>
 <span class="r-in"><span><span class="co">## to one group as opposed to sites not belonging to it.</span></span></span>
-<span class="r-in"><span><span class="fu">signassoc</span><span class="op">(</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, mode<span class="op">=</span><span class="fl">0</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="fu">signassoc</span><span class="op">(</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, mode<span class="op">=</span><span class="fl">0</span>, control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            1     2     3 best      psidak</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Abefic 0.249 1.000 1.000    1 0.576435249</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed 0.014 1.000 1.000    1 0.041414744</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag 1.000 1.000 0.039    3 0.112496319</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam 0.001 1.000 0.799    1 0.002997001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Abemos 0.434 1.000 0.565    1 0.818678504</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor 0.001 1.000 0.332    1 0.002997001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ludoct 0.258 1.000 1.000    1 0.591481512</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac 0.002 0.996 0.885    1 0.005988008</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas 0.384 0.912 0.481    1 0.766255104</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Passcr 0.225 1.000 1.000    1 0.534515625</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Poa2   1.000 1.000 0.379    3 0.760516939</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Carhal 1.000 0.697 0.135    3 0.352785375</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Dendio 1.000 0.403 1.000    2 0.787223827</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Casobt 1.000 0.403 1.000    2 0.787223827</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind 0.844 1.000 0.012    3 0.035569728</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot 0.060 1.000 0.436    1 0.169416000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ipocop 0.142 1.000 0.736    1 0.368371288</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc 0.001 1.000 0.954    1 0.002997001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Walind 0.468 0.585 0.565    1 0.849431232</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp. 0.337 0.449 0.871    1 0.708565753</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod 0.990 1.000 0.001    3 0.002997001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Echell 0.326 0.958 0.184    3 0.456661504</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Helind 1.000 0.554 0.022    3 0.064558648</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ipoaqu 0.813 0.493 0.547    2 0.869676157</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp. 1.000 0.001 0.975    2 0.002997001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp. 1.000 0.078 0.301    2 0.216222552</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Psespi 1.000 0.003 0.943    2 0.008973027</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ludads 1.000 0.001 1.000    2 0.002997001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Polatt 1.000 0.051 1.000    2 0.145329651</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Poa1   1.000 1.000 0.322    3 0.688334248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Helcri 1.000 1.000 0.322    3 0.688334248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Physp. 1.000 0.418 1.000    2 0.802862632</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Goopur 1.000 0.418 1.000    2 0.802862632</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Abefic 1.000 1.000 0.521    3 0.890097761</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Merhed 1.000 1.000 0.174    3 0.436440024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag 1.000 1.000 0.165    3 0.417817125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam 0.998 1.000 0.005    3 0.014925125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Abemos 1.000 1.000 0.323    3 0.689711267</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor 0.999 1.000 0.002    3 0.005988008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ludoct 1.000 1.000 0.574    3 0.922691224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac 0.959 1.000 0.070    3 0.195643000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas 0.642 1.000 0.439    3 0.823441519</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Passcr 1.000 1.000 0.551    3 0.909481151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Poa2   1.000 1.000 0.550    3 0.908875000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Carhal 0.687 1.000 0.422    3 0.806899448</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dendio 0.353 1.000 1.000    1 0.729159977</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Casobt 0.402 1.000 1.000    1 0.786152808</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind 1.000 1.000 0.028    3 0.081669952</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot 1.000 1.000 0.019    3 0.055923859</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ipocop 1.000 1.000 0.168    3 0.424069632</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cynarc 1.000 1.000 0.010    3 0.029701000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Walind 0.522 1.000 0.507    3 0.880176843</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp. 0.350 1.000 0.595    1 0.725375000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod 1.000 1.000 0.001    3 0.002997001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echell 0.944 1.000 0.070    3 0.195643000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Helind 0.457 0.759 0.683    1 0.839896993</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ipoaqu 0.694 0.406 0.667    2 0.790415416</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp. 0.001 0.205 1.000    1 0.002997001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp. 0.063 1.000 0.932    1 0.177343047</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Psespi 0.019 0.240 0.998    1 0.055923859</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ludads 0.001 0.193 1.000    1 0.002997001</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Polatt 0.777 0.003 1.000    2 0.008973027</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Poa1   1.000 1.000 0.563    3 0.916546547</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Helcri 1.000 1.000 0.563    3 0.916546547</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Physp. 0.372 1.000 1.000    1 0.752326848</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Goopur 0.372 1.000 1.000    1 0.752326848</span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>

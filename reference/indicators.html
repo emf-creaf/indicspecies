@@ -71,7 +71,7 @@
 <span>  At <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  Bt <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  sqrtIVt <span class="op">=</span> <span class="fl">0</span>,</span>
-<span>  control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  permutations <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  print.perm <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  nboot.ci <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -143,7 +143,7 @@
 
 
 <dt>control</dt>
-<dd><p>A list of control values describing properties of the permutation test design, as returned by a call to <code><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></code>.</p></dd>
+<dd><p>A list of control values describing properties of the permutation test design, as returned by a call to <code>how</code>.</p></dd>
 
 
 <dt>permutations</dt>
@@ -271,7 +271,7 @@
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1  2  3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 10 14 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 10 17 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Run indicator analysis with species combinations for the first group</span></span></span>
 <span class="r-in"><span><span class="va">sc</span> <span class="op">&lt;-</span> <span class="fu">indicators</span><span class="op">(</span>X<span class="op">=</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, group<span class="op">=</span><span class="fl">1</span>, verbose<span class="op">=</span><span class="cn">TRUE</span>, </span></span>
@@ -279,82 +279,191 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Target site group: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of candidate species: 33</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of sites: 41 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the site group: 17 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the site group: 14 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  1 ... accepted combinations: 0 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  2 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  3 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  4 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  5 ... accepted combinations: 0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  6 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  7 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  8 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  9 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  10 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  11 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  12 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  13 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  14 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  15 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  16 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  17 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  18 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  19 ... accepted combinations: 9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  20 ... accepted combinations: 12 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  21 ... accepted combinations: 12 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  22 ... accepted combinations: 13 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  23 ... accepted combinations: 17 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  24 ... accepted combinations: 20 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  25 ... accepted combinations: 28 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  26 ... accepted combinations: 32 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  27 ... accepted combinations: 34 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  28 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  29 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  30 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  31 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  32 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  33 ... accepted combinations: 35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of valid combinations: 35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of remaining species: 11 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  3 ... accepted combinations: 16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  4 ... accepted combinations: 32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  5 ... accepted combinations: 32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  6 ... accepted combinations: 79 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  7 ... accepted combinations: 79 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  8 ... accepted combinations: 82 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  9 ... accepted combinations: 88 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  10 ... accepted combinations: 88 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  11 ... accepted combinations: 88 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  12 ... accepted combinations: 92 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  13 ... accepted combinations: 92 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  14 ... accepted combinations: 92 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  15 ... accepted combinations: 112 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  16 ... accepted combinations: 115 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  17 ... accepted combinations: 115 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  18 ... accepted combinations: 115 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  19 ... accepted combinations: 115 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  20 ... accepted combinations: 120 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  21 ... accepted combinations: 136 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  22 ... accepted combinations: 139 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  23 ... accepted combinations: 143 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  24 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  25 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  26 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  27 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  28 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  29 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  30 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  31 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  32 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  33 ... accepted combinations: 144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of valid combinations: 144</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of remaining species: 15 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Calculating statistical significance (permutational test)...</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">#Prints the results</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">sc</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                     A         B    sqrtIV p.value</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp.+Ludads               1.0000000 0.8235294 0.9074852   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ludads                      1.0000000 0.8235294 0.9074852   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp.                      0.7777778 1.0000000 0.8819171   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp.+Orysp.+Ludads        1.0000000 0.4117647 0.6416889   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp.+Ludads               1.0000000 0.4117647 0.6416889   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp.+Elesp.+Ludads        1.0000000 0.4117647 0.6416889   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp.+Psespi               1.0000000 0.4117647 0.6416889   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp.+Psespi+Ludads        1.0000000 0.4117647 0.6416889   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp.+Ludads               1.0000000 0.4117647 0.6416889   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Psespi+Ludads               1.0000000 0.4117647 0.6416889   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp.+Orysp.               0.9230769 0.4117647 0.6165148   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Psespi                      0.9000000 0.4117647 0.6087596   0.005</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Helind+Orysp.+Ludads        1.0000000 0.3529412 0.5940885   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Helind+Ludads               1.0000000 0.3529412 0.5940885   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp.+Elesp.               0.7222222 0.4705882 0.5829831   0.025</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Walind+Sessp.+Orysp.        1.0000000 0.2941176 0.5423261   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Walind+Sessp.+Orysp.+Ludads 1.0000000 0.2941176 0.5423261   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Walind+Sessp.+Ludads        1.0000000 0.2941176 0.5423261   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Walind+Orysp.               1.0000000 0.2941176 0.5423261   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Walind+Orysp.+Ludads        1.0000000 0.2941176 0.5423261   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Walind+Ludads               1.0000000 0.2941176 0.5423261   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ipoaqu+Orysp.+Ludads        1.0000000 0.2941176 0.5423261   0.015</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ipoaqu+Ludads               1.0000000 0.2941176 0.5423261   0.015</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp.+Elesp.+Psespi        1.0000000 0.2941176 0.5423261   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp.+Elesp.+Psespi+Ludads 1.0000000 0.2941176 0.5423261   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp.+Psespi+Ludads        1.0000000 0.2941176 0.5423261   0.010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Helind+Orysp.               0.5882353 0.4705882 0.5261336   0.115</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp.                      0.5833333 0.4705882 0.5239368   0.095</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Elesp.+Psespi               0.8000000 0.2941176 0.4850713   0.035</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Ipoaqu+Orysp.               0.7142857 0.2941176 0.4583492   0.155</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Echell+Orysp.               0.6666667 0.2352941 0.3960590   0.220</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Orysp.               0.5000000 0.2941176 0.3834825   0.445</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Walind+Sessp.               0.5000000 0.2941176 0.3834825   0.405</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas+Orysp.               0.5714286 0.2352941 0.3666794   0.360</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Helind+Orysp.+Elesp.        0.5555556 0.2352941 0.3615508   0.350</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            A         B    sqrtIV p.value</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod                             0.9473684 1.0000000 0.9733285   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Helind                      0.9285714 0.7857143 0.8541615   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod                      0.8461538 0.7857143 0.8153742   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Elesp.                      1.0000000 0.6428571 0.8017837   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Helind               0.9000000 0.6428571 0.7606388   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Helind+Elesp.               1.0000000 0.5714286 0.7559289   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Elesp.               1.0000000 0.5000000 0.7071068   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Helind                      0.7500000 0.6428571 0.6943651   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Helind+Elesp.        1.0000000 0.4285714 0.6546537   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Orysp.                      1.0000000 0.4285714 0.6546537   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Helind                             0.5416667 0.7857143 0.6523766   0.020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Elesp.                      0.7777778 0.5000000 0.6236096   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Helind+Elesp.                      0.6428571 0.5714286 0.6060915   0.020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Helind+Elesp.               0.8571429 0.4285714 0.6060915   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas+Phynod                      1.0000000 0.3571429 0.5976143   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Echell+Helind+Elesp.        1.0000000 0.3571429 0.5976143   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Echell+Elesp.               1.0000000 0.3571429 0.5976143   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Helind+Orysp.               1.0000000 0.3571429 0.5976143   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echell+Helind+Elesp.               1.0000000 0.3571429 0.5976143   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp.+Phynod                      0.7777778 0.4285714 0.5773503   0.025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Phynod                      0.7500000 0.4285714 0.5669467   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Echell                      0.9000000 0.3571429 0.5669467   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind                             0.8571429 0.3571429 0.5532833   0.025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Phynod                      0.8571429 0.3571429 0.5532833   0.025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Phynod+Helind               0.8333333 0.3571429 0.5455447   0.025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Phynod+Helind               0.8333333 0.3571429 0.5455447   0.035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Helind                      0.8333333 0.3571429 0.5455447   0.035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Echell+Helind               0.8333333 0.3571429 0.5455447   0.020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echell+Elesp.                      0.8333333 0.3571429 0.5455447   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Phynod+Helind+Orysp.        1.0000000 0.2857143 0.5345225   0.035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Phynod+Orysp.               1.0000000 0.2857143 0.5345225   0.035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Echell+Helind+Elesp. 1.0000000 0.2857143 0.5345225   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Echell+Elesp.        1.0000000 0.2857143 0.5345225   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Orysp.               1.0000000 0.2857143 0.5345225   0.005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echell+Helind+Elesp.        1.0000000 0.2857143 0.5345225   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echell+Elesp.               1.0000000 0.2857143 0.5345225   0.010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Phynod+Helind+Elesp.        1.0000000 0.2857143 0.5345225   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Phynod+Elesp.               1.0000000 0.2857143 0.5345225   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Helind+Elesp.               1.0000000 0.2857143 0.5345225   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Elesp.                      1.0000000 0.2857143 0.5345225   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Orysp.+Elesp.               1.0000000 0.2857143 0.5345225   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Phynod               0.7142857 0.3571429 0.5050763   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Helind                      0.7142857 0.3571429 0.5050763   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Phynod               0.7142857 0.3571429 0.5050763   0.040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Phynod+Helind        0.8000000 0.2857143 0.4780914   0.065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Helind+Orysp.               0.8000000 0.2857143 0.4780914   0.065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Aesind                      0.8000000 0.2857143 0.4780914   0.045</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Aesind+Phynod               0.8000000 0.2857143 0.4780914   0.045</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Aesind+Phynod+Helind        0.8000000 0.2857143 0.4780914   0.045</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Aesind+Helind               0.8000000 0.2857143 0.4780914   0.045</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Phynod+Helind        0.8000000 0.2857143 0.4780914   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Helind               0.8000000 0.2857143 0.4780914   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Echell               0.8000000 0.2857143 0.4780914   0.035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Echell+Helind        0.8000000 0.2857143 0.4780914   0.035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp.+Phynod+Helind               0.8000000 0.2857143 0.4780914   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echell+Helind                      0.6250000 0.3571429 0.4724556   0.070</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag                             1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Aesind                      1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Aesind+Phynod               1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Aesind+Phynod+Helind        1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Aesind+Phynod+Helind+Orysp. 1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Aesind+Phynod+Orysp.        1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Aesind+Helind               1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Aesind+Helind+Orysp.        1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Aesind+Orysp.               1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Phynod                      1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Phynod+Helind               1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Phynod+Helind+Orysp.        1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Phynod+Orysp.               1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Helind                      1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Helind+Orysp.               1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Alyvag+Orysp.                      1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Phynod+Helind+Orysp. 1.0000000 0.2142857 0.4629100   0.060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Phynod+Orysp.        1.0000000 0.2142857 0.4629100   0.060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Phynod+Orysp.        1.0000000 0.2142857 0.4629100   0.020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echpas+Phynod               1.0000000 0.2142857 0.4629100   0.020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Carhal                      1.0000000 0.2142857 0.4629100   0.020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Carhal+Phynod               1.0000000 0.2142857 0.4629100   0.020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Carhal+Phynod+Helind        1.0000000 0.2142857 0.4629100   0.020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Carhal+Helind               1.0000000 0.2142857 0.4629100   0.020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Aesind+Phynod+Helind+Elesp. 1.0000000 0.2142857 0.4629100   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Aesind+Phynod+Elesp.        1.0000000 0.2142857 0.4629100   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Aesind+Helind+Elesp.        1.0000000 0.2142857 0.4629100   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Aesind+Elesp.               1.0000000 0.2142857 0.4629100   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Phynod+Helind+Elesp. 1.0000000 0.2142857 0.4629100   0.040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Phynod+Elesp.        1.0000000 0.2142857 0.4629100   0.040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Helind+Elesp.        1.0000000 0.2142857 0.4629100   0.040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Sessp.+Elesp.               1.0000000 0.2142857 0.4629100   0.040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Helind+Ipoaqu+Elesp. 1.0000000 0.2142857 0.4629100   0.025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Helind+Orysp.        1.0000000 0.2142857 0.4629100   0.060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Ipoaqu+Elesp.        1.0000000 0.2142857 0.4629100   0.025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Echpas+Phynod               1.0000000 0.2142857 0.4629100   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Phynod+Orysp.               1.0000000 0.2142857 0.4629100   0.020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas+Phynod+Helind               1.0000000 0.2142857 0.4629100   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas+Phynod+Orysp.               1.0000000 0.2142857 0.4629100   0.015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas+Phynod+Elesp.               1.0000000 0.2142857 0.4629100   0.030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Carhal+Phynod                      1.0000000 0.2142857 0.4629100   0.020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Carhal+Phynod+Helind               1.0000000 0.2142857 0.4629100   0.020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Phynod+Echell+Helind+Elesp. 1.0000000 0.2142857 0.4629100   0.040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Phynod+Echell+Elesp.        1.0000000 0.2142857 0.4629100   0.040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Phynod+Helind+Orysp.        1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Phynod+Orysp.               1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Echell+Helind+Elesp.        1.0000000 0.2142857 0.4629100   0.040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Echell+Elesp.               1.0000000 0.2142857 0.4629100   0.040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Helind+Orysp.               1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Orysp.                      1.0000000 0.2142857 0.4629100   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot+Sessp.+Phynod               1.0000000 0.2142857 0.4629100   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot+Phynod                      1.0000000 0.2142857 0.4629100   0.055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp.+Phynod+Helind+Elesp.        1.0000000 0.2142857 0.4629100   0.040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp.+Phynod+Elesp.               1.0000000 0.2142857 0.4629100   0.040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Helind+Ipoaqu+Elesp.        1.0000000 0.2142857 0.4629100   0.025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Helind+Orysp.+Elesp.        1.0000000 0.2142857 0.4629100   0.050</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Ipoaqu+Elesp.               1.0000000 0.2142857 0.4629100   0.025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Helind               0.6666667 0.2857143 0.4364358   0.140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Echell+Helind               0.6666667 0.2857143 0.4364358   0.095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Eupvac+Phynod                      0.6666667 0.2857143 0.4364358   0.095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Carhal+Helind                      0.8000000 0.2142857 0.4140393   0.095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Helind+Ipoaqu               0.8000000 0.2142857 0.4140393   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod+Ipoaqu                      0.8000000 0.2142857 0.4140393   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Helind+Ipoaqu+Elesp.               0.8000000 0.2142857 0.4140393   0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Helind+Orysp.        0.7500000 0.2142857 0.4008919   0.150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Helind+Ipoaqu        0.7500000 0.2142857 0.4008919   0.115</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Phynod+Ipoaqu               0.7500000 0.2142857 0.4008919   0.115</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Helind+Ipoaqu+Elesp.        0.7500000 0.2142857 0.4008919   0.100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Ipoaqu+Elesp.               0.7500000 0.2142857 0.4008919   0.100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas+Elesp.                      0.7500000 0.2142857 0.4008919   0.070</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Phynod+Echell               0.7500000 0.2142857 0.4008919   0.095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Phynod+Echell+Helind        0.7500000 0.2142857 0.4008919   0.095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Echell                      0.7500000 0.2142857 0.4008919   0.095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Aesind+Echell+Helind               0.7500000 0.2142857 0.4008919   0.095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Orysp.                      0.5000000 0.2857143 0.3779645   0.280</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Carhal                             0.6666667 0.2142857 0.3779645   0.150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Ipoaqu+Elesp.                      0.6666667 0.2142857 0.3779645   0.160</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Sessp.+Phynod        0.6000000 0.2142857 0.3585686   0.245</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Sessp.+Phynod               0.6000000 0.2142857 0.3585686   0.245</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Phynod               0.6000000 0.2142857 0.3585686   0.215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Helind+Ipoaqu               0.6000000 0.2142857 0.3585686   0.200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Helind+Orysp.               0.6000000 0.2142857 0.3585686   0.270</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sessp.+Helind+Elesp.               0.6000000 0.2142857 0.3585686   0.230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Helind+Ipoaqu                      0.5714286 0.2142857 0.3499271   0.215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Pancam+Melcor+Orysp.               0.5000000 0.2142857 0.3273268   0.340</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Melcor+Eupvac+Orysp.               0.5000000 0.2142857 0.3273268   0.320</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Echpas+Helind                      0.5000000 0.2142857 0.3273268   0.305</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cyprot+Sessp.                      0.5000000 0.2142857 0.3273268   0.320</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Plots positive predictive power and sensitivity against the order of </span></span></span>
 <span class="r-in"><span><span class="co">## combinations</span></span></span>
@@ -370,45 +479,45 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> Target site group: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of candidate species: 33</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of sites: 41 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the site group: 17 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the site group: 14 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of fixed species: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Orysp. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     25 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Phynod </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     21 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of species to combine: 32</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  1 ... accepted combinations: 1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  2 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  3 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  4 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  5 ... accepted combinations: 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  6 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  7 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  8 ... accepted combinations: 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  9 ... accepted combinations: 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  10 ... accepted combinations: 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  11 ... accepted combinations: 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  12 ... accepted combinations: 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  13 ... accepted combinations: 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  14 ... accepted combinations: 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  15 ... accepted combinations: 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  16 ... accepted combinations: 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  17 ... accepted combinations: 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  18 ... accepted combinations: 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  19 ... accepted combinations: 7 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  20 ... accepted combinations: 9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  21 ... accepted combinations: 9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  22 ... accepted combinations: 10 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  23 ... accepted combinations: 13 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  24 ... accepted combinations: 15 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  26 ... accepted combinations: 19 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  27 ... accepted combinations: 21 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  28 ... accepted combinations: 22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  29 ... accepted combinations: 22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  30 ... accepted combinations: 22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  31 ... accepted combinations: 22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  32 ... accepted combinations: 22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  33 ... accepted combinations: 22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of valid combinations: 22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of remaining species: 11 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  3 ... accepted combinations: 9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  4 ... accepted combinations: 19 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  5 ... accepted combinations: 19 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  6 ... accepted combinations: 46 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  7 ... accepted combinations: 46 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  8 ... accepted combinations: 49 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  9 ... accepted combinations: 53 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  10 ... accepted combinations: 53 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  11 ... accepted combinations: 53 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  12 ... accepted combinations: 55 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  13 ... accepted combinations: 55 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  14 ... accepted combinations: 55 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  15 ... accepted combinations: 65 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  16 ... accepted combinations: 67 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  17 ... accepted combinations: 67 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  18 ... accepted combinations: 67 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  19 ... accepted combinations: 67 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  20 ... accepted combinations: 71 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  22 ... accepted combinations: 75 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  23 ... accepted combinations: 81 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  24 ... accepted combinations: 83 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  25 ... accepted combinations: 85 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  26 ... accepted combinations: 86 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  27 ... accepted combinations: 86 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  28 ... accepted combinations: 86 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  29 ... accepted combinations: 86 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  30 ... accepted combinations: 86 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  31 ... accepted combinations: 86 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  32 ... accepted combinations: 86 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Starting species  33 ... accepted combinations: 86 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of valid combinations: 86</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of remaining species: 15 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Calculating statistical significance (permutational test)...</span>
 <span class="r-in"><span>                  </span></span>
 </code></pre></div>
