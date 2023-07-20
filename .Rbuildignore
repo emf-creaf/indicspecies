@@ -6,3 +6,4 @@
 ^docs$
 ^\.github$
 ^metadata.yml$
+^CRAN-SUBMISSION$
