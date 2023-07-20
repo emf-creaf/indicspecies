@@ -7,3 +7,4 @@
 ^\.github$
 ^metadata.yml$
 ^CRAN-SUBMISSION$
+^cran-comments.md$
