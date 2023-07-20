@@ -42,8 +42,8 @@
 #' ## Compute Dufrene and Legendre's IndVal
 #' strassoc(wetland, wetkm$cluster, func="IndVal.g") 
 #' 
-#' ## Compute point-biserial correlation, with bootstrap 95 percent confidence intervals
-#' strassoc(wetland, wetkm$cluster, func="r", 
+#' ## Compute correlation, with bootstrap 95 percent confidence intervals
+#' strassoc(wetland, wetkm$cluster, func="r.g", 
 #'          nboot.ci =100) 
 #'          
 strassoc <- function(X, cluster,func="r",group=NULL, nboot.ci=NULL, alpha.ci=0.05, c=1) {

@@ -51,8 +51,8 @@ wetkm <- kmeans(wetland, centers=3)
 ## Compute Dufrene and Legendre's IndVal
 strassoc(wetland, wetkm$cluster, func="IndVal.g") 
 
-## Compute point-biserial correlation, with bootstrap 95 percent confidence intervals
-strassoc(wetland, wetkm$cluster, func="r", 
+## Compute correlation, with bootstrap 95 percent confidence intervals
+strassoc(wetland, wetkm$cluster, func="r.g", 
          nboot.ci =100) 
          
 }
