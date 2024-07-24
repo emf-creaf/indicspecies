@@ -6,6 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Relationship Between Species and Groups of Sites • indicspecies</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
@@ -13,6 +19,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Relationship Between Species and Groups of Sites">
 <meta name="description" content="Functions to assess the strength and statistical significance of the relationship between species occurrence/abundance and groups of sites [De Caceres &amp; Legendre (2009) &lt;doi:10.1890/08-1823.1&gt;]. Also includes functions to measure species niche breadth using resource categories [De Caceres et al. (2011) &lt;doi:10.1111/J.1600-0706.2011.19679.x&gt;].">
 <meta property="og:description" content="Functions to assess the strength and statistical significance of the relationship between species occurrence/abundance and groups of sites [De Caceres &amp; Legendre (2009) &lt;doi:10.1890/08-1823.1&gt;]. Also includes functions to measure species niche breadth using resource categories [De Caceres et al. (2011) &lt;doi:10.1111/J.1600-0706.2011.19679.x&gt;].">
+<meta property="og:image" content="https://emf-creaf.github.io/indicspecies/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -35,7 +42,7 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/IndicatorSpeciesAnalysis.html">Indicator Species Analysis using 'indicspecies'</a></li>
+<li><a class="dropdown-item" href="articles/IndicatorSpeciesAnalysis.html">Indicator species analysis</a></li>
     <li><a class="dropdown-item" href="articles/PigeonExample.html">Usage of the niche metric functions (former 'resniche' package)</a></li>
   </ul>
 </li>
@@ -53,17 +60,20 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="indicspecies">indicspecies<a class="anchor" aria-label="anchor" href="#indicspecies"></a>
-</h1></div>
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="relationship-between-species-and-groups-of-sites-">Relationship between species and groups of sites 
+<a class="anchor" aria-label="anchor" href="#relationship-between-species-and-groups-of-sites-"></a>
+</h1>
+</div>
 <!-- badges: start -->
 
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>Package <code>indicspecies</code> provides functions to:</p>
+<p>Package <code>indicspecies</code> provides functions to conduct:</p>
 <ul>
-<li><p>Assess the strength and statistical significance of the relationship between species occurrence/abundance and groups of sites: De Cáceres &amp; Legendre (2009) (<a href="https://doi.org/10.1890/08-1823.1" class="external-link uri">https://doi.org/10.1890/08-1823.1</a>); De Cáceres et al. (2010) (<a href="https://doi.org/10.1111/j.1600-0706.2010.18334.x" class="external-link uri">https://doi.org/10.1111/j.1600-0706.2010.18334.x</a>); De Cáceres et al. (2012) (<a href="https://doi.org/10.1111/j.2041-210X.2012.00246.x" class="external-link uri">https://doi.org/10.1111/j.2041-210X.2012.00246.x</a>).</p></li>
-<li><p>Measure species niche breadth using resource categories: De Cáceres et al. (2011) (<a href="https://doi.org/10.1111/J.1600-0706.2011.19679.x" class="external-link uri">https://doi.org/10.1111/J.1600-0706.2011.19679.x</a>).</p></li>
+<li><p><strong>Indicator species analysis</strong>: Assess the strength and statistical significance of the relationship between species occurrence/abundance and groups of sites (De Cáceres &amp; Legendre 2009; De Cáceres et al. 2010; De Cáceres et al. 2012).</p></li>
+<li><p><strong>Species niche analysis</strong>: Measure species niche metrics using resource categories (De Cáceres et al. 2011).</p></li>
 </ul>
 </div>
 <div class="section level2">
@@ -86,16 +96,16 @@
 <div class="section level2">
 <h2 id="maintenance">Maintenance<a class="anchor" aria-label="anchor" href="#maintenance"></a>
 </h2>
-<p>Although not in active development, this R package is maintained by the <a href="https://emf.creaf.cat" class="external-link"><em>Ecosystem Modelling Facility</em></a> unit at CREAF (in Spain)</p>
+<p>Although not in active development, the R package is maintained by the <a href="https://emf.creaf.cat" class="external-link"><em>Ecosystem Modelling Facility</em></a> unit at CREAF (in Spain).</p>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
 <ul>
-<li><p>De Cáceres, M., &amp; Legendre, P. (2009). Associations between species and groups of sites: indices and statistical inference. Ecology, 90(12), 3566–3574.</p></li>
-<li><p>De Cáceres, M., Legendre, P., &amp; Moretti, M. (2010). Improving indicator species analysis by combining groups of sites. Oikos, 119(10), 1674–1684.</p></li>
-<li><p>De Cáceres, M., Legendre, P., Wiser, S. K., &amp; Brotons, L. (2012). Using species combinations in indicator value analyses. Methods in Ecology and Evolution, 3, 973–982.</p></li>
-<li><p>De Cáceres, M., Sol, D., Lapiedra, O., &amp; Legendre, P. (2011). A framework for estimating niche metrics using the resemblance between qualitative resources. Oikos, 120(February), 1341–1350.</p></li>
+<li><p>De Cáceres, M., &amp; Legendre, P. (2009). Associations between species and groups of sites: indices and statistical inference. Ecology, 90(12), 3566–3574 (<a href="https://doi.org/10.1890/08-1823.1" class="external-link uri">https://doi.org/10.1890/08-1823.1</a>).</p></li>
+<li><p>De Cáceres, M., Legendre, P., &amp; Moretti, M. (2010). Improving indicator species analysis by combining groups of sites. Oikos, 119(10), 1674–1684 (<a href="https://doi.org/10.1111/j.1600-0706.2010.18334.x" class="external-link uri">https://doi.org/10.1111/j.1600-0706.2010.18334.x</a>).</p></li>
+<li><p>De Cáceres, M., Legendre, P., Wiser, S. K., &amp; Brotons, L. (2012). Using species combinations in indicator value analyses. Methods in Ecology and Evolution, 3, 973–982 (<a href="https://doi.org/10.1111/j.2041-210X.2012.00246.x" class="external-link uri">https://doi.org/10.1111/j.2041-210X.2012.00246.x</a>).</p></li>
+<li><p>De Cáceres, M., Sol, D., Lapiedra, O., &amp; Legendre, P. (2011). A framework for estimating niche metrics using the resemblance between qualitative resources. Oikos, 120(February), 1341–1350 (<a href="https://doi.org/10.1111/J.1600-0706.2011.19679.x" class="external-link uri">https://doi.org/10.1111/J.1600-0706.2011.19679.x</a>).</p></li>
 </ul>
 </div>
 </div>
