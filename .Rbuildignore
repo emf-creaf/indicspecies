@@ -9,3 +9,4 @@
 ^CRAN-SUBMISSION$
 ^cran-comments.md$
 ^pkgdown$
+^data-raw$
