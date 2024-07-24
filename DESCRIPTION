@@ -17,6 +17,7 @@ Suggests:
 Encoding: UTF-8
 License: GPL (>= 2)
 URL: https://emf-creaf.github.io/indicspecies/
+BugReports: https://github.com/emf-creaf/indicspecies/issues
 RoxygenNote: 7.3.2
 LazyLoad: yes
 VignetteBuilder: knitr
