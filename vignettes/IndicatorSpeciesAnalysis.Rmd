@@ -1,5 +1,5 @@
 ---
-title: "Indicator Species Analysis using 'indicspecies'"
+title: "Indicator species analysis"
 author: "Miquel De Cáceres, CREAF"
 date: "`r Sys.Date()`"
 output: 
@@ -7,7 +7,7 @@ output:
     toc: TRUE
 bibliography: indicspecies.bib  
 vignette: >
-  %\VignetteIndexEntry{Indicator Species Analysis using 'indicspecies'}
+  %\VignetteIndexEntry{Indicator species analysis}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignettePackage{indicspecies}
   %\VignetteEncoding{UTF-8}

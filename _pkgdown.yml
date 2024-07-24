@@ -1,10 +1,19 @@
+url: https://emf-creaf.github.io/indicspecies
+
+template:
+  bootstrap: 5
+  bslib:
+    bootswatch: materia
+    pkgdown-nav-height: 100px
+    primary: "#241F1C"
+    
 home:
   links:
   - text: Package website
     href: https://emf-creaf.github.io/indicspecies/
     
 reference:
-- title: Indicator Species Analysis
+- title: Indicator species analysis
   desc:  Functions to assess the strength and statistical significance of the relationship between species occurrence/abundance and groups of sites
   contents:
   - wetland
