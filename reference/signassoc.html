@@ -80,7 +80,7 @@
 
 
 <dt id="arg-control">control<a class="anchor" aria-label="anchor" href="#arg-control"></a></dt>
-<dd><p>A list of control values describing properties of the permutation design, as returned by a call to <code>how</code>.</p></dd>
+<dd><p>A list of control values describing properties of the permutation design, as returned by a call to <code><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></code>.</p></dd>
 
 
 <dt id="arg-permutations">permutations<a class="anchor" aria-label="anchor" href="#arg-permutations"></a></dt>
@@ -99,7 +99,7 @@
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>Input data for this function is the species matrix X and either a matrix of group memberships (U) or a vector of numeric group labels (cluster). This R function works for both presence/absence and quantitative species data, depending on the values of the input matrix X.
 If <code>mode = 0</code>, the null ecological hypothesis is that the frequency (or abundance) of the species of interest in sites belonging to the site group is not higher than the frequency (or abundance) in sites not belonging to it. If <code>mode = 1</code>, the null ecological hypothesis is that the relative frequency (average abundance) of the species of interest is not higher in the target site group than in other groups. See De Cáceres and Legendre for more details.</p>
-<p>Complex permutation designs are allowed through the function <code>how</code> from package "permute". If those are not enough, the user can set <code>control = NULL</code> and specify a custom matrix of permutations to test with parameter <code>permutations</code>.</p>
+<p>Complex permutation designs are allowed through the function <code><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></code> from package "permute". If those are not enough, the user can set <code>control = NULL</code> and specify a custom matrix of permutations to test with parameter <code>permutations</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
