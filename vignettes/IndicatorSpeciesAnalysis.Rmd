@@ -40,7 +40,7 @@ library(indicspecies)
 Indicator species are often determined using an analysis of the relationship between the species occurrence or abundance values from a set of sampled sites and the classification of the same sites into site groups, which may represent habitat types, community types, disturbance states, etc. Thus, there are two data elements in an indicator species analysis: (1) the community data matrix; and (2) the vector that describes the classification of sites into groups.
 
 ### The community data matrix
-This is a matrix (or a data frame) with **sites in rows** and **species in columns**. Normally, we will use functions like `read.table()` to read our data set from a file. In this example we load our example dataset into the workspace using:
+This is a matrix (or a data frame) with **sites in rows** and **species in columns**. Normally, we will use functions like `read.table()` or `read.csv()` to read our data set from a file. In this example we load our example dataset into the workspace using:
 ```{r}
 data(wetland)
 ```
@@ -104,6 +104,7 @@ summary(indval, indvalcomp=TRUE)
 This gives us additional information about why species can be used as indicators. For example, 'Ludads' is a good indicator of Group 1 because it occurs in sites belonging to this group only (i.e., A = 1.0000), although not all sites belonging to Group 1 include the species (i.e., B = 0.8235). In contrast, 'Pancam' can be used to indicate Group 3 because it appears in all sites belonging to this group (i.e., B = 1.0000) and it is largely (but not completely) restricted to it (i.e., A = 0.8278).
 
 #### Inspecting the indicator species analysis results for all species
+
 In our previous calls to `summary()` only the species that were significantly associated with site groups (or site group combinations) were shown. One can display the result of the indicator species analysis for all species, regardless of whether the permutational test was significant or not. This is done by changing the significance level in the summary:
 ```{r}
 summary(indval, alpha=1)
@@ -117,6 +118,7 @@ indval$sign
 After accessing the object `indval$sign`, we know that the four species whose highest IndVal corresponded to the set of all sites were 'Valind', 'Sessp.', 'Helind' and 'Ipoaqu', as indicated by the missing values in the `p.value` column of the data frame. The first columns of \texttt{sign} indicate (with ones and zeroes) which site groups were included in the combination preferred by the species. Then, the column \texttt{index} indicates the index of the site group combination (see subsection Excluding site group combinations in `multipatt()` below). The remaining two columns are the association statistic and the p-value of the permutational test.
 
 ### Analyzing species ecological preferences with correlation indices
+
 Several other indices can be used to analyze the association between a species and a group of sites [@DeCaceres2009]. Diagnostic (or indicator) species are an important tool in vegetation science, because these species can be used to characterize and indicate specific plant community types. A statistic commonly used to determine the association (also known as *fidelity*, not to be confounded with the indicator value component) between species and vegetation types is Pearson's *phi coefficient of association* [@Chytry2002a]. This coefficient is a measure of the correlation between two binary vectors. It is possible to calculate the phi coefficient in `multipatt()` after transforming our community data to presence-absence:
 ```{r}
 wetlandpa <- ifelse(wetland>0,1,0)
@@ -151,11 +153,18 @@ In contrast, indicator values are always non-negative:
 round(head(indval$str),3)
 ```
 
+The fact that correlation indices take negative values means that they can be used to detect *negative associations* (i.e. site groups or site group combinations that are statistically avoided by the species). Function `multipatt()` can be used for this purpose without modification. The reason is that strength of correlation for a given site group combination has always the same absolute value than the correlation for the complementary combination (you can verify this in the table above displaying the strength of association results for `phi`). This entails that the site group combination that maximizes positive association is the complement of the site group combination that minimizes (i.e. maximizes the negative value) negative association. For example, in species 'Pancam' the maximum positive phi correlation is for Group 3 and the minimum negative phi correlation is for the combination of Group 1 and Group 2 (i.e. the complement of Group 3). Hence, one could use the complement of site group combinations indicated by `multipatt()` for positive associations as results for negative associations. Following the same example, species 'Pancam' would be negatively associated to  the combination of Group 1 and Group 2 with the same p-value as obtained for its positive association with Group 3. 
+
 Unlike with indicator value coefficients, the set of all sites can never be considered with the phi or point biserial coefficients, because these coefficients always require a set of sites for comparison, besides the target site group or site group combination of interest.
 
 ### Excluding site group combinations in `multipatt()`
 
-When conducting indicator species analysis, it may happen that some combinations of site groups are difficult to interpret ecologically. In those cases, we may decide to exclude those combinations from the analysis, so our species may appear associated to other (more interpretable) ecological conditions. There are three ways to restrict the site group combinations to be considered in `multipatt()`. 
+There are two situations where site group combinations may be excluded from the analysis:
+
+  a. When conducting indicator species analysis, it may happen that some combinations of site groups are **difficult to interpret ecologically**. In those cases, we may decide to exclude those combinations from the analysis, so our species may appear associated to other (more interpretable) ecological conditions. 
+  b. The combinations to be explored will need to be restricted if **the initial number of groups is large** (e.g. more than 15), because the number of possible combinations grows exponentially and calculations will become computationally unfeasible if combinations are not restricted.  
+
+There are three ways to restrict the site group combinations to be considered in `multipatt()`, as detailed in the following subsections.
 
 #### Indicator species analysis without site groups combinations
 The original Indicator Value method of @Dufrene1997 did not consider combinations of site groups. In other words, the only site group combinations permitted in the original method were singletons. When using `multipatt()` it is possible to avoid considering site group combinations, as in the original method, by using `duleg = TRUE`:
@@ -174,6 +183,8 @@ summary(indvalrest)
 ```
 
 In this case the output looks like a the output of an unrestricted `multipatt()` execution, because the only combination that is excluded is the set of all sites, which cannot be tested for significance and thus never appears in the summary. 
+
+Limiting the maximum order of combinations is the commonest way to restrict combinations to avoid computational problems derived from a large number of site groups.
 
 #### Specifying the site groups combinations to be considered
 There is a third, more flexible, way of restricting site group combinations. The input parameter vector `restcomb` allows specifying the combinations of site groups that are permitted in `multipatt()`. In order to learn how to use parameter `restcomb`, we must first understand that inside `multipatt()` site groups and site group combinations are referred to with integers. Site group combinations are numbered starting with single groups and then increasing the order of combinations. For example, if there are three site groups, the first three integers '1' to '3' identify those groups. Then, '4' identifies the combination of Group 1 and Group 2, '5' identifies the combination of Group 1 and Group 3, and '6' identifies the combination of Group 2 and Group 3. Finally, '7' identifies the combination of all three groups. 

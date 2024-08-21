@@ -2,6 +2,9 @@
  NEWS for R Package "indicspecies"
 -------------------------------
 
+# Version 1.7.15
+- Update of indicator species analysis vignette (negative associations)
+
 # Version 1.7.14
 - Bug correction in pruneindicators and print.indicators
 - Bug correction in nichecentroid and plotniche for distance matrix with equal resources
