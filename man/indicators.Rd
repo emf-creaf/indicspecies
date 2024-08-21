@@ -64,7 +64,7 @@ indicators(
 
 \item{sqrtIVt}{Threshold for (square root of) indicator value. Combinations with lower values are not kept.}
 
-\item{control}{A list of control values describing properties of the permutation test design, as returned by a call to \code{\link{how}}.}
+\item{control}{A list of control values describing properties of the permutation test design, as returned by a call to \code{\link[permute]{how}}.}
 
 \item{permutations}{A custom matrix of permutations, to be used if \code{control = NULL}, with permutations in rows and site indices in columns.}
 

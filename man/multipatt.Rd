@@ -32,7 +32,7 @@ multipatt(
 
 \item{max.order}{An integer indicating the maximum order of site group combinations to be considered: \code{max.order=1} for singletons, \code{max.order=2} for pairs, \code{max.order=3} for triplets... As \code{restcomb}, this parameter provide a way to restrict the site group combinations that make ecological sense. By default all possible site group combinations are considered. If \code{max.order=1} then the function will behave as if \code{duleg=TRUE}.}
 
-\item{control}{A list of control values describing properties of the permutation design, as returned by a call to \code{\link{how}}.}
+\item{control}{A list of control values describing properties of the permutation design, as returned by a call to \code{\link[permute]{how}}.}
 
 \item{permutations}{A custom matrix of permutations, to be used if \code{control = NULL}, with permutations in rows and site indices in columns}
 
@@ -53,7 +53,7 @@ This function studies the association between species patterns and combinations 
 \details{
 This function creates combinations of the input clusters and compares each combination with the species in the input matrix x. For each species it chooses the combination with a highest association value. Best matching patterns are tested for statistical significance of the associations. Four association indices are possible (some less than for \code{\link{strassoc}}): "IndVal", "IndVal.g", "r" and "r.g". Indicator value indices will return the pattern that better matches the species observed pattern, whereas correlation indices will return the pattern that creates a highest inside/outside difference. Details are given in De \enc{Cáceres}{Caceres} et al. (2010). The user can restrict the combinations in three ways: (1) by using \code{duleg=TRUE}, which leads to consider single site-groups only; (2) by setting the minimum and maximum order of combinations using \code{min.order} and \code{max.order}; or (3) by using \code{restcomb} to restrict combinations at will. In order to carry out the third way, values in \code{restcomb} must be the indices of combinations that appear in the column \code{index} of object \code{sign} (see below). 
 
-Complex permutation designs are allowed through the function \code{\link{how}} from package "permute". If those are not enough, the user can set \code{control = NULL} and specify a custom matrix of permutations to test with parameter \code{permutations}.
+Complex permutation designs are allowed through the function \code{\link[permute]{how}} from package "permute". If those are not enough, the user can set \code{control = NULL} and specify a custom matrix of permutations to test with parameter \code{permutations}.
 }
 \note{
 This function gives the same results as function \code{indval} in package "labdsv" when used setting \code{func="IndVal.g"} and \code{duleg=TRUE}, excepting the fact that the square root IndVal values is returned instead of the original IndVal.
@@ -84,7 +84,7 @@ De \enc{Cáceres}{Caceres}, M., Legendre, P., Moretti, M. 2010. Improving indica
 \enc{Dufrêne}{Dufrene}, M. and P. Legendre. 1997. Species assemblages and indicator species: The need for a flexible asymetrical approach. Ecological Monographs 67:345-366.
 }
 \seealso{
-\code{\link{summary.multipatt}}, \code{\link{strassoc}}, \code{\link{signassoc}}, \code{\link{how}}
+\code{\link{summary.multipatt}}, \code{\link{strassoc}}, \code{\link{signassoc}}, \code{\link[permute]{how}}
 }
 \author{
 Miquel De \enc{Cáceres}{Caceres} Ainsa, EMF-CREAF

@@ -13,7 +13,7 @@
 #' @param Bt Threshold for sensitivity used to select valid indicators. Combinations with lower values are not kept.
 #' @param sqrtIVt Threshold for (square root of) indicator value. Combinations with lower values are not kept.
 #' @param alpha Threshold for statistical significance of indicator value. Combinations with higher p-values are not kept.
-#' @param control A list of control values describing properties of the permutation test design, as returned by a call to \code{\link{how}}.
+#' @param control A list of control values describing properties of the permutation test design, as returned by a call to \code{\link[permute]{how}}.
 #' @param permutations A custom matrix of permutations, to be used if \code{control = NULL}, with permutations in rows and site indices in columns.
 #' @param print.perm If TRUE, prints permutation numbers after each set of 100 permutations.
 #' @param nboot.ci Number of bootstrap samples for confidence intervals. If \code{nboot.ci = NULL} then confidence intervals are not estimated.
