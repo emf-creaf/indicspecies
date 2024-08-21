@@ -51,7 +51,7 @@
 <span>  restcomb <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  min.order <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  max.order <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  permutations <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  print.perm <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -157,7 +157,7 @@
 <span class="r-in"><span><span class="va">wetkm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="co">## Creates three clusters using kmeans</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Runs the combination analysis using IndVal.g as statistic</span></span></span>
-<span class="r-in"><span><span class="va">wetpt</span> <span class="op">&lt;-</span> <span class="fu">multipatt</span><span class="op">(</span><span class="va">wetland</span>, <span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">wetpt</span> <span class="op">&lt;-</span> <span class="fu">multipatt</span><span class="op">(</span><span class="va">wetland</span>, <span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Lists those species with significant association to one combination</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">wetpt</span><span class="op">)</span> </span></span>

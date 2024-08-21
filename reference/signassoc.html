@@ -49,7 +49,7 @@
 <span>  cluster <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  mode <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  alternative <span class="op">=</span> <span class="st">"greater"</span>,</span>
-<span>  control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  permutations <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  print.perm <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -128,7 +128,7 @@ If <code>mode = 0</code>, the null ecological hypothesis is that the frequency (
 <span class="r-in"><span><span class="va">wetkm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span><span class="co">## Create three clusters using</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Look for species whose abundance is significantly higher in one of the three groups</span></span></span>
-<span class="r-in"><span><span class="fu">signassoc</span><span class="op">(</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, mode<span class="op">=</span><span class="fl">1</span>, control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">signassoc</span><span class="op">(</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, mode<span class="op">=</span><span class="fl">1</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            1     2     3 best      psidak</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Abefic 1.000 0.226 1.000    2 0.536315176</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Merhed 1.000 0.021 1.000    2 0.061686261</span>
@@ -166,7 +166,7 @@ If <code>mode = 0</code>, the null ecological hypothesis is that the frequency (
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Look for species whose abundance is significantly higher in sites belonging </span></span></span>
 <span class="r-in"><span><span class="co">## to one group as opposed to sites not belonging to it.</span></span></span>
-<span class="r-in"><span><span class="fu">signassoc</span><span class="op">(</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, mode<span class="op">=</span><span class="fl">0</span>, control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="fu">signassoc</span><span class="op">(</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, mode<span class="op">=</span><span class="fl">0</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            1     2     3 best      psidak</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Abefic 1.000 0.243 1.000    2 0.566201907</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Merhed 1.000 0.016 1.000    2 0.047236096</span>
