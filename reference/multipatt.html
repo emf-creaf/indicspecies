@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">indicspecies</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.14</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.15</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +51,7 @@
 <span>  restcomb <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  min.order <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  max.order <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  permutations <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  print.perm <span class="op">=</span> <span class="cn">FALSE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -90,7 +90,7 @@
 
 
 <dt id="arg-control">control<a class="anchor" aria-label="anchor" href="#arg-control"></a></dt>
-<dd><p>A list of control values describing properties of the permutation design, as returned by a call to <code><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></code>.</p></dd>
+<dd><p>A list of control values describing properties of the permutation design, as returned by a call to <code>how</code>.</p></dd>
 
 
 <dt id="arg-permutations">permutations<a class="anchor" aria-label="anchor" href="#arg-permutations"></a></dt>
@@ -126,7 +126,7 @@
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This function creates combinations of the input clusters and compares each combination with the species in the input matrix x. For each species it chooses the combination with a highest association value. Best matching patterns are tested for statistical significance of the associations. Four association indices are possible (some less than for <code><a href="strassoc.html">strassoc</a></code>): "IndVal", "IndVal.g", "r" and "r.g". Indicator value indices will return the pattern that better matches the species observed pattern, whereas correlation indices will return the pattern that creates a highest inside/outside difference. Details are given in De Cáceres et al. (2010). The user can restrict the combinations in three ways: (1) by using <code>duleg=TRUE</code>, which leads to consider single site-groups only; (2) by setting the minimum and maximum order of combinations using <code>min.order</code> and <code>max.order</code>; or (3) by using <code>restcomb</code> to restrict combinations at will. In order to carry out the third way, values in <code>restcomb</code> must be the indices of combinations that appear in the column <code>index</code> of object <code>sign</code> (see below).</p>
-<p>Complex permutation designs are allowed through the function <code><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></code> from package "permute". If those are not enough, the user can set <code>control = NULL</code> and specify a custom matrix of permutations to test with parameter <code>permutations</code>.</p>
+<p>Complex permutation designs are allowed through the function <code>how</code> from package "permute". If those are not enough, the user can set <code>control = NULL</code> and specify a custom matrix of permutations to test with parameter <code>permutations</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
@@ -140,7 +140,7 @@
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="summary.multipatt.html">summary.multipatt</a></code>, <code><a href="strassoc.html">strassoc</a></code>, <code><a href="signassoc.html">signassoc</a></code>, <code><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></code></p></div>
+    <div class="dont-index"><p><code><a href="summary.multipatt.html">summary.multipatt</a></code>, <code><a href="strassoc.html">strassoc</a></code>, <code><a href="signassoc.html">signassoc</a></code>, <code>how</code></p></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -157,7 +157,7 @@
 <span class="r-in"><span><span class="va">wetkm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/kmeans.html" class="external-link">kmeans</a></span><span class="op">(</span><span class="va">wetland</span>, centers<span class="op">=</span><span class="fl">3</span><span class="op">)</span> <span class="co">## Creates three clusters using kmeans</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Runs the combination analysis using IndVal.g as statistic</span></span></span>
-<span class="r-in"><span><span class="va">wetpt</span> <span class="op">&lt;-</span> <span class="fu">multipatt</span><span class="op">(</span><span class="va">wetland</span>, <span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span></span>
+<span class="r-in"><span><span class="va">wetpt</span> <span class="op">&lt;-</span> <span class="fu">multipatt</span><span class="op">(</span><span class="va">wetland</span>, <span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span>, control <span class="op">=</span> <span class="fu">how</span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">## Lists those species with significant association to one combination</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">wetpt</span><span class="op">)</span> </span></span>

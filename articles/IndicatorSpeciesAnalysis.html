@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">indicspecies</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.14</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.15</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@
                         <h4 data-toc-skip class="author">Miquel De
 Cáceres, CREAF</h4>
             
-            <h4 data-toc-skip class="date">2024-07-24</h4>
+            <h4 data-toc-skip class="date">2024-08-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/emf-creaf/indicspecies/blob/HEAD/vignettes/IndicatorSpeciesAnalysis.Rmd" class="external-link"><code>vignettes/IndicatorSpeciesAnalysis.Rmd</code></a></small>
       <div class="d-none name"><code>IndicatorSpeciesAnalysis.Rmd</code></div>
@@ -114,9 +114,9 @@ describes the classification of sites into groups.</p>
 </h3>
 <p>This is a matrix (or a data frame) with <strong>sites in
 rows</strong> and <strong>species in columns</strong>. Normally, we will
-use functions like <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table()</a></code> to read our data set from a
-file. In this example we load our example dataset into the workspace
-using:</p>
+use functions like <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.table()</a></code> or <code><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv()</a></code>
+to read our data set from a file. In this example we load our example
+dataset into the workspace using:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">wetland</span><span class="op">)</span></span></code></pre></div>
 <p>The wetland data set describes the vegetation of the Adelaide river
@@ -576,6 +576,26 @@ inspect the strength of association in the results of
 <span><span class="co">#&gt; Pancam 0.038 0.230 0.910 0.183 0.589 0.781 0.625</span></span>
 <span><span class="co">#&gt; Abemos 0.000 0.000 0.447 0.000 0.272 0.289 0.221</span></span>
 <span><span class="co">#&gt; Melcor 0.191 0.509 0.739 0.484 0.610 0.876 0.796</span></span></code></pre></div>
+<p>The fact that correlation indices take negative values means that
+they can be used to detect <em>negative associations</em> (i.e. site
+groups or site group combinations that are statistically avoided by the
+species). Function <code><a href="../reference/multipatt.html">multipatt()</a></code> can be used for this purpose
+without modification. The reason is that strength of correlation for a
+given site group combination has always the same absolute value than the
+correlation for the complementary combination (you can verify this in
+the table above displaying the strength of association results for
+<code>phi</code>). This entails that the site group combination that
+maximizes positive association is the complement of the site group
+combination that minimizes (i.e. maximizes the negative value) negative
+association. For example, in species ‘Pancam’ the maximum positive phi
+correlation is for Group 3 and the minimum negative phi correlation is
+for the combination of Group 1 and Group 2 (i.e. the complement of Group
+3). Hence, one could use the complement of site group combinations
+indicated by <code><a href="../reference/multipatt.html">multipatt()</a></code> for positive associations as
+results for negative associations. Following the same example, species
+‘Pancam’ would be negatively associated to the combination of Group 1
+and Group 2 with the same p-value as obtained for its positive
+association with Group 3.</p>
 <p>Unlike with indicator value coefficients, the set of all sites can
 never be considered with the phi or point biserial coefficients, because
 these coefficients always require a set of sites for comparison, besides
@@ -584,13 +604,23 @@ the target site group or site group combination of interest.</p>
 <div class="section level3">
 <h3 id="excluding-site-group-combinations-in-multipatt">Excluding site group combinations in <code>multipatt()</code><a class="anchor" aria-label="anchor" href="#excluding-site-group-combinations-in-multipatt"></a>
 </h3>
-<p>When conducting indicator species analysis, it may happen that some
-combinations of site groups are difficult to interpret ecologically. In
-those cases, we may decide to exclude those combinations from the
-analysis, so our species may appear associated to other (more
-interpretable) ecological conditions. There are three ways to restrict
-the site group combinations to be considered in
-<code><a href="../reference/multipatt.html">multipatt()</a></code>.</p>
+<p>There are two situations where site group combinations may be
+excluded from the analysis:</p>
+<ol style="list-style-type: lower-alpha">
+<li>When conducting indicator species analysis, it may happen that some
+combinations of site groups are <strong>difficult to interpret
+ecologically</strong>. In those cases, we may decide to exclude those
+combinations from the analysis, so our species may appear associated to
+other (more interpretable) ecological conditions.</li>
+<li>The combinations to be explored will need to be restricted if
+<strong>the initial number of groups is large</strong> (e.g. more than
+15), because the number of possible combinations grows exponentially and
+calculations will become computationally unfeasible if combinations are
+not restricted.</li>
+</ol>
+<p>There are three ways to restrict the site group combinations to be
+considered in <code><a href="../reference/multipatt.html">multipatt()</a></code>, as detailed in the following
+subsections.</p>
 <div class="section level4">
 <h4 id="indicator-species-analysis-without-site-groups-combinations">Indicator species analysis without site groups combinations<a class="anchor" aria-label="anchor" href="#indicator-species-analysis-without-site-groups-combinations"></a>
 </h4>
@@ -694,6 +724,9 @@ pairs are considered:</p>
 <code><a href="../reference/multipatt.html">multipatt()</a></code> execution, because the only combination that is
 excluded is the set of all sites, which cannot be tested for
 significance and thus never appears in the summary.</p>
+<p>Limiting the maximum order of combinations is the commonest way to
+restrict combinations to avoid computational problems derived from a
+large number of site groups.</p>
 </div>
 <div class="section level4">
 <h4 id="specifying-the-site-groups-combinations-to-be-considered">Specifying the site groups combinations to be considered<a class="anchor" aria-label="anchor" href="#specifying-the-site-groups-combinations-to-be-considered"></a>
