@@ -2,6 +2,9 @@
  NEWS for R Package "indicspecies"
 -------------------------------
 
+# Version 1.8.0
+- Negative associations can now be selected in multipatt, when func = "r" or "r.g"
+
 # Version 1.7.15
 - Update of indicator species analysis vignette (negative associations)
 

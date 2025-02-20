@@ -153,7 +153,22 @@ In contrast, indicator values are always non-negative:
 round(head(indval$str),3)
 ```
 
-The fact that correlation indices take negative values means that they can be used to detect *negative associations* (i.e. site groups or site group combinations that are statistically avoided by the species). Function `multipatt()` can be used for this purpose without modification. The reason is that strength of correlation for a given site group combination has always the same absolute value than the correlation for the complementary combination (you can verify this in the table above displaying the strength of association results for `phi`). This entails that the site group combination that maximizes positive association is the complement of the site group combination that minimizes (i.e. maximizes the negative value) negative association. For example, in species 'Pancam' the maximum positive phi correlation is for Group 3 and the minimum negative phi correlation is for the combination of Group 1 and Group 2 (i.e. the complement of Group 3). Hence, one could use the complement of site group combinations indicated by `multipatt()` for positive associations as results for negative associations. Following the same example, species 'Pancam' would be negatively associated to  the combination of Group 1 and Group 2 with the same p-value as obtained for its positive association with Group 3. 
+The fact that correlation indices take negative values means that they can be used to detect *negative associations* (i.e. site groups or site group combinations that are statistically avoided by the species). Function `multipatt()` can be used for this purpose without modification, if all groups combinations are explored. The reason is that strength of correlation for a given site group combination has always the same absolute value than the correlation for the complementary combination (you can verify this in the table above displaying the strength of association results for `phi`). This entails that the site group combination that maximizes positive association is the complement of the site group combination that minimizes (i.e. maximizes the negative value) negative association. For example, in species 'Pancam' the maximum positive phi correlation is for Group 3 and the minimum negative phi correlation is for the combination of Group 1 and Group 2 (i.e. the complement of Group 3). Hence, one could use the complement of site group combinations indicated by `multipatt()` for positive associations as results for negative associations. Following the same example, species 'Pancam' would be negatively associated to  the combination of Group 1 and Group 2 with the same p-value as obtained for its positive association with Group 3. 
+
+Alternatively, one can allow `multipatt()` to explicitly look for both *negative* and *positive* associations by setting `allow.negative = TRUE`:
+
+```{r}
+phi <- multipatt(wetlandpa, groups, func = "r.g", 
+                 control = how(nperm=999), 
+                 allow.negative = TRUE) 
+```
+
+In this case, `multipatt()` will keep the association with highest strength in absolute value. Since ties can occur (in absolute value) between a group and its complementary, as explained above, the function will in this case keep the association corresponding to group combination of the smallest order.
+```{r}
+summary(phi)
+```
+
+Note that in this case, species 'Melcor' and 'Elesp' appear as negatively associated to single groups, whereas in the previous call (not allowing negative associations) they were reported as positively associated to the complementary group combination.
 
 Unlike with indicator value coefficients, the set of all sites can never be considered with the phi or point biserial coefficients, because these coefficients always require a set of sites for comparison, besides the target site group or site group combination of interest.
 

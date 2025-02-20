@@ -4,7 +4,7 @@
 #'
 #' @param object An object returned by function \code{\link{multipatt}}.
 #' @param alpha Significance level for selecting species in the summary.
-#' @param minstat Minimum value of the statistic for selecting species in the summary.
+#' @param minstat Minimum (absolute) value of the statistic for selecting species in the summary.
 #' @param At Minimum value of positive predictive value (A) for selecting indicators. This argument is effective only if \code{multipatt} function was executed using \code{func = "IndVal"} or \code{func = "IndVal.g"}.
 #' @param Bt Minimum value for sensitivity (B) for selecting indicators. This argument is effective only if \code{multipatt} function was executed using \code{func = "IndVal"} or \code{func = "IndVal.g"}.
 #' @param indvalcomp Logical flag used to report components "A" (or "A.g") and "B" of indicator values. This argument is effective only if \code{multipatt} function was executed using \code{func = "IndVal"} or \code{func = "IndVal.g"}.
@@ -55,7 +55,7 @@ summary.multipatt <- function (object, alpha = 0.05, minstat = NULL, At = NULL, 
   }
   cat("\n\n Total number of species:", nsps)
   sel = !is.na(x$sign$p.value) & x$sign$p.value <= alpha
-  if(!is.null(minstat)) sel = sel & (x$sign$stat >= minstat)
+  if(!is.null(minstat)) sel = sel & (abs(x$sign$stat) >= minstat)
   if(!is.null(Bt) && !is.null(x$B)) {
     for(i in 1:nrow(x$sign)) sel[i] = sel[i] && (x$B[i,x$sign$index[i]]>=Bt)
   }
@@ -91,7 +91,7 @@ summary.multipatt <- function (object, alpha = 0.05, minstat = NULL, At = NULL, 
   #Show indicators for all combinations  
   for (i in 1:ncomb) {
     sel = x$sign$index == i & !is.na(x$sign$p.value) & x$sign$p.value <= alpha
-    if(!is.null(minstat)) sel = sel & (x$sign$stat >= minstat)
+    if(!is.null(minstat)) sel = sel & (abs(x$sign$stat) >= minstat)
     if(!is.null(Bt) && !is.null(x$B)) {
       for(j in 1:nrow(x$sign)) sel[j] = sel[j] && (x$B[j,x$sign$index[j]]>=Bt)
     }
@@ -101,7 +101,7 @@ summary.multipatt <- function (object, alpha = 0.05, minstat = NULL, At = NULL, 
     m = y[sel, ]
     if (nrow(m) > 0) {
       cat("\n Group", colnames(x$comb)[i], " #sps. ", nrow(m), "\n")
-      m = m[order(m$stat, decreasing = TRUE), cols]
+      m = m[order(abs(m$stat), decreasing = TRUE), cols]
       printCoefmat(m, signif.stars = TRUE, signif.legend = FALSE, 
                    digits = 4, P.values = TRUE, has.Pvalue = TRUE)
     }

@@ -12,6 +12,7 @@ multipatt(
   restcomb = NULL,
   min.order = 1,
   max.order = NULL,
+  allow.negative = FALSE,
   control = how(),
   permutations = NULL,
   print.perm = FALSE
@@ -31,6 +32,8 @@ multipatt(
 \item{min.order}{An integer indicating the minimum order of site group combinations (by default \code{max.order=1} for singletons). Cannot be larger than \code{max.order}.}
 
 \item{max.order}{An integer indicating the maximum order of site group combinations to be considered: \code{max.order=1} for singletons, \code{max.order=2} for pairs, \code{max.order=3} for triplets... As \code{restcomb}, this parameter provide a way to restrict the site group combinations that make ecological sense. By default all possible site group combinations are considered. If \code{max.order=1} then the function will behave as if \code{duleg=TRUE}.}
+
+\item{allow.negative}{A boolean flag to allow negative associations to be selected (only for \code{func="r"} or \code{func="r.g"}). In case of ties (negative vs. positive associations of equal strength), the function returns the association implying the smallest number of groups.}
 
 \item{control}{A list of control values describing properties of the permutation design, as returned by a call to \code{\link[permute]{how}}.}
 

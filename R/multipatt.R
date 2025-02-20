@@ -9,6 +9,7 @@
 #' @param restcomb A vector of integer values used to restrict the combinations of site groups to those with ecological sense according to the analyst. The default \code{NULL} indicates that all combinations are used. If \code{duleg=TRUE} this argument is ignored.
 #' @param min.order An integer indicating the minimum order of site group combinations (by default \code{max.order=1} for singletons). Cannot be larger than \code{max.order}.
 #' @param max.order An integer indicating the maximum order of site group combinations to be considered: \code{max.order=1} for singletons, \code{max.order=2} for pairs, \code{max.order=3} for triplets... As \code{restcomb}, this parameter provide a way to restrict the site group combinations that make ecological sense. By default all possible site group combinations are considered. If \code{max.order=1} then the function will behave as if \code{duleg=TRUE}.
+#' @param allow.negative A boolean flag to allow negative associations to be selected (only for \code{func="r"} or \code{func="r.g"}). In case of ties (negative vs. positive associations of equal strength), the function returns the association implying the smallest number of groups.
 #' @param control A list of control values describing properties of the permutation design, as returned by a call to \code{\link[permute]{how}}.
 #' @param permutations A custom matrix of permutations, to be used if \code{control = NULL}, with permutations in rows and site indices in columns
 #' @param print.perm If TRUE, prints permutation numbers after each set of 100 permutations.
@@ -65,7 +66,7 @@
 #' summary(wetpt, indvalcomp=TRUE) 
 #' 
 multipatt <- function (x, cluster, func = "IndVal.g", duleg = FALSE, restcomb=NULL, 
-                       min.order=1, max.order=NULL, 
+                       min.order=1, max.order=NULL, allow.negative = FALSE,
                        control = how(), permutations = NULL, print.perm = FALSE)                                                                                              
 {
 	                                                                                                                              
@@ -245,53 +246,64 @@ indvalcomb <- function(x, memb, comb, min.order, max.order, mode = "group", rest
 
   # possible combinations (can also be used for permutations)
   combin <- cl.comb(clnames, min.order, max.order)	
-
+  
   # discard combinations to discard that cannot be calculated because of order limitation
-  restcomb = restcomb[restcomb<=ncol(combin)] 
+  restcomb <- restcomb[restcomb<=ncol(combin)] 
 
   #Builds the plot membership matrix corresponding to combinations
-  clind = apply(sapply(clnames,"==",cluster),1,which)
+  clind <- apply(sapply(clnames,"==",cluster),1,which)
   comb <- combin[clind,]
 
   #Original Membership matrix 
   memb<-diag(1,k,k)[clind,]
 
   # Computes association strength for each group
-  A = NULL
-  B = NULL
-  if(func=="r") str = rcomb(x, memb, comb, min.order, max.order, mode = "site", restcomb = restcomb)
-  else if(func=="r.g") str = rcomb(x, memb,comb, min.order, max.order, mode = "group", restcomb = restcomb)
-  else if(func=="IndVal"|| func=="indval") {
-  	  IndVal = 	indvalcomb(x, memb, comb, min.order, max.order, mode = "site", restcomb = restcomb, indvalcomp=TRUE)
-  	  str = IndVal$iv
-  	  A = IndVal$A
-  	  B = IndVal$B
-  	}
-  else if(func=="IndVal.g"||func=="indval.g") {
-  	  IndVal = 	indvalcomb(x,  memb, comb, min.order, max.order, mode = "group", restcomb = restcomb, indvalcomp=TRUE)
-  	  str = IndVal$iv
-  	  A = IndVal$A
-  	  B = IndVal$B
-  	}
+  A <- NULL
+  B <- NULL
+  if(func=="r") {
+    str <- rcomb(x, memb, comb, min.order, max.order, mode = "site", restcomb = restcomb)
+  } else if(func=="r.g") {
+    str <- rcomb(x, memb,comb, min.order, max.order, mode = "group", restcomb = restcomb)
+  } else if(func=="IndVal"|| func=="indval") {
+  	IndVal <- 	indvalcomb(x, memb, comb, min.order, max.order, mode = "site", restcomb = restcomb, indvalcomp=TRUE)
+  	str <- IndVal$iv
+  	A <- IndVal$A
+  	B <- IndVal$B
+  } else if(func=="IndVal.g"||func=="indval.g") {
+  	IndVal <-	indvalcomb(x,  memb, comb, min.order, max.order, mode = "group", restcomb = restcomb, indvalcomp=TRUE)
+  	str <- IndVal$iv
+  	A <- IndVal$A
+  	B <- IndVal$B
+  }
 
   # Maximum association strength
-  maxstr = apply(str,1,max) 
-  wmax <- max.col(str)
+  # If "r" or "r.g" and allow.negative = TRUE take absolute
+  if((func %in% c("r", "r.g")) && allow.negative) {
+    maxstr <- apply(round(abs(str),8), 1, max)
+    wmax <- max.col(round(abs(str),8), ties.method = "first") # Solving ties with "first" will keep the association with lowest number of groups
+  } else {
+    maxstr <- apply(str,1,max) 
+    wmax <- max.col(str)
+  }
+  
   #prepares matrix of results
-  if(!is.null(restcomb))  m <- as.data.frame(t(combin[,restcomb, drop = FALSE][,wmax]))
-  else  m <- as.data.frame(t(combin[,wmax]))
+  if(!is.null(restcomb)) {
+    m <- as.data.frame(t(combin[,restcomb, drop = FALSE][,wmax]))
+  } else {
+    m <- as.data.frame(t(combin[,wmax]))
+  }
   row.names(m) <- vegnames
   names(m) <- sapply(clnames, function(x) paste("s", x, sep='.'))
   m$index <- wmax
-  m$stat <- apply(str,1,max)
+  for(i in 1:nrow(m)) m$stat[i] <- str[i,wmax[i]]
 
   #Perform permutations and compute p-values
-  pv <- 1
+  pv <- rep(1, nrow(m))
   for (p in 1:nperm) {
     if(!is.null(control)){
-      pInd = shuffle(length(cluster), control=control)
+      pInd <- shuffle(length(cluster), control=control)
     } else {
-      pInd = permutations[p,]
+      pInd <- permutations[p,]
     }
     tmpclind = clind[pInd]
     combp = combin[tmpclind,]
@@ -305,8 +317,18 @@ indvalcomb <- function(x, memb, comb, min.order, max.order, mode = "group", rest
                      IndVal.g= indvalcomb(x, membp, combp, min.order, max.order, mode = "group", restcomb = restcomb)
     )
     tmpmaxstr <- vector(length=nrow(tmpstr))
-    for(i in 1:nrow(tmpstr)) tmpmaxstr[i] <- max(tmpstr[i,])	# apply is more slowly in this case
-    pv = pv + (tmpmaxstr >= m$stat)
+    if((func %in% c("r", "r.g")) && allow.negative) {
+      for(i in 1:nrow(tmpstr)) {
+        if(m$stat[i] > 0.0) {
+          pv[i] <- pv[i] + (max(tmpstr[i,]) >= m$stat[i]) # If max strength is positive look for more positive associations
+        } else {
+          pv[i] <- pv[i] + (min(tmpstr[i,]) <= m$stat[i]) # If max strength is positive look for more positive associations
+        }
+      }
+    } else {
+      for(i in 1:nrow(tmpstr)) tmpmaxstr[i] <- max(tmpstr[i,])	# apply is more slowly in this case
+      pv <- pv + (tmpmaxstr >= maxstr) # Compare to maxstr (which may be already in absolute value)
+    }
   }
   
   m$p.value <- pv/(1 + nperm)

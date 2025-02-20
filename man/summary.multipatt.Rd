@@ -19,7 +19,7 @@
 
 \item{alpha}{Significance level for selecting species in the summary.}
 
-\item{minstat}{Minimum value of the statistic for selecting species in the summary.}
+\item{minstat}{Minimum (absolute) value of the statistic for selecting species in the summary.}
 
 \item{At}{Minimum value of positive predictive value (A) for selecting indicators. This argument is effective only if \code{multipatt} function was executed using \code{func = "IndVal"} or \code{func = "IndVal.g"}.}
 
