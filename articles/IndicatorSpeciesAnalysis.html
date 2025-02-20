@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Indicator species analysis">
 </head>
 <body>
@@ -26,7 +26,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">indicspecies</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.7.15</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.8.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@
                         <h4 data-toc-skip class="author">Miquel De
 Cáceres, CREAF</h4>
             
-            <h4 data-toc-skip class="date">2024-08-21</h4>
+            <h4 data-toc-skip class="date">2025-02-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/emf-creaf/indicspecies/blob/HEAD/vignettes/IndicatorSpeciesAnalysis.Rmd" class="external-link"><code>vignettes/IndicatorSpeciesAnalysis.Rmd</code></a></small>
       <div class="d-none name"><code>IndicatorSpeciesAnalysis.Rmd</code></div>
@@ -580,22 +580,74 @@ inspect the strength of association in the results of
 they can be used to detect <em>negative associations</em> (i.e. site
 groups or site group combinations that are statistically avoided by the
 species). Function <code><a href="../reference/multipatt.html">multipatt()</a></code> can be used for this purpose
-without modification. The reason is that strength of correlation for a
-given site group combination has always the same absolute value than the
-correlation for the complementary combination (you can verify this in
-the table above displaying the strength of association results for
-<code>phi</code>). This entails that the site group combination that
-maximizes positive association is the complement of the site group
-combination that minimizes (i.e. maximizes the negative value) negative
-association. For example, in species ‘Pancam’ the maximum positive phi
-correlation is for Group 3 and the minimum negative phi correlation is
-for the combination of Group 1 and Group 2 (i.e. the complement of Group
-3). Hence, one could use the complement of site group combinations
-indicated by <code><a href="../reference/multipatt.html">multipatt()</a></code> for positive associations as
-results for negative associations. Following the same example, species
-‘Pancam’ would be negatively associated to the combination of Group 1
-and Group 2 with the same p-value as obtained for its positive
-association with Group 3.</p>
+without modification, if all groups combinations are explored. The
+reason is that strength of correlation for a given site group
+combination has always the same absolute value than the correlation for
+the complementary combination (you can verify this in the table above
+displaying the strength of association results for <code>phi</code>).
+This entails that the site group combination that maximizes positive
+association is the complement of the site group combination that
+minimizes (i.e. maximizes the negative value) negative association. For
+example, in species ‘Pancam’ the maximum positive phi correlation is for
+Group 3 and the minimum negative phi correlation is for the combination
+of Group 1 and Group 2 (i.e. the complement of Group 3). Hence, one
+could use the complement of site group combinations indicated by
+<code><a href="../reference/multipatt.html">multipatt()</a></code> for positive associations as results for
+negative associations. Following the same example, species ‘Pancam’
+would be negatively associated to the combination of Group 1 and Group 2
+with the same p-value as obtained for its positive association with
+Group 3.</p>
+<p>Alternatively, one can allow <code><a href="../reference/multipatt.html">multipatt()</a></code> to explicitly
+look for both <em>negative</em> and <em>positive</em> associations by
+setting <code>allow.negative = TRUE</code>:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">phi</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/multipatt.html">multipatt</a></span><span class="op">(</span><span class="va">wetlandpa</span>, <span class="va">groups</span>, func <span class="op">=</span> <span class="st">"r.g"</span>, </span>
+<span>                 control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span>, </span>
+<span>                 allow.negative <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code></pre></div>
+<p>In this case, <code><a href="../reference/multipatt.html">multipatt()</a></code> will keep the association with
+highest strength in absolute value. Since ties can occur (in absolute
+value) between a group and its complementary, as explained above, the
+function will in this case keep the association corresponding to group
+combination of the smallest order.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">phi</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Multilevel pattern analysis</span></span>
+<span><span class="co">#&gt;  ---------------------------</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Association function: r.g</span></span>
+<span><span class="co">#&gt;  Significance level (alpha): 0.05</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Total number of species: 33</span></span>
+<span><span class="co">#&gt;  Selected number of species: 9 </span></span>
+<span><span class="co">#&gt;  Number of species associated to 1 group: 9 </span></span>
+<span><span class="co">#&gt;  Number of species associated to 2 groups: 0 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  List of species associated to each combination: </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Group 1  #sps.  4 </span></span>
+<span><span class="co">#&gt;          stat p.value    </span></span>
+<span><span class="co">#&gt; Ludads  0.870   0.001 ***</span></span>
+<span><span class="co">#&gt; Orysp.  0.668   0.001 ***</span></span>
+<span><span class="co">#&gt; Melcor -0.612   0.001 ***</span></span>
+<span><span class="co">#&gt; Psespi  0.413   0.020 *  </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Group 2  #sps.  1 </span></span>
+<span><span class="co">#&gt;         stat p.value  </span></span>
+<span><span class="co">#&gt; Phynod 0.436   0.015 *</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;  Group 3  #sps.  4 </span></span>
+<span><span class="co">#&gt;          stat p.value    </span></span>
+<span><span class="co">#&gt; Pancam  0.748   0.001 ***</span></span>
+<span><span class="co">#&gt; Elesp. -0.538   0.005 ** </span></span>
+<span><span class="co">#&gt; Eupvac  0.537   0.004 ** </span></span>
+<span><span class="co">#&gt; Cynarc  0.492   0.013 *  </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
+<p>Note that in this case, species ‘Melcor’ and ‘Elesp’ appear as
+negatively associated to single groups, whereas in the previous call
+(not allowing negative associations) they were reported as positively
+associated to the complementary group combination.</p>
 <p>Unlike with indicator value coefficients, the set of all sites can
 never be considered with the phi or point biserial coefficients, because
 these coefficients always require a set of sites for comparison, besides
@@ -630,7 +682,7 @@ In other words, the only site group combinations permitted in the
 original method were singletons. When using <code><a href="../reference/multipatt.html">multipatt()</a></code> it
 is possible to avoid considering site group combinations, as in the
 original method, by using <code>duleg = TRUE</code>:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">indvalori</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/multipatt.html">multipatt</a></span><span class="op">(</span><span class="va">wetland</span>, <span class="va">groups</span>, duleg <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                       control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">indvalori</span><span class="op">)</span></span>
@@ -652,18 +704,18 @@ original method, by using <code>duleg = TRUE</code>:</p>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Ludads 0.907   0.001 ***</span></span>
 <span><span class="co">#&gt; Orysp. 0.823   0.001 ***</span></span>
-<span><span class="co">#&gt; Psespi 0.602   0.020 *  </span></span>
+<span><span class="co">#&gt; Psespi 0.602   0.015 *  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 2  #sps.  1 </span></span>
 <span><span class="co">#&gt;         stat p.value   </span></span>
-<span><span class="co">#&gt; Phynod 0.676   0.006 **</span></span>
+<span><span class="co">#&gt; Phynod 0.676   0.009 **</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 3  #sps.  4 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Pancam 0.910   0.001 ***</span></span>
 <span><span class="co">#&gt; Melcor 0.739   0.001 ***</span></span>
-<span><span class="co">#&gt; Eupvac 0.724   0.002 ** </span></span>
-<span><span class="co">#&gt; Cynarc 0.602   0.013 *  </span></span>
+<span><span class="co">#&gt; Eupvac 0.724   0.001 ***</span></span>
+<span><span class="co">#&gt; Cynarc 0.602   0.010 ** </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 </div>
@@ -679,7 +731,7 @@ for example, singletons (<code>max.order = 1</code>, which is equal to
 (<code>max.order = 2</code>), or singletons, pairs and triplets
 (<code>max.order = 3</code>). In the follow example, only singletons and
 pairs are considered:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">indvalrest</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/multipatt.html">multipatt</a></span><span class="op">(</span><span class="va">wetland</span>, <span class="va">groups</span>, max.order <span class="op">=</span> <span class="fl">2</span>, </span>
 <span>                        control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">indvalrest</span><span class="op">)</span></span>
@@ -691,8 +743,8 @@ pairs are considered:</p>
 <span><span class="co">#&gt;  Significance level (alpha): 0.05</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Total number of species: 33</span></span>
-<span><span class="co">#&gt;  Selected number of species: 10 </span></span>
-<span><span class="co">#&gt;  Number of species associated to 1 group: 6 </span></span>
+<span><span class="co">#&gt;  Selected number of species: 11 </span></span>
+<span><span class="co">#&gt;  Number of species associated to 1 group: 7 </span></span>
 <span><span class="co">#&gt;  Number of species associated to 2 groups: 4 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  List of species associated to each combination: </span></span>
@@ -700,24 +752,25 @@ pairs are considered:</p>
 <span><span class="co">#&gt;  Group 1  #sps.  3 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Ludads 0.907   0.001 ***</span></span>
-<span><span class="co">#&gt; Orysp. 0.823   0.001 ***</span></span>
-<span><span class="co">#&gt; Psespi 0.602   0.021 *  </span></span>
+<span><span class="co">#&gt; Orysp. 0.823   0.004 ** </span></span>
+<span><span class="co">#&gt; Psespi 0.602   0.015 *  </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Group 3  #sps.  3 </span></span>
+<span><span class="co">#&gt;  Group 3  #sps.  4 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Pancam 0.910   0.001 ***</span></span>
-<span><span class="co">#&gt; Eupvac 0.724   0.002 ** </span></span>
-<span><span class="co">#&gt; Cynarc 0.602   0.010 ** </span></span>
+<span><span class="co">#&gt; Eupvac 0.724   0.003 ** </span></span>
+<span><span class="co">#&gt; Cynarc 0.602   0.017 *  </span></span>
+<span><span class="co">#&gt; Abemos 0.447   0.048 *  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 1+2  #sps.  1 </span></span>
 <span><span class="co">#&gt;         stat p.value   </span></span>
-<span><span class="co">#&gt; Elesp. 0.741   0.009 **</span></span>
+<span><span class="co">#&gt; Elesp. 0.741   0.008 **</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 2+3  #sps.  3 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Melcor 0.876   0.001 ***</span></span>
 <span><span class="co">#&gt; Phynod 0.715   0.011 *  </span></span>
-<span><span class="co">#&gt; Echell 0.651   0.019 *  </span></span>
+<span><span class="co">#&gt; Echell 0.651   0.012 *  </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>In this case the output looks like a the output of an unrestricted
@@ -749,7 +802,7 @@ indicate the site groups and site group combinations that we want
 <code><a href="../reference/multipatt.html">multipatt()</a></code> to considered as valid options. For example, if
 we do not want to consider the combination of Group 1 and Group 2, we
 will exclude combination ‘4’ from vector <code>restcomb</code>:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">indvalrest</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/multipatt.html">multipatt</a></span><span class="op">(</span><span class="va">wetland</span>, <span class="va">groups</span>, restcomb <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">5</span>,<span class="fl">6</span><span class="op">)</span>, </span>
 <span>                        control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">indvalrest</span><span class="op">)</span></span>
@@ -761,8 +814,8 @@ will exclude combination ‘4’ from vector <code>restcomb</code>:</p>
 <span><span class="co">#&gt;  Significance level (alpha): 0.05</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Total number of species: 33</span></span>
-<span><span class="co">#&gt;  Selected number of species: 10 </span></span>
-<span><span class="co">#&gt;  Number of species associated to 1 group: 7 </span></span>
+<span><span class="co">#&gt;  Selected number of species: 9 </span></span>
+<span><span class="co">#&gt;  Number of species associated to 1 group: 6 </span></span>
 <span><span class="co">#&gt;  Number of species associated to 2 groups: 3 </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  List of species associated to each combination: </span></span>
@@ -770,21 +823,20 @@ will exclude combination ‘4’ from vector <code>restcomb</code>:</p>
 <span><span class="co">#&gt;  Group 1  #sps.  3 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Ludads 0.907   0.001 ***</span></span>
-<span><span class="co">#&gt; Orysp. 0.823   0.004 ** </span></span>
-<span><span class="co">#&gt; Psespi 0.602   0.015 *  </span></span>
+<span><span class="co">#&gt; Orysp. 0.823   0.003 ** </span></span>
+<span><span class="co">#&gt; Psespi 0.602   0.020 *  </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Group 3  #sps.  4 </span></span>
+<span><span class="co">#&gt;  Group 3  #sps.  3 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Pancam 0.910   0.001 ***</span></span>
-<span><span class="co">#&gt; Eupvac 0.724   0.003 ** </span></span>
-<span><span class="co">#&gt; Cynarc 0.602   0.017 *  </span></span>
-<span><span class="co">#&gt; Abemos 0.447   0.048 *  </span></span>
+<span><span class="co">#&gt; Eupvac 0.724   0.004 ** </span></span>
+<span><span class="co">#&gt; Cynarc 0.602   0.014 *  </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;  Group 2+3  #sps.  3 </span></span>
 <span><span class="co">#&gt;         stat p.value    </span></span>
 <span><span class="co">#&gt; Melcor 0.876   0.001 ***</span></span>
-<span><span class="co">#&gt; Phynod 0.715   0.010 ** </span></span>
-<span><span class="co">#&gt; Echell 0.651   0.012 *  </span></span>
+<span><span class="co">#&gt; Phynod 0.715   0.006 ** </span></span>
+<span><span class="co">#&gt; Echell 0.651   0.020 *  </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>If we compare these last results with those including all possible
@@ -793,42 +845,42 @@ formerly an indicator of Group 1 and Group 2, and now it does not appear
 in the list of indicator species. If fact, if we examine the results
 more closely we see that the highest IndVal for ‘Elesp’ is achieved for
 group 1, but this relationship is not significant:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">indvalrest</span><span class="op">$</span><span class="va">sign</span></span>
 <span><span class="co">#&gt;        s.1 s.2 s.3 index      stat p.value</span></span>
-<span><span class="co">#&gt; Abefic   0   1   0     2 0.2672612   0.592</span></span>
-<span><span class="co">#&gt; Merhed   0   0   1     3 0.4019185   0.202</span></span>
-<span><span class="co">#&gt; Alyvag   0   1   0     2 0.3347953   0.434</span></span>
+<span><span class="co">#&gt; Abefic   0   1   0     2 0.2672612   0.557</span></span>
+<span><span class="co">#&gt; Merhed   0   0   1     3 0.4019185   0.197</span></span>
+<span><span class="co">#&gt; Alyvag   0   1   0     2 0.3347953   0.413</span></span>
 <span><span class="co">#&gt; Pancam   0   0   1     3 0.9098495   0.001</span></span>
-<span><span class="co">#&gt; Abemos   0   0   1     3 0.4472136   0.048</span></span>
+<span><span class="co">#&gt; Abemos   0   0   1     3 0.4472136   0.059</span></span>
 <span><span class="co">#&gt; Melcor   0   1   1     5 0.8757059   0.001</span></span>
-<span><span class="co">#&gt; Ludoct   0   0   1     3 0.3162278   0.237</span></span>
-<span><span class="co">#&gt; Eupvac   0   0   1     3 0.7236825   0.003</span></span>
-<span><span class="co">#&gt; Echpas   0   1   1     5 0.5842649   0.191</span></span>
-<span><span class="co">#&gt; Passcr   0   0   1     3 0.3162278   0.239</span></span>
-<span><span class="co">#&gt; Poa2     0   1   0     2 0.2672612   0.619</span></span>
-<span><span class="co">#&gt; Carhal   1   0   0     1 0.3313667   0.726</span></span>
-<span><span class="co">#&gt; Dendio   0   0   1     3 0.3162278   0.277</span></span>
+<span><span class="co">#&gt; Ludoct   0   0   1     3 0.3162278   0.244</span></span>
+<span><span class="co">#&gt; Eupvac   0   0   1     3 0.7236825   0.004</span></span>
+<span><span class="co">#&gt; Echpas   0   1   1     5 0.5842649   0.183</span></span>
+<span><span class="co">#&gt; Passcr   0   0   1     3 0.3162278   0.256</span></span>
+<span><span class="co">#&gt; Poa2     0   1   0     2 0.2672612   0.579</span></span>
+<span><span class="co">#&gt; Carhal   1   0   0     1 0.3313667   0.745</span></span>
+<span><span class="co">#&gt; Dendio   0   0   1     3 0.3162278   0.230</span></span>
 <span><span class="co">#&gt; Casobt   1   0   0     1 0.2425356   1.000</span></span>
-<span><span class="co">#&gt; Aesind   0   1   0     2 0.4447093   0.243</span></span>
-<span><span class="co">#&gt; Cyprot   0   1   1     5 0.5000000   0.062</span></span>
-<span><span class="co">#&gt; Ipocop   0   1   1     5 0.3535534   0.331</span></span>
-<span><span class="co">#&gt; Cynarc   0   0   1     3 0.6017217   0.017</span></span>
-<span><span class="co">#&gt; Walind   1   0   1     4 0.4406873   0.689</span></span>
-<span><span class="co">#&gt; Sessp.   0   1   1     5 0.5901665   0.705</span></span>
-<span><span class="co">#&gt; Phynod   0   1   1     5 0.7145356   0.010</span></span>
-<span><span class="co">#&gt; Echell   0   1   1     5 0.6509834   0.012</span></span>
-<span><span class="co">#&gt; Helind   0   1   1     5 0.5720540   0.837</span></span>
-<span><span class="co">#&gt; Ipoaqu   1   0   1     4 0.4053049   0.900</span></span>
-<span><span class="co">#&gt; Orysp.   1   0   0     1 0.8229074   0.004</span></span>
-<span><span class="co">#&gt; Elesp.   1   0   0     1 0.5534178   0.674</span></span>
-<span><span class="co">#&gt; Psespi   1   0   0     1 0.6023402   0.015</span></span>
+<span><span class="co">#&gt; Aesind   0   1   0     2 0.4447093   0.223</span></span>
+<span><span class="co">#&gt; Cyprot   0   1   1     5 0.5000000   0.067</span></span>
+<span><span class="co">#&gt; Ipocop   0   1   1     5 0.3535534   0.319</span></span>
+<span><span class="co">#&gt; Cynarc   0   0   1     3 0.6017217   0.014</span></span>
+<span><span class="co">#&gt; Walind   1   0   1     4 0.4406873   0.691</span></span>
+<span><span class="co">#&gt; Sessp.   0   1   1     5 0.5901665   0.693</span></span>
+<span><span class="co">#&gt; Phynod   0   1   1     5 0.7145356   0.006</span></span>
+<span><span class="co">#&gt; Echell   0   1   1     5 0.6509834   0.020</span></span>
+<span><span class="co">#&gt; Helind   0   1   1     5 0.5720540   0.822</span></span>
+<span><span class="co">#&gt; Ipoaqu   1   0   1     4 0.4053049   0.899</span></span>
+<span><span class="co">#&gt; Orysp.   1   0   0     1 0.8229074   0.003</span></span>
+<span><span class="co">#&gt; Elesp.   1   0   0     1 0.5534178   0.659</span></span>
+<span><span class="co">#&gt; Psespi   1   0   0     1 0.6023402   0.020</span></span>
 <span><span class="co">#&gt; Ludads   1   0   0     1 0.9074852   0.001</span></span>
-<span><span class="co">#&gt; Polatt   1   0   0     1 0.4200840   0.139</span></span>
-<span><span class="co">#&gt; Poa1     0   1   0     2 0.2672612   0.609</span></span>
-<span><span class="co">#&gt; Helcri   0   1   0     2 0.2672612   0.609</span></span>
-<span><span class="co">#&gt; Physp.   0   0   1     3 0.3162278   0.234</span></span>
-<span><span class="co">#&gt; Goopur   0   0   1     3 0.3162278   0.234</span></span></code></pre></div>
+<span><span class="co">#&gt; Polatt   1   0   0     1 0.4200840   0.160</span></span>
+<span><span class="co">#&gt; Poa1     0   1   0     2 0.2672612   0.590</span></span>
+<span><span class="co">#&gt; Helcri   0   1   0     2 0.2672612   0.590</span></span>
+<span><span class="co">#&gt; Physp.   0   0   1     3 0.3162278   0.233</span></span>
+<span><span class="co">#&gt; Goopur   0   0   1     3 0.3162278   0.233</span></span></code></pre></div>
 <p>Restricting site group combinations is also possible with the phi and
 point biserial coefficients.</p>
 </div>
@@ -848,7 +900,7 @@ association between species and site groups.</p>
 association indices, described in <span class="citation">De Cáceres and
 Legendre (2009)</span>. For example, we can focus on the ‘A’ component
 of IndVal:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">prefstat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/strassoc.html">strassoc</a></span><span class="op">(</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">groups</span>, func<span class="op">=</span><span class="st">"A.g"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prefstat</span><span class="op">)</span>,<span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            1     2     3</span></span>
@@ -863,7 +915,7 @@ of IndVal:</p>
 interval limits by bootstrapping. In this case, the function returns a
 list with three elements: <code>stat</code>, <code>lowerCI</code> and
 <code>upperCI</code>:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">prefstat</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/strassoc.html">strassoc</a></span><span class="op">(</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">groups</span>, func<span class="op">=</span><span class="st">"A.g"</span>, </span>
 <span>                     nboot.ci <span class="op">=</span> <span class="fl">199</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prefstat</span><span class="op">$</span><span class="va">lowerCI</span><span class="op">)</span>,<span class="fl">3</span><span class="op">)</span></span>
@@ -871,19 +923,19 @@ list with three elements: <code>stat</code>, <code>lowerCI</code> and
 <span><span class="co">#&gt; Abefic 0.000 0.000 0.000</span></span>
 <span><span class="co">#&gt; Merhed 0.000 0.000 0.000</span></span>
 <span><span class="co">#&gt; Alyvag 0.000 0.000 0.000</span></span>
-<span><span class="co">#&gt; Pancam 0.000 0.038 0.676</span></span>
+<span><span class="co">#&gt; Pancam 0.000 0.034 0.662</span></span>
 <span><span class="co">#&gt; Abemos 0.000 0.000 0.000</span></span>
-<span><span class="co">#&gt; Melcor 0.044 0.246 0.467</span></span>
+<span><span class="co">#&gt; Melcor 0.032 0.255 0.452</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prefstat</span><span class="op">$</span><span class="va">upperCI</span><span class="op">)</span>,<span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt;            1     2     3</span></span>
 <span><span class="co">#&gt; Abefic 0.000 1.000 0.000</span></span>
 <span><span class="co">#&gt; Merhed 0.000 1.000 1.000</span></span>
 <span><span class="co">#&gt; Alyvag 1.000 1.000 0.000</span></span>
-<span><span class="co">#&gt; Pancam 0.087 0.271 0.934</span></span>
+<span><span class="co">#&gt; Pancam 0.087 0.267 0.943</span></span>
 <span><span class="co">#&gt; Abemos 0.000 0.000 1.000</span></span>
-<span><span class="co">#&gt; Melcor 0.197 0.406 0.636</span></span></code></pre></div>
+<span><span class="co">#&gt; Melcor 0.184 0.400 0.634</span></span></code></pre></div>
 <p>For example, the 95% confidence interval for the ‘A’ component of the
-association between ‘Pancam’ and Group 3 is [0.676, 0.934].</p>
+association between ‘Pancam’ and Group 3 is [0.662, 0.943].</p>
 </div>
 <div class="section level3">
 <h3 id="the-function-signassoc">The function <code>signassoc()</code><a class="anchor" aria-label="anchor" href="#the-function-signassoc"></a>
@@ -897,17 +949,17 @@ value was the highest or not. Moreover, the function allows one to test
 both one-sided and two-sided hypotheses. For example, the following line
 tests whether the frequency of the species in each site group is higher
 or lower than random:</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">prefsign</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/signassoc.html">signassoc</a></span><span class="op">(</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">groups</span>,  alternative <span class="op">=</span> <span class="st">"two.sided"</span>, </span>
 <span>                      control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">199</span><span class="op">)</span><span class="op">)</span> </span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">prefsign</span><span class="op">)</span></span>
 <span><span class="co">#&gt;           1    2    3 best   psidak</span></span>
-<span><span class="co">#&gt; Abefic 1.00 0.71 1.00    2 0.975611</span></span>
-<span><span class="co">#&gt; Merhed 0.34 0.65 0.13    3 0.341497</span></span>
-<span><span class="co">#&gt; Alyvag 0.86 0.27 0.93    2 0.610983</span></span>
-<span><span class="co">#&gt; Pancam 0.01 0.20 0.01    1 0.029701</span></span>
-<span><span class="co">#&gt; Abemos 0.65 0.85 0.12    3 0.318528</span></span>
-<span><span class="co">#&gt; Melcor 0.01 0.90 0.01    1 0.029701</span></span></code></pre></div>
+<span><span class="co">#&gt; Abefic 1.00 0.73 1.00    2 0.980317</span></span>
+<span><span class="co">#&gt; Merhed 0.34 0.64 0.18    3 0.448632</span></span>
+<span><span class="co">#&gt; Alyvag 1.00 0.29 0.80    2 0.642089</span></span>
+<span><span class="co">#&gt; Pancam 0.01 0.14 0.01    1 0.029701</span></span>
+<span><span class="co">#&gt; Abemos 0.70 0.80 0.07    3 0.195643</span></span>
+<span><span class="co">#&gt; Melcor 0.01 0.92 0.01    1 0.029701</span></span></code></pre></div>
 <p>The last columns of the results indicate the group for which the
 p-value was the lowest, and the p-value corrected for multiple testing
 using the Sidak method.</p>
@@ -930,7 +982,7 @@ exist some areas where none of the valid indicators can be found.</p>
 <p>The coverage can be calculated for all the site groups of a
 <code><a href="../reference/multipatt.html">multipatt()</a></code> object using the function
 <code><a href="../reference/coverage.html">coverage()</a></code>:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/coverage.html">coverage</a></span><span class="op">(</span><span class="va">wetland</span>, <span class="va">indvalori</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 1 2 3 </span></span>
 <span><span class="co">#&gt; 1 1 1</span></span></code></pre></div>
@@ -948,7 +1000,7 @@ to the validity of indicator species by specifying additional parameters
 to the function <code><a href="../reference/coverage.html">coverage()</a></code>. For example, if we want to know
 the coverage of our site groups with indicators that are significant and
 whose ‘A’ value is equal or higher than 0.8, we can use:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/coverage.html">coverage</a></span><span class="op">(</span><span class="va">wetland</span>, <span class="va">indvalori</span>, At <span class="op">=</span> <span class="fl">0.8</span>, alpha <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="co">#&gt;         1         2         3 </span></span>
 <span><span class="co">#&gt; 0.8235294 0.0000000 1.0000000</span></span></code></pre></div>
@@ -962,14 +1014,14 @@ coverage and the coverage of group ‘1’ has also decreased.</p>
 used to select good indicators. This is obtained by drawing the coverage
 values corresponding to different threshold values. This is what the
 <code><a href="../reference/coverage.html">plotcoverage()</a></code> function does for us:</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/coverage.html">plotcoverage</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">wetland</span>, y<span class="op">=</span><span class="va">indvalori</span>, group<span class="op">=</span><span class="st">"1"</span>, lty<span class="op">=</span><span class="fl">1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/coverage.html">plotcoverage</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">wetland</span>, y<span class="op">=</span><span class="va">indvalori</span>, group<span class="op">=</span><span class="st">"2"</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"blue"</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/coverage.html">plotcoverage</a></span><span class="op">(</span>x<span class="op">=</span><span class="va">wetland</span>, y<span class="op">=</span><span class="va">indvalori</span>, group<span class="op">=</span><span class="st">"3"</span>, lty<span class="op">=</span><span class="fl">3</span>, col<span class="op">=</span><span class="st">"red"</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0.1</span>, y<span class="op">=</span><span class="fl">30</span>, </span>
 <span>       legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"group 1"</span>,<span class="st">"group 2"</span>, <span class="st">"group 3"</span><span class="op">)</span>,</span>
 <span>       lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span><span class="op">)</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"black"</span>,<span class="st">"blue"</span>,<span class="st">"red"</span><span class="op">)</span>, bty<span class="op">=</span><span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="IndicatorSpeciesAnalysis_files/figure-html/unnamed-chunk-24-1.png" width="480"></p>
+<p><img src="IndicatorSpeciesAnalysis_files/figure-html/unnamed-chunk-26-1.png" width="480"></p>
 <p>As you can see in the example, function <code><a href="../reference/coverage.html">plotcoverage()</a></code>
 has to be called for one group at a time. However, several plots can be
 drawn one onto the other using the option <code>add=TRUE</code>.</p>
@@ -993,7 +1045,7 @@ analyzing a site-by-species matrix, we need a matrix with as many rows
 as there are sites and as many columns as there are species
 combinations. We can obtain that matrix using the function
 <code><a href="../reference/combinespecies.html">combinespecies()</a></code>:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">wetcomb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/combinespecies.html">combinespecies</a></span><span class="op">(</span><span class="va">wetland</span>, max.order <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">$</span><span class="va">XC</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">wetcomb</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1]  41 286</span></span></code></pre></div>
@@ -1005,7 +1057,7 @@ for the corresponding site. In our example, we used
 <code>max.order = 2</code> to limit the order of combinations.
 Therefore, only pairs of species were considered. Once we have this new
 data set, we can use it in <code><a href="../reference/multipatt.html">multipatt()</a></code>:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">indvalspcomb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/multipatt.html">multipatt</a></span><span class="op">(</span><span class="va">wetcomb</span>, <span class="va">groups</span>, duleg <span class="op">=</span> <span class="cn">TRUE</span>, </span>
 <span>                          control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/permute/man/how.html" class="external-link">how</a></span><span class="op">(</span>nperm<span class="op">=</span><span class="fl">999</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">indvalspcomb</span>, indvalcomp <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -1028,32 +1080,33 @@ data set, we can use it in <code><a href="../reference/multipatt.html">multipatt
 <span><span class="co">#&gt; Orysp.+Ludads 1.0000 0.8235 0.907   0.001 ***</span></span>
 <span><span class="co">#&gt; Ludads        1.0000 0.8235 0.907   0.001 ***</span></span>
 <span><span class="co">#&gt; Orysp.        0.6772 1.0000 0.823   0.001 ***</span></span>
-<span><span class="co">#&gt; Sessp.+Ludads 1.0000 0.4118 0.642   0.003 ** </span></span>
-<span><span class="co">#&gt; Orysp.+Psespi 1.0000 0.4118 0.642   0.002 ** </span></span>
-<span><span class="co">#&gt; Elesp.+Ludads 1.0000 0.4118 0.642   0.001 ***</span></span>
-<span><span class="co">#&gt; Psespi+Ludads 1.0000 0.4118 0.642   0.002 ** </span></span>
-<span><span class="co">#&gt; Orysp.+Elesp. 0.7424 0.5294 0.627   0.013 *  </span></span>
-<span><span class="co">#&gt; Sessp.+Orysp. 0.9081 0.4118 0.611   0.011 *  </span></span>
-<span><span class="co">#&gt; Psespi        0.8811 0.4118 0.602   0.013 *  </span></span>
-<span><span class="co">#&gt; Helind+Ludads 1.0000 0.3529 0.594   0.007 ** </span></span>
-<span><span class="co">#&gt; Walind+Orysp. 1.0000 0.2941 0.542   0.027 *  </span></span>
-<span><span class="co">#&gt; Walind+Ludads 1.0000 0.2941 0.542   0.027 *  </span></span>
-<span><span class="co">#&gt; Ipoaqu+Ludads 1.0000 0.2941 0.542   0.014 *  </span></span>
+<span><span class="co">#&gt; Sessp.+Ludads 1.0000 0.4118 0.642   0.001 ***</span></span>
+<span><span class="co">#&gt; Orysp.+Psespi 1.0000 0.4118 0.642   0.006 ** </span></span>
+<span><span class="co">#&gt; Elesp.+Ludads 1.0000 0.4118 0.642   0.009 ** </span></span>
+<span><span class="co">#&gt; Psespi+Ludads 1.0000 0.4118 0.642   0.006 ** </span></span>
+<span><span class="co">#&gt; Orysp.+Elesp. 0.7424 0.5294 0.627   0.014 *  </span></span>
+<span><span class="co">#&gt; Sessp.+Orysp. 0.9081 0.4118 0.611   0.006 ** </span></span>
+<span><span class="co">#&gt; Psespi        0.8811 0.4118 0.602   0.021 *  </span></span>
+<span><span class="co">#&gt; Helind+Ludads 1.0000 0.3529 0.594   0.004 ** </span></span>
+<span><span class="co">#&gt; Walind+Orysp. 1.0000 0.2941 0.542   0.018 *  </span></span>
+<span><span class="co">#&gt; Walind+Ludads 1.0000 0.2941 0.542   0.018 *  </span></span>
+<span><span class="co">#&gt; Ipoaqu+Ludads 1.0000 0.2941 0.542   0.026 *  </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Group 2  #sps.  10 </span></span>
-<span><span class="co">#&gt;                    A      B  stat p.value    </span></span>
-<span><span class="co">#&gt; Phynod+Elesp. 0.9162 0.5714 0.724   0.001 ***</span></span>
-<span><span class="co">#&gt; Phynod        0.6396 0.7143 0.676   0.006 ** </span></span>
-<span><span class="co">#&gt; Phynod+Helind 0.6922 0.6429 0.667   0.005 ** </span></span>
-<span><span class="co">#&gt; Helind+Elesp. 0.6861 0.5714 0.626   0.016 *  </span></span>
-<span><span class="co">#&gt; Phynod+Echell 0.8654 0.3571 0.556   0.024 *  </span></span>
-<span><span class="co">#&gt; Echell+Elesp. 0.8586 0.3571 0.554   0.014 *  </span></span>
-<span><span class="co">#&gt; Melcor+Elesp. 0.7083 0.4286 0.551   0.041 *  </span></span>
-<span><span class="co">#&gt; Aesind+Elesp. 1.0000 0.2857 0.535   0.012 *  </span></span>
-<span><span class="co">#&gt; Eupvac+Cyprot 1.0000 0.2143 0.463   0.048 *  </span></span>
-<span><span class="co">#&gt; Echpas+Cyprot 1.0000 0.2143 0.463   0.045 *  </span></span>
+<span><span class="co">#&gt;  Group 2  #sps.  11 </span></span>
+<span><span class="co">#&gt;                    A      B  stat p.value   </span></span>
+<span><span class="co">#&gt; Phynod+Elesp. 0.9162 0.5714 0.724   0.003 **</span></span>
+<span><span class="co">#&gt; Phynod        0.6396 0.7143 0.676   0.006 **</span></span>
+<span><span class="co">#&gt; Phynod+Helind 0.6922 0.6429 0.667   0.006 **</span></span>
+<span><span class="co">#&gt; Helind+Elesp. 0.6861 0.5714 0.626   0.016 * </span></span>
+<span><span class="co">#&gt; Phynod+Echell 0.8654 0.3571 0.556   0.017 * </span></span>
+<span><span class="co">#&gt; Echell+Elesp. 0.8586 0.3571 0.554   0.015 * </span></span>
+<span><span class="co">#&gt; Melcor+Elesp. 0.7083 0.4286 0.551   0.049 * </span></span>
+<span><span class="co">#&gt; Aesind+Elesp. 1.0000 0.2857 0.535   0.012 * </span></span>
+<span><span class="co">#&gt; Echpas+Phynod 0.8293 0.2857 0.487   0.035 * </span></span>
+<span><span class="co">#&gt; Eupvac+Cyprot 1.0000 0.2143 0.463   0.048 * </span></span>
+<span><span class="co">#&gt; Echpas+Cyprot 1.0000 0.2143 0.463   0.050 * </span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;  Group 3  #sps.  19 </span></span>
+<span><span class="co">#&gt;  Group 3  #sps.  18 </span></span>
 <span><span class="co">#&gt;                    A      B  stat p.value    </span></span>
 <span><span class="co">#&gt; Pancam        0.8278 1.0000 0.910   0.001 ***</span></span>
 <span><span class="co">#&gt; Pancam+Melcor 0.7769 1.0000 0.881   0.001 ***</span></span>
@@ -1061,19 +1114,18 @@ data set, we can use it in <code><a href="../reference/multipatt.html">multipatt
 <span><span class="co">#&gt; Eupvac+Echell 1.0000 0.6000 0.775   0.001 ***</span></span>
 <span><span class="co">#&gt; Pancam+Eupvac 0.7455 0.8000 0.772   0.001 ***</span></span>
 <span><span class="co">#&gt; Melcor        0.5463 1.0000 0.739   0.001 ***</span></span>
-<span><span class="co">#&gt; Melcor+Eupvac 0.6648 0.8000 0.729   0.002 ** </span></span>
-<span><span class="co">#&gt; Eupvac        0.6546 0.8000 0.724   0.003 ** </span></span>
+<span><span class="co">#&gt; Melcor+Eupvac 0.6648 0.8000 0.729   0.003 ** </span></span>
+<span><span class="co">#&gt; Eupvac        0.6546 0.8000 0.724   0.004 ** </span></span>
 <span><span class="co">#&gt; Pancam+Cynarc 1.0000 0.5000 0.707   0.001 ***</span></span>
-<span><span class="co">#&gt; Pancam+Sessp. 0.8077 0.6000 0.696   0.002 ** </span></span>
-<span><span class="co">#&gt; Melcor+Echell 0.7368 0.6000 0.665   0.005 ** </span></span>
-<span><span class="co">#&gt; Melcor+Cynarc 0.8077 0.5000 0.635   0.004 ** </span></span>
-<span><span class="co">#&gt; Cynarc        0.7241 0.5000 0.602   0.015 *  </span></span>
-<span><span class="co">#&gt; Melcor+Sessp. 0.5895 0.6000 0.595   0.031 *  </span></span>
-<span><span class="co">#&gt; Eupvac+Cynarc 0.8485 0.4000 0.583   0.009 ** </span></span>
+<span><span class="co">#&gt; Pancam+Sessp. 0.8077 0.6000 0.696   0.001 ***</span></span>
+<span><span class="co">#&gt; Melcor+Echell 0.7368 0.6000 0.665   0.004 ** </span></span>
+<span><span class="co">#&gt; Melcor+Cynarc 0.8077 0.5000 0.635   0.005 ** </span></span>
+<span><span class="co">#&gt; Cynarc        0.7241 0.5000 0.602   0.010 ** </span></span>
+<span><span class="co">#&gt; Melcor+Sessp. 0.5895 0.6000 0.595   0.022 *  </span></span>
+<span><span class="co">#&gt; Eupvac+Cynarc 0.8485 0.4000 0.583   0.014 *  </span></span>
 <span><span class="co">#&gt; Cynarc+Sessp. 0.7778 0.4000 0.558   0.021 *  </span></span>
-<span><span class="co">#&gt; Cynarc+Phynod 1.0000 0.3000 0.548   0.008 ** </span></span>
-<span><span class="co">#&gt; Cynarc+Echell 1.0000 0.3000 0.548   0.008 ** </span></span>
-<span><span class="co">#&gt; Cynarc+Helind 1.0000 0.2000 0.447   0.042 *  </span></span>
+<span><span class="co">#&gt; Cynarc+Phynod 1.0000 0.3000 0.548   0.014 *  </span></span>
+<span><span class="co">#&gt; Cynarc+Echell 1.0000 0.3000 0.548   0.010 ** </span></span>
 <span><span class="co">#&gt; ---</span></span>
 <span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div>
 <p>The best indicators for both Group 1 and Group 3 are individual
@@ -1095,7 +1147,7 @@ target site group. Say, for example, that we want to determine
 indicators for our Group 2, and we want to consider not only species
 pairs but also species trios. We can run the indicator analysis
 using:</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sc</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/indicators.html">indicators</a></span><span class="op">(</span>X<span class="op">=</span><span class="va">wetland</span>, cluster<span class="op">=</span><span class="va">groups</span>, group<span class="op">=</span><span class="fl">2</span>, </span>
 <span>                 max.order <span class="op">=</span> <span class="fl">3</span>, verbose<span class="op">=</span><span class="cn">TRUE</span>, </span>
 <span>                 At<span class="op">=</span><span class="fl">0.5</span>, Bt<span class="op">=</span><span class="fl">0.2</span><span class="op">)</span></span>
@@ -1149,15 +1201,15 @@ function will consider species combinations up to an order of 5
 computation times if the set of candidate species is not small.
 Similarly to <code><a href="../reference/multipatt.html">multipatt()</a></code>, we can print the results of
 <code><a href="../reference/indicators.html">indicators()</a></code> for the most useful indicators, using:</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">sc</span>, sqrtIVt <span class="op">=</span> <span class="fl">0.6</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                              A         B    sqrtIV p.value</span></span>
 <span><span class="co">#&gt; Phynod+Helind+Elesp. 1.0000000 0.5714286 0.7559289   0.005</span></span>
 <span><span class="co">#&gt; Phynod+Elesp.        0.9000000 0.5714286 0.7171372   0.005</span></span>
 <span><span class="co">#&gt; Phynod               0.6666667 0.7142857 0.6900656   0.005</span></span>
 <span><span class="co">#&gt; Phynod+Helind        0.7142857 0.6428571 0.6776309   0.005</span></span>
-<span><span class="co">#&gt; Helind+Elesp.        0.6428571 0.5714286 0.6060915   0.015</span></span>
-<span><span class="co">#&gt; Melcor+Phynod+Elesp. 0.8571429 0.4285714 0.6060915   0.010</span></span>
+<span><span class="co">#&gt; Helind+Elesp.        0.6428571 0.5714286 0.6060915   0.010</span></span>
+<span><span class="co">#&gt; Melcor+Phynod+Elesp. 0.8571429 0.4285714 0.6060915   0.005</span></span>
 <span><span class="co">#&gt; Melcor+Helind+Elesp. 0.8571429 0.4285714 0.6060915   0.005</span></span></code></pre></div>
 <p>The species combinations are listed in decreasing indicator value
 order. Function <code><a href="../reference/indicators.html">indicators()</a></code> also calculates the
@@ -1185,13 +1237,13 @@ groups of small size <span class="citation">(De Cáceres et al.
 where one or another indicator is found, using, as shown before for
 objects of class <code><a href="../reference/multipatt.html">multipatt()</a></code>, the function
 <code><a href="../reference/coverage.html">coverage()</a></code>:</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/coverage.html">coverage</a></span><span class="op">(</span><span class="va">sc</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 1</span></span></code></pre></div>
 <p>In this case the coverage was complete (i.e. 100%). Like we did for
 objects of class <code><a href="../reference/multipatt.html">multipatt()</a></code>, we can add requirements to
 the validity of indicators. For example:</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/coverage.html">coverage</a></span><span class="op">(</span><span class="va">sc</span>, At<span class="op">=</span><span class="fl">0.8</span>, alpha <span class="op">=</span><span class="fl">0.05</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 0.9285714</span></span></code></pre></div>
 <p>While we do not show here, in the case of objects of class
@@ -1200,12 +1252,12 @@ lower boundary of confidence intervals, using option <code>type</code>
 of function <code><a href="../reference/coverage.html">coverage()</a></code>.</p>
 <p>Finally, we can also plot coverage values corresponding to different
 thresholds:</p>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/coverage.html">plotcoverage</a></span><span class="op">(</span><span class="va">sc</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/coverage.html">plotcoverage</a></span><span class="op">(</span><span class="va">sc</span>, max.order<span class="op">=</span><span class="fl">1</span>, add<span class="op">=</span><span class="cn">TRUE</span>, lty<span class="op">=</span><span class="fl">2</span>, col<span class="op">=</span><span class="st">"red"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">0.1</span>, y<span class="op">=</span><span class="fl">20</span>, legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Species combinations"</span>,<span class="st">"Species singletons"</span><span class="op">)</span>, </span>
 <span>       lty<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span><span class="op">)</span>, col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"black"</span>,<span class="st">"red"</span><span class="op">)</span>, bty<span class="op">=</span><span class="st">"n"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="IndicatorSpeciesAnalysis_files/figure-html/unnamed-chunk-31-1.png" width="480"></p>
+<p><img src="IndicatorSpeciesAnalysis_files/figure-html/unnamed-chunk-33-1.png" width="480"></p>
 <p>The coverage plot tells us that if we want to use a very large `A’
 threshold (i.e., if we want to be very strict to select valid
 indicators), we won’t have enough valid indicators to cover all the area
@@ -1226,7 +1278,7 @@ evaluates the coverage of the remaining set of indicators. Finally, it
 explores subsets of increasing number of indicators, until the same
 coverage as the coverage of the complete set is attained and the subset
 of indicators is returned.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sc2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pruneindicators.html">pruneindicators</a></span><span class="op">(</span><span class="va">sc</span>, At<span class="op">=</span><span class="fl">0.8</span>, Bt<span class="op">=</span><span class="fl">0.2</span>, verbose<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Coverage of initial set of 73 indicators: 100%</span></span>
 <span><span class="co">#&gt; Coverage of valid set of 31 indicators: 92.9%</span></span>
@@ -1238,8 +1290,8 @@ of indicators is returned.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">sc2</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                       A         B    sqrtIV p.value</span></span>
 <span><span class="co">#&gt; Phynod+Elesp. 0.9000000 0.5714286 0.7171372   0.005</span></span>
-<span><span class="co">#&gt; Cyprot        0.8666667 0.2857143 0.4976134   0.010</span></span>
-<span><span class="co">#&gt; Echpas+Phynod 0.8000000 0.2857143 0.4780914   0.025</span></span></code></pre></div>
+<span><span class="co">#&gt; Cyprot        0.8666667 0.2857143 0.4976134   0.025</span></span>
+<span><span class="co">#&gt; Echpas+Phynod 0.8000000 0.2857143 0.4780914   0.035</span></span></code></pre></div>
 <p>In our example, and using these thresholds, the best indicators for
 group ‘2’ would be: (a) the combination of ‘Phynod’ and ‘Elesp.’; (b)
 ‘Cyprot’ and (c) ‘Echpas’ and ‘Phynod’. The three indicators together
@@ -1261,23 +1313,23 @@ probability of the target site group for each site. The following code
 exemplifies the use of <code><a href="../reference/predict.indicators.html">predict.indicators()</a></code> with the same
 data that was used for the calibration of the indicator model (a new
 community data matrix should be used in normal applications):</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">sc2</span>, <span class="va">wetland</span><span class="op">)</span></span></code></pre></div>
 <p>Of course, this will return biased estimates, as the data set used to
 build the model is the same as the target data set for which
 probabilities are desired. The same would be obtained using:</p>
-<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">sc2</span><span class="op">)</span></span></code></pre></div>
 <p>which uses the original data set storied in the
 <code><a href="../reference/indicators.html">indicators()</a></code> object. If we want to evaluate these
 probability estimates in a cross-validated fashion (i.e., excluding each
 target site for the calculation of positive predictive values and the
 probability of the target site group), we can use:</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pcv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html" class="external-link">predict</a></span><span class="op">(</span><span class="va">sc2</span>, cv<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <p>We can compare the probabilities (evaluated by resubstitution and
 cross-validation) with the original group memberships:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>Group2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric</a></span><span class="op">(</span><span class="va">wetkm</span><span class="op">$</span><span class="va">cluster</span><span class="op">==</span><span class="fl">2</span><span class="op">)</span>, Prob <span class="op">=</span> <span class="va">p</span>, Prob_CV <span class="op">=</span> <span class="va">pcv</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    Group2      Prob   Prob_CV</span></span>
 <span><span class="co">#&gt; 5       1 0.0000000 0.0000000</span></span>
@@ -1390,11 +1442,11 @@ Science</em> 17 (6): 809.
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Miquel De Cáceres, Florian Jansen, Noah Dell.</p>
+  <p>Developed by Miquel De Cáceres, Florian Jansen, Sarah Endicott, Noah Dell.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>
