@@ -1,12 +1,9 @@
 
 # Relationship between species and groups of sites <a href="https://emf-creaf.github.io/indicspecies/"><img src="man/figures/logo.png" align="right" height="139" alt="indicspecies website" /></a>
 
-<!-- badges: start -->
-
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/indicspecies)](https://cran.r-project.org/package=indicspecies)
 [![](https://cranlogs.r-pkg.org/badges/indicspecies)](https://cran.rstudio.com/web/packages/indicspecies/index.html)
 [![R-CMD-check](https://github.com/emf-creaf/indicspecies/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/emf-creaf/indicspecies/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end -->
 
 ## Introduction
 
