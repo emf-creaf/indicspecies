@@ -312,6 +312,7 @@ indicators <- function (X, cluster, group, func="IndVal", min.order = 1, max.ord
 #' @param x An object of class 'indicators'.
 #' @param selection A logical vector used to restrict, a priori, the species combinations to be printed.
 #' @param confint Flag to indicate that confidence interval bounds are desired when printing.
+#' @export
 print.indicators <- function (x, At = 0, Bt = 0, sqrtIVt = 0, alpha = 1.0, 
                               selection = NULL, confint=FALSE,...) {
   if(is.null(selection)) selection = rep(TRUE, nrow(x$C))
@@ -375,6 +376,7 @@ print.indicators <- function (x, At = 0, Bt = 0, sqrtIVt = 0, alpha = 1.0,
 #' @rdname indicators
 #' @param object An object of class 'indicators'.
 #' @param ... Additional arguments for functions \code{print},\code{summary} or \code{plot}.
+#' @export
 summary.indicators <- function (object, ...) {
   cat(paste("Result of 'indicators()':\n\n"))
   cat(paste("  Number of plots in target site group: ", sum(object$group.vec),"\n",sep=""))
@@ -388,6 +390,7 @@ summary.indicators <- function (object, ...) {
 #' @rdname indicators
 #' @param type Statistic to plot. Accepted values are "IV" (indicator value), "sqrtIV" (square root of indicator value), "A", "LA", "UA", (positive predictive value and confidence limits), "B",  "LB", "UB" (sensitivity and confidence limits).
 #' @param maxline Flag to indicate whether a line has to be drawn joining the maximum values for each order of combinations.
+#' @export
 plot.indicators<-function(x, type="sqrtIV", maxline=TRUE, ...) {
   A = x$A
   B = x$B
